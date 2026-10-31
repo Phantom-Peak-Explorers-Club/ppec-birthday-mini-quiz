@@ -13,6 +13,11 @@ test('PPEC Quiz is the installed and visible app name', () => {
   assert.equal(manifest.name, 'PPEC Quiz');
   assert.equal(manifest.short_name, 'PPEC Quiz');
   assert.match(html, /<title>PPEC Quiz<\/title>/);
+  assert.match(html, /jonabot-quiz-hero\.png/);
+  assert.match(html, /jonabot-countdown-card\.png/);
+  assert.match(html, /jonabot-avatar\.png/);
+  assert.doesNotMatch(html, /class="topbar"/);
+  assert.doesNotMatch(html, /30 SECONDS \/ LETTER GAMES|<footer>/);
   const app = setup();
   assert.match(app.evaluate('shareText.toString()'), /PPEC Quiz/);
 });
@@ -137,8 +142,10 @@ test('Graphical share card renders game, mode, score, question count, and time a
   assert.match(app.get('share-status').textContent, /ppec-quiz-score\.png/);
   assert.ok(app.canvasText.some(text => text.includes('Say What You See?')));
   assert.ok(app.canvasText.some(text => text.includes('UNLIMITED')));
-  assert.ok(app.canvasText.some(text => text.includes('47 PTS')));
-  assert.ok(app.canvasText.some(text => text.includes('4 COMPLETED')));
+  assert.ok(app.canvasText.includes('47'));
+  assert.ok(app.canvasText.includes('POINTS'));
+  assert.ok(app.canvasText.includes('4'));
+  assert.ok(app.canvasText.includes('QUESTIONS COMPLETED'));
   assert.ok(app.canvasText.some(text => text.includes('2:03')));
 });
 
@@ -160,8 +167,10 @@ test('Letter and trail share cards use correct-answer scores', async () => {
     await app.evaluate('drawShareCard()');
     assert.ok(app.canvasText.some(text => text.includes(label)));
     assert.ok(app.canvasText.some(text => text.includes('QUIZ ROUND')));
-    assert.ok(app.canvasText.some(text => text.includes('8 RIGHT')));
-    assert.ok(app.canvasText.some(text => text.includes('10 COMPLETED')));
+    assert.ok(app.canvasText.includes('8'));
+    assert.ok(app.canvasText.includes('RIGHT'));
+    assert.ok(app.canvasText.includes('10'));
+    assert.ok(app.canvasText.includes('QUESTIONS COMPLETED'));
     assert.ok(app.canvasText.some(text => text.includes('1:31')));
   }
 });

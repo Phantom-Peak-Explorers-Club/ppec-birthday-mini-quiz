@@ -252,3 +252,82 @@ footer{text-align:center;padding:0 0 25px;color:#81758b;font:600 10px 'IBM Plex 
   .game-grid .card-body p:not(.card-kicker):not(.soon-note){margin:5px 0 8px;font-size:11px}
   .game-grid .mode-buttons .play-button{min-height:32px;padding:6px 8px;font-size:10px}
 }
+
+/* A compact graphic header puts the games on the first mobile screen. */
+.home-screen{padding:10px 0 30px}
+.portal{border:0;border-radius:0;background:transparent;box-shadow:none;overflow:visible}
+.portal-banner{position:relative;display:flex;align-items:center;min-height:174px;overflow:hidden;border:1px solid #9c774e;border-left:7px solid #e9b957;border-radius:11px;background:radial-gradient(circle at 88% 52%,#6a385d 0,transparent 38%),linear-gradient(107deg,#21152c 0,#30183e 54%,#191421 100%)}
+.portal-banner:before{content:'';position:absolute;inset:9px;border:1px solid #e6be7c38;border-radius:6px;pointer-events:none}
+.portal-banner-copy{position:relative;z-index:2;padding:22px 32px}
+.portal-banner-kicker,.portal-banner-meta{display:block;font:700 11px 'IBM Plex Mono',monospace;letter-spacing:.15em;color:#e3c58d}
+.portal-banner-copy h1{margin:7px 0 5px;font-size:clamp(38px,5.5vw,69px);letter-spacing:-.06em;line-height:1;color:#fff1dc}
+.portal-banner-copy h1 em{font-style:normal;color:#e9b957}
+.portal-banner-art{position:absolute;right:5%;bottom:-17px;width:196px;height:196px;object-fit:contain;filter:drop-shadow(0 8px 12px #0008)}
+.portal-banner .install-button{position:absolute;z-index:3;right:12px;top:12px}
+.mode-guide{gap:8px;padding:10px 0 0}
+.mode-guide>div,.mode-guide>div:nth-child(2){min-height:48px;padding:6px 10px;gap:9px;border-color:#5d5265;border-radius:6px;background:#1d1925}
+.mode-guide .mode-symbol,.mode-guide>div:nth-child(2) .mode-symbol{width:30px;height:30px;flex:none;font-size:13px}
+.mode-guide>div:nth-child(2) .mode-symbol{font-size:20px}
+.mode-guide p{gap:1px}.mode-guide strong{font-size:11px}.mode-guide p span{font-size:10px;line-height:1.2}
+.choose-heading{padding:14px 2px 9px;margin:0;font-size:10px;color:#f0d198}
+.game-grid{padding:0;gap:10px}
+.results-screen{max-width:740px;padding-top:15px}
+.results-card{padding:20px}
+.results-card h1{margin-bottom:15px;font-size:clamp(27px,4vw,36px)}
+.share-preview{width:min(100%,236px);margin-bottom:12px}
+.share-actions{gap:8px}
+.share-actions .primary-button{width:100%}
+.share-actions .text-button{flex:1;min-height:34px;padding:7px 9px;border:1px solid #796485;border-radius:5px;text-align:center;white-space:nowrap}
+.share-status{margin:7px 0;min-height:16px}
+.result-actions{padding-top:11px;gap:10px}
+@media(min-width:801px){
+  .results-screen{max-width:740px}
+  .results-card{grid-template-columns:236px minmax(0,1fr);column-gap:21px}
+  .results-card>.share-preview{width:236px}
+}
+@media(max-width:640px){
+  .home-screen{padding-top:0}
+  .portal-banner{min-height:143px}
+  .portal-banner-copy{padding:16px 17px}
+  .portal-banner-copy h1{font-size:39px}
+  .portal-banner-kicker,.portal-banner-meta{font-size:8px;letter-spacing:.1em}
+  .portal-banner-art{right:-8px;bottom:-6px;width:145px;height:145px}
+  .portal-banner .install-button{top:auto;bottom:8px;right:8px;padding:5px 7px;font-size:9px}
+  .mode-guide{grid-template-columns:1fr 1fr;gap:6px;padding:7px 0 0}
+  .mode-guide>div,.mode-guide>div:nth-child(2){min-height:55px;padding:5px 6px;gap:6px}
+  .mode-guide .mode-symbol,.mode-guide>div:nth-child(2) .mode-symbol{width:25px;height:25px;font-size:11px}
+  .mode-guide>div:nth-child(2) .mode-symbol{font-size:17px}
+  .mode-guide strong{font-size:10px}.mode-guide p span{font-size:9px}
+  .choose-heading{padding:11px 1px 7px}
+  .game-grid{gap:8px;padding:0}
+  .results-screen{padding-top:12px}
+  .results-card{padding:15px}
+  .share-preview{width:min(100%,228px);min-height:0;margin:0 auto 10px}
+  .share-actions{gap:7px}
+  .share-actions .text-button{font-size:11px}
+}
+@media(max-width:360px){
+  .portal-banner{min-height:130px}
+  .portal-banner-copy h1{font-size:32px}
+  .portal-banner-art{width:119px;height:119px;right:-5px;bottom:0}
+}
+
+/* Jonabot Jr holds the changing countdown card. */
+.start-countdown{gap:0;background:radial-gradient(circle at 50% 42%,var(--game-dark),#120e1cf5 73%)}
+.countdown-figure{position:relative;width:min(75vw,330px);aspect-ratio:1;filter:drop-shadow(0 15px 24px #0009)}
+.countdown-figure img{display:block;width:100%;height:100%;object-fit:contain}
+.start-countdown .countdown-figure strong{position:absolute;top:51%;left:25%;display:grid;place-items:center;width:50%;height:34%;color:var(--game-accent);font:900 clamp(80px,18vw,126px)/1 'DM Sans',Arial,sans-serif;letter-spacing:-.06em;-webkit-text-stroke:2px #24142c;paint-order:stroke fill;text-shadow:0 4px 8px #24142c99,0 0 14px var(--game-accent);animation:none}
+.start-countdown.go .countdown-figure strong{font-size:clamp(62px,13vw,84px);letter-spacing:-.08em}
+@media(prefers-reduced-motion:reduce){.countdown-figure{transition:none}}
+
+.game-top-avatar{display:block;width:36px;height:36px;object-fit:cover;object-position:center 12%;border:1px solid #d5ac66;border-radius:50%;background:#302039;box-shadow:0 0 0 3px #ffffff0b}
+.game-top{margin-bottom:10px}
+.game-grid .card-icon img{width:136px;height:136px;max-width:100%;max-height:100%;object-fit:contain}
+@media(max-width:640px){
+  .game-top-avatar{width:32px;height:32px}
+  .game-grid>.game-card{grid-template-columns:94px minmax(0,1fr)}
+  .game-grid .card-icon{width:94px}
+  .game-grid .card-icon img{width:92px;height:92px}
+  .game-grid .mode-buttons{gap:4px}
+  .game-grid .mode-buttons .play-button{padding:6px 5px;font-size:10px}
+}

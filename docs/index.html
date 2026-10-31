@@ -11,58 +11,53 @@
   <link rel="manifest" href="./manifest.webmanifest?v=3">
   <link rel="icon" type="image/png" href="./assets/app-icon-v3-192.png">
   <link rel="apple-touch-icon" href="./assets/app-icon-v3-180.png">
-  <link rel="stylesheet" href="./style.css?v=12">
+  <link rel="stylesheet" href="./style.css?v=15">
   <script src="./what-trail.js" defer></script>
-  <script src="./app.js?v=10" defer></script>
+  <script src="./app.js?v=13" defer></script>
 </head>
 <body>
   <main class="shell">
-    <header class="topbar">
-      <button class="brand" id="home-button" type="button" aria-label="Back to game selection"><span class="brand-mark">✦</span><span><strong>PPEC</strong><small>QUIZ</small></span></button>
-      <div class="topbar-actions"><button id="install-button" class="install-button" type="button" hidden>Install app</button><span class="edition"><span class="status-dot" aria-hidden="true"></span> BIRTHDAY EDITION <span class="header-version">/ 001</span></span></div>
-    </header>
-
     <section id="home" class="screen home-screen" aria-labelledby="home-title">
       <div class="portal">
-        <div class="portal-intro">
-          <div class="portal-copy">
-            <p class="eyebrow"><span class="live-light" aria-hidden="true"></span> EXPLORERS’ CLUB GAME DESK</p>
-            <h1 id="home-title">Choose a <em>game.</em></h1>
-            <p>Replay games from the 4th Birthday quiz and the Trail Notes archive. Anagrams and Missing Vowels give you 30 seconds; picture and trail clues let you take your time.</p>
+        <div class="portal-banner">
+          <div class="portal-banner-copy">
+            <span class="portal-banner-kicker">JONABOT JR’S QUIZ APP</span>
+            <h1 id="home-title">PPEC <em>Quiz</em></h1>
+            <span class="portal-banner-meta">4TH BIRTHDAY · FOUR GAMES</span>
           </div>
-          <img class="portal-mascot" src="./assets/jonabot-jr.png" alt="Jonabot Jr waving">
+          <img class="portal-banner-art" src="./assets/jonabot-quiz-hero.png" alt="Jonabot Jr holding a giant question mark">
+          <button id="install-button" class="install-button" type="button" hidden>Install app</button>
         </div>
-        <div class="choose-heading"><span>AVAILABLE GAMES</span><span class="choose-line" aria-hidden="true"></span><span>SELECT A TERMINAL</span></div>
         <div class="mode-guide" aria-label="How the game modes work">
-          <div><span class="mode-symbol" aria-hidden="true">10</span><p><strong>Quiz Round</strong><span>10 random questions, then see your score and time.</span></p></div>
-          <div><span class="mode-symbol" aria-hidden="true">∞</span><p><strong>Unlimited</strong><span>Play until your first wrong answer or you clear the pool. Your score counts either way.</span></p></div>
+          <div><span class="mode-symbol" aria-hidden="true">10</span><p><strong>Quiz Round</strong><span>10 random questions</span></p></div>
+          <div><span class="mode-symbol" aria-hidden="true">∞</span><p><strong>Unlimited</strong><span>Until a wrong answer or the pool ends</span></p></div>
         </div>
+        <div class="choose-heading"><span>CHOOSE A GAME</span></div>
         <div class="game-grid">
         <article class="game-card anagram-game-card">
           <div class="card-icon letters-icon"><img src="./assets/game-logos/anagrams.png?v=2" alt="" width="512" height="512"></div>
-          <div class="card-body"><p class="card-kicker">01 / ANAGRAMS</p><h2>Littlefield’s Letters</h2><p>Unscramble names and phrases, from easy to difficult.</p><div class="mode-buttons"><button class="play-button" type="button" data-game="anagrams" data-mode="quiz">Quiz Round <span aria-hidden="true">↗</span></button><button class="play-button secondary" type="button" data-game="anagrams" data-mode="unlimited">Unlimited <span aria-hidden="true">∞</span></button></div></div>
+          <div class="card-body"><h2>Littlefield’s Letters</h2><p>Unscramble Peak names and phrases.</p><div class="mode-buttons"><button class="play-button" type="button" data-game="anagrams" data-mode="quiz">Quiz Round <span aria-hidden="true">↗</span></button><button class="play-button secondary" type="button" data-game="anagrams" data-mode="unlimited">Unlimited <span aria-hidden="true">∞</span></button></div></div>
         </article>
         <article class="game-card picture-game-card">
           <div class="card-icon picture-icon"><img src="./assets/game-logos/catchphrase.png?v=2" alt="" width="512" height="512"></div>
-          <div class="card-body"><p class="card-kicker">02 / PICTURE REVEAL</p><h2>Say What You See?</h2><p>Choose panels to uncover. Fewer panels means more points.</p><div class="mode-buttons"><button class="play-button" type="button" data-game="catchphrase" data-mode="quiz">Quiz Round <span aria-hidden="true">↗</span></button><button class="play-button secondary" type="button" data-game="catchphrase" data-mode="unlimited">Unlimited <span aria-hidden="true">∞</span></button></div></div>
+          <div class="card-body"><h2>Say What You See?</h2><p>Reveal picture panels and guess.</p><div class="mode-buttons"><button class="play-button" type="button" data-game="catchphrase" data-mode="quiz">Quiz Round <span aria-hidden="true">↗</span></button><button class="play-button secondary" type="button" data-game="catchphrase" data-mode="unlimited">Unlimited <span aria-hidden="true">∞</span></button></div></div>
         </article>
         <article class="game-card vowel-game-card">
           <div class="card-icon vowels-icon"><img src="./assets/game-logos/missing-vowels.png?v=2" alt="" width="512" height="512"></div>
-          <div class="card-body"><p class="card-kicker">03 / LETTERS</p><h2>Missing Vowels</h2><p>Put the vowels back into names and terms from the Peak.</p><div class="mode-buttons"><button class="play-button" type="button" data-game="vowels" data-mode="quiz">Quiz Round <span aria-hidden="true">↗</span></button><button class="play-button secondary" type="button" data-game="vowels" data-mode="unlimited">Unlimited <span aria-hidden="true">∞</span></button></div><p id="vowels-soon" class="soon-note" hidden>Question list coming soon</p></div>
+          <div class="card-body"><h2>Missing Vowels</h2><p>Put the vowels back.</p><div class="mode-buttons"><button class="play-button" type="button" data-game="vowels" data-mode="quiz">Quiz Round <span aria-hidden="true">↗</span></button><button class="play-button secondary" type="button" data-game="vowels" data-mode="unlimited">Unlimited <span aria-hidden="true">∞</span></button></div><p id="vowels-soon" class="soon-note" hidden>Question list coming soon</p></div>
         </article>
         <article class="game-card trail-game-card">
           <div class="card-icon trail-icon"><img src="./assets/game-logos/what-trail.png?v=2" alt="" width="512" height="512"></div>
-          <div class="card-body"><p class="card-kicker">04 / TRAIL ARCHIVE</p><h2>What Trail?</h2><p>Match a story recap to its trail. 187 mysteries from the archive.</p><div class="mode-buttons"><button class="play-button" type="button" data-game="trails" data-mode="quiz">Quiz Round <span aria-hidden="true">↗</span></button><button class="play-button secondary" type="button" data-game="trails" data-mode="unlimited">Unlimited <span aria-hidden="true">∞</span></button></div></div>
+          <div class="card-body"><h2>What Trail?</h2><p>Match each story recap to its trail.</p><div class="mode-buttons"><button class="play-button" type="button" data-game="trails" data-mode="quiz">Quiz Round <span aria-hidden="true">↗</span></button><button class="play-button secondary" type="button" data-game="trails" data-mode="unlimited">Unlimited <span aria-hidden="true">∞</span></button></div></div>
         </article>
         </div>
-        <div class="portal-foot"><span>30 SECONDS / LETTER GAMES</span><span>NO TIMER / PICTURES &amp; TRAILS</span><span>SHARE YOUR SCORE CARD</span></div>
       </div>
     </section>
 
     <section id="game" class="screen game-screen" aria-labelledby="game-title" hidden>
-      <div class="game-top"><button class="text-button" type="button" id="back-button">← Choose another game</button><span id="game-label" class="game-label"></span></div>
+      <div class="game-top"><button class="text-button" type="button" id="back-button">← Choose another game</button><img class="game-top-avatar" src="./assets/jonabot-avatar.png" alt="Jonabot Jr"></div>
       <div class="game-console" id="game-console">
-      <div id="start-countdown" class="start-countdown" role="status" aria-live="assertive" hidden><span>GET READY</span><strong id="countdown-number">3</strong><small>30 seconds per clue</small></div>
+      <div id="start-countdown" class="start-countdown" role="status" aria-live="assertive" hidden><div class="countdown-figure"><img src="./assets/jonabot-countdown-card.png" alt=""><strong id="countdown-number">3</strong></div></div>
       <div class="console-heading"><span class="console-serial">PPEC / JONACO SYSTEMS</span><span class="console-beacon"><i aria-hidden="true"></i> TERMINAL ACTIVE</span></div>
       <div class="progress-line" id="progress-line"><span id="progress-fill"></span></div>
       <div class="question-meta"><span class="instrument"><small>CLUE REGISTER</small><b id="question-count"></b></span><span class="instrument"><small>SCORE REGISTER</small><b id="score-label"></b></span><span class="instrument timer-instrument"><small>TIME REMAINING</small><b id="timer-label" role="timer" aria-live="off">30s</b></span></div>
@@ -90,7 +85,6 @@
     <section id="results" class="screen results-screen" aria-labelledby="results-title" hidden>
       <div class="results-card"><p class="eyebrow">RUN COMPLETE / RESULT SAVED</p><h1 id="results-title">Nicely done, explorer!</h1><button class="share-preview" id="share-preview" type="button" aria-label="Share your score card" title="Share your score card"><img class="share-preview-image" id="share-preview-image" alt="" aria-hidden="true" hidden><span class="share-art"><img src="./assets/jonabot-jr.png" alt="" aria-hidden="true"><span>✦</span></span><span class="share-content"><span class="share-brand">PPEC QUIZ <span>✦</span> BIRTHDAY EDITION</span><span id="share-game" class="share-game"></span><span id="share-mode" class="share-mode"></span><strong id="share-score" class="share-score"></strong><span id="share-detail" class="share-detail"></span><span id="share-time" class="share-time"></span><span class="share-footer">PHANTOM PEAK EXPLORERS’ CLUB</span></span></button><p id="result-note" class="result-note"></p><div class="share-actions"><button id="share-button" class="primary-button" type="button">Share score card</button><button id="copy-image-button" class="text-button" type="button">Copy image</button><button id="download-button" class="text-button" type="button">Save PNG</button><button id="copy-button" class="text-button" type="button">Copy result</button></div><p id="share-status" class="share-status" role="status" aria-live="polite"></p><div class="result-actions"><button id="again-button" class="primary-button secondary" type="button">Play again</button><button id="other-button" class="text-button" type="button">Choose another game →</button></div></div>
     </section>
-    <footer>PPEC QUIZ <span aria-hidden="true">✦</span> BIRTHDAY EDITION</footer>
   </main>
 </body>
 </html>
