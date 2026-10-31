@@ -104,3 +104,12 @@ footer{text-align:center;padding:0 0 25px;color:#81758b;font:600 10px 'IBM Plex 
 .mode-guide>div:nth-child(2) .mode-symbol{border-color:#81c6ba;color:#a2ded2;font-size:24px}
 .mode-guide p{display:flex;flex-direction:column;gap:3px;margin:0}.mode-guide strong{color:#f2e4c8;font-size:13px}.mode-guide p span{color:#c3b8c8;font-size:12px;line-height:1.35}
 @media(max-width:640px){.mode-guide{grid-template-columns:1fr;gap:7px;padding:0 13px 16px}.mode-guide>div{padding:9px 11px}.mode-symbol{width:32px;height:32px;font-size:13px}.mode-guide>div:nth-child(2) .mode-symbol{font-size:20px}.mode-guide p span{font-size:11px}}
+
+/* The four game emblems share one display size while keeping their transparent silhouettes. */
+.card-icon{height:142px;background-image:radial-gradient(circle at 50% 60%,#a4776550,transparent 49%),repeating-linear-gradient(0deg,#ffffff05 0 1px,transparent 1px 7px)}
+.card-icon:after{display:none}
+.card-icon img{display:block;width:132px;height:132px;object-fit:contain;filter:drop-shadow(0 6px 10px #0009)}
+.game-title-row{display:flex;align-items:center;gap:14px;margin:0 0 19px}
+.game-title-row img{flex:none;width:66px;height:66px;object-fit:contain;filter:drop-shadow(0 4px 8px #0009)}
+.game-console .game-title-row h1{margin:0}
+@media(max-width:640px){.card-icon{height:100%;min-height:155px}.card-icon img{width:76px;height:76px}.game-title-row{gap:9px;margin-bottom:17px}.game-title-row img{width:46px;height:46px}}
