@@ -322,6 +322,30 @@ footer{text-align:center;padding:0 0 25px;color:#81758b;font:600 10px 'IBM Plex 
 .game-top-avatar{display:block;width:36px;height:36px;object-fit:cover;object-position:center 12%;border:1px solid #d5ac66;border-radius:50%;background:#302039;box-shadow:0 0 0 3px #ffffff0b}
 .game-top{margin-bottom:10px}
 .game-grid .card-icon img{width:136px;height:136px;max-width:100%;max-height:100%;object-fit:contain}
+.platy-game-card{--game-accent:#a8df6e;--game-dark:#173b2a;--game-light:#ecffdc}
+.game-console[data-game="platy"]{--game-accent:#a8df6e;--game-dark:#173b2a}
+.share-preview[data-game="platy"]{--game-accent:#a8df6e;--game-dark:#173b2a;--game-light:#ecffdc}
+.game-console[data-game="platy"] .timer-instrument,.game-console[data-game="platy"] .timer-track{display:none}
+.game-console[data-game="platy"] .question-meta{grid-template-columns:1fr 1fr}
+.game-console[data-game="platy"] .clue{min-height:145px;padding:16px;background:repeating-linear-gradient(0deg,#b0f0bb08 0 2px,transparent 2px 5px),radial-gradient(ellipse at 50% 45%,#17442f,#091a19 75%);margin-bottom:13px}
+.platy-lives{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 14px;padding:7px 14px;border:1px solid #80b45977;border-radius:9px;background:#0d261d;color:#d9f6b8}
+.platy-lives[hidden],.platy-keyboard[hidden]{display:none}
+.platy-lives strong{font:700 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;white-space:nowrap}
+.platy-life-icons{display:flex;justify-content:flex-end;gap:5px;flex-wrap:nowrap}
+.platy-life-icons img{display:block;width:38px;height:30px;object-fit:contain;transition:filter .2s,opacity .2s,transform .2s}
+.platy-life-icons img.lost{filter:grayscale(1);opacity:.23;transform:scale(.88)}
+.platy-name{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 15px;max-width:100%;font-family:'IBM Plex Mono',monospace}
+.platy-word{display:flex;gap:2px;max-width:100%}
+.platy-letter{display:grid;place-items:center;min-width:22px;height:32px;padding:0 1px;border-bottom:2px solid #b5e881;color:#e8ffd6;font-size:clamp(14px,2.5vw,24px);font-weight:700;text-transform:uppercase}
+.platy-letter.blank{color:transparent}.platy-letter.punctuation{min-width:10px;border-bottom:0;color:#b5e881}
+.platy-keyboard{display:grid;grid-template-columns:repeat(13,minmax(0,1fr));gap:5px;margin:0 0 13px}
+.platy-key{display:grid;place-items:center;min-width:0;height:42px;padding:0;border:1px solid #9bc473;border-radius:5px;background:#284333;color:#f0ffdf;font:700 17px 'IBM Plex Mono',monospace;cursor:pointer;touch-action:manipulation}
+.platy-key:hover:not(:disabled),.platy-key:focus-visible{background:#476c3f;outline:2px solid #e4ffad;outline-offset:1px}
+.platy-key.used{border-color:#758b71;background:#26342d;color:#778978;cursor:default}
+.platy-key.missed{border-color:#e46268;background:#39262b;color:#8e7777;cursor:default}
+.platy-key.locked{border-color:#4b6657;background:#1c3026;color:#82938a;cursor:default}
+@media(max-width:640px){.game-console[data-game="platy"] .clue{min-height:110px;padding:11px 7px}.platy-lives{padding:4px 8px;margin-bottom:9px}.platy-lives strong{font-size:9px}.platy-life-icons{gap:1px}.platy-life-icons img{width:29px;height:25px}.platy-name{gap:7px 10px}.platy-word{gap:1px}.platy-letter{min-width:clamp(15px,4.2vw,21px);height:26px;font-size:clamp(12px,3.8vw,18px)}.platy-keyboard{grid-template-columns:repeat(9,minmax(0,1fr));gap:4px;margin-bottom:9px}.platy-key{height:38px;font-size:15px}}
+@media(max-width:360px){.platy-letter{min-width:14px;font-size:12px}.platy-life-icons img{width:24px}}
 .portal-banner-copy h1,.game-grid .card-body h2,.results-card h1,.share-game,.share-score{font-family:Fraunces,Georgia,serif;font-weight:700}
 @media(max-width:640px){
   .game-top-avatar{width:32px;height:32px}

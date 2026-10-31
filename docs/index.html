@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#260936">
-  <meta name="description" content="Play PPEC Quiz games: anagrams, Say What You See?, Missing Vowels and What Trail?.">
+  <meta name="description" content="Play five PPEC Quiz games: anagrams, picture clues, missing vowels, trail stories and Save-A-Platy.">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <title>PPEC Quiz</title>
@@ -12,9 +12,9 @@
   <link rel="icon" type="image/png" href="./assets/app-icon-v3-192.png">
   <link rel="apple-touch-icon" href="./assets/app-icon-v3-180.png">
   <link rel="preload" href="./assets/fonts/fraunces-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="./style.css?v=19">
+  <link rel="stylesheet" href="./style.css?v=20">
   <script src="./what-trail.js" defer></script>
-  <script src="./app.js?v=19" defer></script>
+  <script src="./app.js?v=20" defer></script>
 </head>
 <body>
   <main class="shell">
@@ -49,6 +49,10 @@
           <div class="card-icon trail-icon"><img src="./assets/game-logos/what-trail.png?v=2" alt="" width="512" height="512"></div>
           <div class="card-body"><h2>What Trail?</h2><p>Match each story recap to its trail.</p><div class="mode-buttons"><button class="play-button" type="button" data-game="trails" data-mode="quiz">Quiz Round <span aria-hidden="true">↗</span></button><button class="play-button secondary" type="button" data-game="trails" data-mode="unlimited">Unlimited <span aria-hidden="true">∞</span></button></div></div>
         </article>
+        <article class="game-card platy-game-card">
+          <div class="card-icon platy-icon"><img src="./assets/game-logos/save-a-platy.png" alt="" width="512" height="512"></div>
+          <div class="card-body"><h2>Save-A-Platy</h2><p>Guess trail names. Save up to six platypuses per clue.</p><div class="mode-buttons"><button class="play-button" type="button" data-game="platy" data-mode="quiz">Quiz Round <span aria-hidden="true">↗</span></button><button class="play-button secondary" type="button" data-game="platy" data-mode="unlimited">Unlimited <span aria-hidden="true">∞</span></button></div></div>
+        </article>
         </div>
       </div>
     </section>
@@ -64,7 +68,9 @@
       <div class="question-card" id="question-card">
         <p class="eyebrow" id="question-kind"></p>
         <div class="game-title-row"><img id="game-logo" src="./assets/game-logos/anagrams.png?v=2" alt="" width="512" height="512"><h1 id="game-title"></h1></div>
+        <div id="platy-lives" class="platy-lives" aria-live="polite" hidden></div>
         <div id="clue" class="clue"></div>
+        <div id="platy-keyboard" class="platy-keyboard" role="group" aria-label="Guess a letter" hidden></div>
         <div id="trail-choices" class="trail-choices" hidden></div>
         <p id="vowel-hint" class="vowel-hint" hidden></p>
         <p id="reveal-stats" class="reveal-stats" hidden></p>

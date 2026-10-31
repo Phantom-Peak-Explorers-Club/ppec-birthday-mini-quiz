@@ -58,11 +58,14 @@ function setup() {
     makeElement({ game: 'vowels', mode: 'quiz' }),
     makeElement({ game: 'vowels', mode: 'unlimited' }),
     makeElement({ game: 'trails', mode: 'quiz' }),
-    makeElement({ game: 'trails', mode: 'unlimited' })
+    makeElement({ game: 'trails', mode: 'unlimited' }),
+    makeElement({ game: 'platy', mode: 'quiz' }),
+    makeElement({ game: 'platy', mode: 'unlimited' })
   ];
   const screens = ['home', 'game', 'results'].map(get);
   const context = vm.createContext({
     document: {
+      addEventListener(type, handler) { listeners[`document-${type}`] = handler; },
       getElementById: get,
       querySelectorAll: selector => selector === '.screen' ? screens : buttons,
       createElement: tag => {
@@ -102,6 +105,7 @@ function setup() {
   const state = () => vm.runInContext('state', context);
   const submit = answer => { get('answer-input').value = answer; get('answer-form').listeners.submit({ preventDefault() {} }); };
   return { get, buttons, state, submit, canvasText, canvasImages, canvasFills, objectUrls, wasDownloaded: () => downloadClicked,
+    keydown: key => listeners['document-keydown']?.({key,repeat:false,altKey:false,ctrlKey:false,metaKey:false}),
     rerender: () => vm.runInContext('render()', context),
     startTimed: index => { buttons[index].click(); vm.runInContext('finishCountdown()', context); },
     advance: ms => { now += ms; interval?.(); },
@@ -182,7 +186,7 @@ test('Letter and trail share cards use correct-answer scores', async () => {
 
 test('Each share card shows its game art between the dividers and a Jonabot avatar', async () => {
   const backgrounds = new Set();
-  for (const game of ['anagrams', 'catchphrase', 'vowels', 'trails']) {
+  for (const game of ['anagrams', 'catchphrase', 'vowels', 'trails', 'platy']) {
     const app = setup();
     app.evaluate(`Object.assign(state,{game:'${game}',mode:'quiz',score:4,completed:10,elapsedMs:91000})`);
     await app.evaluate('drawShareCard()');
@@ -194,7 +198,7 @@ test('Each share card shows its game art between the dividers and a Jonabot avat
     assert.ok(background, `${game} background missing`);
     backgrounds.add(background.color);
   }
-  assert.equal(backgrounds.size, 4, 'Every game needs its own share card background colour');
+  assert.equal(backgrounds.size, 5, 'Every game needs its own share card background colour');
 });
 
 test('Share card uses native file sharing when the browser supports it', async () => {
@@ -312,7 +316,7 @@ test('Timed games count down before accepting answers or starting the clock', ()
 test('Every game has a distinct colour and results use that game colour', () => {
   const app = setup();
   const themes = app.evaluate('GAME_THEMES');
-  assert.equal(new Set(Object.values(themes).map(theme => theme.accent)).size, 4);
+  assert.equal(new Set(Object.values(themes).map(theme => theme.accent)).size, 5);
   app.buttons[6].click();
   app.get('reveal-button').click();
   app.get('next-button').click();
@@ -456,4 +460,50 @@ test('What Trail? has no countdown or question timer', () => {
   const answer = app.state().questions[0].answer;
   app.state().choiceButtons.find(button => button.dataset.answer === answer).click();
   assert.equal(app.state().score, 1);
+});
+
+test('Save-A-Platy uses all 187 trail names, keeps used keys in place, and scores saved lives', async () => {
+  const app = setup();
+  app.buttons[8].click();
+  assert.equal(app.state().questions.length, 10);
+  assert.equal(app.state().countingDown, false);
+  assert.equal(app.get('answer-form').hidden, true);
+  assert.equal(app.get('platy-keyboard').children.length, 26);
+  assert.equal(app.get('platy-lives').children[1].children.length, 6);
+  app.advance(60000);
+  assert.equal(app.state().answered, false);
+  const answer = app.state().questions[0].answer.normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toUpperCase();
+  const letters = [...new Set([...answer].filter(letter => /^[A-Z]$/.test(letter)))];
+  const miss = [...'ABCDEFGHIJKLMNOPQRSTUVWXYZ'].find(letter => !answer.includes(letter));
+  app.get('platy-keyboard').children.find(key => key.textContent === miss).click();
+  assert.equal(app.state().platyMisses, 1);
+  assert.equal(app.get('platy-keyboard').children.length, 26);
+  assert.equal(app.get('platy-keyboard').children.find(key => key.textContent === miss).disabled, true);
+  assert.equal(app.get('platy-lives').children[1].children.length, 6);
+  for (const letter of letters) app.keydown(letter.toLowerCase());
+  assert.equal(app.state().score, 1);
+  assert.equal(app.state().points, 5);
+  assert.equal(app.get('score-label').textContent, '5 SAVED');
+  await app.evaluate('drawShareCard()');
+  assert.ok(app.canvasText.includes('5'));
+  assert.ok(app.canvasText.includes('PLATYPUSES'));
+  assert.ok(app.canvasImages.some(image => image.src.includes('save-a-platy.png')));
+});
+
+test('Save-A-Platy Unlimited ends after six mistakes and awards the accumulated score', () => {
+  const app = setup();
+  app.buttons[9].click();
+  assert.equal(app.state().questions.length, 187);
+  const first = app.state().questions[0].answer.toUpperCase();
+  for (const letter of [...new Set([...first].filter(letter => /^[A-Z]$/.test(letter)))]) app.keydown(letter);
+  assert.equal(app.state().points, 6);
+  app.get('next-button').click();
+  const second = app.state().questions[1].answer.toUpperCase();
+  const wrong = [...'ABCDEFGHIJKLMNOPQRSTUVWXYZ'].filter(letter => !second.includes(letter)).slice(0, 6);
+  for (const letter of wrong) app.get('platy-keyboard').children.find(key => key.textContent === letter).click();
+  assert.equal(app.state().answered, true);
+  app.get('next-button').click();
+  assert.equal(app.get('share-score').textContent, '6 platypuses saved');
+  assert.equal(app.get('share-detail').textContent, '1 trail solved · 2 questions completed');
+  assert.equal(app.get('share-game').textContent, 'Save-A-Platy');
 });

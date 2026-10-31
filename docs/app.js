@@ -85,7 +85,7 @@ const MISSING_VOWELS = [
 const vowelAnswers=new Set(MISSING_VOWELS.map(q=>q.answer));
 MISSING_VOWELS.push(...LORE_TERMS.filter(q=>!vowelAnswers.has(q.answer)).map(q=>({answer:q.answer})));
 const $=id=>document.getElementById(id);
-let state={game:null,mode:null,questions:[],index:0,score:0,points:0,completed:0,openedTiles:0,tileButtons:[],answered:false,startedAt:0,elapsedMs:null,exhausted:false};
+let state={game:null,mode:null,questions:[],index:0,score:0,points:0,completed:0,openedTiles:0,tileButtons:[],answered:false,startedAt:0,elapsedMs:null,exhausted:false,platyMisses:0,platyGuessed:new Set()};
 let questionTimer=null;
 let questionDeadline=0;
 let countdownTimer=null;
@@ -96,7 +96,8 @@ const GAME_THEMES={
   anagrams:{accent:'#f2c56d',dark:'#392415',light:'#fff0c8',shareBg:'#704313'},
   catchphrase:{accent:'#65ddd0',dark:'#103c43',light:'#ddfff7',shareBg:'#07525b'},
   vowels:{accent:'#bea7ff',dark:'#342453',light:'#f0e9ff',shareBg:'#3e276b'},
-  trails:{accent:'#f48f7b',dark:'#4b2931',light:'#ffe8dd',shareBg:'#762b35'}
+  trails:{accent:'#f48f7b',dark:'#4b2931',light:'#ffe8dd',shareBg:'#762b35'},
+  platy:{accent:'#a8df6e',dark:'#173b2a',light:'#ecffdc',shareBg:'#275832'}
 };
 function shuffle(items){const out=[...items];for(let i=out.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[out[i],out[j]]=[out[j],out[i]]}return out}
 function normal(s){return s.normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]/g,'')}
@@ -190,7 +191,7 @@ function show(id,updateHistory=true){
   if(updateHistory&&previous!==id&&window.history?.pushState)window.history.pushState({ppecScreen:id,runId:state.runId},'',`#${id}`);
   window.scrollTo({top:0,behavior:'instant'});
 }
-function gameName(){return state.game==='anagrams'?'Littlefield’s Letters':state.game==='vowels'?'Missing Vowels':state.game==='trails'?'What Trail?':'Say What You See?'}
+function gameName(){return state.game==='anagrams'?'Littlefield’s Letters':state.game==='vowels'?'Missing Vowels':state.game==='trails'?'What Trail?':state.game==='platy'?'Save-A-Platy':'Say What You See?'}
 function modeName(){return state.mode==='quiz'?'Quiz Round':'Unlimited'}
 function duration(ms){const seconds=Math.floor(ms/1000);return `${Math.floor(seconds/60)}:${String(seconds%60).padStart(2,'0')}`}
 function letterRow(value){
@@ -250,11 +251,62 @@ function showTrailVerdict(correct,timedOut){
   const label=document.createElement('strong');label.textContent=correct?'TRAIL FOUND':timedOut?'TIME UP':'WRONG TRAIL';
   verdict.append(symbol,label);$('clue').append(verdict);
 }
+function renderPlatyName(answer,reveal=false){
+  const row=document.createElement('div');row.className='platy-name';
+  for(const word of answer.split(' ')){
+    const group=document.createElement('div');group.className='platy-word';
+    for(const character of word){
+      const tile=document.createElement('span');tile.className='platy-letter';
+      const letter=character.normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toUpperCase();
+      if(/^[A-Z]$/.test(letter)){
+        const visible=reveal||state.platyGuessed.has(letter);
+        tile.textContent=visible?character:'\u00a0';
+        tile.classList.add(visible?'found':'blank');
+      }else{tile.textContent=character;tile.classList.add('punctuation')}
+      group.append(tile);
+    }
+    row.append(group);
+  }
+  $('clue').replaceChildren(row);
+}
+function renderPlatyLives(){
+  const holder=$('platy-lives');holder.replaceChildren();
+  const label=document.createElement('strong');label.textContent=`${6-state.platyMisses} / 6 SAVED`;holder.append(label);
+  const icons=document.createElement('div');icons.className='platy-life-icons';
+  for(let index=0;index<6;index++){
+    const icon=document.createElement('img');icon.src='./assets/platy-life.png';icon.alt='';
+    if(index>=6-state.platyMisses)icon.classList.add('lost');
+    icons.append(icon);
+  }
+  holder.append(icons);holder.setAttribute('aria-label',`${6-state.platyMisses} of 6 platypuses saved`);
+}
+function renderPlatyKeyboard(){
+  const holder=$('platy-keyboard');holder.replaceChildren();
+  const answer=state.questions[state.index].answer.normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toUpperCase();
+  for(const letter of 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'){
+    const key=document.createElement('button');key.type='button';key.className='platy-key';key.textContent=letter;
+    key.setAttribute('aria-label',`Guess ${letter}`);
+    if(state.platyGuessed.has(letter)){
+      key.disabled=true;key.classList.add(answer.includes(letter)?'used':'missed');
+    }else if(state.answered){key.disabled=true;key.classList.add('locked')}
+    key.addEventListener('click',()=>guessPlatyLetter(letter));holder.append(key);
+  }
+}
+function guessPlatyLetter(letter){
+  if(state.game!=='platy'||state.answered||state.countingDown||state.platyGuessed.has(letter))return;
+  state.platyGuessed.add(letter);
+  const answer=state.questions[state.index].answer.normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toUpperCase();
+  if(!answer.includes(letter))state.platyMisses++;
+  renderPlatyName(state.questions[state.index].answer);renderPlatyLives();renderPlatyKeyboard();
+  const remaining=[...answer].filter(character=>/^[A-Z]$/.test(character)&&!state.platyGuessed.has(character));
+  if(!remaining.length)finishAnswer(true);
+  else if(state.platyMisses>=6)finishAnswer(false);
+}
 function start(game,mode){
   let source;
   if(game==='anagrams')source=[1,2,3,4].flatMap(tier=>shuffle(ANAGRAMS.filter(q=>q.tier===tier)));
   else if(game==='vowels')source=vowelQuestions();
-  else if(game==='trails')source=shuffle(WHAT_TRAILS);
+  else if(game==='trails'||game==='platy')source=shuffle(WHAT_TRAILS);
   else source=shuffle(PICTURES);
   if(!source.length || mode==='quiz'&&source.length<10)return;
   const questions=mode==='quiz'&&game==='anagrams'?[2,3,3,2].flatMap((count,tier)=>source.filter(q=>q.tier===tier+1).slice(0,count)):mode==='quiz'?source.slice(0,10):source;
@@ -262,7 +314,7 @@ function start(game,mode){
   if(sharePreviewUrl){URL.revokeObjectURL(sharePreviewUrl);sharePreviewUrl=null}
   $('share-preview-image').hidden=true;
   $('share-preview').classList.remove('is-rendered');
-  state={game,mode,questions,index:0,score:0,points:0,completed:0,openedTiles:0,tileButtons:[],choiceButtons:[],answered:false,countingDown:game==='anagrams'||game==='vowels',startedAt:Date.now(),elapsedMs:null,exhausted:false,runId:Date.now()+Math.random()};
+  state={game,mode,questions,index:0,score:0,points:0,completed:0,openedTiles:0,tileButtons:[],choiceButtons:[],answered:false,countingDown:game==='anagrams'||game==='vowels',startedAt:Date.now(),elapsedMs:null,exhausted:false,platyMisses:0,platyGuessed:new Set(),runId:Date.now()+Math.random()};
   show('game');render();if(state.countingDown)startCountdown();
 }
 function render(){
@@ -274,12 +326,12 @@ function render(){
   state.tileButtons=[];
   state.choiceButtons=[];
   $('question-count').textContent=`${index+1} / ${questions.length}`;
-  $('score-label').textContent=game==='catchphrase'?`${state.points} POINTS`:`${score} CORRECT`;
+  $('score-label').textContent=game==='catchphrase'?`${state.points} POINTS`:game==='platy'?`${state.points} SAVED`:`${score} CORRECT`;
   $('progress-line').hidden=mode==='unlimited';
   $('progress-fill').style.width=`${index/questions.length*100}%`;
-  $('question-kind').textContent=game==='anagrams'?'UNSCRAMBLE THIS':game==='vowels'?'RESTORE THE VOWELS':game==='trails'?'IDENTIFY THE TRAIL':'NAME THE PICTURE CLUE';
+  $('question-kind').textContent=game==='anagrams'?'UNSCRAMBLE THIS':game==='vowels'?'RESTORE THE VOWELS':game==='trails'?'IDENTIFY THE TRAIL':game==='platy'?'SAVE THE PLATYPUSES':'NAME THE PICTURE CLUE';
   $('game-title').textContent=gameName();
-  $('game-logo').src=`./assets/game-logos/${({anagrams:'anagrams',catchphrase:'catchphrase',vowels:'missing-vowels',trails:'what-trail'})[game]}.png?v=2`;
+  $('game-logo').src=`./assets/game-logos/${({anagrams:'anagrams',catchphrase:'catchphrase',vowels:'missing-vowels',trails:'what-trail',platy:'save-a-platy'})[game]}.png?v=2`;
   $('game-console').dataset.game=game;
   $('question-card').dataset.game=game;
   $('vowel-hint').hidden=game!=='vowels';
@@ -288,7 +340,11 @@ function render(){
     $('vowel-hint').textContent=`${count} ${count===1?'LETTER':'LETTERS'}`;
   }
   $('clue').replaceChildren();
-  if(game==='catchphrase'){
+  $('platy-lives').hidden=game!=='platy';$('platy-keyboard').hidden=game!=='platy';
+  if(game==='platy'){
+    state.platyMisses=0;state.platyGuessed=new Set();
+    renderPlatyName(q.answer);renderPlatyLives();renderPlatyKeyboard();
+  }else if(game==='catchphrase'){
     const stage=document.createElement('div');stage.className='picture-stage';
     const img=document.createElement('img');img.src=q.image;img.alt=`Picture clue ${index+1}`;
     img.onerror=()=>{$('clue').textContent='This image could not be loaded.'};
@@ -321,12 +377,12 @@ function render(){
   $('question-credit').textContent=credit?`Question contributed by ${credit}`:'';
   $('reveal-stats').hidden=game!=='catchphrase';
   $('reveal-stats').textContent=game==='catchphrase'?'CHOOSE PANELS TO REVEAL · 24 POSSIBLE POINTS':'';
-  $('answer-form').hidden=game==='trails';$('answer-input').value='';
+  $('answer-form').hidden=game==='trails'||game==='platy';$('answer-input').value='';
   $('answer-input').disabled=game==='catchphrase';$('answer-submit').disabled=game==='catchphrase';
   $('feedback').hidden=true;$('feedback').className='feedback';
   $('next-button').hidden=true;$('reveal-button').hidden=false;
   $('timer-label').textContent='30s';$('timer-fill').style.width='100%';
-  if(game!=='trails'&&!state.countingDown)$('answer-input').focus();
+  if(game!=='trails'&&game!=='platy'&&!state.countingDown)$('answer-input').focus();
   if((game==='anagrams'||game==='vowels')&&!state.countingDown)startTimer();
 }
 function finishAnswer(correct,revealed=false,timedOut=false,response=''){
@@ -334,7 +390,12 @@ function finishAnswer(correct,revealed=false,timedOut=false,response=''){
   stopTimer();state.answered=true;
   const q=state.questions[state.index];
   state.completed=state.index+1;
-  if(correct){state.score++;if(state.game==='catchphrase')state.points+=Math.max(0,24-state.openedTiles)}
+  if(correct){state.score++;if(state.game==='catchphrase')state.points+=Math.max(0,24-state.openedTiles);if(state.game==='platy')state.points+=6-state.platyMisses}
+  if(state.game==='platy'){
+    if(revealed)state.platyMisses=6;
+    renderPlatyName(q.answer,true);renderPlatyLives();renderPlatyKeyboard();
+    $('score-label').textContent=`${state.points} SAVED`;
+  }
   if(state.game==='catchphrase'){
     for(const tile of state.tileButtons){tile.disabled=true;tile.classList.add('open')}
     $('score-label').textContent=`${state.points} POINTS`;
@@ -359,7 +420,7 @@ function finishAnswer(correct,revealed=false,timedOut=false,response=''){
       scoreBox.append(points,panels);feedback.append(kicker,hero,scoreBox);
       $('next-button').hidden=false;$('next-button').textContent=ends?'See your results →':'Next question →';$('next-button').focus();return;
     }
-    const heading=document.createElement('strong');heading.textContent=correct?'That’s right!':timedOut?'Time’s up!':revealed?'Answer revealed':'Not quite';
+    const heading=document.createElement('strong');heading.textContent=state.game==='platy'?(correct?`${6-state.platyMisses} platypuses saved!`:revealed?'Trail name revealed':'No platypuses saved'):correct?'That’s right!':timedOut?'Time’s up!':revealed?'Answer revealed':'Not quite';
     const possible=state.game==='vowels'&&q.accepted.length>1?q.accepted.join(' or '):q.answer;
     const answer=document.createElement('span');answer.textContent=(correct&&state.game==='vowels'?`Accepted: ${possible}.`:correct?`The answer is ${possible}.`:`${q.accepted?.length>1?'Possible answers were':'The answer was'} ${possible}.`)+(correct&&state.game==='catchphrase'?` ${Math.max(0,24-state.openedTiles)} points from ${state.openedTiles} panels opened.`:'');
     feedback.append(heading,answer);
@@ -380,20 +441,20 @@ function next(){if(state.elapsedMs!==null){results()}else{state.index++;render()
 function results(){
   $('share-preview').dataset.game=state.game;
   $('share-game').textContent=gameName();$('share-mode').textContent=modeName();
-  $('share-score').textContent=state.game==='catchphrase'?`${state.points} points`:`${state.score} right`;
-  $('share-detail').textContent=`${state.score} correct · ${state.completed} ${state.completed===1?'question':'questions'} completed`;
+  $('share-score').textContent=state.game==='catchphrase'?`${state.points} points`:state.game==='platy'?`${state.points} platypuses saved`:`${state.score} right`;
+  $('share-detail').textContent=state.game==='platy'?`${state.score} ${state.score===1?'trail':'trails'} solved · ${state.completed} ${state.completed===1?'question':'questions'} completed`:`${state.score} correct · ${state.completed} ${state.completed===1?'question':'questions'} completed`;
   $('share-time').textContent=`Time ${duration(state.elapsedMs)}`;
   $('result-note').textContent=state.exhausted?'More questions coming soon. You cleared every clue currently in the game!':state.mode==='unlimited'?'Your run ended on that clue. Give it another go!':state.game==='anagrams'?'Littlefield would be proud of your letter work.':state.game==='vowels'?'The missing letters have been found.':state.game==='trails'?'Another story recovered from the archive.':'You’ve had a good look around the Peak.';
   $('results-title').textContent=state.exhausted?'You cleared the set!':state.score>=8?'A fine showing, explorer!':state.score>=5?'Nicely done, explorer!':'The Peak has more secrets…';
   $('share-status').textContent='';show('results');
 }
-function shareText(){const score=state.game==='catchphrase'?`${state.points} points, ${state.score} correct`:`${state.score} correct`;return `PPEC Quiz · ${gameName()} · ${modeName()} · ${score} · ${state.completed} questions completed · ${duration(state.elapsedMs)}`}
+function shareText(){const score=state.game==='catchphrase'?`${state.points} points, ${state.score} correct`:state.game==='platy'?`${state.points} platypuses saved, ${state.score} trails solved`:`${state.score} correct`;return `PPEC Quiz · ${gameName()} · ${modeName()} · ${score} · ${state.completed} questions completed · ${duration(state.elapsedMs)}`}
 async function drawShareCard(){
   await document.fonts?.load('700 72px Fraunces');
   const canvas=document.createElement('canvas');canvas.width=1080;canvas.height=1080;
   const c=canvas.getContext('2d');
   const theme=GAME_THEMES[state.game]||GAME_THEMES.anagrams;
-  const logoName=({anagrams:'anagrams',catchphrase:'catchphrase',vowels:'missing-vowels',trails:'what-trail'})[state.game]||'anagrams';
+  const logoName=({anagrams:'anagrams',catchphrase:'catchphrase',vowels:'missing-vowels',trails:'what-trail',platy:'save-a-platy'})[state.game]||'anagrams';
   const frame=new Image();frame.src='./assets/share-card-frame.jpg';
   const logo=new Image();logo.src=`./assets/game-logos/${logoName}.png`;
   const avatar=new Image();avatar.src='./assets/jonabot-avatar.png';
@@ -412,10 +473,10 @@ async function drawShareCard(){
   c.fillStyle='#fff0cc';c.font='700 72px Fraunces, Georgia, serif';c.fillText(gameName(),86,250,680);
   c.fillStyle=theme.accent;c.fillRect(66,283,948,4);
   c.fillStyle=theme.accent;c.beginPath();c.arc(540,285,10,0,Math.PI*2);c.fill();
-  c.fillStyle='#fff0cc';c.font='700 250px Fraunces, Georgia, serif';c.fillText(String(state.game==='catchphrase'?state.points:state.score),91,566);
-  c.fillStyle=theme.accent;c.font='700 88px Fraunces, Georgia, serif';c.fillText(state.game==='catchphrase'?'POINTS':'RIGHT',95,662);
-  if(state.game==='catchphrase'){
-    c.fillStyle='#fff0cc';c.font='700 29px DM Sans, Arial, sans-serif';c.fillText(`${state.score} CORRECT`,102,713);
+  c.fillStyle='#fff0cc';c.font='700 250px Fraunces, Georgia, serif';c.fillText(String(state.game==='catchphrase'||state.game==='platy'?state.points:state.score),91,566,435);
+  c.fillStyle=theme.accent;c.font=`700 ${state.game==='platy'?58:88}px Fraunces, Georgia, serif`;c.fillText(state.game==='catchphrase'?'POINTS':state.game==='platy'?'PLATYPUSES':'RIGHT',95,662,450);
+  if(state.game==='catchphrase'||state.game==='platy'){
+    c.fillStyle='#fff0cc';c.font='700 29px DM Sans, Arial, sans-serif';c.fillText(state.game==='platy'?`SAVED · ${state.score} ${state.score===1?'TRAIL':'TRAILS'} SOLVED`:`${state.score} CORRECT`,102,713,435);
   }
   if(logoReady)c.drawImage(logo,555,312,430,430);
   c.fillStyle=theme.accent;c.fillRect(66,756,948,4);
@@ -495,6 +556,11 @@ document.querySelectorAll('[data-game]').forEach(button=>{if(button.dataset.game
 $('vowels-soon').hidden=MISSING_VOWELS.length>0;
 $('answer-form').addEventListener('submit',event=>{event.preventDefault();if(state.countingDown||state.game==='catchphrase'&&state.openedTiles===0)return;const response=$('answer-input').value.trim();if(!response)return;const q=state.questions[state.index];finishAnswer(isCorrect(response,q),false,false,response)});
 $('reveal-button').addEventListener('click',()=>finishAnswer(false,true));
+document.addEventListener?.('keydown',event=>{
+  if(state.game!=='platy'||$('game').hidden||event.altKey||event.ctrlKey||event.metaKey||event.repeat||!(/^[a-z]$/i.test(event.key)))return;
+  if(['INPUT','TEXTAREA'].includes(document.activeElement?.tagName))return;
+  guessPlatyLetter(event.key.toUpperCase());
+});
 $('next-button').addEventListener('click',next);
 $('again-button').addEventListener('click',()=>start(state.game,state.mode));
 $('share-button').addEventListener('click',()=>shareCard());

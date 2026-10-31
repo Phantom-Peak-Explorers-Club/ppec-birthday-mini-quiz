@@ -2,7 +2,7 @@
   "id": "./",
   "name": "PPEC Quiz",
   "short_name": "PPEC Quiz",
-  "description": "Four Phantom Peak Explorers' Club quiz games in your pocket.",
+  "description": "Five Phantom Peak Explorers' Club quiz games in your pocket.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
