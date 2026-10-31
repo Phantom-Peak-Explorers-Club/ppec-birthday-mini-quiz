@@ -257,11 +257,11 @@ footer{text-align:center;padding:0 0 25px;color:#81758b;font:600 10px 'IBM Plex 
 /* A compact graphic header puts the games on the first mobile screen. */
 .home-screen{padding:10px 0 30px}
 .portal{border:0;border-radius:0;background:transparent;box-shadow:none;overflow:visible}
-.portal-banner{position:relative;display:flex;align-items:center;min-height:174px;overflow:hidden;border:1px solid #9c774e;border-left:7px solid #e9b957;border-radius:11px;background:radial-gradient(circle at 88% 52%,#6a385d 0,transparent 38%),linear-gradient(107deg,#21152c 0,#30183e 54%,#191421 100%)}
-.portal-banner:before{content:'';position:absolute;inset:9px;border:1px solid #e6be7c38;border-radius:6px;pointer-events:none}
+.portal-banner{position:relative;display:flex;align-items:center;min-height:174px;overflow:hidden;border:1px solid #777e86;border-left:7px solid #b7bec7;border-radius:11px;background:radial-gradient(circle at 82% 50%,#313943 0,transparent 42%),linear-gradient(110deg,#0d1014,#171a1e 58%,#090b0d)}
+.portal-banner:before{content:'';position:absolute;inset:9px;border:1px solid #dfe6e830;border-radius:6px;pointer-events:none}
 .portal-banner-copy{position:relative;z-index:2;max-width:calc(100% - 210px);padding:22px 32px}
-.portal-banner-copy h1{margin:0;font-size:clamp(42px,4.8vw,58px);letter-spacing:-.045em;line-height:1.02;color:#fff1dc}
-.portal-banner-copy h1 em{display:block;font-style:normal;color:#e9b957}
+.portal-banner-copy h1{margin:0;font-size:clamp(42px,4.8vw,58px);letter-spacing:-.045em;line-height:1.02;color:#f7f1e5}
+.portal-banner-copy h1 em{display:block;font-style:normal;color:#dce2e8}
 .portal-banner-art{position:absolute;right:5%;bottom:-17px;width:196px;height:196px;object-fit:contain;filter:drop-shadow(0 8px 12px #0008)}
 .portal-banner .install-button{position:absolute;z-index:3;right:12px;top:12px}
 .mode-guide{gap:8px;padding:10px 0 0}
