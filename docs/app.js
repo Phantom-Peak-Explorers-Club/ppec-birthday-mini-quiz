@@ -478,7 +478,7 @@ function finishAnswer(correct,revealed=false,timedOut=false,response=''){
       scoreBox.append(points,panels);feedback.append(kicker,hero,scoreBox);
       $('next-button').hidden=false;$('next-button').textContent=ends?'See your results →':'Next question →';$('next-button').focus();return;
     }
-    const heading=document.createElement('strong');heading.textContent=state.game==='platy'?(correct?`${6-state.platyMisses} platypuses saved!`:revealed?'Trail name revealed':'No platypuses saved'):correct?'That’s right!':timedOut?'Time’s up!':revealed?'Answer revealed':'Not quite';
+    const heading=document.createElement('strong');heading.textContent=state.game==='platy'?(correct?'Trail name solved!':revealed?'Trail name revealed':'No platypuses saved'):correct?'That’s right!':timedOut?'Time’s up!':revealed?'Answer revealed':'Not quite';
     const possible=state.game==='vowels'&&q.accepted.length>1?q.accepted.join(' or '):q.answer;
     const answer=document.createElement('span');answer.textContent=(correct&&state.game==='vowels'?`Accepted: ${possible}.`:correct?`The answer is ${possible}.`:`${q.accepted?.length>1?'Possible answers were':'The answer was'} ${possible}.`)+(correct&&state.game==='catchphrase'?` ${Math.max(0,24-state.openedTiles)} points from ${state.openedTiles} panels opened.`:'');
     feedback.append(heading,answer);
