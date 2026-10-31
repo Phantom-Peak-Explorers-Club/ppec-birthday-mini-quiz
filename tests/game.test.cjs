@@ -187,6 +187,16 @@ test('Desktop Share copies the PNG when native file sharing is unavailable', asy
   assert.match(app.get('share-status').textContent, /Image copied/);
 });
 
+test('Desktop Share copies the image instead of invoking a silent system share', async () => {
+  const app = setup();
+  app.evaluate("Object.assign(state,{game:'trails',mode:'quiz',score:4,completed:10,elapsedMs:80000})");
+  app.evaluate("window.matchMedia=()=>({matches:true});globalThis.ClipboardItem=class { constructor(data){this.data=data} };navigator.clipboard={write:async items=>{globalThis.copiedImage=items[0].data['image/png']}};navigator.canShare=()=>true;navigator.share=async()=>{throw Error('System share should not run on desktop')};");
+  await app.get('share-button').click();
+  assert.equal(app.wasDownloaded(), false);
+  assert.strictEqual(app.evaluate('copiedImage'), app.objectUrls[0].blob);
+  assert.match(app.get('share-status').textContent, /Image copied/);
+});
+
 test('The result tile itself shares and Save PNG bypasses native sharing', async () => {
   const app = setup();
   app.evaluate("Object.assign(state,{game:'trails',mode:'quiz',score:4,completed:10,elapsedMs:80000})");

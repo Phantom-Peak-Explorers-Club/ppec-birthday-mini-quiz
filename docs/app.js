@@ -427,6 +427,10 @@ async function shareCard(preferNative=true){
   const status=$('share-status');status.textContent='Preparing your score card…';
   const blob=await (shareBlobPromise||prepareShareCard());
   if(!blob){status.textContent='Could not make the image. Try copying the result instead.';return}
+  if(preferNative&&window.matchMedia?.('(pointer: fine)').matches){
+    if(await copyShareImage(blob))return;
+    downloadShareImage(blob);return;
+  }
   if(preferNative&&navigator.share&&navigator.canShare&&typeof File==='function'){
     try{
       const file=new File([blob],'ppec-quiz-score.png',{type:'image/png'});

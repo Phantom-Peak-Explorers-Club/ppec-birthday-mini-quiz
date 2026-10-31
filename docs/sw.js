@@ -1,4 +1,4 @@
-const CACHE_NAME = 'ppec-mini-quiz-v13';
+const CACHE_NAME = 'ppec-mini-quiz-v14';
 const CACHE_PREFIX = 'ppec-mini-quiz-';
 const pictures = [
   'Copper', 'Dr Winter', 'Hogwood', 'Leadbelly', 'Littlefield', 'Lovehart',
