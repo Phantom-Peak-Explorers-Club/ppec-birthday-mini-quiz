@@ -1,4 +1,4 @@
-const CACHE_NAME = 'ppec-mini-quiz-v10';
+const CACHE_NAME = 'ppec-mini-quiz-v11';
 const CACHE_PREFIX = 'ppec-mini-quiz-';
 const pictures = [
   'Copper', 'Dr Winter', 'Hogwood', 'Leadbelly', 'Littlefield', 'Lovehart',
@@ -7,7 +7,7 @@ const pictures = [
 const files = [
   './', './index.html', './style.css', './app.js', './what-trail.js',
   './manifest.webmanifest', './assets/jonabot-jr.png',
-  './assets/app-icon-180.png', './assets/app-icon-192.png', './assets/app-icon-512.png',
+  './assets/app-icon-v3-180.png', './assets/app-icon-v3-192.png', './assets/app-icon-v3-512.png',
   ...['anagrams', 'catchphrase', 'missing-vowels', 'what-trail']
     .map(name => `./assets/game-logos/${name}.png`),
   ...pictures.map(name => `./assets/catchphrase/${encodeURIComponent(name)}.jpg`)

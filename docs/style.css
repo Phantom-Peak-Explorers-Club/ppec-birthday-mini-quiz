@@ -213,3 +213,38 @@ footer{text-align:center;padding:0 0 25px;color:#81758b;font:600 10px 'IBM Plex 
   .results-card>.share-actions{align-self:start;gap:10px}
   .results-card>.result-actions{align-self:end;gap:12px}
 }
+
+/* Compact game selection with colour in the game identity, not the mode controls. */
+.anagram-game-card{--game-light:#ffe8b8}
+.picture-game-card{--game-light:#d9fff8}
+.vowel-game-card{--game-light:#efe7ff}
+.trail-game-card{--game-light:#ffe0d8}
+.game-grid>.game-card{display:grid;grid-template-columns:145px minmax(0,1fr);min-height:178px;border:2px solid var(--game-accent);border-top-width:5px;background:linear-gradient(120deg,var(--game-dark),#211829 44%,#1a1523)}
+.game-grid>.game-card:nth-child(3){grid-column:auto;min-height:178px}
+.game-grid .card-icon{width:145px;height:100%;min-height:0;border:0;border-right:2px solid var(--game-accent);background:radial-gradient(circle at 50% 42%,var(--game-dark),#120e1b 85%);box-shadow:inset 5px 0 0 var(--game-accent)}
+.game-grid .card-icon img{width:118px;height:118px}
+.game-grid .card-body{min-width:0;padding:15px 17px 14px}
+.game-grid .card-body h2{color:var(--game-light);font-size:21px}
+.game-grid .card-body p:not(.card-kicker):not(.soon-note){margin:7px 0 10px;font-size:12px;line-height:1.35}
+.game-grid .card-kicker{margin-bottom:6px}
+.game-grid .mode-buttons{gap:7px}
+.game-grid .play-button{min-height:34px;padding:7px 11px;border-color:#e4d7c0;background:#e4d7c0;color:#241a2a;font-size:11px}
+.game-grid .play-button:hover{border-color:#fff2db;background:#fff2db}
+.game-grid .play-button.secondary{border-color:#84768c;background:transparent;color:#e9deca}
+.game-grid .play-button.secondary:hover{border-color:#c7b7c9;background:#ffffff16;color:#fff2db}
+.mode-guide>div,.mode-guide>div:nth-child(2){border-color:#6b5c70;background:linear-gradient(100deg,#24202b,#1a1722)}
+.mode-guide .mode-symbol,.mode-guide>div:nth-child(2) .mode-symbol{border-color:#d3c4ad;color:#f1e7d4}
+@media(max-width:900px){
+  .game-grid{grid-template-columns:1fr}
+  .game-grid>.game-card,.game-grid>.game-card:nth-child(3){grid-column:auto;min-height:0}
+}
+@media(max-width:640px){
+  .game-grid{gap:9px;padding:0 13px 18px}
+  .game-grid>.game-card{grid-template-columns:86px minmax(0,1fr)}
+  .game-grid .card-icon{width:86px}
+  .game-grid .card-icon img{width:74px;height:74px}
+  .game-grid .card-body{padding:11px 12px}
+  .game-grid .card-body h2{font-size:18px}
+  .game-grid .card-body p:not(.card-kicker):not(.soon-note){margin:5px 0 8px;font-size:11px}
+  .game-grid .mode-buttons .play-button{min-height:32px;padding:6px 8px;font-size:10px}
+}
