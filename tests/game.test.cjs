@@ -21,6 +21,8 @@ function makeElement(dataset = {}) {
 function setup() {
   let now = 100000;
   let interval = null;
+  const canvasText = [];
+  let downloadClicked = false;
   const nodes = new Map();
   const get = id => nodes.get(id) || (nodes.set(id, Object.assign(makeElement(), { id })), nodes.get(id));
   const buttons = [
@@ -36,19 +38,33 @@ function setup() {
     document: {
       getElementById: get,
       querySelectorAll: selector => selector === '.screen' ? screens : buttons,
-      createElement: () => makeElement(),
+      createElement: tag => {
+        if (tag === 'canvas') return {
+          width: 0, height: 0,
+          getContext: () => ({
+            createLinearGradient: () => ({ addColorStop() {} }),
+            fillRect() {}, strokeRect() {}, beginPath() {}, arc() {}, fill() {}, drawImage() {},
+            fillText(text) { canvasText.push(text); }
+          }),
+          toBlob(callback) { callback({ type: 'image/png' }); }
+        };
+        const element = makeElement();
+        if (tag === 'a') element.click = () => { downloadClicked = true; };
+        return element;
+      },
       body: makeElement()
     },
     window: { scrollTo() {} },
     Date: { now: () => now }, Math, String, setTimeout, URL,
     setInterval: fn => { interval = fn; return 1; },
     clearInterval: () => { interval = null; },
-    navigator: {}, File: class {}
+    navigator: {}, File: class {}, Image: class { decode() { return Promise.resolve(); } }
   });
+  context.URL = { createObjectURL: () => 'blob:test', revokeObjectURL() {} };
   vm.runInContext(source, context);
   const state = () => vm.runInContext('state', context);
   const submit = answer => { get('answer-input').value = answer; get('answer-form').listeners.submit({ preventDefault() {} }); };
-  return { get, buttons, state, submit,
+  return { get, buttons, state, submit, canvasText, wasDownloaded: () => downloadClicked,
     rerender: () => vm.runInContext('render()', context),
     advance: ms => { now += ms; interval?.(); },
     evaluate: code => vm.runInContext(code, context)
@@ -72,6 +88,32 @@ test('Quiz Round uses ten questions and includes game, mode, score, and time in 
   assert.equal(app.get('share-game').textContent, 'Littlefield’s Letters');
   assert.equal(app.get('share-mode').textContent, 'Quiz Round');
   assert.match(app.get('share-time').textContent, /^Time \d+:\d\d$/);
+});
+
+test('Graphical share card renders game, mode, score, question count, and time and downloads a PNG', async () => {
+  const app = setup();
+  app.evaluate("Object.assign(state,{game:'catchphrase',mode:'unlimited',points:47,score:3,completed:4,elapsedMs:123000})");
+  await app.evaluate('shareCard()');
+  assert.equal(app.wasDownloaded(), true);
+  assert.match(app.get('share-status').textContent, /PNG/);
+  assert.ok(app.canvasText.some(text => text.includes('PICTURE CATCHPHRASE') || text.includes('Picture Catchphrase')));
+  assert.ok(app.canvasText.some(text => text.includes('UNLIMITED')));
+  assert.ok(app.canvasText.some(text => text.includes('47 PTS')));
+  assert.ok(app.canvasText.some(text => text.includes('4 COMPLETED')));
+  assert.ok(app.canvasText.some(text => text.includes('2:03')));
+});
+
+test('Anagram and Missing Vowels share cards use correct-answer scores', async () => {
+  for (const [game, label] of [['anagrams', 'Littlefield’s Letters'], ['vowels', 'Missing Vowels']]) {
+    const app = setup();
+    app.evaluate(`Object.assign(state,{game:'${game}',mode:'quiz',score:8,completed:10,elapsedMs:91000})`);
+    await app.evaluate('drawShareCard()');
+    assert.ok(app.canvasText.some(text => text.includes(label)));
+    assert.ok(app.canvasText.some(text => text.includes('QUIZ ROUND')));
+    assert.ok(app.canvasText.some(text => text.includes('8 RIGHT')));
+    assert.ok(app.canvasText.some(text => text.includes('10 COMPLETED')));
+    assert.ok(app.canvasText.some(text => text.includes('1:31')));
+  }
 });
 
 test('Unlimited ends on a mistake and awards the existing score', () => {
