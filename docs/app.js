@@ -78,6 +78,7 @@ const MISSING_VOWELS = [
   {answer:'ROCKBOLT THEATRE'},{answer:'JONALABS'},{answer:'ROBODOC'},{answer:'ELECTRIC GAMEHOUSE'},
   {answer:'JONAGRAPH'},{answer:'THE SUMMERHOUSE'},{answer:'THE PICTURE HOUSE'},{answer:'PHANTOM TOURS'},
   {answer:'JONACOMMS'},{answer:'JONAPOST'},{answer:'DIAMANT'},{answer:'DIGITAL DOLLAR'},
+  {answer:'JONACON'},
   {answer:'JONACOIN EXCHANGE'},{answer:'DUNGEONS AND DIRIGIBLES'},{answer:'PINKERTON AND BRUTUS'},
   {answer:'THE CODEX MAGNIFICUS'},{answer:'CHURCH OF THE COSMIC PLATYPUS'},{answer:'FATHER PLATMAS'}
 ];
@@ -112,6 +113,7 @@ function pictureAnswers(q){
 function isCorrect(response,q){
   const entered=normal(response);
   const exact=[q.answer,...(q.aliases||[])].some(answer=>entered===normal(answer));
+  if(state.game==='vowels')return q.accepted.some(answer=>entered===normal(answer));
   if(state.game!=='catchphrase')return exact;
   if(!entered)return false;
   const variants=pictureAnswers(q);
@@ -120,6 +122,21 @@ function isCorrect(response,q){
   return variants.some(answer=>entered.length>=4&&typoDistance(entered,answer)<=(answer.length>=12?2:1));
 }
 function withoutVowels(s){return s.normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toUpperCase().replace(/[AEIOU]/g,'')}
+function vowelSkeleton(answer){return normal(withoutVowels(answer))}
+function vowelQuestions(){
+  const allAnswers=[...MISSING_VOWELS,...ANAGRAMS,...PICTURES];
+  const byClue=new Map();
+  for(const question of MISSING_VOWELS){
+    const clue=vowelSkeleton(question.answer);
+    if(!byClue.has(clue))byClue.set(clue,{...question,clue:withoutVowels(question.answer),accepted:[],contributors:[]});
+    if(question.contributor&&!byClue.get(clue).contributors.includes(question.contributor))byClue.get(clue).contributors.push(question.contributor);
+  }
+  for(const answer of allAnswers){
+    const group=byClue.get(vowelSkeleton(answer.answer));
+    if(group&&!group.accepted.some(value=>normal(value)===normal(answer.answer)))group.accepted.push(answer.answer);
+  }
+  return shuffle([...byClue.values()]);
+}
 function stopTimer(){if(questionTimer!==null){clearInterval(questionTimer);questionTimer=null}}
 function tickTimer(){
   if(state.answered)return;
@@ -170,7 +187,7 @@ function animateAnagram(answer){
 function start(game,mode){
   let source;
   if(game==='anagrams')source=[1,2,3,4].flatMap(tier=>shuffle(ANAGRAMS.filter(q=>q.tier===tier)));
-  else if(game==='vowels')source=shuffle(MISSING_VOWELS.map(q=>({...q,clue:withoutVowels(q.answer)})));
+  else if(game==='vowels')source=vowelQuestions();
   else source=shuffle(PICTURES);
   if(!source.length || mode==='quiz'&&source.length<10)return;
   const questions=mode==='quiz'&&game==='anagrams'?[2,3,3,2].flatMap((count,tier)=>source.filter(q=>q.tier===tier+1).slice(0,count)):mode==='quiz'?source.slice(0,10):source;
@@ -193,6 +210,11 @@ function render(){
   $('game-title').textContent=game==='anagrams'?'Littlefield’s Letters':game==='vowels'?'Missing Vowels':'Picture Catchphrase';
   $('game-console').dataset.game=game;
   $('question-card').dataset.game=game;
+  $('vowel-hint').hidden=game!=='vowels';
+  if(game==='vowels'){
+    const counts=[...new Set(q.accepted.map(answer=>answer.replace(/[^A-Za-z]/g,'').length))].sort((a,b)=>a-b);
+    $('vowel-hint').textContent=`${counts.join(' OR ')} ${counts.length===1&&counts[0]===1?'LETTER':'LETTERS'} · ${q.accepted.length} ${q.accepted.length===1?'ANSWER':'ACCEPTED ANSWERS'}`;
+  }
   $('clue').replaceChildren();
   if(game==='catchphrase'){
     const stage=document.createElement('div');stage.className='picture-stage';
@@ -212,8 +234,9 @@ function render(){
     }
     stage.append(img,cover);$('clue').append(stage);
   }else $('clue').append(game==='anagrams'?letterRow(q.scramble):letterRow(q.clue));
-  $('question-credit').hidden=!q.contributor;
-  $('question-credit').textContent=q.contributor?`Question contributed by ${q.contributor}`:'';
+  const credit=game==='vowels'?(q.contributors||[]).join(', '):q.contributor;
+  $('question-credit').hidden=!credit;
+  $('question-credit').textContent=credit?`Question contributed by ${credit}`:'';
   $('reveal-stats').hidden=game!=='catchphrase';
   $('reveal-stats').textContent=game==='catchphrase'?'CHOOSE PANELS TO REVEAL · 24 POSSIBLE POINTS':'';
   $('answer-form').hidden=false;$('answer-input').value='';
@@ -236,7 +259,8 @@ function finishAnswer(correct,revealed=false,timedOut=false){
   const finishReveal=()=>{
     const feedback=$('feedback');feedback.hidden=false;feedback.classList.add(correct?'correct':'incorrect');feedback.replaceChildren();
     const heading=document.createElement('strong');heading.textContent=correct?'That’s right!':timedOut?'Time’s up!':revealed?'Answer revealed':'Not quite';
-    const answer=document.createElement('span');answer.textContent=(correct?`The answer is ${q.answer}.`:`The answer was ${q.answer}.`)+(correct&&state.game==='catchphrase'?` ${Math.max(0,24-state.openedTiles)} points from ${state.openedTiles} panels opened.`:'');
+    const possible=state.game==='vowels'&&q.accepted.length>1?q.accepted.join(' or '):q.answer;
+    const answer=document.createElement('span');answer.textContent=(correct&&state.game==='vowels'?`Accepted: ${possible}.`:correct?`The answer is ${possible}.`:`${q.accepted?.length>1?'Possible answers were':'The answer was'} ${possible}.`)+(correct&&state.game==='catchphrase'?` ${Math.max(0,24-state.openedTiles)} points from ${state.openedTiles} panels opened.`:'');
     feedback.append(heading,answer);
     $('next-button').hidden=false;$('next-button').textContent=ends?'See your results →':'Next question →';$('next-button').focus();
   };

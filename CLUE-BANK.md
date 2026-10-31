@@ -1,6 +1,6 @@
 # Phantom Peak clue bank
 
-The app currently has **87 anagrams** and **102 Missing Vowels terms**. The first ten anagrams below are the exact PPEC 4th Birthday quiz questions; the other scrambles are generated from selected names, places, and lore terms. A ten-question anagram round draws 2 easy, 3 medium, 3 hard, and 2 expert clues.
+The app currently has **87 anagrams** and **103 Missing Vowels answers** forming **102 distinct clues**. The first ten anagrams below are the exact PPEC 4th Birthday quiz questions; the other scrambles are generated from selected names, places, and lore terms. A ten-question anagram round draws 2 easy, 3 medium, 3 hard, and 2 expert clues.
 
 The source pool includes the supplied `Backup Quiz PPT.pptx`, [PPEC Trail Notes](https://ppec.club/trail-notes/) (`trails.json` in the local checkout), and [Phantom Peak’s published map](https://www.phantompeak.com/media/daghhwvt/phantom-peak-map-jonacon.pdf). These sources cover characters, places, organizations, objects, currency, and named concepts. Check any new Discord submission for spelling and attribution before adding it.
 
@@ -117,6 +117,8 @@ The user and PPEC Trail Notes spell the talking platypus **Terence**. Phantom Pe
 
 ## Missing Vowels
 
+Answers with the same consonants share one question. The game displays all possible answer lengths and accepts any matching answer in its full answer bank. For example, `JNCN` accepts both **JONACOIN** and **JONACON**.
+
 | Clue | Answer |
 |---|---|
 | MYR PCKT | MAYOR POCKET |
@@ -143,6 +145,7 @@ The user and PPEC Trail Notes spell the talking platypus **Terence**. Phantom Pe
 | JNPST | JONAPOST |
 | DMNT | DIAMANT |
 | DGTL DLLR | DIGITAL DOLLAR |
+| JNCN | JONACON |
 | JNCN XCHNG | JONACOIN EXCHANGE |
 | DNGNS ND DRGBLS | DUNGEONS AND DIRIGIBLES |
 | PNKRTN ND BRTS | PINKERTON AND BRUTUS |

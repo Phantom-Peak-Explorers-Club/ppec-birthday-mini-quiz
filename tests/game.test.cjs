@@ -143,10 +143,24 @@ test('Missing Vowels removes A E I O U while preserving word breaks', () => {
   const app = setup();
   assert.equal(app.buttons[4].disabled, false);
   assert.equal(app.evaluate("withoutVowels('PHANTOM PEAK')"), 'PHNTM PK');
-  assert.equal(app.evaluate('MISSING_VOWELS.length'), 102);
+  assert.equal(app.evaluate('MISSING_VOWELS.length'), 103);
+  assert.equal(app.evaluate('vowelQuestions().length'), 102);
   assert.equal(app.evaluate("MISSING_VOWELS.some(q => q.answer === 'TERENCE THE TALKING PLATYPUS')"), true);
   app.buttons[4].click();
   assert.equal(app.state().questions.length, 10);
+});
+
+test('Missing Vowels accepts every bank answer with the displayed consonants', () => {
+  const app = setup();
+  app.buttons[5].click();
+  const group = app.evaluate("vowelQuestions().find(q => q.clue === 'JNCN')");
+  assert.deepEqual(Array.from(group.accepted).sort(), ['JONACOIN', 'JONACON']);
+  app.state().questions[0] = group;
+  app.rerender();
+  assert.equal(app.get('vowel-hint').textContent, '7 OR 8 LETTERS · 2 ACCEPTED ANSWERS');
+  assert.equal(app.evaluate("isCorrect('JONACON', vowelQuestions().find(q => q.clue === 'JNCN'))"), true);
+  assert.equal(app.evaluate("isCorrect('JONACOIN', vowelQuestions().find(q => q.clue === 'JNCN'))"), true);
+  assert.equal(app.evaluate("isCorrect('JONACO', vowelQuestions().find(q => q.clue === 'JNCN'))"), false);
 });
 
 test('All anagram scrambles use exactly the answer letters and future picture clues get typo tolerance', () => {
