@@ -78,7 +78,7 @@ const MISSING_VOWELS = [
   {answer:'ROCKBOLT THEATRE'},{answer:'JONALABS'},{answer:'ROBODOC'},{answer:'ELECTRIC GAMEHOUSE'},
   {answer:'JONAGRAPH'},{answer:'THE SUMMERHOUSE'},{answer:'THE PICTURE HOUSE'},{answer:'PHANTOM TOURS'},
   {answer:'JONACOMMS'},{answer:'JONAPOST'},{answer:'DIAMANT'},{answer:'DIGITAL DOLLAR'},
-  {answer:'JONACON'},
+  {answer:'JONACOIN'},{answer:'JONACON'},
   {answer:'JONACOIN EXCHANGE'},{answer:'DUNGEONS AND DIRIGIBLES'},{answer:'PINKERTON AND BRUTUS'},
   {answer:'THE CODEX MAGNIFICUS'},{answer:'CHURCH OF THE COSMIC PLATYPUS'},{answer:'FATHER PLATMAS'}
 ];
@@ -212,8 +212,8 @@ function render(){
   $('question-card').dataset.game=game;
   $('vowel-hint').hidden=game!=='vowels';
   if(game==='vowels'){
-    const counts=[...new Set(q.accepted.map(answer=>answer.replace(/[^A-Za-z]/g,'').length))].sort((a,b)=>a-b);
-    $('vowel-hint').textContent=`${counts.join(' OR ')} ${counts.length===1&&counts[0]===1?'LETTER':'LETTERS'} · ${q.accepted.length} ${q.accepted.length===1?'ANSWER':'ACCEPTED ANSWERS'}`;
+    const count=q.answer.replace(/[^A-Za-z]/g,'').length;
+    $('vowel-hint').textContent=`${count} ${count===1?'LETTER':'LETTERS'}`;
   }
   $('clue').replaceChildren();
   if(game==='catchphrase'){

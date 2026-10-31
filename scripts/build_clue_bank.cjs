@@ -25,7 +25,7 @@ for (const [tier, label] of [[1, 'Easy'], [2, 'Medium'], [3, 'Hard'], [4, 'Exper
   for (const q of ANAGRAMS.filter(q => q.tier === tier)) lines.push(`| ${q.scramble} | ${q.answer} |`);
   lines.push('');
 }
-lines.push('## Missing Vowels', '', 'Answers with the same consonants share one question. The game displays all possible answer lengths and accepts any matching answer in its full answer bank. For example, `JNCN` accepts both **JONACOIN** and **JONACON**.', '', '| Clue | Answer |', '|---|---|');
+lines.push('## Missing Vowels', '', 'Answers with the same consonants share one question. The game shows only the primary answer’s letter count while accepting any matching answer in its full answer bank. For example, `JNCN` shows **8 letters** for the primary answer **JONACOIN**, but also accepts **JONACON**.', '', '| Clue | Answer |', '|---|---|');
 for (const q of MISSING_VOWELS) lines.push(`| ${vowels(q.answer)} | ${q.answer} |`);
 lines.push('', 'Add an optional `contributor` field to any question in `docs/app.js` when the contributor agrees to be credited. Catchphrase answer leniency applies automatically to all future picture clues; letter game answers remain exact.');
 fs.writeFileSync(path.join(root, 'CLUE-BANK.md'), lines.join('\n') + '\n');

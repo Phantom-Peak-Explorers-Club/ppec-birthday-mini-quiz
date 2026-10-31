@@ -205,10 +205,11 @@ test('Missing Vowels accepts every bank answer with the displayed consonants', (
   const app = setup();
   app.buttons[5].click();
   const group = app.evaluate("vowelQuestions().find(q => q.clue === 'JNCN')");
+  assert.equal(group.answer, 'JONACOIN');
   assert.deepEqual(Array.from(group.accepted).sort(), ['JONACOIN', 'JONACON']);
   app.state().questions[0] = group;
   app.rerender();
-  assert.equal(app.get('vowel-hint').textContent, '7 OR 8 LETTERS · 2 ACCEPTED ANSWERS');
+  assert.equal(app.get('vowel-hint').textContent, '8 LETTERS');
   assert.equal(app.evaluate("isCorrect('JONACON', vowelQuestions().find(q => q.clue === 'JNCN'))"), true);
   assert.equal(app.evaluate("isCorrect('JONACOIN', vowelQuestions().find(q => q.clue === 'JNCN'))"), true);
   assert.equal(app.evaluate("isCorrect('JONACO', vowelQuestions().find(q => q.clue === 'JNCN'))"), false);

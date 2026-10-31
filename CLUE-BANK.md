@@ -117,7 +117,7 @@ The user and PPEC Trail Notes spell the talking platypus **Terence**. Phantom Pe
 
 ## Missing Vowels
 
-Answers with the same consonants share one question. The game displays all possible answer lengths and accepts any matching answer in its full answer bank. For example, `JNCN` accepts both **JONACOIN** and **JONACON**.
+Answers with the same consonants share one question. The game shows only the primary answer’s letter count while accepting any matching answer in its full answer bank. For example, `JNCN` shows **8 letters** for the primary answer **JONACOIN**, but also accepts **JONACON**.
 
 | Clue | Answer |
 |---|---|
@@ -145,6 +145,7 @@ Answers with the same consonants share one question. The game displays all possi
 | JNPST | JONAPOST |
 | DMNT | DIAMANT |
 | DGTL DLLR | DIGITAL DOLLAR |
+| JNCN | JONACOIN |
 | JNCN | JONACON |
 | JNCN XCHNG | JONACOIN EXCHANGE |
 | DNGNS ND DRGBLS | DUNGEONS AND DIRIGIBLES |
@@ -172,7 +173,6 @@ Answers with the same consonants share one question. The game displays all possi
 | RB DJ | ROBO DJ |
 | JNC | JONACO |
 | JNSSST | JONASSIST |
-| JNCN | JONACOIN |
 | MRMN | MIRAMINE |
 | PLTYHKS | PLATYHOOKS |
 | LX ZN | ALEX ZANE |
