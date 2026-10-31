@@ -4,17 +4,21 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#260936">
-  <meta name="description" content="Play PPEC birthday quiz games: anagrams, picture catchphrase and more.">
+  <meta name="description" content="Play PPEC birthday quiz games: anagrams, Say What You See?, Missing Vowels and What Trail?.">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <title>PPEC Quiz Mini App</title>
-  <link rel="stylesheet" href="./style.css">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="apple-touch-icon" href="./assets/app-icon-180.png">
+  <link rel="stylesheet" href="./style.css?v=5">
   <script src="./what-trail.js" defer></script>
-  <script src="./app.js" defer></script>
+  <script src="./app.js?v=5" defer></script>
 </head>
 <body>
   <main class="shell">
     <header class="topbar">
       <button class="brand" id="home-button" type="button" aria-label="Back to game selection"><span class="brand-mark">✦</span><span><strong>PPEC</strong><small>QUIZ MINI APP</small></span></button>
-      <span class="edition"><span class="status-dot" aria-hidden="true"></span> BIRTHDAY EDITION <span class="header-version">/ 001</span></span>
+      <div class="topbar-actions"><button id="install-button" class="install-button" type="button" hidden>Install app</button><span class="edition"><span class="status-dot" aria-hidden="true"></span> BIRTHDAY EDITION <span class="header-version">/ 001</span></span></div>
     </header>
 
     <section id="home" class="screen home-screen" aria-labelledby="home-title">
@@ -33,37 +37,38 @@
           <div><span class="mode-symbol" aria-hidden="true">∞</span><p><strong>Unlimited</strong><span>Play until your first wrong answer or you clear the pool. Your score counts either way.</span></p></div>
         </div>
         <div class="game-grid">
-        <article class="game-card">
-          <div class="card-icon letters-icon"><img src="./assets/game-logos/anagrams.png" alt="" width="512" height="512"></div>
+        <article class="game-card anagram-game-card">
+          <div class="card-icon letters-icon"><img src="./assets/game-logos/anagrams.png?v=2" alt="" width="512" height="512"></div>
           <div class="card-body"><p class="card-kicker">01 / ANAGRAMS</p><h2>Littlefield’s Letters</h2><p>Unscramble names and phrases, from easy to difficult.</p><div class="mode-buttons"><button class="play-button" type="button" data-game="anagrams" data-mode="quiz">Quiz Round <span aria-hidden="true">↗</span></button><button class="play-button secondary" type="button" data-game="anagrams" data-mode="unlimited">Unlimited <span aria-hidden="true">∞</span></button></div></div>
         </article>
-        <article class="game-card">
-          <div class="card-icon picture-icon"><img src="./assets/game-logos/catchphrase.png" alt="" width="512" height="512"></div>
-          <div class="card-body"><p class="card-kicker">02 / PICTURE REVEAL</p><h2>Picture Catchphrase</h2><p>Choose panels to uncover. Fewer panels means more points.</p><div class="mode-buttons"><button class="play-button" type="button" data-game="catchphrase" data-mode="quiz">Quiz Round <span aria-hidden="true">↗</span></button><button class="play-button secondary" type="button" data-game="catchphrase" data-mode="unlimited">Unlimited <span aria-hidden="true">∞</span></button></div></div>
+        <article class="game-card picture-game-card">
+          <div class="card-icon picture-icon"><img src="./assets/game-logos/catchphrase.png?v=2" alt="" width="512" height="512"></div>
+          <div class="card-body"><p class="card-kicker">02 / PICTURE REVEAL</p><h2>Say What You See?</h2><p>Choose panels to uncover. Fewer panels means more points.</p><div class="mode-buttons"><button class="play-button" type="button" data-game="catchphrase" data-mode="quiz">Quiz Round <span aria-hidden="true">↗</span></button><button class="play-button secondary" type="button" data-game="catchphrase" data-mode="unlimited">Unlimited <span aria-hidden="true">∞</span></button></div></div>
         </article>
-        <article class="game-card">
-          <div class="card-icon vowels-icon"><img src="./assets/game-logos/missing-vowels.png" alt="" width="512" height="512"></div>
+        <article class="game-card vowel-game-card">
+          <div class="card-icon vowels-icon"><img src="./assets/game-logos/missing-vowels.png?v=2" alt="" width="512" height="512"></div>
           <div class="card-body"><p class="card-kicker">03 / LETTERS</p><h2>Missing Vowels</h2><p>Put the vowels back into names and terms from the Peak.</p><div class="mode-buttons"><button class="play-button" type="button" data-game="vowels" data-mode="quiz">Quiz Round <span aria-hidden="true">↗</span></button><button class="play-button secondary" type="button" data-game="vowels" data-mode="unlimited">Unlimited <span aria-hidden="true">∞</span></button></div><p id="vowels-soon" class="soon-note" hidden>Question list coming soon</p></div>
         </article>
         <article class="game-card trail-game-card">
-          <div class="card-icon trail-icon"><img src="./assets/game-logos/what-trail.png" alt="" width="512" height="512"></div>
+          <div class="card-icon trail-icon"><img src="./assets/game-logos/what-trail.png?v=2" alt="" width="512" height="512"></div>
           <div class="card-body"><p class="card-kicker">04 / TRAIL ARCHIVE</p><h2>What Trail?</h2><p>Match a story recap to its trail. 187 mysteries from the archive.</p><div class="mode-buttons"><button class="play-button" type="button" data-game="trails" data-mode="quiz">Quiz Round <span aria-hidden="true">↗</span></button><button class="play-button secondary" type="button" data-game="trails" data-mode="unlimited">Unlimited <span aria-hidden="true">∞</span></button></div></div>
         </article>
         </div>
-        <div class="portal-foot"><span>30 SECONDS / LETTERS &amp; TRAILS</span><span>NO TIMER / CATCHPHRASE</span><span>SHARE YOUR SCORE CARD</span></div>
+        <div class="portal-foot"><span>30 SECONDS / LETTERS &amp; TRAILS</span><span>NO TIMER / SAY WHAT YOU SEE?</span><span>SHARE YOUR SCORE CARD</span></div>
       </div>
     </section>
 
     <section id="game" class="screen game-screen" aria-labelledby="game-title" hidden>
       <div class="game-top"><button class="text-button" type="button" id="back-button">← Choose another game</button><span id="game-label" class="game-label"></span></div>
       <div class="game-console" id="game-console">
+      <div id="start-countdown" class="start-countdown" role="status" aria-live="assertive" hidden><span>JONABOT JR / READY?</span><strong id="countdown-number">3</strong><small>30 seconds per clue</small></div>
       <div class="console-heading"><span class="console-serial">PPEC / JONACO SYSTEMS</span><span class="console-beacon"><i aria-hidden="true"></i> TERMINAL ACTIVE</span></div>
       <div class="progress-line" id="progress-line"><span id="progress-fill"></span></div>
       <div class="question-meta"><span class="instrument"><small>CLUE REGISTER</small><b id="question-count"></b></span><span class="instrument"><small>SCORE REGISTER</small><b id="score-label"></b></span><span class="instrument timer-instrument"><small>TIME REMAINING</small><b id="timer-label" role="timer" aria-live="off">30s</b></span></div>
       <div class="timer-track" aria-hidden="true"><span id="timer-fill"></span></div>
       <div class="question-card" id="question-card">
         <p class="eyebrow" id="question-kind"></p>
-        <div class="game-title-row"><img id="game-logo" src="./assets/game-logos/anagrams.png" alt="" width="512" height="512"><h1 id="game-title"></h1></div>
+        <div class="game-title-row"><img id="game-logo" src="./assets/game-logos/anagrams.png?v=2" alt="" width="512" height="512"><h1 id="game-title"></h1></div>
         <div id="clue" class="clue"></div>
         <div id="trail-choices" class="trail-choices" hidden></div>
         <p id="vowel-hint" class="vowel-hint" hidden></p>

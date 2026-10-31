@@ -1,12 +1,12 @@
-# Game emblems
+# Game artwork and colours
 
-Four transparent 512 × 512 PNG emblems are used on the game selection cards and beside each terminal title. The existing HTML game names provide the readable labels.
+The four 512 × 512 PNGs in `docs/assets/game-logos/` show each game's action at a glance. Their approved drafts are in `design-previews/game-logos-v2/`. The image is supported by a readable game name in the app.
 
-| Game | PNG | Visual prompt |
+| Game | Main visual | Colour |
 | --- | --- | --- |
-| Littlefield’s Letters | `docs/assets/game-logos/anagrams.png` | Three ivory tiles tumbling around a brass gear with a shuffle spark; plum enamel, warm gold, Victorian adventure engraving. |
-| Picture Catchphrase | `docs/assets/game-logos/catchphrase.png` | Ornate brass picture frame with hinged teal shutters, some opened to reveal a glowing mystery. |
-| Missing Vowels | `docs/assets/game-logos/missing-vowels.png` | Four blank ivory letter sockets in an indigo clockwork mechanism, with amber crystals flying into the gaps. |
-| What Trail? | `docs/assets/game-logos/what-trail.png` | Unfurled parchment trail map beneath a brass compass, with a dotted route to a violet question mark pin. |
+| Littlefield’s Letters | Scrambled letter tiles moving into a word | Gold `#f2c56d` |
+| Say What You See? | Covered picture with reveal panels | Teal `#65ddd0` |
+| Missing Vowels | Consonants with vowels dropping into gaps | Violet `#bea7ff` |
+| What Trail? | Three choice cards pointing to a trail | Coral `#f48f7b` |
 
-All four used the built-in image generation tool in `logo-brand` mode. Shared direction: centered isolated emblem, transparent background, polished brass, deep plum or game-specific enamel, ivory highlights, detailed steampunk engraving, clear silhouette, and no words, border, scenery, mascot or watermark. The generated originals were resized to 512 × 512 for the site; transparency was preserved.
+The colours continue through each game terminal, result preview, and downloaded share card. The separate `design-previews/app-logo-v1.png` is a proposed install icon; `docs/assets/app-icon-*.png` currently use the plain Jonabot Jr placeholder until the proposed logo is approved.

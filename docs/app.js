@@ -88,6 +88,14 @@ const $=id=>document.getElementById(id);
 let state={game:null,mode:null,questions:[],index:0,score:0,points:0,completed:0,openedTiles:0,tileButtons:[],answered:false,startedAt:0,elapsedMs:null,exhausted:false};
 let questionTimer=null;
 let questionDeadline=0;
+let countdownTimer=null;
+let countdownGoTimer=null;
+const GAME_THEMES={
+  anagrams:{accent:'#f2c56d',dark:'#392415',light:'#fff0c8'},
+  catchphrase:{accent:'#65ddd0',dark:'#103c43',light:'#ddfff7'},
+  vowels:{accent:'#bea7ff',dark:'#342453',light:'#f0e9ff'},
+  trails:{accent:'#f48f7b',dark:'#4b2931',light:'#ffe8dd'}
+};
 function shuffle(items){const out=[...items];for(let i=out.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[out[i],out[j]]=[out[j],out[i]]}return out}
 function normal(s){return s.normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]/g,'')}
 function typoDistance(a,b){
@@ -147,8 +155,36 @@ function tickTimer(){
   if(remaining===0)finishAnswer(false,false,true);
 }
 function startTimer(){stopTimer();questionDeadline=Date.now()+30000;tickTimer();questionTimer=setInterval(tickTimer,200)}
-function show(id){if(id!=='game')stopTimer();for(const screen of document.querySelectorAll('.screen'))screen.hidden=screen.id!==id;window.scrollTo({top:0,behavior:'instant'})}
-function gameName(){return state.game==='anagrams'?'Littlefield’s Letters':state.game==='vowels'?'Missing Vowels':state.game==='trails'?'What Trail?':'Picture Catchphrase'}
+function stopCountdown(){
+  if(countdownTimer!==null){clearInterval(countdownTimer);countdownTimer=null}
+  if(countdownGoTimer!==null){clearTimeout(countdownGoTimer);countdownGoTimer=null}
+  $('start-countdown').hidden=true;
+}
+function finishCountdown(){
+  if(!state.countingDown)return;
+  stopCountdown();state.countingDown=false;state.startedAt=Date.now();
+  $('answer-input').focus();startTimer();
+}
+function startCountdown(){
+  stopCountdown();state.countingDown=true;
+  const overlay=$('start-countdown');const number=$('countdown-number');
+  overlay.hidden=false;number.textContent='3';
+  const deadline=Date.now()+3000;
+  countdownTimer=setInterval(()=>{
+    const remaining=Math.ceil((deadline-Date.now())/1000);
+    if(remaining>0){number.textContent=String(remaining);return}
+    clearInterval(countdownTimer);countdownTimer=null;
+    number.textContent='GO!';countdownGoTimer=setTimeout(finishCountdown,380);
+  },100);
+}
+function show(id,updateHistory=true){
+  const previous=['home','game','results'].find(screen=>!$(screen).hidden);
+  if(id!=='game'){stopTimer();stopCountdown()}
+  for(const screen of document.querySelectorAll('.screen'))screen.hidden=screen.id!==id;
+  if(updateHistory&&previous!==id&&window.history?.pushState)window.history.pushState({ppecScreen:id,runId:state.runId},'',`#${id}`);
+  window.scrollTo({top:0,behavior:'instant'});
+}
+function gameName(){return state.game==='anagrams'?'Littlefield’s Letters':state.game==='vowels'?'Missing Vowels':state.game==='trails'?'What Trail?':'Say What You See?'}
 function modeName(){return state.mode==='quiz'?'Quiz Round':'Unlimited'}
 function duration(ms){const seconds=Math.floor(ms/1000);return `${Math.floor(seconds/60)}:${String(seconds%60).padStart(2,'0')}`}
 function letterRow(value){
@@ -184,6 +220,30 @@ function animateAnagram(answer){
   }
   return Promise.all(animations).then(()=>{$('clue').replaceChildren(letterRow(answer));$('clue').children[0].classList.add('solved')});
 }
+function animateVowels(answer){
+  const row=letterRow(answer);
+  row.classList.add('vowel-solution');
+  const vowels=[...row.children].filter(letter=>/[AEIOU]/.test(letter.textContent));
+  vowels.forEach(letter=>letter.classList.add('vowel-insert'));
+  $('clue').replaceChildren(row);
+  if(!vowels.length || !vowels[0].animate || window.matchMedia?.('(prefers-reduced-motion: reduce)').matches){
+    row.classList.add('solved');return null;
+  }
+  return Promise.all(vowels.map(letter=>letter.animate([
+    {transform:'translate3d(0,-90px,0) scale(.72)',opacity:0,filter:'blur(7px)'},
+    {offset:.76,transform:'translate3d(0,7px,0) scale(1.08)',opacity:1,filter:'blur(0)'},
+    {transform:'translate3d(0,0,0) scale(1)',opacity:1,filter:'blur(0)'}
+  ],{duration:900,easing:'cubic-bezier(.22, 1, .36, 1)',fill:'both'}).finished.catch(()=>{})))
+    .then(()=>row.classList.add('solved'));
+}
+function showTrailVerdict(correct,timedOut){
+  const verdict=document.createElement('div');
+  verdict.className=`trail-verdict ${correct?'right':'wrong'}`;
+  verdict.setAttribute('aria-hidden','true');
+  const symbol=document.createElement('span');symbol.className='trail-verdict-symbol';symbol.textContent=correct?'✓':'×';
+  const label=document.createElement('strong');label.textContent=correct?'TRAIL FOUND':timedOut?'TIME UP':'WRONG TRAIL';
+  verdict.append(symbol,label);$('clue').append(verdict);
+}
 function start(game,mode){
   let source;
   if(game==='anagrams')source=[1,2,3,4].flatMap(tier=>shuffle(ANAGRAMS.filter(q=>q.tier===tier)));
@@ -192,8 +252,8 @@ function start(game,mode){
   else source=shuffle(PICTURES);
   if(!source.length || mode==='quiz'&&source.length<10)return;
   const questions=mode==='quiz'&&game==='anagrams'?[2,3,3,2].flatMap((count,tier)=>source.filter(q=>q.tier===tier+1).slice(0,count)):mode==='quiz'?source.slice(0,10):source;
-  state={game,mode,questions,index:0,score:0,points:0,completed:0,openedTiles:0,tileButtons:[],choiceButtons:[],answered:false,startedAt:Date.now(),elapsedMs:null,exhausted:false};
-  show('game');render();
+  state={game,mode,questions,index:0,score:0,points:0,completed:0,openedTiles:0,tileButtons:[],choiceButtons:[],answered:false,countingDown:game!=='catchphrase',startedAt:Date.now(),elapsedMs:null,exhausted:false,runId:Date.now()+Math.random()};
+  show('game');render();if(state.countingDown)startCountdown();
 }
 function render(){
   stopTimer();
@@ -210,7 +270,7 @@ function render(){
   $('progress-fill').style.width=`${index/questions.length*100}%`;
   $('question-kind').textContent=game==='anagrams'?'UNSCRAMBLE THIS':game==='vowels'?'RESTORE THE VOWELS':game==='trails'?'IDENTIFY THE TRAIL':'NAME THE PICTURE CLUE';
   $('game-title').textContent=gameName();
-  $('game-logo').src=`./assets/game-logos/${({anagrams:'anagrams',catchphrase:'catchphrase',vowels:'missing-vowels',trails:'what-trail'})[game]}.png`;
+  $('game-logo').src=`./assets/game-logos/${({anagrams:'anagrams',catchphrase:'catchphrase',vowels:'missing-vowels',trails:'what-trail'})[game]}.png?v=2`;
   $('game-console').dataset.game=game;
   $('question-card').dataset.game=game;
   $('vowel-hint').hidden=game!=='vowels';
@@ -244,7 +304,7 @@ function render(){
     const button=document.createElement('button');button.type='button';button.className='trail-choice';button.dataset.answer=title;
     const letter=document.createElement('span');letter.className='choice-letter';letter.textContent='ABC'[choiceIndex];
     const label=document.createElement('span');label.textContent=title;button.append(letter,label);
-    button.addEventListener('click',()=>{if(!state.answered){if(title!==q.answer)button.classList.add('wrong');finishAnswer(title===q.answer)}});
+    button.addEventListener('click',()=>{if(!state.answered&&!state.countingDown){if(title!==q.answer)button.classList.add('wrong');finishAnswer(title===q.answer)}});
     state.choiceButtons.push(button);$('trail-choices').append(button);
   });
   const credit=game==='vowels'?(q.contributors||[]).join(', '):q.contributor;
@@ -257,21 +317,39 @@ function render(){
   $('feedback').hidden=true;$('feedback').className='feedback';
   $('next-button').hidden=true;$('reveal-button').hidden=false;
   $('timer-label').textContent='30s';$('timer-fill').style.width='100%';
-  if(game!=='trails')$('answer-input').focus();if(game!=='catchphrase')startTimer();
+  if(game!=='trails'&&!state.countingDown)$('answer-input').focus();
+  if(game!=='catchphrase'&&!state.countingDown)startTimer();
 }
-function finishAnswer(correct,revealed=false,timedOut=false){
-  if(state.answered)return;
+function finishAnswer(correct,revealed=false,timedOut=false,response=''){
+  if(state.answered||state.countingDown)return;
   stopTimer();state.answered=true;
   const q=state.questions[state.index];
   state.completed=state.index+1;
   if(correct){state.score++;if(state.game==='catchphrase')state.points+=Math.max(0,24-state.openedTiles)}
-  if(state.game==='catchphrase')for(const tile of state.tileButtons){tile.disabled=true;tile.classList.add('open')}
-  if(state.game==='trails')for(const button of state.choiceButtons){button.disabled=true;if(button.dataset.answer===q.answer)button.classList.add('right')}
+  if(state.game==='catchphrase'){
+    for(const tile of state.tileButtons){tile.disabled=true;tile.classList.add('open')}
+    $('score-label').textContent=`${state.points} POINTS`;
+    $('reveal-stats').textContent=`${state.openedTiles} / 24 PANELS USED · ${correct?Math.max(0,24-state.openedTiles):0} POINTS AWARDED`;
+  }
+  if(state.game==='trails'){
+    for(const button of state.choiceButtons){button.disabled=true;if(button.dataset.answer===q.answer)button.classList.add('right')}
+    showTrailVerdict(correct,timedOut);
+  }
   const ends=state.mode==='unlimited'&&!correct||state.index===state.questions.length-1;
   if(ends){state.elapsedMs=Date.now()-state.startedAt;state.exhausted=state.mode==='unlimited'&&correct&&state.index===state.questions.length-1}
   $('answer-form').hidden=true;$('reveal-button').hidden=true;
   const finishReveal=()=>{
     const feedback=$('feedback');feedback.hidden=false;feedback.classList.add(correct?'correct':'incorrect');feedback.replaceChildren();
+    if(state.game==='catchphrase'){
+      feedback.className=`feedback picture-feedback ${correct?'correct':'incorrect'}`;
+      const kicker=document.createElement('span');kicker.className='picture-answer-kicker';kicker.textContent=correct?'YOU SAW IT!':revealed?'ANSWER REVEALED':'THE PICTURE WAS';
+      const hero=document.createElement('strong');hero.className='picture-answer-hero';hero.textContent=q.answer;
+      const scoreBox=document.createElement('div');scoreBox.className='picture-score-box';
+      const points=document.createElement('b');points.textContent=`+${correct?Math.max(0,24-state.openedTiles):0} POINTS`;
+      const panels=document.createElement('span');panels.textContent=`${state.openedTiles} OF 24 PANELS USED · ${state.points} TOTAL POINTS`;
+      scoreBox.append(points,panels);feedback.append(kicker,hero,scoreBox);
+      $('next-button').hidden=false;$('next-button').textContent=ends?'See your results →':'Next question →';$('next-button').focus();return;
+    }
     const heading=document.createElement('strong');heading.textContent=correct?'That’s right!':timedOut?'Time’s up!':revealed?'Answer revealed':'Not quite';
     const possible=state.game==='vowels'&&q.accepted.length>1?q.accepted.join(' or '):q.answer;
     const answer=document.createElement('span');answer.textContent=(correct&&state.game==='vowels'?`Accepted: ${possible}.`:correct?`The answer is ${possible}.`:`${q.accepted?.length>1?'Possible answers were':'The answer was'} ${possible}.`)+(correct&&state.game==='catchphrase'?` ${Math.max(0,24-state.openedTiles)} points from ${state.openedTiles} panels opened.`:'');
@@ -282,10 +360,16 @@ function finishAnswer(correct,revealed=false,timedOut=false){
     const animation=animateAnagram(q.answer);
     if(animation){animation.then(finishReveal);return}
   }
+  if(state.game==='vowels'){
+    const accepted=correct?q.accepted.find(answer=>normal(answer)===normal(response)):null;
+    const animation=animateVowels(accepted||q.answer);
+    if(animation){animation.then(finishReveal);return}
+  }
   finishReveal();
 }
 function next(){if(state.elapsedMs!==null){results()}else{state.index++;render()}}
 function results(){
+  $('share-preview').dataset.game=state.game;
   $('share-game').textContent=gameName();$('share-mode').textContent=modeName();
   $('share-score').textContent=state.game==='catchphrase'?`${state.points} points`:`${state.score} right`;
   $('share-detail').textContent=`${state.score} correct · ${state.completed} ${state.completed===1?'question':'questions'} completed`;
@@ -298,22 +382,24 @@ function shareText(){const score=state.game==='catchphrase'?`${state.points} poi
 async function drawShareCard(){
   const canvas=document.createElement('canvas');canvas.width=1200;canvas.height=900;
   const c=canvas.getContext('2d');
-  const bg=c.createLinearGradient(0,0,1200,900);bg.addColorStop(0,'#140d27');bg.addColorStop(.55,'#32114a');bg.addColorStop(1,'#5d1c6f');
+  const theme=GAME_THEMES[state.game]||GAME_THEMES.anagrams;
+  const bg=c.createLinearGradient(0,0,1200,900);bg.addColorStop(0,'#140d27');bg.addColorStop(.58,theme.dark);bg.addColorStop(1,'#160f24');
   c.fillStyle=bg;c.fillRect(0,0,1200,900);
-  c.strokeStyle='#dca549';c.lineWidth=9;c.strokeRect(22,22,1156,856);c.lineWidth=2;c.strokeRect(40,40,1120,820);
-  c.fillStyle='#f3c763';for(const [x,y,r] of [[102,116,7],[207,68,4],[857,97,5],[1068,183,7],[89,661,5],[1119,748,6]]){c.beginPath();c.arc(x,y,r,0,Math.PI*2);c.fill()}
+  c.fillStyle=theme.accent;c.fillRect(22,22,1156,23);
+  c.strokeStyle=theme.accent;c.lineWidth=9;c.strokeRect(22,22,1156,856);c.lineWidth=2;c.strokeRect(40,40,1120,820);
+  c.fillStyle=theme.accent;for(const [x,y,r] of [[102,116,7],[207,68,4],[857,97,5],[1068,183,7],[89,661,5],[1119,748,6]]){c.beginPath();c.arc(x,y,r,0,Math.PI*2);c.fill()}
   c.fillStyle='#f4e6c4';c.textAlign='left';c.font='bold 26px Arial';c.fillText('✦  PPEC QUIZ MINI APP',92,112);
-  c.fillStyle='#f1bc54';c.font='bold 21px Arial';c.fillText('4TH BIRTHDAY EDITION  /  '+modeName().toUpperCase(),92,158);
-  c.fillStyle='#f8f0d9';c.font='bold 53px Georgia';c.fillText(gameName(),92,275);
-  c.fillStyle='#e9bb58';c.fillRect(87,319,590,3);
-  c.fillStyle='#f3bc51';c.font='bold 102px Georgia';c.fillText(state.game==='catchphrase'?`${state.points} PTS`:`${state.score} RIGHT`,88,468);
+  c.fillStyle=theme.accent;c.font='bold 21px Arial';c.fillText('4TH BIRTHDAY EDITION  /  '+modeName().toUpperCase(),92,158);
+  c.fillStyle=theme.light;c.font='bold 53px Georgia';c.fillText(gameName(),92,275);
+  c.fillStyle=theme.accent;c.fillRect(87,319,590,3);
+  c.fillStyle=theme.accent;c.font='bold 102px Georgia';c.fillText(state.game==='catchphrase'?`${state.points} PTS`:`${state.score} RIGHT`,88,468);
   c.fillStyle='#f4e6c4';c.font='bold 28px Arial';c.fillText(`${state.score} CORRECT  •  ${state.completed} COMPLETED`,92,536);
   c.fillStyle='#d9b6e9';c.font='bold 29px Arial';c.fillText(`TIME   ${duration(state.elapsedMs)}`,92,604);
-  c.fillStyle='#a26cbb';c.fillRect(92,659,560,4);
-  c.fillStyle='#f7d485';c.font='23px Arial';c.fillText('PHANTOM PEAK EXPLORERS’ CLUB',92,778);
+  c.fillStyle=theme.accent;c.fillRect(92,659,560,4);
+  c.fillStyle=theme.light;c.font='23px Arial';c.fillText('PHANTOM PEAK EXPLORERS’ CLUB',92,778);
   const mascot=new Image();mascot.src='./assets/jonabot-jr.png';
   try{await mascot.decode();c.drawImage(mascot,690,214,425,431)}catch{}
-  c.fillStyle='#f2bf5b';c.font='52px Georgia';c.textAlign='center';c.fillText('✦',946,739);
+  c.fillStyle=theme.accent;c.font='52px Georgia';c.textAlign='center';c.fillText('✦',946,739);
   return canvas;
 }
 async function shareCard(){const canvas=await drawShareCard();const blob=await new Promise(resolve=>canvas.toBlob(resolve,'image/png'));if(!blob){$('share-status').textContent='Could not make the image. Try copying the result instead.';return}const file=new File([blob],'ppec-mini-quiz-score.png',{type:'image/png'});if(navigator.share&&navigator.canShare&&navigator.canShare({files:[file]})){try{await navigator.share({files:[file],text:shareText(),title:'PPEC Mini Quiz score'});$('share-status').textContent='Score card ready to share.';return}catch(error){if(error.name==='AbortError')return}}const url=URL.createObjectURL(blob);const link=document.createElement('a');link.href=url;link.download='ppec-mini-quiz-score.png';document.body.append(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);$('share-status').textContent='Score card downloaded as a PNG.'}
@@ -321,10 +407,34 @@ async function copyResult(){try{await navigator.clipboard.writeText(shareText())
 document.querySelectorAll('[data-game]').forEach(button=>button.addEventListener('click',()=>start(button.dataset.game,button.dataset.mode)));
 document.querySelectorAll('[data-game]').forEach(button=>{if(button.dataset.game==='vowels')button.disabled=MISSING_VOWELS.length<(button.dataset.mode==='quiz'?10:1)});
 $('vowels-soon').hidden=MISSING_VOWELS.length>0;
-$('answer-form').addEventListener('submit',event=>{event.preventDefault();if(state.game==='catchphrase'&&state.openedTiles===0)return;const response=$('answer-input').value.trim();if(!response)return;const q=state.questions[state.index];finishAnswer(isCorrect(response,q))});
+$('answer-form').addEventListener('submit',event=>{event.preventDefault();if(state.countingDown||state.game==='catchphrase'&&state.openedTiles===0)return;const response=$('answer-input').value.trim();if(!response)return;const q=state.questions[state.index];finishAnswer(isCorrect(response,q),false,false,response)});
 $('reveal-button').addEventListener('click',()=>finishAnswer(false,true));
 $('next-button').addEventListener('click',next);
 $('again-button').addEventListener('click',()=>start(state.game,state.mode));
 $('share-button').addEventListener('click',shareCard);
 $('copy-button').addEventListener('click',copyResult);
 for(const id of ['home-button','back-button','other-button'])$(id).addEventListener('click',()=>show('home'));
+if(window.history?.replaceState)window.history.replaceState({ppecScreen:'home'},'',window.location?window.location.pathname+window.location.search:undefined);
+window.addEventListener?.('popstate',event=>{
+  const {ppecScreen,runId}=event.state||{};
+  if(ppecScreen==='game'&&runId===state.runId){
+    show('game',false);
+    if(state.countingDown)startCountdown();
+    else if(!state.answered&&state.game!=='catchphrase'){
+      if(Date.now()>=questionDeadline)finishAnswer(false,false,true);
+      else{tickTimer();questionTimer=setInterval(tickTimer,200)}
+    }
+  }else if(ppecScreen==='results'&&runId===state.runId&&state.elapsedMs!==null)show('results',false);
+  else show('home',false);
+});
+let installPrompt=null;
+window.addEventListener?.('beforeinstallprompt',event=>{
+  event.preventDefault();installPrompt=event;$('install-button').hidden=false;
+});
+$('install-button').addEventListener('click',async()=>{
+  if(!installPrompt)return;
+  installPrompt.prompt();await installPrompt.userChoice;
+  installPrompt=null;$('install-button').hidden=true;
+});
+window.addEventListener?.('appinstalled',()=>{installPrompt=null;$('install-button').hidden=true});
+if(navigator.serviceWorker&&window.addEventListener)window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));

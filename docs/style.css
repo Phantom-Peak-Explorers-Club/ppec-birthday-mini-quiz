@@ -113,3 +113,74 @@ footer{text-align:center;padding:0 0 25px;color:#81758b;font:600 10px 'IBM Plex 
 .game-title-row img{flex:none;width:66px;height:66px;object-fit:contain;filter:drop-shadow(0 4px 8px #0009)}
 .game-console .game-title-row h1{margin:0}
 @media(max-width:640px){.card-icon{height:100%;min-height:155px}.card-icon img{width:76px;height:76px}.game-title-row{gap:9px;margin-bottom:17px}.game-title-row img{width:46px;height:46px}}
+
+.topbar-actions{display:flex;align-items:center;gap:12px}.install-button{border:1px solid #d5ad62;border-radius:5px;background:#e7be73;color:#28182a;padding:7px 11px;font:700 11px 'IBM Plex Mono',monospace}.install-button:hover{background:#ffe1a0}
+.vowel-solution .vowel-insert{color:#ffdc84;text-shadow:0 0 12px #ffcf67,0 0 24px #f8a93b91}
+.picture-feedback{display:flex;flex-direction:column;align-items:center;gap:10px;padding:20px 22px!important;text-align:center;border:2px solid #d3aa65!important;background:radial-gradient(circle at 50% 0,#654054,#241725 65%)!important;box-shadow:inset 0 0 0 4px #1b1320,0 0 18px #e8bf5c33}
+.picture-answer-kicker{color:#eac178;font:700 10px 'IBM Plex Mono',monospace;letter-spacing:.18em}
+.picture-answer-hero{display:block!important;margin:0!important;color:#fff2ca;font:700 clamp(31px,5vw,49px)/1.08 Georgia,serif;text-wrap:balance;text-shadow:0 3px 1px #000,0 0 18px #e8b9619c}
+.picture-score-box{display:flex;align-items:center;justify-content:space-between;gap:10px;width:min(100%,420px);margin-top:6px;padding:9px 13px;border:1px solid #b18f6b;border-radius:6px;background:#100f19;color:#d7c6d8;text-align:left;font:700 10px 'IBM Plex Mono',monospace;letter-spacing:.05em}
+.picture-score-box b{color:#f0d28d;white-space:nowrap}.picture-score-box span{font-size:9px;text-align:right}
+.trail-verdict{position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;border-radius:14px;background:#0c2b2de8;color:#d8ffe9;text-align:center;animation:trail-reveal .65s cubic-bezier(.2,1,.3,1) both}
+.trail-verdict.wrong{background:#401f2ae8;color:#ffe1d7}.trail-verdict-symbol{font:700 67px/.9 Georgia,serif;text-shadow:0 0 20px currentColor}.trail-verdict strong{font:800 clamp(19px,3vw,31px) 'IBM Plex Mono',monospace;letter-spacing:.14em}
+.trail-choice.right{animation:trail-correct-pulse .65s ease-out}.trail-choice.wrong{animation:trail-wrong-shake .45s ease-out}
+@keyframes trail-reveal{from{opacity:0;transform:scale(.8)}60%{opacity:1;transform:scale(1.06)}to{opacity:1;transform:scale(1)}}
+@keyframes trail-correct-pulse{50%{box-shadow:0 0 0 8px #8cf2b044,0 0 23px #8cf2b0}}
+@keyframes trail-wrong-shake{25%,75%{transform:translateX(-6px)}50%{transform:translateX(6px)}}
+@media(max-width:640px){
+  .topbar-actions .edition{display:none}
+  .game-screen{padding:10px 0 16px}.game-top{margin-bottom:9px}
+  .game-console{padding:8px 7px 10px;border-width:4px}.console-heading{padding:4px 9px 8px}
+  .game-console .question-meta{margin-bottom:6px}.instrument{min-height:46px;padding:6px 7px;gap:3px}
+  .game-console .timer-track{margin-bottom:8px}.game-console .progress-line{margin-bottom:8px}
+  .game-console .question-card{padding:14px 13px 16px}.game-console .question-card .eyebrow{margin-bottom:4px}
+  .game-title-row{margin-bottom:10px}.game-title-row img{width:40px;height:40px}.game-console .question-card h1{font-size:clamp(23px,6.5vw,31px)}
+  .game-console .clue{min-height:135px;margin-bottom:10px;padding:8px}.game-console[data-game="trails"] .clue{min-height:115px;padding:10px}
+  .trail-recap{font-size:15px;line-height:1.35}.trail-choices{gap:6px;margin-top:10px}.trail-choice{min-height:44px;padding:6px 9px;font-size:13px;gap:8px}.choice-letter{width:27px;height:27px;font-size:12px}
+  .game-console .question-card label{margin-bottom:5px}.game-console input{min-height:40px}.game-console .primary-button{min-height:40px}
+  .game-console .reveal-button{margin-top:9px}.game-console .feedback{margin-top:10px;padding:10px 12px}.game-console .next-button{margin-top:10px}
+  .game-console .console-foot{padding-top:9px}.picture-feedback{padding:13px!important}.picture-answer-hero{font-size:29px}.picture-score-box{flex-wrap:wrap}.picture-score-box span{text-align:left}
+  .trail-verdict-symbol{font-size:49px}.trail-verdict strong{font-size:19px}
+}
+@media(prefers-reduced-motion:reduce){.trail-verdict,.trail-choice.right,.trail-choice.wrong{animation:none}}
+
+/* One accent follows each game from the portal through its console and score card. */
+.anagram-game-card{--game-accent:#f2c56d;--game-dark:#392415}
+.picture-game-card{--game-accent:#65ddd0;--game-dark:#103c43}
+.vowel-game-card{--game-accent:#bea7ff;--game-dark:#342453}
+.trail-game-card{--game-accent:#f48f7b;--game-dark:#4b2931}
+.game-card{border-color:var(--game-accent)}
+.game-card:hover{border-color:var(--game-accent);box-shadow:0 0 0 2px var(--game-accent),0 12px 25px #0007}
+.game-card .card-icon{background-color:var(--game-dark);border-color:var(--game-accent)}
+.game-card .card-kicker{color:var(--game-accent)}
+.game-card .play-button{border-color:var(--game-accent);background:var(--game-accent)}
+.game-card .play-button.secondary{background:transparent;color:var(--game-accent)}
+.game-console[data-game="anagrams"]{--game-accent:#f2c56d}
+.game-console[data-game="catchphrase"]{--game-accent:#65ddd0}
+.game-console[data-game="vowels"]{--game-accent:#bea7ff}
+.game-console[data-game="trails"]{--game-accent:#f48f7b}
+.game-console .question-card{border-top:7px solid var(--game-accent)}
+.game-console .question-card .eyebrow,.game-console .reveal-button{color:var(--game-accent)}
+.game-console .progress-line span{background:var(--game-accent);box-shadow:0 0 9px var(--game-accent)}
+.game-console .timer-track span{background:var(--game-accent)}
+.game-console .timer-track span.urgent{background:#ef7255}
+.game-console .primary-button{background:var(--game-accent);border-color:var(--game-accent)}
+.game-console .primary-button:hover{background:var(--game-accent);filter:brightness(1.13)}
+.game-console[data-game="vowels"] .scramble{color:#decfff;text-shadow:0 0 14px #bea7ff83}
+.game-console[data-game="catchphrase"] .reveal-stats{color:var(--game-accent)}
+.game-console[data-game="trails"] .choice-letter{color:var(--game-accent);border-color:var(--game-accent)}
+.share-preview[data-game="anagrams"]{--game-accent:#f2c56d;--game-dark:#392415;--game-light:#fff0c8}
+.share-preview[data-game="catchphrase"]{--game-accent:#65ddd0;--game-dark:#103c43;--game-light:#ddfff7}
+.share-preview[data-game="vowels"]{--game-accent:#bea7ff;--game-dark:#342453;--game-light:#f0e9ff}
+.share-preview[data-game="trails"]{--game-accent:#f48f7b;--game-dark:#4b2931;--game-light:#ffe8dd}
+.share-preview{border-color:var(--game-accent);background:radial-gradient(circle at 80% 66%,var(--game-dark),transparent 48%),linear-gradient(130deg,#1b1330,var(--game-dark) 70%,#160f24);box-shadow:inset 0 0 0 9px #24142c,inset 0 0 0 11px var(--game-accent)}
+.share-brand,.share-mode,.share-score,.share-art span{color:var(--game-accent)}
+.share-mode{border-color:var(--game-accent)}
+.share-game{color:var(--game-light)}
+.share-footer{color:var(--game-accent)}
+.start-countdown{position:absolute;z-index:20;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;border-radius:16px;background:radial-gradient(circle at center,#19393beF,#150f21f7 70%);color:#fff0d3;text-align:center;backdrop-filter:blur(7px)}
+.start-countdown span,.start-countdown small{font:700 12px 'IBM Plex Mono',monospace;letter-spacing:.2em}
+.start-countdown strong{display:block;color:var(--game-accent);font:800 clamp(90px,22vw,180px)/1 'IBM Plex Mono',monospace;text-shadow:0 0 45px var(--game-accent);animation:countdown-pop .3s ease-out}
+.start-countdown small{color:#e5d9cc;font-size:11px}
+@keyframes countdown-pop{from{transform:scale(1.3);opacity:.3}to{transform:scale(1);opacity:1}}
+@media(prefers-reduced-motion:reduce){.start-countdown strong{animation:none}}
