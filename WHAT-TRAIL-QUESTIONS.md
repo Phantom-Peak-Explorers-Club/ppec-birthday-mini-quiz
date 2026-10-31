@@ -50,7 +50,7 @@ The correct answer is shown in **bold** for review. The app shuffles the three c
 
 **Clue:** It is Rexford, the one who runs the tours in the old town. Nethersole shut down the experiment to mix Platypus and Man.
 
-**Choices:** **The Plat-Man** · The Wereplatypus · Absnormal Abduction
+**Choices:** **The Plat-Man** · Absnormal Abduction · Winner Takes It All
 
 ## 9. The Last Resort
 
@@ -132,9 +132,9 @@ The correct answer is shown in **bold** for review. The app shuffles the three c
 
 ## 22. The Wereplatypus
 
-**Clue:** Dr Silver and JonaLabs create a new Plat-Man experiment based on Rexford. Unable to live up to Silver’s expectations, the new creation leaves and begins writing greeting cards under the name Gerald.
+**Clue:** Dr Silver and JonaLabs try to clone Platman. Their failed experiment, Gerard, runs away and begins writing greeting cards.
 
-**Choices:** **The Wereplatypus** · The Plat-Man · Absnormal Abduction
+**Choices:** **The Wereplatypus** · The Plat-Man · Littlefield’s Letter
 
 ## 23. Squatters Rights
 
@@ -710,7 +710,7 @@ The correct answer is shown in **bold** for review. The app shuffles the three c
 
 **Clue:** Rexford believes aliens abducted them. An apparent alien artifact turns out to be JONACO property, and Hogwood’s strange behaviour has a more ordinary explanation.
 
-**Choices:** **Absnormal Abduction** · The Wereplatypus · Chrono The Wonder Dog
+**Choices:** **Absnormal Abduction** · Chrono The Wonder Dog · The Plat-Man
 
 ## 119. The Silence of the Toys
 

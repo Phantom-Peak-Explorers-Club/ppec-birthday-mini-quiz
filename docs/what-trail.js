@@ -96,8 +96,8 @@ const WHAT_TRAILS = [
     "clue": "It is Rexford, the one who runs the tours in the old town. Nethersole shut down the experiment to mix Platypus and Man.",
     "options": [
       "The Plat-Man",
-      "The Wereplatypus",
-      "Absnormal Abduction"
+      "Absnormal Abduction",
+      "Winner Takes It All"
     ],
     "source": "https://ppec.club/trail-notes/",
     "year": 2022,
@@ -275,11 +275,11 @@ const WHAT_TRAILS = [
   {
     "id": "2022-autumn-6",
     "answer": "The Wereplatypus",
-    "clue": "Dr Silver and JonaLabs create a new Plat-Man experiment based on Rexford. Unable to live up to Silver’s expectations, the new creation leaves and begins writing greeting cards under the name Gerald.",
+    "clue": "Dr Silver and JonaLabs try to clone Platman. Their failed experiment, Gerard, runs away and begins writing greeting cards.",
     "options": [
       "The Wereplatypus",
       "The Plat-Man",
-      "Absnormal Abduction"
+      "Littlefield’s Letter"
     ],
     "source": "https://ppec.club/trail-notes/",
     "year": 2022,
@@ -1526,8 +1526,8 @@ const WHAT_TRAILS = [
     "clue": "Rexford believes aliens abducted them. An apparent alien artifact turns out to be JONACO property, and Hogwood’s strange behaviour has a more ordinary explanation.",
     "options": [
       "Absnormal Abduction",
-      "The Wereplatypus",
-      "Chrono The Wonder Dog"
+      "Chrono The Wonder Dog",
+      "The Plat-Man"
     ],
     "source": "https://ppec.club/trail-notes/",
     "year": 2024,

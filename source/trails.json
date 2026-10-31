@@ -387,15 +387,17 @@
     "seasonTitle": "Hallowed Peak",
     "number": 6,
     "title": "The Wereplatypus",
-    "summary": "Rexford, the old Plat-Man was recreated by Dr Silver and JonaLabs. Rexford now goes by Gerald and writes greeting cards after running away due to the stress of not living up to Silver’s evil standards.",
-    "mainCharacter": "Rexford",
+    "summary": "Dr Silver and JonaLabs tried to clone Platman, but the experiment failed. The failed experiment, called Gerard, ran away and began writing greeting cards.",
+    "mainCharacter": "Gerard",
     "otherCharacters": [
-      "Platman"
+      "Platman",
+      "Rexford",
+      "Dr Silver"
     ],
     "themes": [
       "Animals & creatures"
     ],
-    "searchText": "Rexford, the old Plat-Man was recreated by Dr Silver and JonaLabs. Rexford now goes by Gerald and writes greeting cards after running away due to the stress of not living up to Silver’s evil standards.",
+    "searchText": "Dr Silver and JonaLabs tried to clone Platman, but the experiment failed. The failed experiment, called Gerard, ran away and began writing greeting cards.",
     "pdf": "pdfs/2022/Hallowed Peak 22 Write Up.pdf",
     "image": null
   },

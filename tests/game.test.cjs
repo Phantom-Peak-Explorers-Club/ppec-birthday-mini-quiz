@@ -74,12 +74,12 @@ function setup() {
   };
 }
 
-test('Wereplatypus clue attributes the greeting cards to the new experiment', () => {
+test('Wereplatypus clue attributes the greeting cards to Gerard, the failed clone', () => {
   const questions = vm.runInNewContext(fs.readFileSync(path.join(__dirname, '..', 'docs', 'what-trail.js'), 'utf8') + '\nWHAT_TRAILS');
   const clue = questions.find(question => question.answer === 'The Wereplatypus').clue;
-  assert.match(clue, /new Plat-Man experiment/);
-  assert.match(clue, /new creation leaves.*greeting cards.*Gerald/);
-  assert.doesNotMatch(clue, /Rexford now goes by Gerald/);
+  assert.match(clue, /try to clone Platman/);
+  assert.match(clue, /failed experiment, Gerard, runs away.*greeting cards/);
+  assert.doesNotMatch(clue, /Rexford now goes by/);
 });
 
 test('Quiz Round uses ten questions and includes game, mode, score, and time in results', () => {
