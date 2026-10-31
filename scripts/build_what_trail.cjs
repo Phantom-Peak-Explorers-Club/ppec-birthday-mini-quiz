@@ -9,7 +9,7 @@ const authored = {
   'The Platycurse': 'Halloway becomes convinced something is wrong with them after discovering a strange mark on their leg.',
   'Lofty Ambitions': 'Sparks becomes involved in a plan to protect a resistance group by destroying information that could expose them.',
   'The Platypus, The Wizard And The Armoire': 'Littlefield becomes trapped inside an artificial world created by Dr Winter.',
-  'The Wereplatypus': 'Dr Silver and JonaLabs try to clone Platman. Their failed experiment, Gerard, runs away and begins writing greeting cards.',
+  'The Wereplatypus': 'Dr Silver and JonaLabs clone Rexford and deliberately repeat the accident that made Rexford the original Platman. Their new creation, Gérard, cannot bear the expectations and runs away to write greeting cards.',
   'Fortune Favours The Furb': 'Cogwright follows what appears to be a treasure hunt, only to discover that the treasure is somebody rather than something.',
   'Radio Killed The Video Star': 'A discarded machine leads to the discovery that voices trapped inside a rare material belong to people from Phantom Peak’s past.',
   'Spirit Of The Season': 'An apparent monster attack turns out to involve unusual side effects from a popular drink.',

@@ -74,11 +74,11 @@ function setup() {
   };
 }
 
-test('Wereplatypus clue attributes the greeting cards to Gerard, the failed clone', () => {
+test('Wereplatypus clue distinguishes Rexford from the deliberate clone Gérard', () => {
   const questions = vm.runInNewContext(fs.readFileSync(path.join(__dirname, '..', 'docs', 'what-trail.js'), 'utf8') + '\nWHAT_TRAILS');
   const clue = questions.find(question => question.answer === 'The Wereplatypus').clue;
-  assert.match(clue, /try to clone Platman/);
-  assert.match(clue, /failed experiment, Gerard, runs away.*greeting cards/);
+  assert.match(clue, /clone Rexford.*deliberately repeat the accident/);
+  assert.match(clue, /Gérard.*expectations.*runs away to write greeting cards/);
   assert.doesNotMatch(clue, /Rexford now goes by/);
 });
 

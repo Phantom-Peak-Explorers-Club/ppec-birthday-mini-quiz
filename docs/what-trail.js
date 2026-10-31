@@ -275,7 +275,7 @@ const WHAT_TRAILS = [
   {
     "id": "2022-autumn-6",
     "answer": "The Wereplatypus",
-    "clue": "Dr Silver and JonaLabs try to clone Platman. Their failed experiment, Gerard, runs away and begins writing greeting cards.",
+    "clue": "Dr Silver and JonaLabs clone Rexford and deliberately repeat the accident that made Rexford the original Platman. Their new creation, Gérard, cannot bear the expectations and runs away to write greeting cards.",
     "options": [
       "The Wereplatypus",
       "The Plat-Man",

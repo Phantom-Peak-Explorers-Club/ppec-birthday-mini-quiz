@@ -132,7 +132,7 @@ The correct answer is shown in **bold** for review. The app shuffles the three c
 
 ## 22. The Wereplatypus
 
-**Clue:** Dr Silver and JonaLabs try to clone Platman. Their failed experiment, Gerard, runs away and begins writing greeting cards.
+**Clue:** Dr Silver and JonaLabs clone Rexford and deliberately repeat the accident that made Rexford the original Platman. Their new creation, Gérard, cannot bear the expectations and runs away to write greeting cards.
 
 **Choices:** **The Wereplatypus** · The Plat-Man · Littlefield’s Letter
 

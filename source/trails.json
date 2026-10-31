@@ -387,17 +387,21 @@
     "seasonTitle": "Hallowed Peak",
     "number": 6,
     "title": "The Wereplatypus",
-    "summary": "Dr Silver and JonaLabs tried to clone Platman, but the experiment failed. The failed experiment, called Gerard, ran away and began writing greeting cards.",
-    "mainCharacter": "Gerard",
+    "summary": "Dr Silver and JonaLabs cloned Rexford, then deliberately recreated the accident that made Rexford the original Platman in the clone, Gérard. Unable to bear the expectations placed on a new Platman, Gérard ran away to write greeting cards.",
+    "mainCharacter": "Gérard",
     "otherCharacters": [
       "Platman",
       "Rexford",
       "Dr Silver"
     ],
+    "aliases": [
+      "Gerard",
+      "Gerald"
+    ],
     "themes": [
       "Animals & creatures"
     ],
-    "searchText": "Dr Silver and JonaLabs tried to clone Platman, but the experiment failed. The failed experiment, called Gerard, ran away and began writing greeting cards.",
+    "searchText": "Dr Silver and JonaLabs cloned Rexford, then deliberately recreated the accident that made Rexford the original Platman in the clone, Gérard. Unable to bear the expectations placed on a new Platman, Gérard ran away to write greeting cards.",
     "pdf": "pdfs/2022/Hallowed Peak 22 Write Up.pdf",
     "image": null
   },
