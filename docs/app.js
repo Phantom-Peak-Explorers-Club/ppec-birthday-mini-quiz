@@ -93,10 +93,10 @@ let countdownGoTimer=null;
 let shareBlobPromise=null;
 let sharePreviewUrl=null;
 const GAME_THEMES={
-  anagrams:{accent:'#f2c56d',dark:'#392415',light:'#fff0c8'},
-  catchphrase:{accent:'#65ddd0',dark:'#103c43',light:'#ddfff7'},
-  vowels:{accent:'#bea7ff',dark:'#342453',light:'#f0e9ff'},
-  trails:{accent:'#f48f7b',dark:'#4b2931',light:'#ffe8dd'}
+  anagrams:{accent:'#f2c56d',dark:'#392415',light:'#fff0c8',shareBg:'#704313'},
+  catchphrase:{accent:'#65ddd0',dark:'#103c43',light:'#ddfff7',shareBg:'#07525b'},
+  vowels:{accent:'#bea7ff',dark:'#342453',light:'#f0e9ff',shareBg:'#3e276b'},
+  trails:{accent:'#f48f7b',dark:'#4b2931',light:'#ffe8dd',shareBg:'#762b35'}
 };
 function shuffle(items){const out=[...items];for(let i=out.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[out[i],out[j]]=[out[j],out[i]]}return out}
 function normal(s){return s.normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]/g,'')}
@@ -403,8 +403,8 @@ async function drawShareCard(){
     c.fillStyle='#230e2a';c.fillRect(0,0,1080,1080);
     c.strokeStyle='#e4ad57';c.lineWidth=15;c.strokeRect(24,24,1032,1032);
   }
-  c.globalAlpha=.25;c.fillStyle=theme.dark;c.fillRect(0,0,1080,1080);
-  c.globalAlpha=.12;c.fillStyle=theme.accent;c.fillRect(0,0,1080,1080);c.globalAlpha=1;
+  c.globalAlpha=.64;c.fillStyle=theme.shareBg;c.fillRect(0,0,1080,1080);c.globalAlpha=1;
+  if(frameReady){c.globalCompositeOperation='screen';c.globalAlpha=.34;c.drawImage(frame,0,0,1080,1080);c.globalCompositeOperation='source-over';c.globalAlpha=1}
   if(avatarReady)c.drawImage(avatar,788,35,235,235);
   c.textAlign='left';
   c.fillStyle='#fff0cc';c.font='700 46px Fraunces, Georgia, serif';c.fillText('PPEC QUIZ',88,105);

@@ -42,6 +42,7 @@ function setup() {
   let historyIndex = 0;
   const canvasText = [];
   const canvasImages = [];
+  const canvasFills = [];
   const objectUrls = [];
   let downloadClicked = false;
   const nodes = new Map();
@@ -67,7 +68,7 @@ function setup() {
           width: 0, height: 0,
           getContext: () => ({
             createLinearGradient: () => ({ addColorStop() {} }),
-            fillRect() {}, strokeRect() {}, beginPath() {}, arc() {}, fill() {},
+            fillRect(...args) { canvasFills.push({ color: this.fillStyle, args }); }, strokeRect() {}, beginPath() {}, arc() {}, fill() {},
             drawImage(image, ...args) { canvasImages.push({ src: image.src, args }); },
             fillText(text) { canvasText.push(text); }
           }),
@@ -98,7 +99,7 @@ function setup() {
   vm.runInContext(source, context);
   const state = () => vm.runInContext('state', context);
   const submit = answer => { get('answer-input').value = answer; get('answer-form').listeners.submit({ preventDefault() {} }); };
-  return { get, buttons, state, submit, canvasText, canvasImages, objectUrls, wasDownloaded: () => downloadClicked,
+  return { get, buttons, state, submit, canvasText, canvasImages, canvasFills, objectUrls, wasDownloaded: () => downloadClicked,
     rerender: () => vm.runInContext('render()', context),
     startTimed: index => { buttons[index].click(); vm.runInContext('finishCountdown()', context); },
     advance: ms => { now += ms; interval?.(); },
@@ -178,6 +179,7 @@ test('Letter and trail share cards use correct-answer scores', async () => {
 });
 
 test('Each share card shows its game art between the dividers and a Jonabot avatar', async () => {
+  const backgrounds = new Set();
   for (const game of ['anagrams', 'catchphrase', 'vowels', 'trails']) {
     const app = setup();
     app.evaluate(`Object.assign(state,{game:'${game}',mode:'quiz',score:4,completed:10,elapsedMs:91000})`);
@@ -186,7 +188,11 @@ test('Each share card shows its game art between the dividers and a Jonabot avat
     assert.ok(art, `${game} art missing`);
     assert.ok(art.args[1] > 283 && art.args[1] + art.args[3] < 756, `${game} art crossed a divider`);
     assert.ok(app.canvasImages.some(image => image.src.includes('jonabot-avatar.png')));
+    const background = app.canvasFills.find(fill => fill.args.join(',') === '0,0,1080,1080');
+    assert.ok(background, `${game} background missing`);
+    backgrounds.add(background.color);
   }
+  assert.equal(backgrounds.size, 4, 'Every game needs its own share card background colour');
 });
 
 test('Share card uses native file sharing when the browser supports it', async () => {
