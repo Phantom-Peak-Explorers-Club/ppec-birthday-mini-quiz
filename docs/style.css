@@ -191,8 +191,8 @@ footer{text-align:center;padding:0 0 25px;color:#81758b;font:600 10px 'IBM Plex 
 .share-preview{display:flex;width:min(100%,380px);aspect-ratio:1/1;min-height:0;margin:0 auto 14px;padding:0;text-align:left;cursor:pointer}
 .share-preview:hover{filter:brightness(1.08)}
 .share-preview:focus-visible{outline:3px solid var(--game-accent);outline-offset:4px}
-.share-preview .share-content{width:78%;height:100%;justify-content:center;padding:18px 0 18px 19px;gap:5px}
-.share-preview .share-art{width:50%;right:-34px;bottom:2%;height:68%}
+.share-preview .share-content{width:64%;height:100%;justify-content:center;padding:18px 0 18px 19px;gap:5px}
+.share-preview .share-art{width:45%;right:-28px;bottom:2%;height:68%}
 .share-preview .share-brand{font-size:9px}
 .share-preview .share-game{margin:6px 0 1px;font-size:clamp(25px,3vw,31px)}
 .share-preview .share-score{font-size:43px}
