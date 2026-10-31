@@ -134,7 +134,7 @@ test('Graphical share card renders game, mode, score, question count, and time a
   assert.equal(canvas.height, 1080);
   await app.evaluate('shareCard()');
   assert.equal(app.wasDownloaded(), true);
-  assert.match(app.get('share-status').textContent, /PNG/);
+  assert.match(app.get('share-status').textContent, /ppec-quiz-score\.png/);
   assert.ok(app.canvasText.some(text => text.includes('Say What You See?')));
   assert.ok(app.canvasText.some(text => text.includes('UNLIMITED')));
   assert.ok(app.canvasText.some(text => text.includes('47 PTS')));
@@ -175,12 +175,24 @@ test('Share card uses native file sharing when the browser supports it', async (
   assert.equal(app.get('share-status').textContent, 'Score card ready to share.');
 });
 
+test('Desktop Share copies the PNG when native file sharing is unavailable', async () => {
+  const app = setup();
+  app.evaluate("Object.assign(state,{game:'trails',mode:'quiz',score:4,completed:10,elapsedMs:80000})");
+  app.evaluate("globalThis.ClipboardItem=class { constructor(data){this.data=data} }; navigator.clipboard={write:async items=>{globalThis.copiedImage=items[0].data['image/png']}};");
+  await app.get('share-button').click();
+  assert.equal(app.wasDownloaded(), false);
+  assert.strictEqual(app.evaluate('copiedImage'), app.objectUrls[0].blob);
+  assert.match(app.get('share-status').textContent, /Image copied/);
+  await app.get('copy-image-button').click();
+  assert.match(app.get('share-status').textContent, /Image copied/);
+});
+
 test('The result tile itself shares and Save PNG bypasses native sharing', async () => {
   const app = setup();
   app.evaluate("Object.assign(state,{game:'trails',mode:'quiz',score:4,completed:10,elapsedMs:80000})");
   await app.get('share-preview').click();
   assert.equal(app.wasDownloaded(), true);
-  assert.match(app.get('share-status').textContent, /downloaded as a PNG/);
+  assert.match(app.get('share-status').textContent, /saved to Downloads/);
   const direct = setup();
   direct.evaluate("Object.assign(state,{game:'vowels',mode:'quiz',score:4,completed:10,elapsedMs:80000})");
   direct.evaluate('navigator.canShare=() => true; navigator.share=async () => { throw Error("Native share should not run"); }');

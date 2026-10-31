@@ -431,6 +431,7 @@ async function shareCard(preferNative=true){
     try{
       const file=new File([blob],'ppec-quiz-score.png',{type:'image/png'});
       if(navigator.canShare({files:[file]})){
+        status.textContent='Opening your share options…';
         await navigator.share({files:[file],text:shareText(),title:'PPEC Quiz score'});
         status.textContent='Score card ready to share.';return;
       }
@@ -438,11 +439,30 @@ async function shareCard(preferNative=true){
       if(error.name==='AbortError'){status.textContent='Sharing cancelled. Use Save PNG to download the card.';return}
     }
   }
+  if(preferNative&&await copyShareImage(blob))return;
+  downloadShareImage(blob);
+}
+async function copyShareImage(blob){
+  if(typeof ClipboardItem!=='function'||!navigator.clipboard?.write)return false;
+  try{
+    await navigator.clipboard.write([new ClipboardItem({'image/png':blob})]);
+    $('share-status').textContent='Image copied. Paste it into Discord or a post.';
+    return true;
+  }catch{return false}
+}
+async function copyImage(){
+  const status=$('share-status');status.textContent='Preparing image to copy…';
+  const blob=await (shareBlobPromise||prepareShareCard());
+  if(!blob){status.textContent='Could not make the image. Try Save PNG.';return}
+  if(!await copyShareImage(blob))status.textContent='Image copying is unavailable here. Use Save PNG.';
+}
+function downloadShareImage(blob){
+  const status=$('share-status');
   try{
     const url=URL.createObjectURL(blob);
     const link=document.createElement('a');link.href=url;link.download='ppec-quiz-score.png';document.body.append(link);link.click();link.remove();
     setTimeout(()=>URL.revokeObjectURL(url),1000);
-    status.textContent='Score card downloaded as a PNG.';
+    status.textContent='Score card saved to Downloads as ppec-quiz-score.png.';
   }catch{status.textContent='Download unavailable here. Try Copy result or open the quiz in your browser.'}
 }
 async function copyResult(){try{await navigator.clipboard.writeText(shareText());$('share-status').textContent='Result copied.'}catch{$('share-status').textContent='Copy is unavailable here; use the share card button to download an image.'}}
@@ -456,6 +476,7 @@ $('again-button').addEventListener('click',()=>start(state.game,state.mode));
 $('share-button').addEventListener('click',()=>shareCard());
 $('share-preview').addEventListener('click',()=>shareCard());
 $('download-button').addEventListener('click',()=>shareCard(false));
+$('copy-image-button').addEventListener('click',copyImage);
 $('copy-button').addEventListener('click',copyResult);
 for(const id of ['home-button','back-button','other-button'])$(id).addEventListener('click',()=>show('home'));
 if(window.history?.replaceState)window.history.replaceState({ppecScreen:'home'},'',window.location?window.location.pathname+window.location.search:undefined);
