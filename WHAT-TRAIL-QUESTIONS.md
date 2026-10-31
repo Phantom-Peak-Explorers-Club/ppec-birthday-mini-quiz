@@ -132,7 +132,7 @@ The correct answer is shown in **bold** for review. The app shuffles the three c
 
 ## 22. The Wereplatypus
 
-**Clue:** Rexford, the old Plat-Man was recreated by Dr Silver and JonaLabs. Rexford now goes by Gerald and writes greeting cards after running away due to the stress of not living up to Silver’s evil standards.
+**Clue:** Dr Silver and JonaLabs create a new Plat-Man experiment based on Rexford. Unable to live up to Silver’s expectations, the new creation leaves and begins writing greeting cards under the name Gerald.
 
 **Choices:** **The Wereplatypus** · The Plat-Man · Absnormal Abduction
 

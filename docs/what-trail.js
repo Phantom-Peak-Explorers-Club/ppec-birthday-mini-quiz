@@ -275,7 +275,7 @@ const WHAT_TRAILS = [
   {
     "id": "2022-autumn-6",
     "answer": "The Wereplatypus",
-    "clue": "Rexford, the old Plat-Man was recreated by Dr Silver and JonaLabs. Rexford now goes by Gerald and writes greeting cards after running away due to the stress of not living up to Silver’s evil standards.",
+    "clue": "Dr Silver and JonaLabs create a new Plat-Man experiment based on Rexford. Unable to live up to Silver’s expectations, the new creation leaves and begins writing greeting cards under the name Gerald.",
     "options": [
       "The Wereplatypus",
       "The Plat-Man",

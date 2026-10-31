@@ -74,6 +74,14 @@ function setup() {
   };
 }
 
+test('Wereplatypus clue attributes the greeting cards to the new experiment', () => {
+  const questions = vm.runInNewContext(fs.readFileSync(path.join(__dirname, '..', 'docs', 'what-trail.js'), 'utf8') + '\nWHAT_TRAILS');
+  const clue = questions.find(question => question.answer === 'The Wereplatypus').clue;
+  assert.match(clue, /new Plat-Man experiment/);
+  assert.match(clue, /new creation leaves.*greeting cards.*Gerald/);
+  assert.doesNotMatch(clue, /Rexford now goes by Gerald/);
+});
+
 test('Quiz Round uses ten questions and includes game, mode, score, and time in results', () => {
   const app = setup();
   app.buttons[0].click();
