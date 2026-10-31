@@ -82,3 +82,18 @@ footer{text-align:center;padding:0 0 25px;color:#81758b;font:600 10px 'IBM Plex 
 @media(max-width:380px){.instrument small{font-size:6px}.instrument b{font-size:9px}.console-serial{font-size:7px}}
 .game-card:nth-child(3){opacity:1}
 .vowel-hint{margin:-2px 0 15px;color:#c4d3c5;font:700 10px 'IBM Plex Mono',monospace;letter-spacing:.11em;text-align:center}
+.game-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.game-card{min-height:290px}
+.trail-icon span{font:700 38px Georgia,serif;margin:0 8px}.trail-icon span:nth-child(2){font-size:46px;transform:rotate(-8deg)}
+.trail-game-card .card-icon{background-color:#2d2419;color:#f2cf7f}.trail-game-card .card-kicker{color:#e9c882}
+.game-console[data-game="trails"] .clue{min-height:170px;padding:24px 30px}
+.trail-recap{max-width:700px;margin:0;color:#c5f0d0;font:500 clamp(17px,2.2vw,23px)/1.45 Georgia,serif;text-align:center;text-shadow:0 0 12px #85d3a35c}
+.trail-choices{display:grid;gap:9px;margin:17px 0 0}
+.trail-choice{display:flex;align-items:center;gap:16px;min-height:56px;padding:10px 16px;border:1px solid #a27b48;border-radius:5px;background:linear-gradient(110deg,#2e2426,#1a1b1d);box-shadow:inset 0 1px #e2ba7540;color:#f3e6c9;text-align:left;font:700 16px Georgia,serif}
+.trail-choice:hover:not(:disabled),.trail-choice:focus-visible{background:#5b3c32;border-color:#e8c17b}
+.choice-letter{display:grid;place-items:center;flex:none;width:31px;height:31px;border:1px solid #e1bc78;border-radius:50%;background:#4b3328;color:#f9d88e;font:700 14px 'IBM Plex Mono',monospace}
+.trail-choice.right{border-color:#80d0a0;background:#19372f;color:#d2f5d9}.trail-choice.right .choice-letter{border-color:#9ee7b5;background:#265844;color:#d2f5d9}
+.trail-choice.wrong{border-color:#e18c77;background:#4a2929;color:#f6d1c5}
+.trail-choice:disabled{cursor:default}
+@media(max-width:900px){.game-card:nth-child(3){grid-column:auto;min-height:290px}}
+@media(max-width:640px){.game-grid{grid-template-columns:1fr}.game-card,.game-card:nth-child(3){min-height:0}.game-console[data-game="trails"] .clue{padding:18px;min-height:155px}.trail-recap{font-size:17px}.trail-choice{font-size:14px;min-height:52px;padding:8px 11px;gap:10px}.trail-icon span{font-size:25px;margin:0 1px}.trail-icon span:nth-child(2){font-size:29px}}

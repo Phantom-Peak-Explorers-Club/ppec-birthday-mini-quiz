@@ -148,7 +148,7 @@ function tickTimer(){
 }
 function startTimer(){stopTimer();questionDeadline=Date.now()+30000;tickTimer();questionTimer=setInterval(tickTimer,200)}
 function show(id){if(id!=='game')stopTimer();for(const screen of document.querySelectorAll('.screen'))screen.hidden=screen.id!==id;window.scrollTo({top:0,behavior:'instant'})}
-function gameName(){return state.game==='anagrams'?'Littlefield’s Letters':state.game==='vowels'?'Missing Vowels':'Picture Catchphrase'}
+function gameName(){return state.game==='anagrams'?'Littlefield’s Letters':state.game==='vowels'?'Missing Vowels':state.game==='trails'?'What Trail?':'Picture Catchphrase'}
 function modeName(){return state.mode==='quiz'?'Quiz Round':'Unlimited'}
 function duration(ms){const seconds=Math.floor(ms/1000);return `${Math.floor(seconds/60)}:${String(seconds%60).padStart(2,'0')}`}
 function letterRow(value){
@@ -188,10 +188,11 @@ function start(game,mode){
   let source;
   if(game==='anagrams')source=[1,2,3,4].flatMap(tier=>shuffle(ANAGRAMS.filter(q=>q.tier===tier)));
   else if(game==='vowels')source=vowelQuestions();
+  else if(game==='trails')source=shuffle(WHAT_TRAILS);
   else source=shuffle(PICTURES);
   if(!source.length || mode==='quiz'&&source.length<10)return;
   const questions=mode==='quiz'&&game==='anagrams'?[2,3,3,2].flatMap((count,tier)=>source.filter(q=>q.tier===tier+1).slice(0,count)):mode==='quiz'?source.slice(0,10):source;
-  state={game,mode,questions,index:0,score:0,points:0,completed:0,openedTiles:0,tileButtons:[],answered:false,startedAt:Date.now(),elapsedMs:null,exhausted:false};
+  state={game,mode,questions,index:0,score:0,points:0,completed:0,openedTiles:0,tileButtons:[],choiceButtons:[],answered:false,startedAt:Date.now(),elapsedMs:null,exhausted:false};
   show('game');render();
 }
 function render(){
@@ -201,13 +202,14 @@ function render(){
   state.answered=false;
   state.openedTiles=0;
   state.tileButtons=[];
+  state.choiceButtons=[];
   $('game-label').textContent=`${gameName().toUpperCase()} · ${modeName().toUpperCase()}`;
   $('question-count').textContent=`${index+1} / ${questions.length}`;
   $('score-label').textContent=game==='catchphrase'?`${state.points} POINTS`:`${score} CORRECT`;
   $('progress-line').hidden=mode==='unlimited';
   $('progress-fill').style.width=`${index/questions.length*100}%`;
-  $('question-kind').textContent=game==='anagrams'?'UNSCRAMBLE THIS':game==='vowels'?'RESTORE THE VOWELS':'NAME THE PICTURE CLUE';
-  $('game-title').textContent=game==='anagrams'?'Littlefield’s Letters':game==='vowels'?'Missing Vowels':'Picture Catchphrase';
+  $('question-kind').textContent=game==='anagrams'?'UNSCRAMBLE THIS':game==='vowels'?'RESTORE THE VOWELS':game==='trails'?'IDENTIFY THE TRAIL':'NAME THE PICTURE CLUE';
+  $('game-title').textContent=gameName();
   $('game-console').dataset.game=game;
   $('question-card').dataset.game=game;
   $('vowel-hint').hidden=game!=='vowels';
@@ -233,18 +235,28 @@ function render(){
       state.tileButtons.push(tile);cover.append(tile);
     }
     stage.append(img,cover);$('clue').append(stage);
+  }else if(game==='trails'){
+    const recap=document.createElement('p');recap.className='trail-recap';recap.textContent=q.clue;$('clue').append(recap);
   }else $('clue').append(game==='anagrams'?letterRow(q.scramble):letterRow(q.clue));
+  $('trail-choices').replaceChildren();$('trail-choices').hidden=game!=='trails';
+  if(game==='trails')shuffle(q.options).forEach((title,choiceIndex)=>{
+    const button=document.createElement('button');button.type='button';button.className='trail-choice';button.dataset.answer=title;
+    const letter=document.createElement('span');letter.className='choice-letter';letter.textContent='ABC'[choiceIndex];
+    const label=document.createElement('span');label.textContent=title;button.append(letter,label);
+    button.addEventListener('click',()=>{if(!state.answered){if(title!==q.answer)button.classList.add('wrong');finishAnswer(title===q.answer)}});
+    state.choiceButtons.push(button);$('trail-choices').append(button);
+  });
   const credit=game==='vowels'?(q.contributors||[]).join(', '):q.contributor;
   $('question-credit').hidden=!credit;
   $('question-credit').textContent=credit?`Question contributed by ${credit}`:'';
   $('reveal-stats').hidden=game!=='catchphrase';
   $('reveal-stats').textContent=game==='catchphrase'?'CHOOSE PANELS TO REVEAL · 24 POSSIBLE POINTS':'';
-  $('answer-form').hidden=false;$('answer-input').value='';
+  $('answer-form').hidden=game==='trails';$('answer-input').value='';
   $('answer-input').disabled=game==='catchphrase';$('answer-submit').disabled=game==='catchphrase';
   $('feedback').hidden=true;$('feedback').className='feedback';
   $('next-button').hidden=true;$('reveal-button').hidden=false;
   $('timer-label').textContent='30s';$('timer-fill').style.width='100%';
-  $('answer-input').focus();if(game!=='catchphrase')startTimer();
+  if(game!=='trails')$('answer-input').focus();if(game!=='catchphrase')startTimer();
 }
 function finishAnswer(correct,revealed=false,timedOut=false){
   if(state.answered)return;
@@ -253,6 +265,7 @@ function finishAnswer(correct,revealed=false,timedOut=false){
   state.completed=state.index+1;
   if(correct){state.score++;if(state.game==='catchphrase')state.points+=Math.max(0,24-state.openedTiles)}
   if(state.game==='catchphrase')for(const tile of state.tileButtons){tile.disabled=true;tile.classList.add('open')}
+  if(state.game==='trails')for(const button of state.choiceButtons){button.disabled=true;if(button.dataset.answer===q.answer)button.classList.add('right')}
   const ends=state.mode==='unlimited'&&!correct||state.index===state.questions.length-1;
   if(ends){state.elapsedMs=Date.now()-state.startedAt;state.exhausted=state.mode==='unlimited'&&correct&&state.index===state.questions.length-1}
   $('answer-form').hidden=true;$('reveal-button').hidden=true;
@@ -276,7 +289,7 @@ function results(){
   $('share-score').textContent=state.game==='catchphrase'?`${state.points} points`:`${state.score} right`;
   $('share-detail').textContent=`${state.score} correct · ${state.completed} ${state.completed===1?'question':'questions'} completed`;
   $('share-time').textContent=`Time ${duration(state.elapsedMs)}`;
-  $('result-note').textContent=state.exhausted?'More questions coming soon. You cleared every clue currently in the game!':state.mode==='unlimited'?'Your run ended on that clue. Give it another go!':state.game==='anagrams'?'Littlefield would be proud of your letter work.':state.game==='vowels'?'The missing letters have been found.':'You’ve had a good look around the Peak.';
+  $('result-note').textContent=state.exhausted?'More questions coming soon. You cleared every clue currently in the game!':state.mode==='unlimited'?'Your run ended on that clue. Give it another go!':state.game==='anagrams'?'Littlefield would be proud of your letter work.':state.game==='vowels'?'The missing letters have been found.':state.game==='trails'?'Another story recovered from the archive.':'You’ve had a good look around the Peak.';
   $('results-title').textContent=state.exhausted?'You cleared the set!':state.score>=8?'A fine showing, explorer!':state.score>=5?'Nicely done, explorer!':'The Peak has more secrets…';
   $('share-status').textContent='';show('results');
 }

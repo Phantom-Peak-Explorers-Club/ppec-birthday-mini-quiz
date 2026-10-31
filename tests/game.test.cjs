@@ -4,7 +4,8 @@ const fs = require('node:fs');
 const path = require('node:path');
 const vm = require('node:vm');
 
-const source = fs.readFileSync(path.join(__dirname, '..', 'docs', 'app.js'), 'utf8');
+const source = fs.readFileSync(path.join(__dirname, '..', 'docs', 'what-trail.js'), 'utf8') + '\n' +
+  fs.readFileSync(path.join(__dirname, '..', 'docs', 'app.js'), 'utf8');
 
 function makeElement(dataset = {}) {
   return {
@@ -31,7 +32,9 @@ function setup() {
     makeElement({ game: 'catchphrase', mode: 'quiz' }),
     makeElement({ game: 'catchphrase', mode: 'unlimited' }),
     makeElement({ game: 'vowels', mode: 'quiz' }),
-    makeElement({ game: 'vowels', mode: 'unlimited' })
+    makeElement({ game: 'vowels', mode: 'unlimited' }),
+    makeElement({ game: 'trails', mode: 'quiz' }),
+    makeElement({ game: 'trails', mode: 'unlimited' })
   ];
   const screens = ['home', 'game', 'results'].map(get);
   const context = vm.createContext({
@@ -103,8 +106,8 @@ test('Graphical share card renders game, mode, score, question count, and time a
   assert.ok(app.canvasText.some(text => text.includes('2:03')));
 });
 
-test('Anagram and Missing Vowels share cards use correct-answer scores', async () => {
-  for (const [game, label] of [['anagrams', 'Littlefield’s Letters'], ['vowels', 'Missing Vowels']]) {
+test('Letter and trail share cards use correct-answer scores', async () => {
+  for (const [game, label] of [['anagrams', 'Littlefield’s Letters'], ['vowels', 'Missing Vowels'], ['trails', 'What Trail?']]) {
     const app = setup();
     app.evaluate(`Object.assign(state,{game:'${game}',mode:'quiz',score:8,completed:10,elapsedMs:91000})`);
     await app.evaluate('drawShareCard()');
@@ -223,4 +226,39 @@ test('All anagram scrambles use exactly the answer letters and future picture cl
   assert.equal(app.evaluate("isCorrect('Copperr', {answer:'Copper'})"), true);
   assert.equal(app.evaluate("isCorrect('Rockbolt', {answer:'Rockbolt Theatre'})"), true);
   assert.equal(app.evaluate("isCorrect('wrong place', {answer:'Rockbolt Theatre'})"), false);
+});
+
+test('What Trail? has 187 unique clues with three distinct choices and runs as a ten-question quiz', () => {
+  const app = setup();
+  assert.equal(app.evaluate('WHAT_TRAILS.length'), 187);
+  assert.equal(app.evaluate('new Set(WHAT_TRAILS.map(q => q.id)).size'), 187);
+  assert.equal(app.evaluate('WHAT_TRAILS.every(q => q.options.length === 3 && new Set(q.options).size === 3 && q.options.includes(q.answer))'), true);
+  app.buttons[6].click();
+  assert.equal(app.state().questions.length, 10);
+  assert.equal(app.state().choiceButtons.length, 3);
+  assert.equal(app.get('answer-form').hidden, true);
+  const answer = app.state().questions[0].answer;
+  app.state().choiceButtons.find(button => button.dataset.answer === answer).click();
+  assert.equal(app.state().score, 1);
+});
+
+test('What Trail? Unlimited ends on a wrong choice and counts completed questions', () => {
+  const app = setup();
+  app.buttons[7].click();
+  assert.equal(app.state().questions.length, 187);
+  const answer = app.state().questions[0].answer;
+  app.state().choiceButtons.find(button => button.dataset.answer !== answer).click();
+  app.get('next-button').click();
+  assert.equal(app.get('share-game').textContent, 'What Trail?');
+  assert.equal(app.get('share-score').textContent, '0 right');
+  assert.equal(app.get('share-detail').textContent, '0 correct · 1 question completed');
+});
+
+test('What Trail? uses the 30-second question timer', () => {
+  const app = setup();
+  app.buttons[7].click();
+  app.advance(30000);
+  assert.equal(app.get('feedback').children[0].textContent, 'Time’s up!');
+  app.get('next-button').click();
+  assert.equal(app.get('share-detail').textContent, '0 correct · 1 question completed');
 });
