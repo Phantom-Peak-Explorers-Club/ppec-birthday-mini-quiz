@@ -116,6 +116,15 @@ test('Anagram and Missing Vowels share cards use correct-answer scores', async (
   }
 });
 
+test('Share card uses native file sharing when the browser supports it', async () => {
+  const app = setup();
+  app.evaluate("Object.assign(state,{game:'vowels',mode:'unlimited',score:2,completed:3,elapsedMs:42000})");
+  app.evaluate("navigator.canShare=() => true; navigator.share=async payload => { if (!payload.files?.length) throw Error('No score card'); }");
+  await app.evaluate('shareCard()');
+  assert.equal(app.wasDownloaded(), false);
+  assert.equal(app.get('share-status').textContent, 'Score card ready to share.');
+});
+
 test('Unlimited ends on a mistake and awards the existing score', () => {
   const app = setup();
   app.buttons[1].click();
