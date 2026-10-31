@@ -62,6 +62,16 @@ function scrambleTerm(answer){
 }
 const anagramAnswers=new Set(ANAGRAMS.map(q=>q.answer));
 ANAGRAMS.push(...LORE_TERMS.filter(q=>q.answer.replace(/[^A-Z]/g,'').length>=5&&!anagramAnswers.has(q.answer)).map(q=>({...q,scramble:scrambleTerm(q.answer)})));
+// Short, recent titles checked against the PPEC Trail Notes archive.
+const RECENT_TRAIL_ANAGRAMS = [
+  ['Wild Card',1],['Double Act',1],['Pocket Change',2],['Off The Rails',2],
+  ['Access Denied',2],['Homeward Bound',2],['Over and Over',2]
+].map(([title,tier])=>{
+  const trail=WHAT_TRAILS.find(question=>question.answer===title);
+  const answer=trail.answer.toUpperCase();
+  return {answer,scramble:scrambleTerm(answer),tier,source:trail.source,year:trail.year,season:trail.season};
+});
+ANAGRAMS.push(...RECENT_TRAIL_ANAGRAMS);
 const PICTURES = [
   ['Copper','Copper.jpg'],['Dr Winter','Dr Winter.jpg'],['Hogwood','Hogwood.jpg'],
   ['Leadbelly','Leadbelly.jpg'],['Littlefield','Littlefield.jpg'],['Lovehart','Lovehart.jpg'],
@@ -82,6 +92,16 @@ const MISSING_VOWELS = [
   {answer:'JONACOIN EXCHANGE'},{answer:'DUNGEONS AND DIRIGIBLES'},{answer:'PINKERTON AND BRUTUS'},
   {answer:'THE CODEX MAGNIFICUS'},{answer:'CHURCH OF THE COSMIC PLATYPUS'},{answer:'FATHER PLATMAS'}
 ];
+// Familiar phrases stay solvable even for players who have not played these trails.
+const ACCESSIBLE_TRAIL_VOWELS = [
+  'Wild Card','Double Act','Pocket Change','Off The Rails','Access Denied',
+  'Homeward Bound','Over and Over','No Strings Attached','Time After Time',
+  'Death and Taxes','Love Is Blind','Failure to Launch','The Final Question'
+].map(title=>{
+  const trail=WHAT_TRAILS.find(question=>question.answer===title);
+  return {answer:trail.answer.toUpperCase(),source:trail.source,year:trail.year,season:trail.season};
+});
+MISSING_VOWELS.push(...ACCESSIBLE_TRAIL_VOWELS);
 const vowelAnswers=new Set(MISSING_VOWELS.map(q=>q.answer));
 MISSING_VOWELS.push(...LORE_TERMS.filter(q=>!vowelAnswers.has(q.answer)).map(q=>({answer:q.answer})));
 const $=id=>document.getElementById(id);
@@ -135,7 +155,7 @@ function isCorrect(response,q){
 function withoutVowels(s){return s.normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toUpperCase().replace(/[AEIOU]/g,'')}
 function vowelSkeleton(answer){return normal(withoutVowels(answer))}
 function vowelQuestions(){
-  const allAnswers=[...MISSING_VOWELS,...ANAGRAMS,...PICTURES];
+  const allAnswers=[...MISSING_VOWELS,...ANAGRAMS,...PICTURES,...WHAT_TRAILS];
   const byClue=new Map();
   for(const question of MISSING_VOWELS){
     const clue=vowelSkeleton(question.answer);
@@ -292,6 +312,44 @@ function renderPlatyKeyboard(){
     key.addEventListener('click',()=>guessPlatyLetter(letter));holder.append(key);
   }
 }
+function animatePlatySave(saved){
+  const panel=$('platy-reveal');
+  const count=$('platy-reveal-count');
+  const icons=$('platy-reveal-icons');
+  icons.replaceChildren();count.textContent='0';
+  for(let index=0;index<6;index++){
+    const icon=document.createElement('img');icon.src='./assets/platy-life.png';icon.alt='';
+    icon.className=index<saved?'waiting':'lost';icons.append(icon);
+  }
+  const row=$('clue').children[0];
+  const reduced=window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+  const revealTotal=()=>{
+    $('platy-keyboard').hidden=true;panel.hidden=false;count.textContent=String(saved);
+    [...icons.children].forEach((icon,index)=>{if(index<saved)icon.className='counted'});
+    $('score-label').textContent=`${state.points} SAVED`;
+  };
+  if(!row?.animate||reduced){revealTotal();return null}
+  row.classList.add('solving');
+  [...row.children].flatMap(word=>[...word.children]).forEach((tile,index)=>{tile.style.animationDelay=`${Math.min(index,12)*15}ms`});
+  const runId=state.runId,questionIndex=state.index;
+  return row.animate([
+    {transform:'translateX(0) scale(1)',filter:'brightness(1)'},
+    {offset:.28,transform:'translateX(-3px) scale(1.025)',filter:'brightness(1.35)'},
+    {offset:.52,transform:'translateX(3px) scale(1.035)',filter:'brightness(1.65)'},
+    {transform:'translateX(0) scale(1)',filter:'brightness(1.1)'}
+  ],{duration:880,easing:'cubic-bezier(.2,.8,.2,1)'}).finished.catch(()=>{}).then(async()=>{
+    if(state.runId!==runId||state.index!==questionIndex)return;
+    row.classList.remove('solving');
+    $('platy-keyboard').hidden=true;panel.hidden=false;
+    for(let index=0;index<saved;index++){
+      await new Promise(resolve=>setTimeout(resolve,135));
+      if(state.runId!==runId||state.index!==questionIndex)return;
+      icons.children[index].className='counted';
+      count.textContent=String(index+1);
+    }
+    $('score-label').textContent=`${state.points} SAVED`;
+  });
+}
 function guessPlatyLetter(letter){
   if(state.game!=='platy'||state.answered||state.countingDown||state.platyGuessed.has(letter))return;
   state.platyGuessed.add(letter);
@@ -340,7 +398,7 @@ function render(){
     $('vowel-hint').textContent=`${count} ${count===1?'LETTER':'LETTERS'}`;
   }
   $('clue').replaceChildren();
-  $('platy-lives').hidden=game!=='platy';$('platy-keyboard').hidden=game!=='platy';
+  $('platy-lives').hidden=game!=='platy';$('platy-keyboard').hidden=game!=='platy';$('platy-reveal').hidden=true;
   if(game==='platy'){
     state.platyMisses=0;state.platyGuessed=new Set();
     renderPlatyName(q.answer);renderPlatyLives();renderPlatyKeyboard();
@@ -394,7 +452,7 @@ function finishAnswer(correct,revealed=false,timedOut=false,response=''){
   if(state.game==='platy'){
     if(revealed)state.platyMisses=6;
     renderPlatyName(q.answer,true);renderPlatyLives();renderPlatyKeyboard();
-    $('score-label').textContent=`${state.points} SAVED`;
+    if(!correct)$('score-label').textContent=`${state.points} SAVED`;
   }
   if(state.game==='catchphrase'){
     for(const tile of state.tileButtons){tile.disabled=true;tile.classList.add('open')}
@@ -434,6 +492,10 @@ function finishAnswer(correct,revealed=false,timedOut=false,response=''){
     const accepted=correct?q.accepted.find(answer=>normal(answer)===normal(response)):null;
     const animation=animateVowels(accepted||q.answer);
     if(animation){animation.then(finishReveal);return}
+  }
+  if(state.game==='platy'&&correct){
+    const animation=animatePlatySave(6-state.platyMisses);
+    if(animation){const runId=state.runId,questionIndex=state.index;animation.then(()=>{if(state.runId===runId&&state.index===questionIndex)finishReveal()});return}
   }
   finishReveal();
 }

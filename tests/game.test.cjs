@@ -375,8 +375,8 @@ test('Missing Vowels removes A E I O U while preserving word breaks', () => {
   const app = setup();
   assert.equal(app.buttons[4].disabled, false);
   assert.equal(app.evaluate("withoutVowels('PHANTOM PEAK')"), 'PHNTM PK');
-  assert.equal(app.evaluate('MISSING_VOWELS.length'), 103);
-  assert.equal(app.evaluate('vowelQuestions().length'), 102);
+  assert.equal(app.evaluate('MISSING_VOWELS.length'), 116);
+  assert.ok(app.evaluate('vowelQuestions().length') >= 115);
   assert.equal(app.evaluate("MISSING_VOWELS.some(q => q.answer === 'TERENCE THE TALKING PLATYPUS')"), true);
   app.startTimed(4);
   assert.equal(app.state().questions.length, 10);
@@ -414,7 +414,7 @@ test('Missing Vowels drops every vowel at once before showing feedback', async (
 
 test('All anagram scrambles use exactly the answer letters and future picture clues get typo tolerance', () => {
   const app = setup();
-  assert.equal(app.evaluate('ANAGRAMS.length'), 87);
+  assert.equal(app.evaluate('ANAGRAMS.length'), 94);
   assert.equal(app.evaluate("ANAGRAMS.every(q => [...q.scramble.replaceAll(' ','')].sort().join('') === [...q.answer.replaceAll(' ','')].sort().join(''))"), true);
   app.buttons[3].click();
   assert.equal(app.evaluate("isCorrect('Copperr', {answer:'Copper'})"), true);
@@ -506,4 +506,45 @@ test('Save-A-Platy Unlimited ends after six mistakes and awards the accumulated 
   assert.equal(app.get('share-score').textContent, '6 platypuses saved');
   assert.equal(app.get('share-detail').textContent, '1 trail solved · 2 questions completed');
   assert.equal(app.get('share-game').textContent, 'Save-A-Platy');
+});
+
+test('Save-A-Platy shimmers the solved name, then counts each platypus before feedback', async () => {
+  const app = setup();
+  app.evaluate("const create=document.createElement.bind(document);document.createElement=tag=>{const el=create(tag);if(tag==='div')el.animate=()=>({finished:Promise.resolve()});return el};setTimeout=fn=>{fn();return 1}");
+  app.buttons[8].click();
+  const counts=[];let current='';
+  Object.defineProperty(app.get('platy-reveal-count'), 'textContent', {
+    get(){return current},set(value){current=value;counts.push(value)}
+  });
+  const answer = app.state().questions[0].answer.normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toUpperCase();
+  const miss = [...'ABCDEFGHIJKLMNOPQRSTUVWXYZ'].find(letter => !answer.includes(letter));
+  app.get('platy-keyboard').children.find(key => key.textContent === miss).click();
+  for (const letter of [...new Set([...answer].filter(letter => /^[A-Z]$/.test(letter)))]) app.keydown(letter);
+  assert.equal(app.get('feedback').hidden, true);
+  await new Promise(setImmediate);
+  assert.deepEqual(counts, ['0','1','2','3','4','5']);
+  assert.equal(app.get('platy-reveal').hidden, false);
+  assert.equal(app.get('platy-keyboard').hidden, true);
+  assert.equal(app.get('score-label').textContent, '5 SAVED');
+  assert.equal(app.get('feedback').hidden, false);
+});
+
+test('Save-A-Platy shows the full saved count immediately with reduced motion', () => {
+  const app = setup();
+  app.evaluate('window.matchMedia=()=>({matches:true})');
+  app.buttons[8].click();
+  const answer = app.state().questions[0].answer.normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toUpperCase();
+  for (const letter of [...new Set([...answer].filter(letter => /^[A-Z]$/.test(letter)))]) app.keydown(letter);
+  assert.equal(app.get('platy-reveal-count').textContent, '6');
+  assert.equal(app.get('feedback').hidden, false);
+});
+
+test('Recent trail anagrams and guessable trail vowel clues match archived titles', () => {
+  const app = setup();
+  assert.equal(app.evaluate('RECENT_TRAIL_ANAGRAMS.length'), 7);
+  assert.equal(app.evaluate('RECENT_TRAIL_ANAGRAMS.every(q=>q.year>=2025&&WHAT_TRAILS.some(trail=>trail.answer.toUpperCase()===q.answer))'), true);
+  assert.equal(app.evaluate('ACCESSIBLE_TRAIL_VOWELS.length'), 13);
+  assert.equal(app.evaluate('ACCESSIBLE_TRAIL_VOWELS.every(q=>q.year>=2024&&WHAT_TRAILS.some(trail=>trail.answer.toUpperCase()===q.answer))'), true);
+  assert.equal(app.evaluate("vowelQuestions().some(q=>q.answer==='ACCESS DENIED'&&q.clue==='CCSS DND')"), true);
+  assert.equal(app.evaluate("vowelQuestions().some(q=>q.answer==='NO STRINGS ATTACHED')"), true);
 });
