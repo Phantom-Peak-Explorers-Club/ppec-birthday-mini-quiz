@@ -389,6 +389,7 @@ function results(){
 }
 function shareText(){const score=state.game==='catchphrase'?`${state.points} points, ${state.score} correct`:`${state.score} correct`;return `PPEC Quiz · ${gameName()} · ${modeName()} · ${score} · ${state.completed} questions completed · ${duration(state.elapsedMs)}`}
 async function drawShareCard(){
+  await document.fonts?.load('700 72px Fraunces');
   const canvas=document.createElement('canvas');canvas.width=1080;canvas.height=1080;
   const c=canvas.getContext('2d');
   const theme=GAME_THEMES[state.game]||GAME_THEMES.anagrams;
@@ -406,25 +407,25 @@ async function drawShareCard(){
   c.globalAlpha=.12;c.fillStyle=theme.accent;c.fillRect(0,0,1080,1080);c.globalAlpha=1;
   if(avatarReady)c.drawImage(avatar,788,35,235,235);
   c.textAlign='left';
-  c.fillStyle='#fff0cc';c.font='bold 44px Georgia';c.fillText('PPEC QUIZ',88,105);
-  c.fillStyle=theme.accent;c.font='bold 27px Georgia';c.fillText(modeName().toUpperCase(),89,150);
-  c.fillStyle='#fff0cc';c.font='bold 72px Georgia';c.fillText(gameName(),86,250,710);
+  c.fillStyle='#fff0cc';c.font='700 46px Fraunces, Georgia, serif';c.fillText('PPEC QUIZ',88,105);
+  c.fillStyle=theme.accent;c.font='700 27px DM Sans, Arial, sans-serif';c.fillText(modeName().toUpperCase(),89,150);
+  c.fillStyle='#fff0cc';c.font='700 72px Fraunces, Georgia, serif';c.fillText(gameName(),86,250,680);
   c.fillStyle=theme.accent;c.fillRect(66,283,948,4);
   c.fillStyle=theme.accent;c.beginPath();c.arc(540,285,10,0,Math.PI*2);c.fill();
-  c.fillStyle='#fff0cc';c.font='bold 250px Georgia';c.fillText(String(state.game==='catchphrase'?state.points:state.score),91,566);
-  c.fillStyle=theme.accent;c.font='bold 88px Georgia';c.fillText(state.game==='catchphrase'?'POINTS':'RIGHT',95,662);
+  c.fillStyle='#fff0cc';c.font='700 250px Fraunces, Georgia, serif';c.fillText(String(state.game==='catchphrase'?state.points:state.score),91,566);
+  c.fillStyle=theme.accent;c.font='700 88px Fraunces, Georgia, serif';c.fillText(state.game==='catchphrase'?'POINTS':'RIGHT',95,662);
   if(state.game==='catchphrase'){
-    c.fillStyle='#fff0cc';c.font='bold 29px Georgia';c.fillText(`${state.score} CORRECT`,102,713);
+    c.fillStyle='#fff0cc';c.font='700 29px DM Sans, Arial, sans-serif';c.fillText(`${state.score} CORRECT`,102,713);
   }
   if(logoReady)c.drawImage(logo,555,312,430,430);
   c.fillStyle=theme.accent;c.fillRect(66,756,948,4);
   c.fillStyle=theme.accent;c.beginPath();c.arc(540,757,10,0,Math.PI*2);c.fill();
-  c.textAlign='center';c.fillStyle='#fff0cc';c.font='bold 91px Georgia';
+  c.textAlign='center';c.fillStyle='#fff0cc';c.font='700 91px Fraunces, Georgia, serif';
   c.fillText(String(state.completed),300,858);c.fillText(duration(state.elapsedMs),770,858);
-  c.fillStyle=theme.accent;c.font='bold 25px Georgia';
+  c.fillStyle=theme.accent;c.font='700 25px DM Sans, Arial, sans-serif';
   c.fillText(state.completed===1?'QUESTION COMPLETED':'QUESTIONS COMPLETED',300,898);
   c.fillText('TIME',770,898);
-  c.fillStyle='#fff0cc';c.font='bold 26px Georgia';c.fillText('PHANTOM PEAK EXPLORERS’ CLUB',540,1019,530);
+  c.fillStyle='#fff0cc';c.font='700 26px Fraunces, Georgia, serif';c.fillText('PHANTOM PEAK EXPLORERS’ CLUB',540,1019,530);
   return canvas;
 }
 function prepareShareCard(){
