@@ -258,24 +258,26 @@ test('Unlimited ends on a mistake and awards the existing score', () => {
   assert.equal(app.get('results').hidden, false);
 });
 
-test('Unlimited pictures ends after all twelve clues and credits future contributors', () => {
+test('Unlimited pictures ends after every distinct answer and credits future contributors', () => {
   const app = setup();
   app.buttons[3].click();
-  assert.equal(app.state().questions.length, 12);
+  assert.equal(app.state().questions.length, 25);
   app.state().questions[0].contributor = 'Example Explorer';
   app.rerender();
-  assert.equal(app.get('question-credit').textContent, 'Question contributed by Example Explorer');
+  assert.equal(app.get('question-credit').textContent, 'The idea for this question came from ');
+  assert.equal(app.get('question-credit').children[0].textContent, 'Example Explorer');
+  assert.equal(app.get('question-credit').children[1].textContent, ' - DM Smarty if you want your idea to be included next!');
   app.state().tileButtons[0].click();
   app.submit(app.state().questions[0].answer);
   app.get('next-button').click();
-  assert.equal(app.get('question-credit').hidden, true);
-  for (let i = 1; i < 12; i++) {
+  assert.equal(app.get('question-credit').hidden, !app.state().questions[1].contributor);
+  for (let i = 1; i < 25; i++) {
     app.state().tileButtons[0].click();
     app.submit(app.state().questions[i].answer);
     app.get('next-button').click();
   }
-  assert.equal(app.get('share-score').textContent, '276 points');
-  assert.equal(app.get('share-detail').textContent, '12 correct · 12 questions completed');
+  assert.equal(app.get('share-score').textContent, '575 points');
+  assert.equal(app.get('share-detail').textContent, '25 correct · 25 questions completed');
   assert.match(app.get('result-note').textContent, /More questions coming soon/);
 });
 
@@ -339,6 +341,29 @@ test('Catchphrase has no timer and accepts a small typo after a panel is opened'
   assert.equal(app.get('feedback').children[1].textContent, q.answer);
   assert.equal(app.get('feedback').children[2].children[0].textContent, '+23 POINTS');
   assert.match(app.get('feedback').children[2].children[1].textContent, /1 OF 24 PANELS USED/);
+});
+
+test('Picture clues include the approved set, TomB_90 ideas, and one Perigate per run', () => {
+  const app = setup();
+  assert.equal(app.evaluate('PICTURES.length'), 26);
+  assert.equal(app.evaluate('pictureQuestions().length'), 25);
+  assert.equal(app.evaluate('new Set(pictureQuestions().map(q=>normal(q.answer))).size'), 25);
+  assert.equal(app.evaluate("PICTURES.filter(q=>q.contributor==='TomB_90').map(q=>q.answer).sort().join(',')"), 'Jaspin,Perigate,Vesper');
+  assert.equal(app.evaluate("PICTURES.find(q=>q.image.includes('Perigate%20Pear%20Gate')).contributor"), undefined);
+  for (const image of ['Jaspin','Perigate','Vesper','Bellamy','Captain Book','Dungeons and Dirigibles','Finn Diesel','General Store','Halloway','Mayor Pocket','Perigate Pear Gate','Platman','RoboDoc','The Autohatter']) {
+    assert.ok(fs.existsSync(path.join(__dirname, '..', 'docs', 'assets', 'catchphrase', `${image}.jpg`)), `${image} image missing`);
+  }
+});
+
+test('All picture clues accept case, spaces, punctuation, and minor typos plus intended aliases', () => {
+  const app = setup();
+  app.buttons[3].click();
+  assert.equal(app.evaluate("PICTURES.every(q=>isCorrect('  '+q.answer.toLowerCase().replaceAll(' ','-')+'  ',q))"), true);
+  assert.equal(app.evaluate("PICTURES.every(q=>isCorrect(q.answer+'x',q))"), true);
+  assert.equal(app.evaluate("isCorrect('Pocket',PICTURES.find(q=>q.answer==='Mayor Pocket'))"), true);
+  assert.equal(app.evaluate("isCorrect('Vespa',PICTURES.find(q=>q.answer==='Vesper'))"), true);
+  assert.equal(app.evaluate("isCorrect('Dungeons & Dirigibles',PICTURES.find(q=>q.answer==='Dungeons and Dirigibles'))"), true);
+  assert.equal(app.evaluate("PICTURES.filter(q=>q.answer==='Perigate').every(q=>isCorrect('Pear Gate',q)&&isCorrect('Perry Gate',q))"), true);
 });
 
 test('Browser Back returns from a game to the portal and Forward restores the run', () => {

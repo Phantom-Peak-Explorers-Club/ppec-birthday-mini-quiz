@@ -76,11 +76,34 @@ const PICTURES = [
   ['Copper','Copper.jpg'],['Dr Winter','Dr Winter.jpg'],['Hogwood','Hogwood.jpg'],
   ['Leadbelly','Leadbelly.jpg'],['Littlefield','Littlefield.jpg'],['Lovehart','Lovehart.jpg'],
   ['Miramaze','Miramaze.jpg'],['Nethersole','Nethersole.jpg'],['Rexford','Rexford.jpg'],
-  ['Rockbolt Theatre','Rockbolt Theatre.jpg'],['Sherlock Bones','Sherlock Bones.jpg'],['Sparks','Sparks.jpg']
-].map(([answer,image,contributor])=>({answer,image:`./assets/catchphrase/${encodeURIComponent(image)}`,contributor,
-  aliases:answer==='Dr Winter'?['Dr. Winter','Doctor Winter','Doc Winter','Winter']:answer==='Rockbolt Theatre'?['The Rockbolt','The Rockbolt Theatre']:[]
+  ['Rockbolt Theatre','Rockbolt Theatre.jpg'],['Sherlock Bones','Sherlock Bones.jpg'],['Sparks','Sparks.jpg'],
+  ['Jaspin','Jaspin.jpg','TomB_90',['Jazz Pin','Jazzpin']],
+  ['Perigate','Perigate.jpg','TomB_90',['Perry Gate','Perrygate']],
+  ['Vesper','Vesper.jpg','TomB_90',['Vespa']],
+  ['Bellamy','Bellamy.jpg',undefined,['Bell Army']],
+  ['Captain Book','Captain Book.jpg'],
+  ['Dungeons and Dirigibles','Dungeons and Dirigibles.jpg',undefined,['Dungeons & Dirigibles']],
+  ['Finn Diesel','Finn Diesel.jpg',undefined,['Fin Diesel']],
+  ['General Store','General Store.jpg'],
+  ['Halloway','Halloway.jpg',undefined,['Halloween Way','Hallow Way']],
+  ['Mayor Pocket','Mayor Pocket.jpg',undefined,['Pocket']],
+  ['Perigate','Perigate Pear Gate.jpg',undefined,['Pear Gate','Peargate']],
+  ['Platman','Platman.jpg',undefined,['Plat Man','Platypus Man']],
+  ['RoboDoc','RoboDoc.jpg',undefined,['Robo Doc','Robot Doctor']],
+  ['The Autohatter','The Autohatter.jpg',undefined,['Auto Hatter']]
+].map(([answer,image,contributor,aliases=[]])=>({answer,image:`./assets/catchphrase/${encodeURIComponent(image)}`,contributor,
+  aliases:[...aliases,...(answer==='Dr Winter'?['Dr. Winter','Doctor Winter','Doc Winter','Winter']:answer==='Rockbolt Theatre'?['The Rockbolt','The Rockbolt Theatre']:[])]
 }));
 // Contributor can be added to any question as {answer:'...', contributor:'Name'}.
+function pictureQuestions(){
+  const byAnswer=new Map();
+  for(const question of PICTURES){
+    const key=normal(question.answer);
+    if(!byAnswer.has(key))byAnswer.set(key,[]);
+    byAnswer.get(key).push(question);
+  }
+  return shuffle([...byAnswer.values()].map(variants=>shuffle(variants)[0]));
+}
 const MISSING_VOWELS = [
   {answer:'MAYOR POCKET'},{answer:'HALLOWAY'},{answer:'LOVEHART'},{answer:'SHERLOCK BONES'},
   {answer:'GIFFARD'},{answer:'COPPER'},{answer:'CROCHET DATCHERY'},{answer:'NETHERSOLE'},
@@ -133,7 +156,8 @@ function typoDistance(a,b){
   return rows[a.length][b.length];
 }
 function pictureAnswers(q){
-  const answers=[q.answer,...(q.aliases||[])];
+  const answers=[q.answer,...(q.aliases||[]),...PICTURES.filter(other=>normal(other.answer)===normal(q.answer))
+    .flatMap(other=>[other.answer,...(other.aliases||[])])];
   for(const answer of [...answers]){
     if(/^the /i.test(answer))answers.push(answer.replace(/^the /i,''));
     if(/^dr\.? /i.test(answer))answers.push(answer.replace(/^dr\.? /i,'Doctor '));
@@ -149,7 +173,7 @@ function isCorrect(response,q){
   if(!entered)return false;
   const variants=pictureAnswers(q);
   if(variants.includes(entered))return true;
-  if(PICTURES.some(other=>other!==q&&pictureAnswers(other).includes(entered)))return false;
+  if(PICTURES.some(other=>normal(other.answer)!==normal(q.answer)&&pictureAnswers(other).includes(entered)))return false;
   return variants.some(answer=>entered.length>=4&&typoDistance(entered,answer)<=(answer.length>=12?2:1));
 }
 function withoutVowels(s){return s.normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toUpperCase().replace(/[AEIOU]/g,'')}
@@ -365,7 +389,7 @@ function start(game,mode){
   if(game==='anagrams')source=[1,2,3,4].flatMap(tier=>shuffle(ANAGRAMS.filter(q=>q.tier===tier)));
   else if(game==='vowels')source=vowelQuestions();
   else if(game==='trails'||game==='platy')source=shuffle(WHAT_TRAILS);
-  else source=shuffle(PICTURES);
+  else source=pictureQuestions();
   if(!source.length || mode==='quiz'&&source.length<10)return;
   const questions=mode==='quiz'&&game==='anagrams'?[2,3,3,2].flatMap((count,tier)=>source.filter(q=>q.tier===tier+1).slice(0,count)):mode==='quiz'?source.slice(0,10):source;
   shareBlobPromise=null;
@@ -431,8 +455,13 @@ function render(){
     state.choiceButtons.push(button);$('trail-choices').append(button);
   });
   const credit=game==='vowels'?(q.contributors||[]).join(', '):q.contributor;
-  $('question-credit').hidden=!credit;
-  $('question-credit').textContent=credit?`Question contributed by ${credit}`:'';
+  const creditLine=$('question-credit');creditLine.hidden=!credit;creditLine.replaceChildren();
+  creditLine.textContent=credit?'The idea for this question came from ':'';
+  if(credit){
+    const name=document.createElement('strong');name.textContent=credit;
+    const invitation=document.createElement('span');invitation.textContent=' - DM Smarty if you want your idea to be included next!';
+    creditLine.append(name,invitation);
+  }
   $('reveal-stats').hidden=game!=='catchphrase';
   $('reveal-stats').textContent=game==='catchphrase'?'CHOOSE PANELS TO REVEAL · 24 POSSIBLE POINTS':'';
   $('answer-form').hidden=game==='trails'||game==='platy';$('answer-input').value='';
