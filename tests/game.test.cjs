@@ -7,12 +7,14 @@ const vm = require('node:vm');
 const source = fs.readFileSync(path.join(__dirname, '..', 'docs', 'what-trail.js'), 'utf8') + '\n' +
   fs.readFileSync(path.join(__dirname, '..', 'docs', 'app.js'), 'utf8');
 
-test('PPEC Quiz is the installed and visible app name', () => {
+test('PPEC Quiz is the installed app name and the banner names Jonabot Jr', () => {
   const manifest = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'docs', 'manifest.webmanifest'), 'utf8'));
   const html = fs.readFileSync(path.join(__dirname, '..', 'docs', 'index.html'), 'utf8');
   assert.equal(manifest.name, 'PPEC Quiz');
   assert.equal(manifest.short_name, 'PPEC Quiz');
   assert.match(html, /<title>PPEC Quiz<\/title>/);
+  assert.match(html, /<h1 id="home-title">Jonabot&nbsp;Jr’s <em>Quiz App<\/em><\/h1>/);
+  assert.doesNotMatch(html, /portal-banner-kicker/);
   assert.match(html, /jonabot-quiz-hero\.png/);
   assert.match(html, /jonabot-countdown-card\.png/);
   assert.match(html, /jonabot-avatar\.png/);
