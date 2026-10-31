@@ -74,12 +74,12 @@ function setup() {
   };
 }
 
-test('Wereplatypus clue distinguishes Rexford from the deliberate clone Gérard', () => {
+test('Wereplatypus clue distinguishes Gérard from Rexford without calling him a clone', () => {
   const questions = vm.runInNewContext(fs.readFileSync(path.join(__dirname, '..', 'docs', 'what-trail.js'), 'utf8') + '\nWHAT_TRAILS');
   const clue = questions.find(question => question.answer === 'The Wereplatypus').clue;
-  assert.match(clue, /clone Rexford.*deliberately repeat the accident/);
+  assert.match(clue, /find Gérard.*reproduce in him what happened to Rexford by accident/);
   assert.match(clue, /Gérard.*expectations.*runs away to write greeting cards/);
-  assert.doesNotMatch(clue, /Rexford now goes by/);
+  assert.doesNotMatch(clue, /clon(?:e|ed|ing)|Rexford now goes by/);
 });
 
 test('Quiz Round uses ten questions and includes game, mode, score, and time in results', () => {
