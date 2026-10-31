@@ -201,3 +201,13 @@ footer{text-align:center;padding:0 0 25px;color:#81758b;font:600 10px 'IBM Plex 
   .share-score{font-size:clamp(36px,10vw,43px)}
   .share-footer{margin-top:8px}
 }
+@media(min-width:801px){
+  .results-screen{max-width:840px}
+  .results-card{display:grid;grid-template-columns:minmax(0,350px) minmax(0,1fr);column-gap:26px}
+  .results-card>.eyebrow,.results-card>h1{grid-column:1/-1}
+  .results-card>.share-preview{grid-column:1;grid-row:3/7;width:100%;margin:0}
+  .results-card>.result-note,.results-card>.share-actions,.results-card>.share-status,.results-card>.result-actions{grid-column:2}
+  .results-card>.result-note{align-self:start;margin:0 0 12px}
+  .results-card>.share-actions{align-self:start;gap:10px}
+  .results-card>.result-actions{align-self:end;gap:12px}
+}
