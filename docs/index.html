@@ -7,17 +7,17 @@
   <meta name="description" content="Play PPEC birthday quiz games: anagrams, Say What You See?, Missing Vowels and What Trail?.">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <title>PPEC Quiz Mini App</title>
+  <title>PPEC Quiz</title>
   <link rel="manifest" href="./manifest.webmanifest">
   <link rel="apple-touch-icon" href="./assets/app-icon-180.png">
-  <link rel="stylesheet" href="./style.css?v=5">
+  <link rel="stylesheet" href="./style.css?v=6">
   <script src="./what-trail.js" defer></script>
-  <script src="./app.js?v=5" defer></script>
+  <script src="./app.js?v=6" defer></script>
 </head>
 <body>
   <main class="shell">
     <header class="topbar">
-      <button class="brand" id="home-button" type="button" aria-label="Back to game selection"><span class="brand-mark">✦</span><span><strong>PPEC</strong><small>QUIZ MINI APP</small></span></button>
+      <button class="brand" id="home-button" type="button" aria-label="Back to game selection"><span class="brand-mark">✦</span><span><strong>PPEC</strong><small>QUIZ</small></span></button>
       <div class="topbar-actions"><button id="install-button" class="install-button" type="button" hidden>Install app</button><span class="edition"><span class="status-dot" aria-hidden="true"></span> BIRTHDAY EDITION <span class="header-version">/ 001</span></span></div>
     </header>
 
@@ -27,7 +27,7 @@
           <div class="portal-copy">
             <p class="eyebrow"><span class="live-light" aria-hidden="true"></span> EXPLORERS’ CLUB GAME DESK</p>
             <h1 id="home-title">Choose a <em>game.</em></h1>
-            <p>Replay games from the 4th Birthday quiz and the Trail Notes archive. Letter and trail clues give you 30 seconds; picture clues let you choose how many panels to open.</p>
+            <p>Replay games from the 4th Birthday quiz and the Trail Notes archive. Anagrams and Missing Vowels give you 30 seconds; picture and trail clues let you take your time.</p>
           </div>
           <img class="portal-mascot" src="./assets/jonabot-jr.png" alt="Jonabot Jr waving">
         </div>
@@ -54,14 +54,14 @@
           <div class="card-body"><p class="card-kicker">04 / TRAIL ARCHIVE</p><h2>What Trail?</h2><p>Match a story recap to its trail. 187 mysteries from the archive.</p><div class="mode-buttons"><button class="play-button" type="button" data-game="trails" data-mode="quiz">Quiz Round <span aria-hidden="true">↗</span></button><button class="play-button secondary" type="button" data-game="trails" data-mode="unlimited">Unlimited <span aria-hidden="true">∞</span></button></div></div>
         </article>
         </div>
-        <div class="portal-foot"><span>30 SECONDS / LETTERS &amp; TRAILS</span><span>NO TIMER / SAY WHAT YOU SEE?</span><span>SHARE YOUR SCORE CARD</span></div>
+        <div class="portal-foot"><span>30 SECONDS / LETTER GAMES</span><span>NO TIMER / PICTURES &amp; TRAILS</span><span>SHARE YOUR SCORE CARD</span></div>
       </div>
     </section>
 
     <section id="game" class="screen game-screen" aria-labelledby="game-title" hidden>
       <div class="game-top"><button class="text-button" type="button" id="back-button">← Choose another game</button><span id="game-label" class="game-label"></span></div>
       <div class="game-console" id="game-console">
-      <div id="start-countdown" class="start-countdown" role="status" aria-live="assertive" hidden><span>JONABOT JR / READY?</span><strong id="countdown-number">3</strong><small>30 seconds per clue</small></div>
+      <div id="start-countdown" class="start-countdown" role="status" aria-live="assertive" hidden><span>GET READY</span><strong id="countdown-number">3</strong><small>30 seconds per clue</small></div>
       <div class="console-heading"><span class="console-serial">PPEC / JONACO SYSTEMS</span><span class="console-beacon"><i aria-hidden="true"></i> TERMINAL ACTIVE</span></div>
       <div class="progress-line" id="progress-line"><span id="progress-fill"></span></div>
       <div class="question-meta"><span class="instrument"><small>CLUE REGISTER</small><b id="question-count"></b></span><span class="instrument"><small>SCORE REGISTER</small><b id="score-label"></b></span><span class="instrument timer-instrument"><small>TIME REMAINING</small><b id="timer-label" role="timer" aria-live="off">30s</b></span></div>
@@ -87,9 +87,9 @@
     </section>
 
     <section id="results" class="screen results-screen" aria-labelledby="results-title" hidden>
-      <div class="results-card"><p class="eyebrow">RUN COMPLETE / RESULT SAVED</p><h1 id="results-title">Nicely done, explorer!</h1><div class="share-preview" id="share-preview" aria-label="Your share card"><div class="share-art"><img src="./assets/jonabot-jr.png" alt="" aria-hidden="true"><span>✦</span></div><div class="share-content"><span class="share-brand">PPEC QUIZ MINI APP <span>✦</span> BIRTHDAY EDITION</span><span id="share-game" class="share-game"></span><span id="share-mode" class="share-mode"></span><strong id="share-score" class="share-score"></strong><span id="share-detail" class="share-detail"></span><span id="share-time" class="share-time"></span><span class="share-footer">PHANTOM PEAK EXPLORERS’ CLUB</span></div></div><p id="result-note" class="result-note"></p><div class="share-actions"><button id="share-button" class="primary-button" type="button">Share score card</button><button id="copy-button" class="text-button" type="button">Copy result</button></div><p id="share-status" class="share-status" role="status" aria-live="polite"></p><div class="result-actions"><button id="again-button" class="primary-button secondary" type="button">Play again</button><button id="other-button" class="text-button" type="button">Choose another game →</button></div></div>
+      <div class="results-card"><p class="eyebrow">RUN COMPLETE / RESULT SAVED</p><h1 id="results-title">Nicely done, explorer!</h1><div class="share-preview" id="share-preview" aria-label="Your share card"><div class="share-art"><img src="./assets/jonabot-jr.png" alt="" aria-hidden="true"><span>✦</span></div><div class="share-content"><span class="share-brand">PPEC QUIZ <span>✦</span> BIRTHDAY EDITION</span><span id="share-game" class="share-game"></span><span id="share-mode" class="share-mode"></span><strong id="share-score" class="share-score"></strong><span id="share-detail" class="share-detail"></span><span id="share-time" class="share-time"></span><span class="share-footer">PHANTOM PEAK EXPLORERS’ CLUB</span></div></div><p id="result-note" class="result-note"></p><div class="share-actions"><button id="share-button" class="primary-button" type="button">Share score card</button><button id="copy-button" class="text-button" type="button">Copy result</button></div><p id="share-status" class="share-status" role="status" aria-live="polite"></p><div class="result-actions"><button id="again-button" class="primary-button secondary" type="button">Play again</button><button id="other-button" class="text-button" type="button">Choose another game →</button></div></div>
     </section>
-    <footer>PPEC QUIZ MINI APP <span aria-hidden="true">✦</span> BIRTHDAY EDITION</footer>
+    <footer>PPEC QUIZ <span aria-hidden="true">✦</span> BIRTHDAY EDITION</footer>
   </main>
 </body>
 </html>

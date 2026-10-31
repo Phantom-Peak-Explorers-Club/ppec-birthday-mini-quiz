@@ -9,4 +9,4 @@ The four 512 × 512 PNGs in `docs/assets/game-logos/` show each game's action at
 | Missing Vowels | Consonants with vowels dropping into gaps | Violet `#bea7ff` |
 | What Trail? | Three choice cards pointing to a trail | Coral `#f48f7b` |
 
-The colours continue through each game terminal, result preview, and downloaded share card. The separate `design-previews/app-logo-v1.png` is a proposed install icon; `docs/assets/app-icon-*.png` currently use the plain Jonabot Jr placeholder until the proposed logo is approved.
+The colours continue through each game terminal, result preview, and downloaded share card. The separate `design-previews/app-logo-v2.png` is a proposed PPEC Quiz install icon; `docs/assets/app-icon-*.png` currently use the plain Jonabot Jr placeholder until the proposed logo is approved.

@@ -7,6 +7,16 @@ const vm = require('node:vm');
 const source = fs.readFileSync(path.join(__dirname, '..', 'docs', 'what-trail.js'), 'utf8') + '\n' +
   fs.readFileSync(path.join(__dirname, '..', 'docs', 'app.js'), 'utf8');
 
+test('PPEC Quiz is the installed and visible app name', () => {
+  const manifest = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'docs', 'manifest.webmanifest'), 'utf8'));
+  const html = fs.readFileSync(path.join(__dirname, '..', 'docs', 'index.html'), 'utf8');
+  assert.equal(manifest.name, 'PPEC Quiz');
+  assert.equal(manifest.short_name, 'PPEC Quiz');
+  assert.match(html, /<title>PPEC Quiz<\/title>/);
+  const app = setup();
+  assert.match(app.evaluate('shareText.toString()'), /PPEC Quiz/);
+});
+
 function makeElement(dataset = {}) {
   return {
     dataset, hidden: false, value: '', textContent: '', style: {}, children: [],
@@ -118,6 +128,9 @@ test('Quiz Round uses ten questions and includes game, mode, score, and time in 
 test('Graphical share card renders game, mode, score, question count, and time and downloads a PNG', async () => {
   const app = setup();
   app.evaluate("Object.assign(state,{game:'catchphrase',mode:'unlimited',points:47,score:3,completed:4,elapsedMs:123000})");
+  const canvas = await app.evaluate('drawShareCard()');
+  assert.equal(canvas.width, 1080);
+  assert.equal(canvas.height, 1080);
   await app.evaluate('shareCard()');
   assert.equal(app.wasDownloaded(), true);
   assert.match(app.get('share-status').textContent, /PNG/);
@@ -222,7 +235,7 @@ test('Every game has a distinct colour and results use that game colour', () => 
   const app = setup();
   const themes = app.evaluate('GAME_THEMES');
   assert.equal(new Set(Object.values(themes).map(theme => theme.accent)).size, 4);
-  app.startTimed(6);
+  app.buttons[6].click();
   app.get('reveal-button').click();
   app.get('next-button').click();
   app.evaluate('results()');
@@ -263,6 +276,17 @@ test('Anagrams and Missing Vowels keep exact answer matching', () => {
   const answer = app.state().questions[0].answer;
   app.submit(answer.slice(0, -1) + 'x');
   assert.equal(app.state().score, 0);
+  assert.equal(app.get('clue').children[0].children.map(letter => letter.textContent).join('').replaceAll('\u00a0', ' '), answer);
+  assert.equal(app.get('feedback').children[0].textContent, 'Not quite');
+});
+
+test('A wrong Missing Vowels answer still reveals the completed word', () => {
+  const app = setup();
+  app.startTimed(4);
+  const answer = app.state().questions[0].answer;
+  app.submit('WRONG ANSWER');
+  assert.equal(app.state().score, 0);
+  assert.equal(app.get('clue').children[0].children.map(letter => letter.textContent).join('').replaceAll('\u00a0', ' '), answer);
 });
 
 test('Missing Vowels removes A E I O U while preserving word breaks', () => {
@@ -321,7 +345,7 @@ test('What Trail? has 187 unique clues with three distinct choices and runs as a
   assert.equal(app.evaluate('WHAT_TRAILS.length'), 187);
   assert.equal(app.evaluate('new Set(WHAT_TRAILS.map(q => q.id)).size'), 187);
   assert.equal(app.evaluate('WHAT_TRAILS.every(q => q.options.length === 3 && new Set(q.options).size === 3 && q.options.includes(q.answer))'), true);
-  app.startTimed(6);
+  app.buttons[6].click();
   assert.equal(app.state().questions.length, 10);
   assert.equal(app.state().choiceButtons.length, 3);
   assert.equal(app.get('answer-form').hidden, true);
@@ -333,7 +357,7 @@ test('What Trail? has 187 unique clues with three distinct choices and runs as a
 
 test('What Trail? Unlimited ends on a wrong choice and counts completed questions', () => {
   const app = setup();
-  app.startTimed(7);
+  app.buttons[7].click();
   assert.equal(app.state().questions.length, 187);
   const answer = app.state().questions[0].answer;
   app.state().choiceButtons.find(button => button.dataset.answer !== answer).click();
@@ -344,11 +368,14 @@ test('What Trail? Unlimited ends on a wrong choice and counts completed question
   assert.equal(app.get('share-detail').textContent, '0 correct · 1 question completed');
 });
 
-test('What Trail? uses the 30-second question timer', () => {
+test('What Trail? has no countdown or question timer', () => {
   const app = setup();
-  app.startTimed(7);
-  app.advance(30000);
-  assert.equal(app.get('feedback').children[0].textContent, 'Time’s up!');
-  app.get('next-button').click();
-  assert.equal(app.get('share-detail').textContent, '0 correct · 1 question completed');
+  app.buttons[7].click();
+  assert.equal(app.state().countingDown, false);
+  assert.equal(app.get('start-countdown').hidden, true);
+  app.advance(60000);
+  assert.equal(app.state().answered, false);
+  const answer = app.state().questions[0].answer;
+  app.state().choiceButtons.find(button => button.dataset.answer === answer).click();
+  assert.equal(app.state().score, 1);
 });

@@ -252,7 +252,7 @@ function start(game,mode){
   else source=shuffle(PICTURES);
   if(!source.length || mode==='quiz'&&source.length<10)return;
   const questions=mode==='quiz'&&game==='anagrams'?[2,3,3,2].flatMap((count,tier)=>source.filter(q=>q.tier===tier+1).slice(0,count)):mode==='quiz'?source.slice(0,10):source;
-  state={game,mode,questions,index:0,score:0,points:0,completed:0,openedTiles:0,tileButtons:[],choiceButtons:[],answered:false,countingDown:game!=='catchphrase',startedAt:Date.now(),elapsedMs:null,exhausted:false,runId:Date.now()+Math.random()};
+  state={game,mode,questions,index:0,score:0,points:0,completed:0,openedTiles:0,tileButtons:[],choiceButtons:[],answered:false,countingDown:game==='anagrams'||game==='vowels',startedAt:Date.now(),elapsedMs:null,exhausted:false,runId:Date.now()+Math.random()};
   show('game');render();if(state.countingDown)startCountdown();
 }
 function render(){
@@ -318,7 +318,7 @@ function render(){
   $('next-button').hidden=true;$('reveal-button').hidden=false;
   $('timer-label').textContent='30s';$('timer-fill').style.width='100%';
   if(game!=='trails'&&!state.countingDown)$('answer-input').focus();
-  if(game!=='catchphrase'&&!state.countingDown)startTimer();
+  if((game==='anagrams'||game==='vowels')&&!state.countingDown)startTimer();
 }
 function finishAnswer(correct,revealed=false,timedOut=false,response=''){
   if(state.answered||state.countingDown)return;
@@ -356,7 +356,7 @@ function finishAnswer(correct,revealed=false,timedOut=false,response=''){
     feedback.append(heading,answer);
     $('next-button').hidden=false;$('next-button').textContent=ends?'See your results →':'Next question →';$('next-button').focus();
   };
-  if(correct&&state.game==='anagrams'){
+  if(state.game==='anagrams'){
     const animation=animateAnagram(q.answer);
     if(animation){animation.then(finishReveal);return}
   }
@@ -378,31 +378,31 @@ function results(){
   $('results-title').textContent=state.exhausted?'You cleared the set!':state.score>=8?'A fine showing, explorer!':state.score>=5?'Nicely done, explorer!':'The Peak has more secrets…';
   $('share-status').textContent='';show('results');
 }
-function shareText(){const score=state.game==='catchphrase'?`${state.points} points, ${state.score} correct`:`${state.score} correct`;return `PPEC Quiz Mini App · ${gameName()} · ${modeName()} · ${score} · ${state.completed} questions completed · ${duration(state.elapsedMs)}`}
+function shareText(){const score=state.game==='catchphrase'?`${state.points} points, ${state.score} correct`:`${state.score} correct`;return `PPEC Quiz · ${gameName()} · ${modeName()} · ${score} · ${state.completed} questions completed · ${duration(state.elapsedMs)}`}
 async function drawShareCard(){
-  const canvas=document.createElement('canvas');canvas.width=1200;canvas.height=900;
+  const canvas=document.createElement('canvas');canvas.width=1080;canvas.height=1080;
   const c=canvas.getContext('2d');
   const theme=GAME_THEMES[state.game]||GAME_THEMES.anagrams;
-  const bg=c.createLinearGradient(0,0,1200,900);bg.addColorStop(0,'#140d27');bg.addColorStop(.58,theme.dark);bg.addColorStop(1,'#160f24');
-  c.fillStyle=bg;c.fillRect(0,0,1200,900);
-  c.fillStyle=theme.accent;c.fillRect(22,22,1156,23);
-  c.strokeStyle=theme.accent;c.lineWidth=9;c.strokeRect(22,22,1156,856);c.lineWidth=2;c.strokeRect(40,40,1120,820);
-  c.fillStyle=theme.accent;for(const [x,y,r] of [[102,116,7],[207,68,4],[857,97,5],[1068,183,7],[89,661,5],[1119,748,6]]){c.beginPath();c.arc(x,y,r,0,Math.PI*2);c.fill()}
-  c.fillStyle='#f4e6c4';c.textAlign='left';c.font='bold 26px Arial';c.fillText('✦  PPEC QUIZ MINI APP',92,112);
-  c.fillStyle=theme.accent;c.font='bold 21px Arial';c.fillText('4TH BIRTHDAY EDITION  /  '+modeName().toUpperCase(),92,158);
-  c.fillStyle=theme.light;c.font='bold 53px Georgia';c.fillText(gameName(),92,275);
-  c.fillStyle=theme.accent;c.fillRect(87,319,590,3);
-  c.fillStyle=theme.accent;c.font='bold 102px Georgia';c.fillText(state.game==='catchphrase'?`${state.points} PTS`:`${state.score} RIGHT`,88,468);
-  c.fillStyle='#f4e6c4';c.font='bold 28px Arial';c.fillText(`${state.score} CORRECT  •  ${state.completed} COMPLETED`,92,536);
-  c.fillStyle='#d9b6e9';c.font='bold 29px Arial';c.fillText(`TIME   ${duration(state.elapsedMs)}`,92,604);
-  c.fillStyle=theme.accent;c.fillRect(92,659,560,4);
-  c.fillStyle=theme.light;c.font='23px Arial';c.fillText('PHANTOM PEAK EXPLORERS’ CLUB',92,778);
+  const bg=c.createLinearGradient(0,0,1080,1080);bg.addColorStop(0,'#140d27');bg.addColorStop(.58,theme.dark);bg.addColorStop(1,'#160f24');
+  c.fillStyle=bg;c.fillRect(0,0,1080,1080);
+  c.fillStyle=theme.accent;c.fillRect(22,22,1036,20);
+  c.strokeStyle=theme.accent;c.lineWidth=9;c.strokeRect(22,22,1036,1036);c.lineWidth=2;c.strokeRect(42,42,996,996);
+  c.fillStyle=theme.accent;for(const [x,y,r] of [[98,112,6],[923,112,5],[982,236,7],[88,851,5],[950,897,6]]){c.beginPath();c.arc(x,y,r,0,Math.PI*2);c.fill()}
+  c.fillStyle='#f4e6c4';c.textAlign='left';c.font='bold 27px Arial';c.fillText('✦  PPEC QUIZ',90,117);
+  c.fillStyle=theme.accent;c.font='bold 21px Arial';c.fillText('4TH BIRTHDAY EDITION  /  '+modeName().toUpperCase(),90,161);
+  c.fillStyle=theme.light;c.font='bold 52px Georgia';c.fillText(gameName(),90,286);
+  c.fillStyle=theme.accent;c.fillRect(86,330,660,3);
+  c.fillStyle=theme.accent;c.font='bold 99px Georgia';c.fillText(state.game==='catchphrase'?`${state.points} PTS`:`${state.score} RIGHT`,86,527);
+  c.fillStyle='#f4e6c4';c.font='bold 27px Arial';c.fillText(`${state.score} CORRECT  •  ${state.completed} COMPLETED`,90,599);
+  c.fillStyle='#d9b6e9';c.font='bold 29px Arial';c.fillText(`TIME   ${duration(state.elapsedMs)}`,90,670);
+  c.fillStyle=theme.accent;c.fillRect(90,740,590,4);
+  c.fillStyle=theme.light;c.font='22px Arial';c.fillText('PHANTOM PEAK EXPLORERS’ CLUB',90,973);
   const mascot=new Image();mascot.src='./assets/jonabot-jr.png';
-  try{await mascot.decode();c.drawImage(mascot,690,214,425,431)}catch{}
-  c.fillStyle=theme.accent;c.font='52px Georgia';c.textAlign='center';c.fillText('✦',946,739);
+  try{await mascot.decode();c.drawImage(mascot,680,414,330,352)}catch{}
+  c.fillStyle=theme.accent;c.font='52px Georgia';c.textAlign='center';c.fillText('✦',865,848);
   return canvas;
 }
-async function shareCard(){const canvas=await drawShareCard();const blob=await new Promise(resolve=>canvas.toBlob(resolve,'image/png'));if(!blob){$('share-status').textContent='Could not make the image. Try copying the result instead.';return}const file=new File([blob],'ppec-mini-quiz-score.png',{type:'image/png'});if(navigator.share&&navigator.canShare&&navigator.canShare({files:[file]})){try{await navigator.share({files:[file],text:shareText(),title:'PPEC Mini Quiz score'});$('share-status').textContent='Score card ready to share.';return}catch(error){if(error.name==='AbortError')return}}const url=URL.createObjectURL(blob);const link=document.createElement('a');link.href=url;link.download='ppec-mini-quiz-score.png';document.body.append(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);$('share-status').textContent='Score card downloaded as a PNG.'}
+async function shareCard(){const canvas=await drawShareCard();const blob=await new Promise(resolve=>canvas.toBlob(resolve,'image/png'));if(!blob){$('share-status').textContent='Could not make the image. Try copying the result instead.';return}const file=new File([blob],'ppec-quiz-score.png',{type:'image/png'});if(navigator.share&&navigator.canShare&&navigator.canShare({files:[file]})){try{await navigator.share({files:[file],text:shareText(),title:'PPEC Quiz score'});$('share-status').textContent='Score card ready to share.';return}catch(error){if(error.name==='AbortError')return}}const url=URL.createObjectURL(blob);const link=document.createElement('a');link.href=url;link.download='ppec-quiz-score.png';document.body.append(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);$('share-status').textContent='Score card downloaded as a PNG.'}
 async function copyResult(){try{await navigator.clipboard.writeText(shareText());$('share-status').textContent='Result copied.'}catch{$('share-status').textContent='Copy is unavailable here; use the share card button to download an image.'}}
 document.querySelectorAll('[data-game]').forEach(button=>button.addEventListener('click',()=>start(button.dataset.game,button.dataset.mode)));
 document.querySelectorAll('[data-game]').forEach(button=>{if(button.dataset.game==='vowels')button.disabled=MISSING_VOWELS.length<(button.dataset.mode==='quiz'?10:1)});
@@ -420,7 +420,7 @@ window.addEventListener?.('popstate',event=>{
   if(ppecScreen==='game'&&runId===state.runId){
     show('game',false);
     if(state.countingDown)startCountdown();
-    else if(!state.answered&&state.game!=='catchphrase'){
+    else if(!state.answered&&(state.game==='anagrams'||state.game==='vowels')){
       if(Date.now()>=questionDeadline)finishAnswer(false,false,true);
       else{tickTimer();questionTimer=setInterval(tickTimer,200)}
     }
