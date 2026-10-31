@@ -25,7 +25,7 @@ function makeElement(dataset = {}) {
     setAttribute() {},
     replaceChildren(...children) { this.children = children; },
     append(...children) { this.children.push(...children); },
-    focus() {}, remove() {}, click() { if (!this.disabled) this.listeners.click?.(); }
+    focus() {}, remove() {}, click() { if (!this.disabled) return this.listeners.click?.(); }
   };
 }
 
@@ -161,6 +161,19 @@ test('Share card uses native file sharing when the browser supports it', async (
   await app.evaluate('shareCard()');
   assert.equal(app.wasDownloaded(), false);
   assert.equal(app.get('share-status').textContent, 'Score card ready to share.');
+});
+
+test('The result tile itself shares and Save PNG bypasses native sharing', async () => {
+  const app = setup();
+  app.evaluate("Object.assign(state,{game:'trails',mode:'quiz',score:4,completed:10,elapsedMs:80000})");
+  await app.get('share-preview').click();
+  assert.equal(app.wasDownloaded(), true);
+  assert.match(app.get('share-status').textContent, /downloaded as a PNG/);
+  const direct = setup();
+  direct.evaluate("Object.assign(state,{game:'vowels',mode:'quiz',score:4,completed:10,elapsedMs:80000})");
+  direct.evaluate('navigator.canShare=() => true; navigator.share=async () => { throw Error("Native share should not run"); }');
+  await direct.get('download-button').click();
+  assert.equal(direct.wasDownloaded(), true);
 });
 
 test('Unlimited ends on a mistake and awards the existing score', () => {

@@ -90,6 +90,7 @@ let questionTimer=null;
 let questionDeadline=0;
 let countdownTimer=null;
 let countdownGoTimer=null;
+let shareBlobPromise=null;
 const GAME_THEMES={
   anagrams:{accent:'#f2c56d',dark:'#392415',light:'#fff0c8'},
   catchphrase:{accent:'#65ddd0',dark:'#103c43',light:'#ddfff7'},
@@ -252,6 +253,7 @@ function start(game,mode){
   else source=shuffle(PICTURES);
   if(!source.length || mode==='quiz'&&source.length<10)return;
   const questions=mode==='quiz'&&game==='anagrams'?[2,3,3,2].flatMap((count,tier)=>source.filter(q=>q.tier===tier+1).slice(0,count)):mode==='quiz'?source.slice(0,10):source;
+  shareBlobPromise=null;
   state={game,mode,questions,index:0,score:0,points:0,completed:0,openedTiles:0,tileButtons:[],choiceButtons:[],answered:false,countingDown:game==='anagrams'||game==='vowels',startedAt:Date.now(),elapsedMs:null,exhausted:false,runId:Date.now()+Math.random()};
   show('game');render();if(state.countingDown)startCountdown();
 }
@@ -336,7 +338,7 @@ function finishAnswer(correct,revealed=false,timedOut=false,response=''){
     showTrailVerdict(correct,timedOut);
   }
   const ends=state.mode==='unlimited'&&!correct||state.index===state.questions.length-1;
-  if(ends){state.elapsedMs=Date.now()-state.startedAt;state.exhausted=state.mode==='unlimited'&&correct&&state.index===state.questions.length-1}
+  if(ends){state.elapsedMs=Date.now()-state.startedAt;state.exhausted=state.mode==='unlimited'&&correct&&state.index===state.questions.length-1;prepareShareCard()}
   $('answer-form').hidden=true;$('reveal-button').hidden=true;
   const finishReveal=()=>{
     const feedback=$('feedback');feedback.hidden=false;feedback.classList.add(correct?'correct':'incorrect');feedback.replaceChildren();
@@ -402,7 +404,32 @@ async function drawShareCard(){
   c.fillStyle=theme.accent;c.font='52px Georgia';c.textAlign='center';c.fillText('✦',865,848);
   return canvas;
 }
-async function shareCard(){const canvas=await drawShareCard();const blob=await new Promise(resolve=>canvas.toBlob(resolve,'image/png'));if(!blob){$('share-status').textContent='Could not make the image. Try copying the result instead.';return}const file=new File([blob],'ppec-quiz-score.png',{type:'image/png'});if(navigator.share&&navigator.canShare&&navigator.canShare({files:[file]})){try{await navigator.share({files:[file],text:shareText(),title:'PPEC Quiz score'});$('share-status').textContent='Score card ready to share.';return}catch(error){if(error.name==='AbortError')return}}const url=URL.createObjectURL(blob);const link=document.createElement('a');link.href=url;link.download='ppec-quiz-score.png';document.body.append(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);$('share-status').textContent='Score card downloaded as a PNG.'}
+function prepareShareCard(){
+  shareBlobPromise=drawShareCard().then(canvas=>new Promise(resolve=>canvas.toBlob(resolve,'image/png'))).catch(()=>null);
+  return shareBlobPromise;
+}
+async function shareCard(preferNative=true){
+  const status=$('share-status');status.textContent='Preparing your score card…';
+  const blob=await (shareBlobPromise||prepareShareCard());
+  if(!blob){status.textContent='Could not make the image. Try copying the result instead.';return}
+  if(preferNative&&navigator.share&&navigator.canShare&&typeof File==='function'){
+    try{
+      const file=new File([blob],'ppec-quiz-score.png',{type:'image/png'});
+      if(navigator.canShare({files:[file]})){
+        await navigator.share({files:[file],text:shareText(),title:'PPEC Quiz score'});
+        status.textContent='Score card ready to share.';return;
+      }
+    }catch(error){
+      if(error.name==='AbortError'){status.textContent='Sharing cancelled. Use Save PNG to download the card.';return}
+    }
+  }
+  try{
+    const url=URL.createObjectURL(blob);
+    const link=document.createElement('a');link.href=url;link.download='ppec-quiz-score.png';document.body.append(link);link.click();link.remove();
+    setTimeout(()=>URL.revokeObjectURL(url),1000);
+    status.textContent='Score card downloaded as a PNG.';
+  }catch{status.textContent='Download unavailable here. Try Copy result or open the quiz in your browser.'}
+}
 async function copyResult(){try{await navigator.clipboard.writeText(shareText());$('share-status').textContent='Result copied.'}catch{$('share-status').textContent='Copy is unavailable here; use the share card button to download an image.'}}
 document.querySelectorAll('[data-game]').forEach(button=>button.addEventListener('click',()=>start(button.dataset.game,button.dataset.mode)));
 document.querySelectorAll('[data-game]').forEach(button=>{if(button.dataset.game==='vowels')button.disabled=MISSING_VOWELS.length<(button.dataset.mode==='quiz'?10:1)});
@@ -411,7 +438,9 @@ $('answer-form').addEventListener('submit',event=>{event.preventDefault();if(sta
 $('reveal-button').addEventListener('click',()=>finishAnswer(false,true));
 $('next-button').addEventListener('click',next);
 $('again-button').addEventListener('click',()=>start(state.game,state.mode));
-$('share-button').addEventListener('click',shareCard);
+$('share-button').addEventListener('click',()=>shareCard());
+$('share-preview').addEventListener('click',()=>shareCard());
+$('download-button').addEventListener('click',()=>shareCard(false));
 $('copy-button').addEventListener('click',copyResult);
 for(const id of ['home-button','back-button','other-button'])$(id).addEventListener('click',()=>show('home'));
 if(window.history?.replaceState)window.history.replaceState({ppecScreen:'home'},'',window.location?window.location.pathname+window.location.search:undefined);
