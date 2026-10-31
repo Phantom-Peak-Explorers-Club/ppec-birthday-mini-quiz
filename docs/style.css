@@ -262,7 +262,7 @@ footer{text-align:center;padding:0 0 25px;color:#81758b;font:600 10px 'IBM Plex 
 .portal-banner-copy{position:relative;z-index:2;padding:22px 32px}
 .portal-banner-kicker,.portal-banner-meta{display:block;font:700 11px 'IBM Plex Mono',monospace;letter-spacing:.15em;color:#e3c58d}
 .portal-banner-copy h1{margin:7px 0 5px;font-size:clamp(38px,5.5vw,69px);letter-spacing:-.06em;line-height:1;color:#fff1dc}
-.portal-banner-copy h1 em{font-style:normal;color:#e9b957}
+.portal-banner-copy h1 em{font-style:normal;color:#e9b957;margin-left:.1em}
 .portal-banner-art{position:absolute;right:5%;bottom:-17px;width:196px;height:196px;object-fit:contain;filter:drop-shadow(0 8px 12px #0008)}
 .portal-banner .install-button{position:absolute;z-index:3;right:12px;top:12px}
 .mode-guide{gap:8px;padding:10px 0 0}
