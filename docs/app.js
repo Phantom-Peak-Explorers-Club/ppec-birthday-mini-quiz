@@ -392,34 +392,39 @@ async function drawShareCard(){
   const canvas=document.createElement('canvas');canvas.width=1080;canvas.height=1080;
   const c=canvas.getContext('2d');
   const theme=GAME_THEMES[state.game]||GAME_THEMES.anagrams;
-  const bg=c.createLinearGradient(0,0,1080,1080);
-  bg.addColorStop(0,'#15101e');bg.addColorStop(.55,theme.dark);bg.addColorStop(1,'#130f1c');
-  c.fillStyle=bg;c.fillRect(0,0,1080,1080);
-  c.fillStyle=theme.accent;c.fillRect(0,0,1080,24);c.fillRect(0,0,24,1080);
-  c.strokeStyle=theme.accent;c.lineWidth=3;c.strokeRect(42,42,996,996);
-  c.globalAlpha=.13;c.fillStyle=theme.accent;
-  if(state.game==='catchphrase')for(let row=0;row<3;row++)for(let col=0;col<3;col++)c.fillRect(755+col*86,380+row*86,70,70);
-  else if(state.game==='anagrams')for(let i=0;i<4;i++)c.fillRect(743+i*67,415+(i%2)*35,54,54);
-  else if(state.game==='vowels')for(let i=0;i<5;i++)c.fillRect(760+i*50,421,37,160);
-  else for(let i=0;i<7;i++)c.fillRect(752+i*39,410+i*27,22,22);
-  c.globalAlpha=1;
-  c.fillStyle=theme.light;c.textAlign='left';c.font='bold 34px Arial';c.fillText('PPEC QUIZ',74,110);
-  c.fillStyle=theme.accent;c.font='bold 23px Arial';c.fillText('4TH BIRTHDAY  /  '+modeName().toUpperCase(),75,157);
-  c.fillStyle=theme.light;c.font='bold 59px Georgia';c.fillText(gameName(),74,263);
-  c.fillStyle=theme.accent;c.fillRect(74,300,932,4);
-  c.fillStyle=theme.light;c.font='bold 276px Georgia';c.fillText(String(state.game==='catchphrase'?state.points:state.score),70,602);
-  c.fillStyle=theme.accent;c.font='bold 83px Arial';c.fillText(state.game==='catchphrase'?'POINTS':'RIGHT',82,706);
-  if(state.game==='catchphrase'){
-    c.fillStyle=theme.light;c.font='bold 29px Arial';c.fillText(`${state.score} CORRECT`,83,754);
-  }
   const logoName=({anagrams:'anagrams',catchphrase:'catchphrase',vowels:'missing-vowels',trails:'what-trail'})[state.game]||'anagrams';
+  const frame=new Image();frame.src='./assets/share-card-frame.jpg';
   const logo=new Image();logo.src=`./assets/game-logos/${logoName}.png`;
-  try{await logo.decode();c.drawImage(logo,730,355,285,285)}catch{}
-  c.fillStyle=theme.accent;c.fillRect(74,793,932,4);
-  c.fillStyle=theme.light;c.font='bold 78px Georgia';c.fillText(String(state.completed),77,899);
-  c.fillText(duration(state.elapsedMs),565,899);
-  c.fillStyle=theme.accent;c.font='bold 24px Arial';c.fillText(state.completed===1?'QUESTION COMPLETED':'QUESTIONS COMPLETED',79,944);c.fillText('TIME',568,944);
-  c.fillStyle=theme.light;c.font='21px Arial';c.fillText('PHANTOM PEAK EXPLORERS’ CLUB',75,1005);
+  const avatar=new Image();avatar.src='./assets/jonabot-avatar.png';
+  const [frameReady,logoReady,avatarReady]=await Promise.all([frame,logo,avatar].map(image=>image.decode().then(()=>true).catch(()=>false)));
+  if(frameReady)c.drawImage(frame,0,0,1080,1080);
+  else{
+    c.fillStyle='#230e2a';c.fillRect(0,0,1080,1080);
+    c.strokeStyle='#e4ad57';c.lineWidth=15;c.strokeRect(24,24,1032,1032);
+  }
+  c.globalAlpha=.25;c.fillStyle=theme.dark;c.fillRect(0,0,1080,1080);
+  c.globalAlpha=.12;c.fillStyle=theme.accent;c.fillRect(0,0,1080,1080);c.globalAlpha=1;
+  if(avatarReady)c.drawImage(avatar,788,35,235,235);
+  c.textAlign='left';
+  c.fillStyle='#fff0cc';c.font='bold 44px Georgia';c.fillText('PPEC QUIZ',88,105);
+  c.fillStyle=theme.accent;c.font='bold 27px Georgia';c.fillText(modeName().toUpperCase(),89,150);
+  c.fillStyle='#fff0cc';c.font='bold 72px Georgia';c.fillText(gameName(),86,250,710);
+  c.fillStyle=theme.accent;c.fillRect(66,283,948,4);
+  c.fillStyle=theme.accent;c.beginPath();c.arc(540,285,10,0,Math.PI*2);c.fill();
+  c.fillStyle='#fff0cc';c.font='bold 250px Georgia';c.fillText(String(state.game==='catchphrase'?state.points:state.score),91,566);
+  c.fillStyle=theme.accent;c.font='bold 88px Georgia';c.fillText(state.game==='catchphrase'?'POINTS':'RIGHT',95,662);
+  if(state.game==='catchphrase'){
+    c.fillStyle='#fff0cc';c.font='bold 29px Georgia';c.fillText(`${state.score} CORRECT`,102,713);
+  }
+  if(logoReady)c.drawImage(logo,555,312,430,430);
+  c.fillStyle=theme.accent;c.fillRect(66,756,948,4);
+  c.fillStyle=theme.accent;c.beginPath();c.arc(540,757,10,0,Math.PI*2);c.fill();
+  c.textAlign='center';c.fillStyle='#fff0cc';c.font='bold 91px Georgia';
+  c.fillText(String(state.completed),300,858);c.fillText(duration(state.elapsedMs),770,858);
+  c.fillStyle=theme.accent;c.font='bold 25px Georgia';
+  c.fillText(state.completed===1?'QUESTION COMPLETED':'QUESTIONS COMPLETED',300,898);
+  c.fillText('TIME',770,898);
+  c.fillStyle='#fff0cc';c.font='bold 26px Georgia';c.fillText('PHANTOM PEAK EXPLORERS’ CLUB',540,1019,530);
   return canvas;
 }
 function prepareShareCard(){
