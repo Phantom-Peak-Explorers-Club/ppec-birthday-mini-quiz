@@ -338,6 +338,7 @@ footer{text-align:center;padding:0 0 25px;color:#81758b;font:600 10px 'IBM Plex 
 .platy-word{display:flex;gap:2px;max-width:100%}
 .platy-letter{display:grid;place-items:center;min-width:22px;height:32px;padding:0 1px;border-bottom:2px solid #b5e881;color:#e8ffd6;font-size:clamp(14px,2.5vw,24px);font-weight:700;text-transform:uppercase}
 .platy-letter.blank{color:transparent}.platy-letter.punctuation{min-width:10px;border-bottom:0;color:#b5e881}
+.platy-name.failed .platy-letter.found{color:#ffbdb2;border-bottom-color:#e46268}
 .platy-keyboard{display:grid;grid-template-columns:repeat(13,minmax(0,1fr));gap:5px;margin:0 0 13px}
 .platy-key{display:grid;place-items:center;min-width:0;height:42px;padding:0;border:1px solid #9bc473;border-radius:5px;background:#284333;color:#f0ffdf;font:700 17px 'IBM Plex Mono',monospace;cursor:pointer;touch-action:manipulation}
 .platy-key:hover:not(:disabled),.platy-key:focus-visible{background:#476c3f;outline:2px solid #e4ffad;outline-offset:1px}

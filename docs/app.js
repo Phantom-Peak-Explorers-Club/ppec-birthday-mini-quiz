@@ -452,6 +452,7 @@ function finishAnswer(correct,revealed=false,timedOut=false,response=''){
   if(state.game==='platy'){
     if(revealed)state.platyMisses=6;
     renderPlatyName(q.answer,true);renderPlatyLives();renderPlatyKeyboard();
+    if(!correct)$('clue').children[0].classList.add('failed');
     if(!correct)$('score-label').textContent=`${state.points} SAVED`;
   }
   if(state.game==='catchphrase'){
@@ -467,7 +468,12 @@ function finishAnswer(correct,revealed=false,timedOut=false,response=''){
   if(ends){state.elapsedMs=Date.now()-state.startedAt;state.exhausted=state.mode==='unlimited'&&correct&&state.index===state.questions.length-1;prepareShareCard()}
   $('answer-form').hidden=true;$('reveal-button').hidden=true;
   const finishReveal=()=>{
-    const feedback=$('feedback');feedback.hidden=false;feedback.classList.add(correct?'correct':'incorrect');feedback.replaceChildren();
+    const feedback=$('feedback');
+    if(state.game==='platy'){
+      feedback.hidden=true;feedback.replaceChildren();
+      $('next-button').hidden=false;$('next-button').textContent=ends?'See your results →':'Next question →';$('next-button').focus();return;
+    }
+    feedback.hidden=false;feedback.classList.add(correct?'correct':'incorrect');feedback.replaceChildren();
     if(state.game==='catchphrase'){
       feedback.className=`feedback picture-feedback ${correct?'correct':'incorrect'}`;
       const kicker=document.createElement('span');kicker.className='picture-answer-kicker';kicker.textContent=correct?'YOU SAW IT!':revealed?'ANSWER REVEALED':'THE PICTURE WAS';
@@ -478,7 +484,7 @@ function finishAnswer(correct,revealed=false,timedOut=false,response=''){
       scoreBox.append(points,panels);feedback.append(kicker,hero,scoreBox);
       $('next-button').hidden=false;$('next-button').textContent=ends?'See your results →':'Next question →';$('next-button').focus();return;
     }
-    const heading=document.createElement('strong');heading.textContent=state.game==='platy'?(correct?'Trail name solved!':revealed?'Trail name revealed':'No platypuses saved'):correct?'That’s right!':timedOut?'Time’s up!':revealed?'Answer revealed':'Not quite';
+    const heading=document.createElement('strong');heading.textContent=correct?'That’s right!':timedOut?'Time’s up!':revealed?'Answer revealed':'Not quite';
     const possible=state.game==='vowels'&&q.accepted.length>1?q.accepted.join(' or '):q.answer;
     const answer=document.createElement('span');answer.textContent=(correct&&state.game==='vowels'?`Accepted: ${possible}.`:correct?`The answer is ${possible}.`:`${q.accepted?.length>1?'Possible answers were':'The answer was'} ${possible}.`)+(correct&&state.game==='catchphrase'?` ${Math.max(0,24-state.openedTiles)} points from ${state.openedTiles} panels opened.`:'');
     feedback.append(heading,answer);

@@ -508,7 +508,7 @@ test('Save-A-Platy Unlimited ends after six mistakes and awards the accumulated 
   assert.equal(app.get('share-game').textContent, 'Save-A-Platy');
 });
 
-test('Save-A-Platy shimmers the solved name, then counts each platypus before feedback', async () => {
+test('Save-A-Platy shimmers the solved name, then counts each platypus before Next appears', async () => {
   const app = setup();
   app.evaluate("const create=document.createElement.bind(document);document.createElement=tag=>{const el=create(tag);if(tag==='div')el.animate=()=>({finished:Promise.resolve()});return el};setTimeout=fn=>{fn();return 1}");
   app.buttons[8].click();
@@ -526,7 +526,8 @@ test('Save-A-Platy shimmers the solved name, then counts each platypus before fe
   assert.equal(app.get('platy-reveal').hidden, false);
   assert.equal(app.get('platy-keyboard').hidden, true);
   assert.equal(app.get('score-label').textContent, '5 SAVED');
-  assert.equal(app.get('feedback').hidden, false);
+  assert.equal(app.get('feedback').hidden, true);
+  assert.equal(app.get('next-button').hidden, false);
 });
 
 test('Save-A-Platy shows the full saved count immediately with reduced motion', () => {
@@ -536,7 +537,19 @@ test('Save-A-Platy shows the full saved count immediately with reduced motion', 
   const answer = app.state().questions[0].answer.normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toUpperCase();
   for (const letter of [...new Set([...answer].filter(letter => /^[A-Z]$/.test(letter)))]) app.keydown(letter);
   assert.equal(app.get('platy-reveal-count').textContent, '6');
-  assert.equal(app.get('feedback').hidden, false);
+  assert.equal(app.get('feedback').hidden, true);
+  assert.equal(app.get('next-button').hidden, false);
+});
+
+test('Save-A-Platy reveals a failed trail without a redundant feedback box', () => {
+  const app = setup();
+  app.buttons[9].click();
+  const answer = app.state().questions[0].answer.toUpperCase();
+  for (const letter of [...'ABCDEFGHIJKLMNOPQRSTUVWXYZ'].filter(letter => !answer.includes(letter)).slice(0, 6)) app.keydown(letter);
+  assert.equal(app.get('feedback').hidden, true);
+  assert.equal(app.get('next-button').hidden, false);
+  assert.equal(app.get('platy-lives').children[0].textContent, '0 / 6 SAVED');
+  assert.equal(app.get('platy-reveal').hidden, true);
 });
 
 test('Recent trail anagrams and guessable trail vowel clues match archived titles', () => {
