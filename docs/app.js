@@ -91,6 +91,7 @@ let questionDeadline=0;
 let countdownTimer=null;
 let countdownGoTimer=null;
 let shareBlobPromise=null;
+let sharePreviewUrl=null;
 const GAME_THEMES={
   anagrams:{accent:'#f2c56d',dark:'#392415',light:'#fff0c8'},
   catchphrase:{accent:'#65ddd0',dark:'#103c43',light:'#ddfff7'},
@@ -254,6 +255,9 @@ function start(game,mode){
   if(!source.length || mode==='quiz'&&source.length<10)return;
   const questions=mode==='quiz'&&game==='anagrams'?[2,3,3,2].flatMap((count,tier)=>source.filter(q=>q.tier===tier+1).slice(0,count)):mode==='quiz'?source.slice(0,10):source;
   shareBlobPromise=null;
+  if(sharePreviewUrl){URL.revokeObjectURL(sharePreviewUrl);sharePreviewUrl=null}
+  $('share-preview-image').hidden=true;
+  $('share-preview').classList.remove('is-rendered');
   state={game,mode,questions,index:0,score:0,points:0,completed:0,openedTiles:0,tileButtons:[],choiceButtons:[],answered:false,countingDown:game==='anagrams'||game==='vowels',startedAt:Date.now(),elapsedMs:null,exhausted:false,runId:Date.now()+Math.random()};
   show('game');render();if(state.countingDown)startCountdown();
 }
@@ -405,7 +409,18 @@ async function drawShareCard(){
   return canvas;
 }
 function prepareShareCard(){
-  shareBlobPromise=drawShareCard().then(canvas=>new Promise(resolve=>canvas.toBlob(resolve,'image/png'))).catch(()=>null);
+  const runId=state.runId;
+  shareBlobPromise=drawShareCard().then(canvas=>new Promise(resolve=>canvas.toBlob(resolve,'image/png'))).then(blob=>{
+    if(blob&&runId===state.runId){
+      if(sharePreviewUrl)URL.revokeObjectURL(sharePreviewUrl);
+      sharePreviewUrl=URL.createObjectURL(blob);
+      const preview=$('share-preview-image');
+      preview.onload=()=>{if(runId===state.runId)$('share-preview').classList.add('is-rendered')};
+      preview.src=sharePreviewUrl;
+      preview.hidden=false;
+    }
+    return blob;
+  }).catch(()=>null);
   return shareBlobPromise;
 }
 async function shareCard(preferNative=true){

@@ -20,7 +20,7 @@ test('PPEC Quiz is the installed and visible app name', () => {
 function makeElement(dataset = {}) {
   return {
     dataset, hidden: false, value: '', textContent: '', style: {}, children: [],
-    listeners: {}, classList: { add() {}, toggle() {} },
+    listeners: {}, classList: { add() {}, remove() {}, toggle() {} },
     addEventListener(type, handler) { this.listeners[type] = handler; },
     setAttribute() {},
     replaceChildren(...children) { this.children = children; },
@@ -36,6 +36,7 @@ function setup() {
   const historyEntries = [{}];
   let historyIndex = 0;
   const canvasText = [];
+  const objectUrls = [];
   let downloadClicked = false;
   const nodes = new Map();
   const get = id => nodes.get(id) || (nodes.set(id, Object.assign(makeElement(), { id })), nodes.get(id));
@@ -86,11 +87,11 @@ function setup() {
     clearInterval: () => { interval = null; },
     navigator: {}, File: class {}, Image: class { decode() { return Promise.resolve(); } }
   });
-  context.URL = { createObjectURL: () => 'blob:test', revokeObjectURL() {} };
+  context.URL = { createObjectURL: blob => { const url = `blob:test-${objectUrls.length + 1}`; objectUrls.push({ blob, url }); return url; }, revokeObjectURL() {} };
   vm.runInContext(source, context);
   const state = () => vm.runInContext('state', context);
   const submit = answer => { get('answer-input').value = answer; get('answer-form').listeners.submit({ preventDefault() {} }); };
-  return { get, buttons, state, submit, canvasText, wasDownloaded: () => downloadClicked,
+  return { get, buttons, state, submit, canvasText, objectUrls, wasDownloaded: () => downloadClicked,
     rerender: () => vm.runInContext('render()', context),
     startTimed: index => { buttons[index].click(); vm.runInContext('finishCountdown()', context); },
     advance: ms => { now += ms; interval?.(); },
@@ -139,6 +140,17 @@ test('Graphical share card renders game, mode, score, question count, and time a
   assert.ok(app.canvasText.some(text => text.includes('47 PTS')));
   assert.ok(app.canvasText.some(text => text.includes('4 COMPLETED')));
   assert.ok(app.canvasText.some(text => text.includes('2:03')));
+});
+
+test('The on-screen tile previews the same PNG blob used by Save PNG', async () => {
+  const app = setup();
+  app.evaluate("Object.assign(state,{game:'trails',mode:'quiz',score:7,completed:10,elapsedMs:91000})");
+  const blob = await app.evaluate('prepareShareCard()');
+  assert.equal(app.get('share-preview-image').src, 'blob:test-1');
+  assert.equal(app.get('share-preview-image').hidden, false);
+  assert.strictEqual(app.objectUrls[0].blob, blob);
+  await app.get('download-button').click();
+  assert.strictEqual(app.objectUrls[1].blob, blob);
 });
 
 test('Letter and trail share cards use correct-answer scores', async () => {
