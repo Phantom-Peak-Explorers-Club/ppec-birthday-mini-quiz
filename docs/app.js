@@ -90,7 +90,15 @@ const PICTURES = [
   ['Perigate','Perigate Pear Gate.jpg',undefined,['Pear Gate','Peargate']],
   ['Platman','Platman.jpg',undefined,['Plat Man','Platypus Man']],
   ['RoboDoc','RoboDoc.jpg',undefined,['Robo Doc','Robot Doctor']],
-  ['The Autohatter','The Autohatter.jpg',undefined,['Auto Hatter']]
+  ['The Autohatter','The Autohatter.jpg',undefined,['Auto Hatter']],
+  ['Beardy Hamm','Beardy Hamm.jpg',undefined,['Beardy Ham']],
+  ['Cogwright','Cogwright.jpg',undefined,['Cog Right']],
+  ['Edgar Allan Crow','Edgar Allan Crow.jpg',undefined,['Edgar Allen Crow']],
+  ['Electric Gamehouse','Electric Gamehouse.jpg'],
+  ['Meowiarty','Meowiarty.jpg'],
+  ['Sir Merrylegs','Sir Merrylegs.jpg'],
+  ['Spectre','Spectre.jpg',undefined,['Specter']],
+  ['Stickler','Stickler.jpg']
 ].map(([answer,image,contributor,aliases=[]])=>({answer,image:`./assets/catchphrase/${encodeURIComponent(image)}`,contributor,
   aliases:[...aliases,...(answer==='Dr Winter'?['Dr. Winter','Doctor Winter','Doc Winter','Winter']:answer==='Rockbolt Theatre'?['The Rockbolt','The Rockbolt Theatre']:[])]
 }));

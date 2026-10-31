@@ -261,7 +261,7 @@ test('Unlimited ends on a mistake and awards the existing score', () => {
 test('Unlimited pictures ends after every distinct answer and credits future contributors', () => {
   const app = setup();
   app.buttons[3].click();
-  assert.equal(app.state().questions.length, 25);
+  assert.equal(app.state().questions.length, 33);
   app.state().questions[0].contributor = 'Example Explorer';
   app.rerender();
   assert.equal(app.get('question-credit').textContent, 'The idea for this question came from ');
@@ -271,13 +271,13 @@ test('Unlimited pictures ends after every distinct answer and credits future con
   app.submit(app.state().questions[0].answer);
   app.get('next-button').click();
   assert.equal(app.get('question-credit').hidden, !app.state().questions[1].contributor);
-  for (let i = 1; i < 25; i++) {
+  for (let i = 1; i < 33; i++) {
     app.state().tileButtons[0].click();
     app.submit(app.state().questions[i].answer);
     app.get('next-button').click();
   }
-  assert.equal(app.get('share-score').textContent, '575 points');
-  assert.equal(app.get('share-detail').textContent, '25 correct · 25 questions completed');
+  assert.equal(app.get('share-score').textContent, '759 points');
+  assert.equal(app.get('share-detail').textContent, '33 correct · 33 questions completed');
   assert.match(app.get('result-note').textContent, /More questions coming soon/);
 });
 
@@ -345,12 +345,12 @@ test('Catchphrase has no timer and accepts a small typo after a panel is opened'
 
 test('Picture clues include the approved set, TomB_90 ideas, and one Perigate per run', () => {
   const app = setup();
-  assert.equal(app.evaluate('PICTURES.length'), 26);
-  assert.equal(app.evaluate('pictureQuestions().length'), 25);
-  assert.equal(app.evaluate('new Set(pictureQuestions().map(q=>normal(q.answer))).size'), 25);
+  assert.equal(app.evaluate('PICTURES.length'), 34);
+  assert.equal(app.evaluate('pictureQuestions().length'), 33);
+  assert.equal(app.evaluate('new Set(pictureQuestions().map(q=>normal(q.answer))).size'), 33);
   assert.equal(app.evaluate("PICTURES.filter(q=>q.contributor==='TomB_90').map(q=>q.answer).sort().join(',')"), 'Jaspin,Perigate,Vesper');
   assert.equal(app.evaluate("PICTURES.find(q=>q.image.includes('Perigate%20Pear%20Gate')).contributor"), undefined);
-  for (const image of ['Jaspin','Perigate','Vesper','Bellamy','Captain Book','Dungeons and Dirigibles','Finn Diesel','General Store','Halloway','Mayor Pocket','Perigate Pear Gate','Platman','RoboDoc','The Autohatter']) {
+  for (const image of ['Jaspin','Perigate','Vesper','Bellamy','Captain Book','Dungeons and Dirigibles','Finn Diesel','General Store','Halloway','Mayor Pocket','Perigate Pear Gate','Platman','RoboDoc','The Autohatter','Beardy Hamm','Cogwright','Edgar Allan Crow','Electric Gamehouse','Meowiarty','Sir Merrylegs','Spectre','Stickler']) {
     assert.ok(fs.existsSync(path.join(__dirname, '..', 'docs', 'assets', 'catchphrase', `${image}.jpg`)), `${image} image missing`);
   }
 });
@@ -363,6 +363,10 @@ test('All picture clues accept case, spaces, punctuation, and minor typos plus i
   assert.equal(app.evaluate("isCorrect('Pocket',PICTURES.find(q=>q.answer==='Mayor Pocket'))"), true);
   assert.equal(app.evaluate("isCorrect('Vespa',PICTURES.find(q=>q.answer==='Vesper'))"), true);
   assert.equal(app.evaluate("isCorrect('Dungeons & Dirigibles',PICTURES.find(q=>q.answer==='Dungeons and Dirigibles'))"), true);
+  assert.equal(app.evaluate("isCorrect('beardy-ham',PICTURES.find(q=>q.answer==='Beardy Hamm'))"), true);
+  assert.equal(app.evaluate("isCorrect('cog right',PICTURES.find(q=>q.answer==='Cogwright'))"), true);
+  assert.equal(app.evaluate("isCorrect('Edgar Allen Crow',PICTURES.find(q=>q.answer==='Edgar Allan Crow'))"), true);
+  assert.equal(app.evaluate("isCorrect('specter',PICTURES.find(q=>q.answer==='Spectre'))"), true);
   assert.equal(app.evaluate("PICTURES.filter(q=>q.answer==='Perigate').every(q=>isCorrect('Pear Gate',q)&&isCorrect('Perry Gate',q))"), true);
 });
 
