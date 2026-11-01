@@ -6,6 +6,7 @@ const vm = require('node:vm');
 
 const source = fs.readFileSync(path.join(__dirname, '..', 'docs', 'what-trail.js'), 'utf8') + '\n' +
   fs.readFileSync(path.join(__dirname, '..', 'docs', 'fill-blanks.js'), 'utf8') + '\n' +
+  fs.readFileSync(path.join(__dirname, '..', 'docs', 'lore-gap.js'), 'utf8') + '\n' +
   fs.readFileSync(path.join(__dirname, '..', 'docs', 'app.js'), 'utf8');
 
 test('PPEC Quiz is the installed app name and the banner names Jonabot Jr', () => {
@@ -63,7 +64,9 @@ function setup() {
     makeElement({ game: 'platy', mode: 'quiz' }),
     makeElement({ game: 'platy', mode: 'unlimited' }),
     makeElement({ game: 'blanks', mode: 'quiz' }),
-    makeElement({ game: 'blanks', mode: 'unlimited' })
+    makeElement({ game: 'blanks', mode: 'unlimited' }),
+    makeElement({ game: 'lore', mode: 'quiz' }),
+    makeElement({ game: 'lore', mode: 'unlimited' })
   ];
   const screens = ['home', 'game', 'results'].map(get);
   const context = vm.createContext({
@@ -173,7 +176,7 @@ test('The on-screen tile previews the same PNG blob used by Save PNG', async () 
 });
 
 test('Letter and trail share cards use correct-answer scores', async () => {
-  for (const [game, label] of [['anagrams', 'Littlefield’s Letters'], ['vowels', 'Missing Vowels'], ['trails', 'What Trail?'], ['blanks', 'Mind the Gap!']]) {
+  for (const [game, label] of [['anagrams', 'Littlefield’s Letters'], ['vowels', 'Missing Vowels'], ['trails', 'What Trail?'], ['blanks', 'Mind the Gap!'], ['lore', 'Lost in the Lore!']]) {
     const app = setup();
     app.evaluate(`Object.assign(state,{game:'${game}',mode:'quiz',score:8,completed:10,elapsedMs:91000})`);
     await app.evaluate('drawShareCard()');
@@ -189,7 +192,7 @@ test('Letter and trail share cards use correct-answer scores', async () => {
 
 test('Each share card shows its game art between the dividers and a Jonabot avatar', async () => {
   const backgrounds = new Set();
-  for (const game of ['anagrams', 'catchphrase', 'vowels', 'trails', 'platy', 'blanks']) {
+  for (const game of ['anagrams', 'catchphrase', 'vowels', 'trails', 'platy', 'blanks', 'lore']) {
     const app = setup();
     app.evaluate(`Object.assign(state,{game:'${game}',mode:'quiz',score:4,completed:10,elapsedMs:91000})`);
     await app.evaluate('drawShareCard()');
@@ -201,7 +204,7 @@ test('Each share card shows its game art between the dividers and a Jonabot avat
     assert.ok(background, `${game} background missing`);
     backgrounds.add(background.color);
   }
-  assert.equal(backgrounds.size, 6, 'Every game needs its own share card background colour');
+  assert.equal(backgrounds.size, 7, 'Every game needs its own share card background colour');
 });
 
 test('Share card uses native file sharing when the browser supports it', async () => {
@@ -321,7 +324,7 @@ test('Timed games count down before accepting answers or starting the clock', ()
 test('Every game has a distinct colour and results use that game colour', () => {
   const app = setup();
   const themes = app.evaluate('GAME_THEMES');
-  assert.equal(new Set(Object.values(themes).map(theme => theme.accent)).size, 6);
+  assert.equal(new Set(Object.values(themes).map(theme => theme.accent)).size, 7);
   app.buttons[6].click();
   app.get('reveal-button').click();
   app.get('next-button').click();
@@ -433,6 +436,65 @@ test('Mind the Gap is untimed and shows the instruction, season, year, reveal an
   unlimited.submit('a completely wrong word');
   assert.equal(unlimited.state().elapsedMs !== null, true);
   assert.match(fs.readFileSync(path.join(__dirname, '..', 'docs', 'style.css'), 'utf8'), /data-game="blanks"\] \.timer-instrument,[^\n]*\.timer-track\{display:none\}/);
+});
+
+test('Lost in the Lore uses description words and four factual choices, separate from Mind the Gap', () => {
+  const trails = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'source', 'trails.json'), 'utf8'));
+  const questions = vm.runInNewContext(fs.readFileSync(path.join(__dirname, '..', 'docs', 'lore-gap.js'), 'utf8') + '\nLORE_GAP');
+  const byId = new Map(trails.map(trail => [trail.id, trail]));
+  assert.equal(questions.length, 33);
+  assert.equal(new Set(questions.map(q => q.id)).size, 33);
+  for (const q of questions) {
+    const trail = byId.get(q.id);
+    assert.equal(q.title, trail.title);
+    assert.equal(q.season, trail.season);
+    assert.equal(q.year, trail.year);
+    assert.equal(q.seasonTitle, trail.seasonTitle);
+    assert.equal(q.options.length, 4);
+    assert.equal(new Set(q.options).size, 4);
+    assert.ok(q.options.includes(q.answer));
+    assert.equal(q.clue.split('_____').length, 2);
+    assert.ok(trail.searchText.includes(q.clue.replace('_____', q.answer)), q.title);
+    assert.ok(!trail.title.toLowerCase().includes(q.answer.toLowerCase()), q.title);
+    assert.ok(!q.clue.toLowerCase().includes(q.answer.toLowerCase()), q.title);
+  }
+  assert.equal(questions.find(q => q.title === 'Question Me This').answer, 'Cogwright');
+  assert.equal(questions.find(q => q.title === 'Mayor Of The Universe').answer, 'Jumble');
+  assert.equal(vm.runInNewContext(fs.readFileSync(path.join(__dirname, '..', 'docs', 'fill-blanks.js'), 'utf8') + '\nFILL_BLANKS.length'), 152);
+});
+
+test('Lost in the Lore shows title and season, accepts a choice, and has no timer', () => {
+  const app = setup();
+  app.buttons[12].click();
+  assert.equal(app.state().questions.length, 10);
+  assert.equal(app.state().countingDown, false);
+  assert.equal(app.get('game-title').textContent, 'Lost in the Lore!');
+  assert.equal(app.get('blank-instruction').hidden, true);
+  assert.equal(app.get('lore-heading').hidden, false);
+  assert.equal(app.get('lore-choices').hidden, false);
+  assert.equal(app.get('answer-form').hidden, true);
+  const q = app.state().questions[0];
+  assert.equal(app.get('lore-title').textContent, q.title);
+  assert.equal(app.get('lore-source').textContent, `${q.season} ${q.year} · ${q.seasonTitle}`);
+  assert.equal(app.get('clue').children[0].children[1].textContent, '?');
+  assert.equal(app.state().choiceButtons.length, 4);
+  app.advance(60000);
+  assert.equal(app.state().answered, false);
+  app.state().choiceButtons.find(button => button.dataset.answer === q.answer).click();
+  assert.equal(app.state().score, 1);
+  assert.equal(app.get('clue').children[0].textContent, q.clue.replace('_____', q.answer));
+  assert.equal(app.state().choiceButtons.every(button => button.disabled), true);
+  app.get('next-button').click();
+  app.get('reveal-button').click();
+  assert.equal(app.state().score, 1);
+  const unlimited = setup();
+  unlimited.buttons[13].click();
+  assert.equal(unlimited.state().questions.length, 33);
+  const wrong = unlimited.state().choiceButtons.find(button => button.dataset.answer !== unlimited.state().questions[0].answer);
+  wrong.click();
+  assert.equal(unlimited.state().elapsedMs !== null, true);
+  unlimited.get('next-button').click();
+  assert.equal(unlimited.get('share-game').textContent, 'Lost in the Lore!');
 });
 
 test('Browser Back returns from a game to the portal and Forward restores the run', () => {

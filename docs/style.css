@@ -383,6 +383,24 @@ footer{text-align:center;padding:0 0 25px;color:#81758b;font:600 10px 'IBM Plex 
 #blank-instruction[hidden],#blank-source[hidden]{display:none}
 .blank-complete{display:block;margin-top:7px;color:#d9c9c9;font-size:13px;line-height:1.35}
 @media(max-width:640px){.blank-title{font-size:clamp(22px,6.4vw,32px)}.blank-space{border-bottom-width:3px}.game-console[data-game="blanks"] .clue{min-height:150px}}
+.lore-game-card{--game-accent:#ff80bd;--game-dark:#522040;--game-light:#ffe3f1}
+.game-console[data-game="lore"]{--game-accent:#ff80bd;--game-dark:#522040}
+.share-preview[data-game="lore"]{--game-accent:#ff80bd;--game-dark:#522040;--game-light:#ffe3f1}
+.game-console[data-game="lore"] .timer-instrument,.game-console[data-game="lore"] .timer-track{display:none}
+.game-console[data-game="lore"] .question-meta{grid-template-columns:1fr 1fr}
+.lore-heading{display:grid;gap:5px;margin:0 0 13px;text-align:center}
+.lore-heading strong{color:#fff0df;font:700 clamp(22px,3.4vw,32px)/1.2 Fraunces,Georgia,serif}
+.lore-heading span{color:#ffb9d9;font:700 10px 'IBM Plex Mono',monospace;letter-spacing:.1em;text-transform:uppercase}
+#lore-heading[hidden],#lore-choices[hidden]{display:none}
+.game-console[data-game="lore"] .clue{min-height:145px;padding:24px;background:repeating-linear-gradient(0deg,#ff80bd0c 0 2px,transparent 2px 6px),radial-gradient(ellipse at 50% 45%,#572747,#231725 82%)}
+.lore-excerpt{max-width:760px;margin:0;color:#fff2e8;font:600 clamp(17px,2.7vw,25px)/1.5 Fraunces,Georgia,serif;text-align:center}
+.lore-space{display:inline-block;min-width:2.5em;margin:0 .1em;border-bottom:3px solid #ff80bd;border-radius:4px;background:#ff80bd24;color:#ffd4e9;text-align:center}
+.lore-excerpt.solved{color:#b9f0c9}.lore-excerpt.failed{color:#ffd4e9}
+.lore-choices{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:16px 0 0}
+.lore-choice{border-color:#bd6e9d;background:linear-gradient(110deg,#40233a,#271e30)}
+.lore-choice:hover:not(:disabled),.lore-choice:focus-visible{background:#623550;border-color:#ffa5d0}
+@media(max-width:640px){.game-console[data-game="lore"] .clue{padding:17px;min-height:125px}.lore-excerpt{font-size:17px}.lore-choices{gap:7px}.lore-choice{min-height:48px;padding:7px;font-size:13px;gap:7px}}
+@media(max-width:390px){.lore-choices{grid-template-columns:1fr}}
 @media(max-width:360px){.platy-letter{min-width:14px;font-size:12px}.platy-life-icons img{width:24px}}
 @media(max-width:640px){.platy-reveal{min-height:56px;padding:7px 8px;gap:4px}.platy-reveal-total{gap:5px}.platy-reveal-total strong{font-size:29px}.platy-reveal-total span{font-size:7px}.platy-reveal-icons{gap:0}.platy-reveal-icons img{width:27px;height:23px}}
 @media(max-width:360px){.platy-reveal-icons img{width:22px}.platy-reveal-total strong{font-size:25px}}
