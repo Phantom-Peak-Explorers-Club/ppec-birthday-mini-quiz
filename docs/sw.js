@@ -1,4 +1,4 @@
-const CACHE_NAME = 'ppec-mini-quiz-v46';
+const CACHE_NAME = 'ppec-mini-quiz-v48';
 const CACHE_PREFIX = 'ppec-mini-quiz-';
 const pictures = [
   'Copper', 'Dr Winter', 'Hogwood', 'Leadbelly', 'Littlefield', 'Lovehart',
@@ -13,7 +13,7 @@ const pictures = [
 ];
 const files = [
   './', './index.html', './style.css', './app.js', './what-trail.js', './fill-blanks.js', './lore-gap.js',
-  './manifest.webmanifest', './assets/fonts/fraunces-latin-variable.woff2', './assets/jonabot-jr.png', './assets/jonabot-avatar.png', './assets/jonabot-quiz-hero.png', './assets/jonabot-countdown-card.png', './assets/share-card-frame.jpg', './assets/platy-life.png',
+  './manifest.webmanifest', './assets/fonts/fraunces-latin-variable.woff2', './assets/jonabot-jr.png', './assets/jonabot-avatar.png', './assets/jonabot-quiz-hero.png', './assets/jonabot-countdown-card.png', './assets/share-card-master.jpg', './assets/platy-life.png',
   './assets/app-icon-v3-180.png', './assets/app-icon-v3-192.png', './assets/app-icon-v3-512.png',
   ...['anagrams', 'catchphrase', 'missing-vowels', 'what-trail', 'save-a-platy', 'blankety-peak', 'lost-in-the-lore']
     .map(name => `./assets/game-logos/${name}.png`),

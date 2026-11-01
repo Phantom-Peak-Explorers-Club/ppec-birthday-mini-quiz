@@ -17,3 +17,7 @@ Lost in the Lore shows the trail title, season and year above an excerpt from it
 Run `node --test tests/game.test.cjs` to check the game rules. Serve `docs/` over HTTPS or localhost to test web app installation and offline caching; simply opening `docs/index.html` also works for the quiz itself. The manifest, service worker, and icons live in `docs/`. Browser Back and Forward move between portal, game, and results screens. No account, build step, or backend is required.
 
 Source references: `Backup Quiz PPT.pptx`, the XP Studio quiz export, the images in `Catchphrase Round`, [PPEC Trail Notes](https://ppec.club/trail-notes/), and the linked official map/guide in `CLUE-BANK.md`. Original Desktop source files were left untouched.
+
+# Share card background
+
+The seven share cards use `docs/assets/share-card-master.jpg`, a neutral version of the detailed frame and skyline. `drawShareCard()` applies each game's `GAME_THEMES.shareBg` to that master, preserving its light, shadow, and texture. Set `shareBg` and `accent` for a new game to colour its background and frame without making another image. Regenerate the master from the protected art source with `powershell -File scripts/build_share_card_master.ps1` if the artwork changes.

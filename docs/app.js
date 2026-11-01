@@ -620,17 +620,20 @@ async function drawShareCard(){
   const c=canvas.getContext('2d');
   const theme=GAME_THEMES[state.game]||GAME_THEMES.anagrams;
   const logoName=({anagrams:'anagrams',catchphrase:'catchphrase',vowels:'missing-vowels',trails:'what-trail',platy:'save-a-platy',blanks:'blankety-peak',lore:'lost-in-the-lore'})[state.game]||'anagrams';
-  const frame=new Image();frame.src='./assets/share-card-frame.jpg';
+  const frame=new Image();frame.src='./assets/share-card-master.jpg';
   const logo=new Image();logo.src=`./assets/game-logos/${logoName}.png?v=4`;
   const avatar=new Image();avatar.src='./assets/jonabot-avatar.png';
   const [frameReady,logoReady,avatarReady]=await Promise.all([frame,logo,avatar].map(image=>image.decode().then(()=>true).catch(()=>false)));
-  if(frameReady)c.drawImage(frame,0,0,1080,1080);
-  else{
-    c.fillStyle='#230e2a';c.fillRect(0,0,1080,1080);
-    c.strokeStyle='#e4ad57';c.lineWidth=15;c.strokeRect(24,24,1032,1032);
+  if(frameReady){
+    c.drawImage(frame,0,0,1080,1080);
+    // Color preserves the master's light and dark detail, including its frame.
+    c.globalCompositeOperation='color';
+    c.fillStyle=theme.shareBg;c.fillRect(0,0,1080,1080);
+    c.globalCompositeOperation='source-over';
+  }else{
+    c.fillStyle=theme.shareBg;c.fillRect(0,0,1080,1080);
+    c.strokeStyle=theme.accent;c.lineWidth=15;c.strokeRect(24,24,1032,1032);
   }
-  c.fillStyle=theme.shareBg;c.fillRect(0,0,1080,1080);
-  if(frameReady){c.globalCompositeOperation='screen';c.globalAlpha=.12;c.drawImage(frame,0,0,1080,1080);c.globalCompositeOperation='source-over';c.globalAlpha=1}
   if(avatarReady)c.drawImage(avatar,788,35,235,235);
   c.textAlign='left';
   c.fillStyle='#fff0cc';c.font='700 46px Fraunces, Georgia, serif';c.fillText('PPEC QUIZ',88,105);
@@ -638,7 +641,10 @@ async function drawShareCard(){
   c.fillStyle='#fff0cc';c.font='700 72px Fraunces, Georgia, serif';c.fillText(gameName(),86,250,680);
   c.fillStyle=theme.accent;c.fillRect(66,283,948,4);
   c.fillStyle=theme.accent;c.beginPath();c.arc(540,285,10,0,Math.PI*2);c.fill();
-  c.fillStyle='#fff0cc';c.font='700 250px Fraunces, Georgia, serif';c.fillText(String(state.game==='catchphrase'||state.game==='platy'?state.points:state.score),91,566,435);
+  c.fillStyle='#fff0cc';c.font='700 250px Fraunces, Georgia, serif';
+  c.shadowColor='rgba(255,255,255,.55)';c.shadowBlur=12;
+  c.fillText(String(state.game==='catchphrase'||state.game==='platy'?state.points:state.score),91,566,435);
+  c.shadowColor='transparent';c.shadowBlur=0;
   c.fillStyle=theme.accent;c.font=`700 ${state.game==='platy'?58:88}px Fraunces, Georgia, serif`;c.fillText(state.game==='catchphrase'?'POINTS':state.game==='platy'?'PLATYPUSES':'RIGHT',95,662,450);
   if(state.game==='catchphrase'||state.game==='platy'){
     c.fillStyle='#fff0cc';c.font='700 29px DM Sans, Arial, sans-serif';c.fillText(state.game==='platy'?`SAVED · ${state.score} ${state.score===1?'TRAIL':'TRAILS'} SOLVED`:`${state.score} CORRECT`,102,713,435);
@@ -648,7 +654,7 @@ async function drawShareCard(){
   c.fillStyle=theme.accent;c.beginPath();c.arc(540,757,10,0,Math.PI*2);c.fill();
   c.textAlign='center';c.fillStyle='#fff0cc';c.font='700 91px Fraunces, Georgia, serif';
   c.fillText(String(state.completed),300,858);c.fillText(duration(state.elapsedMs),770,858);
-  c.fillStyle=theme.accent;c.font='700 25px DM Sans, Arial, sans-serif';
+  c.fillStyle='#fff0cc';c.font='700 25px DM Sans, Arial, sans-serif';
   c.fillText(state.completed===1?'QUESTION COMPLETED':'QUESTIONS COMPLETED',300,898);
   c.fillText('TIME',770,898);
   c.fillStyle='#fff0cc';c.font='700 26px Fraunces, Georgia, serif';c.fillText('PHANTOM PEAK EXPLORERS’ CLUB',540,1019,530);

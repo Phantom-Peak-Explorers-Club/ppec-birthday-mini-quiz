@@ -200,6 +200,7 @@ test('Each share card shows its game art between the dividers and a Jonabot avat
     assert.ok(art, `${game} art missing`);
     assert.ok(art.args[1] > 283 && art.args[1] + art.args[3] < 756, `${game} art crossed a divider`);
     assert.ok(app.canvasImages.some(image => image.src.includes('jonabot-avatar.png')));
+    assert.ok(app.canvasImages.some(image => image.src.includes('share-card-master.jpg')), `${game} detailed master missing`);
     const background = app.canvasFills.find(fill => fill.args.join(',') === '0,0,1080,1080');
     assert.ok(background, `${game} background missing`);
     assert.equal(background.color, app.evaluate(`GAME_THEMES.${game}.shareBg`), `${game} share colour differs from its theme`);
