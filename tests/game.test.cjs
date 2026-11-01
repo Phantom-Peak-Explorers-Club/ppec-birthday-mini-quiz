@@ -155,7 +155,7 @@ test('Graphical share card renders game, mode, score, question count, and time a
   await app.evaluate('shareCard()');
   assert.equal(app.wasDownloaded(), true);
   assert.match(app.get('share-status').textContent, /ppec-quiz-score\.png/);
-  assert.ok(app.canvasText.some(text => text.includes('Say What You See?')));
+  assert.ok(app.canvasText.some(text => text.includes('Peak-a-Boo!')));
   assert.ok(app.canvasText.some(text => text.includes('UNLIMITED')));
   assert.ok(app.canvasText.includes('47'));
   assert.ok(app.canvasText.includes('POINTS'));
@@ -176,7 +176,7 @@ test('The on-screen tile previews the same PNG blob used by Save PNG', async () 
 });
 
 test('Letter and trail share cards use correct-answer scores', async () => {
-  for (const [game, label] of [['anagrams', 'Littlefield’s Letters'], ['vowels', 'Missing Vowels'], ['trails', 'What Trail?'], ['blanks', 'Mind the Gap!'], ['lore', 'Lost in the Lore!']]) {
+  for (const [game, label] of [['anagrams', 'Littlefield’s Letters'], ['vowels', 'Vowel of Silence'], ['trails', 'Trail and Error!'], ['blanks', 'Mind the Gap!'], ['lore', 'Pick-a-Word!']]) {
     const app = setup();
     app.evaluate(`Object.assign(state,{game:'${game}',mode:'quiz',score:8,completed:10,elapsedMs:91000})`);
     await app.evaluate('drawShareCard()');
@@ -343,7 +343,7 @@ test('Catchphrase has no timer and accepts a small typo after a panel is opened'
   app.submit(typo);
   assert.equal(app.state().score, 1);
   assert.equal(app.state().points, 23);
-  assert.equal(app.get('game-title').textContent, 'Say What You See?');
+  assert.equal(app.get('game-title').textContent, 'Peak-a-Boo!');
   assert.equal(app.get('feedback').children[0].children[1].textContent, q.answer);
   assert.equal(app.get('feedback').children[1].children[0].textContent, '+23');
   assert.match(app.get('feedback').children[1].children[1].textContent, /1 \/ 24 PANELS/);
@@ -468,7 +468,7 @@ test('Lost in the Lore shows title and season, accepts a choice, and has no time
   app.buttons[12].click();
   assert.equal(app.state().questions.length, 10);
   assert.equal(app.state().countingDown, false);
-  assert.equal(app.get('game-title').textContent, 'Lost in the Lore!');
+  assert.equal(app.get('game-title').textContent, 'Pick-a-Word!');
   assert.equal(app.get('blank-instruction').hidden, true);
   assert.equal(app.get('lore-heading').hidden, false);
   assert.equal(app.get('lore-choices').hidden, false);
@@ -494,7 +494,7 @@ test('Lost in the Lore shows title and season, accepts a choice, and has no time
   wrong.click();
   assert.equal(unlimited.state().elapsedMs !== null, true);
   unlimited.get('next-button').click();
-  assert.equal(unlimited.get('share-game').textContent, 'Lost in the Lore!');
+  assert.equal(unlimited.get('share-game').textContent, 'Pick-a-Word!');
 });
 
 test('Browser Back returns from a game to the portal and Forward restores the run', () => {
@@ -601,7 +601,7 @@ test('What Trail? Unlimited ends on a wrong choice and counts completed question
   app.state().choiceButtons.find(button => button.dataset.answer !== answer).click();
   assert.equal(app.get('clue').children.at(-1).children[1].textContent, 'WRONG TRAIL');
   app.get('next-button').click();
-  assert.equal(app.get('share-game').textContent, 'What Trail?');
+  assert.equal(app.get('share-game').textContent, 'Trail and Error!');
   assert.equal(app.get('share-score').textContent, '0 right');
   assert.equal(app.get('share-detail').textContent, '0 correct · 1 question completed');
 });

@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#260936">
-  <meta name="description" content="Play seven PPEC Quiz games: anagrams, picture clues, missing vowels, trail stories, Save-A-Platy, Mind the Gap and Lost in the Lore.">
+  <meta name="description" content="Play seven PPEC Quiz games: Littlefield’s Letters, Peak-a-Boo, Vowel of Silence, Trail and Error, Save-A-Platy, Mind the Gap and Pick-a-Word.">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <title>PPEC Quiz</title>
@@ -16,7 +16,7 @@
   <script src="./what-trail.js" defer></script>
   <script src="./fill-blanks.js" defer></script>
   <script src="./lore-gap.js" defer></script>
-  <script src="./app.js?v=34" defer></script>
+  <script src="./app.js?v=35" defer></script>
 </head>
 <body>
   <main class="shell">
@@ -41,15 +41,15 @@
         </article>
         <article class="game-card picture-game-card">
           <div class="card-icon picture-icon"><img src="./assets/game-logos/catchphrase.png?v=2" alt="" width="512" height="512"></div>
-          <div class="card-body"><h2>Say What You See?</h2><p>Reveal picture panels and guess.</p><div class="mode-buttons"><button class="play-button" type="button" data-game="catchphrase" data-mode="quiz">Quiz Round <span aria-hidden="true">↗</span></button><button class="play-button secondary" type="button" data-game="catchphrase" data-mode="unlimited">Unlimited <span aria-hidden="true">∞</span></button></div></div>
+          <div class="card-body"><h2>Peak-a-Boo!</h2><p>Reveal picture panels and guess.</p><div class="mode-buttons"><button class="play-button" type="button" data-game="catchphrase" data-mode="quiz">Quiz Round <span aria-hidden="true">↗</span></button><button class="play-button secondary" type="button" data-game="catchphrase" data-mode="unlimited">Unlimited <span aria-hidden="true">∞</span></button></div></div>
         </article>
         <article class="game-card vowel-game-card">
           <div class="card-icon vowels-icon"><img src="./assets/game-logos/missing-vowels.png?v=2" alt="" width="512" height="512"></div>
-          <div class="card-body"><h2>Missing Vowels</h2><p>Put the vowels back.</p><div class="mode-buttons"><button class="play-button" type="button" data-game="vowels" data-mode="quiz">Quiz Round <span aria-hidden="true">↗</span></button><button class="play-button secondary" type="button" data-game="vowels" data-mode="unlimited">Unlimited <span aria-hidden="true">∞</span></button></div><p id="vowels-soon" class="soon-note" hidden>Question list coming soon</p></div>
+          <div class="card-body"><h2>Vowel of Silence</h2><p>Put the vowels back.</p><div class="mode-buttons"><button class="play-button" type="button" data-game="vowels" data-mode="quiz">Quiz Round <span aria-hidden="true">↗</span></button><button class="play-button secondary" type="button" data-game="vowels" data-mode="unlimited">Unlimited <span aria-hidden="true">∞</span></button></div><p id="vowels-soon" class="soon-note" hidden>Question list coming soon</p></div>
         </article>
         <article class="game-card trail-game-card">
           <div class="card-icon trail-icon"><img src="./assets/game-logos/what-trail.png?v=2" alt="" width="512" height="512"></div>
-          <div class="card-body"><h2>What Trail?</h2><p>Match each story recap to its trail.</p><div class="mode-buttons"><button class="play-button" type="button" data-game="trails" data-mode="quiz">Quiz Round <span aria-hidden="true">↗</span></button><button class="play-button secondary" type="button" data-game="trails" data-mode="unlimited">Unlimited <span aria-hidden="true">∞</span></button></div></div>
+          <div class="card-body"><h2>Trail and Error!</h2><p>Match each story recap to its trail.</p><div class="mode-buttons"><button class="play-button" type="button" data-game="trails" data-mode="quiz">Quiz Round <span aria-hidden="true">↗</span></button><button class="play-button secondary" type="button" data-game="trails" data-mode="unlimited">Unlimited <span aria-hidden="true">∞</span></button></div></div>
         </article>
         <article class="game-card platy-game-card">
           <div class="card-icon platy-icon"><img src="./assets/game-logos/save-a-platy.png" alt="" width="512" height="512"></div>
@@ -60,8 +60,8 @@
           <div class="card-body"><h2>Mind the Gap!</h2><p>Complete the missing word in a trail title.</p><div class="mode-buttons"><button class="play-button" type="button" data-game="blanks" data-mode="quiz">Quiz Round <span aria-hidden="true">↗</span></button><button class="play-button secondary" type="button" data-game="blanks" data-mode="unlimited">Unlimited <span aria-hidden="true">∞</span></button></div></div>
         </article>
         <article class="game-card lore-game-card">
-          <div class="card-icon lore-icon"><img src="./assets/game-logos/lost-in-the-lore.svg" alt="" width="512" height="512"></div>
-          <div class="card-body"><h2>Lost in the Lore!</h2><p>Restore a name from a trail story.</p><div class="mode-buttons"><button class="play-button" type="button" data-game="lore" data-mode="quiz">Quiz Round <span aria-hidden="true">↗</span></button><button class="play-button secondary" type="button" data-game="lore" data-mode="unlimited">Unlimited <span aria-hidden="true">∞</span></button></div></div>
+          <div class="card-icon lore-icon"><img src="./assets/game-logos/pick-a-word.svg" alt="" width="512" height="512"></div>
+          <div class="card-body"><h2>Pick-a-Word!</h2><p>Pick the missing name from a trail story.</p><div class="mode-buttons"><button class="play-button" type="button" data-game="lore" data-mode="quiz">Quiz Round <span aria-hidden="true">↗</span></button><button class="play-button secondary" type="button" data-game="lore" data-mode="unlimited">Unlimited <span aria-hidden="true">∞</span></button></div></div>
         </article>
         </div>
       </div>

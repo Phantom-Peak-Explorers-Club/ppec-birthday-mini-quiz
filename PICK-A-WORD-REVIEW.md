@@ -1,4 +1,4 @@
-# Lost in the Lore clue review
+# Pick-a-Word! clue review
 
 Each clue is an excerpt from the trail description in `source/trails.json`. One named character, place or system is removed. All four choices have the same type; the correct word is absent from the displayed title and the rest of the excerpt.
 

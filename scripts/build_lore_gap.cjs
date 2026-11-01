@@ -72,9 +72,9 @@ const questions = picks.map(([id, answer, kind, mention = 0]) => {
   return {id, title: trail.title, clue, answer, options, season: trail.season, year: trail.year, seasonTitle: trail.seasonTitle};
 });
 fs.writeFileSync(path.join(root, 'docs', 'lore-gap.js'), `const LORE_GAP = ${JSON.stringify(questions, null, 2)};\n`);
-const review = ['# Lost in the Lore clue review', '',
+const review = ['# Pick-a-Word! clue review', '',
   'Each clue is an excerpt from the trail description in `source/trails.json`. One named character, place or system is removed. All four choices have the same type; the correct word is absent from the displayed title and the rest of the excerpt.', '',
   '| Trail | Season | Missing word | Other choices | Description excerpt |', '|---|---|---|---|---|',
   ...questions.map(q => `| ${q.title} | ${q.season} ${q.year} | **${q.answer}** | ${q.options.slice(1).join(', ')} | ${q.clue.replaceAll('|', '\\|')} |`), ''];
-fs.writeFileSync(path.join(root, 'LOST-IN-THE-LORE-REVIEW.md'), review.join('\n'));
+fs.writeFileSync(path.join(root, 'PICK-A-WORD-REVIEW.md'), review.join('\n'));
 console.log(`Built ${questions.length} description clues from ${trails.length} trails.`);
