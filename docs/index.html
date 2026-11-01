@@ -4,17 +4,18 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#260936">
-  <meta name="description" content="Play five PPEC Quiz games: anagrams, picture clues, missing vowels, trail stories and Save-A-Platy.">
+  <meta name="description" content="Play six PPEC Quiz games: anagrams, picture clues, missing vowels, trail stories, Save-A-Platy and Mind the Gap.">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <title>PPEC Quiz</title>
-  <link rel="manifest" href="./manifest.webmanifest?v=3">
+  <link rel="manifest" href="./manifest.webmanifest?v=4">
   <link rel="icon" type="image/png" href="./assets/app-icon-v3-192.png">
   <link rel="apple-touch-icon" href="./assets/app-icon-v3-180.png">
   <link rel="preload" href="./assets/fonts/fraunces-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="./style.css?v=25">
+  <link rel="stylesheet" href="./style.css?v=26">
   <script src="./what-trail.js" defer></script>
-  <script src="./app.js?v=29" defer></script>
+  <script src="./fill-blanks.js" defer></script>
+  <script src="./app.js?v=30" defer></script>
 </head>
 <body>
   <main class="shell">
@@ -53,6 +54,10 @@
           <div class="card-icon platy-icon"><img src="./assets/game-logos/save-a-platy.png" alt="" width="512" height="512"></div>
           <div class="card-body"><h2>Save-A-Platy</h2><p>Guess trail names. Save up to six platypuses per clue.</p><div class="mode-buttons"><button class="play-button" type="button" data-game="platy" data-mode="quiz">Quiz Round <span aria-hidden="true">↗</span></button><button class="play-button secondary" type="button" data-game="platy" data-mode="unlimited">Unlimited <span aria-hidden="true">∞</span></button></div></div>
         </article>
+        <article class="game-card blanks-game-card">
+          <div class="card-icon blanks-icon"><img src="./assets/game-logos/fill-the-blanks.svg" alt="" width="512" height="512"></div>
+          <div class="card-body"><h2>Mind the Gap!</h2><p>Complete the missing word in a trail title.</p><div class="mode-buttons"><button class="play-button" type="button" data-game="blanks" data-mode="quiz">Quiz Round <span aria-hidden="true">↗</span></button><button class="play-button secondary" type="button" data-game="blanks" data-mode="unlimited">Unlimited <span aria-hidden="true">∞</span></button></div></div>
+        </article>
         </div>
       </div>
     </section>
@@ -74,11 +79,12 @@
         <div id="platy-reveal" class="platy-reveal" role="status" aria-live="polite" hidden><div class="platy-reveal-total"><strong id="platy-reveal-count">0</strong><span>PLATYPUSES SAVED</span></div><div id="platy-reveal-icons" class="platy-reveal-icons" aria-hidden="true"></div></div>
         <div id="trail-choices" class="trail-choices" hidden></div>
         <p id="vowel-hint" class="vowel-hint" hidden></p>
+        <p id="blank-hint" class="blank-hint" hidden></p>
         <p id="reveal-stats" class="reveal-stats" hidden></p>
         <p id="question-credit" class="question-credit" hidden></p>
         <div id="feedback" class="answer-reveal" role="status" aria-live="polite" hidden></div>
         <form id="answer-form" autocomplete="off">
-          <label for="answer-input">Your answer</label>
+          <label id="answer-label" for="answer-input">Your answer</label>
           <div class="answer-row"><input id="answer-input" name="answer" type="text" autocapitalize="off" spellcheck="false" required placeholder="Type your answer"><button class="primary-button" id="answer-submit" type="submit">Check answer</button></div>
         </form>
         <button id="reveal-button" class="text-button reveal-button" type="button">Reveal answer</button>

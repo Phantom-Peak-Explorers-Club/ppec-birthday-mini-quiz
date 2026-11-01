@@ -5,6 +5,7 @@ const path = require('node:path');
 const vm = require('node:vm');
 
 const source = fs.readFileSync(path.join(__dirname, '..', 'docs', 'what-trail.js'), 'utf8') + '\n' +
+  fs.readFileSync(path.join(__dirname, '..', 'docs', 'fill-blanks.js'), 'utf8') + '\n' +
   fs.readFileSync(path.join(__dirname, '..', 'docs', 'app.js'), 'utf8');
 
 test('PPEC Quiz is the installed app name and the banner names Jonabot Jr', () => {
@@ -60,7 +61,9 @@ function setup() {
     makeElement({ game: 'trails', mode: 'quiz' }),
     makeElement({ game: 'trails', mode: 'unlimited' }),
     makeElement({ game: 'platy', mode: 'quiz' }),
-    makeElement({ game: 'platy', mode: 'unlimited' })
+    makeElement({ game: 'platy', mode: 'unlimited' }),
+    makeElement({ game: 'blanks', mode: 'quiz' }),
+    makeElement({ game: 'blanks', mode: 'unlimited' })
   ];
   const screens = ['home', 'game', 'results'].map(get);
   const context = vm.createContext({
@@ -170,7 +173,7 @@ test('The on-screen tile previews the same PNG blob used by Save PNG', async () 
 });
 
 test('Letter and trail share cards use correct-answer scores', async () => {
-  for (const [game, label] of [['anagrams', 'Littlefield’s Letters'], ['vowels', 'Missing Vowels'], ['trails', 'What Trail?']]) {
+  for (const [game, label] of [['anagrams', 'Littlefield’s Letters'], ['vowels', 'Missing Vowels'], ['trails', 'What Trail?'], ['blanks', 'Mind the Gap!']]) {
     const app = setup();
     app.evaluate(`Object.assign(state,{game:'${game}',mode:'quiz',score:8,completed:10,elapsedMs:91000})`);
     await app.evaluate('drawShareCard()');
@@ -186,7 +189,7 @@ test('Letter and trail share cards use correct-answer scores', async () => {
 
 test('Each share card shows its game art between the dividers and a Jonabot avatar', async () => {
   const backgrounds = new Set();
-  for (const game of ['anagrams', 'catchphrase', 'vowels', 'trails', 'platy']) {
+  for (const game of ['anagrams', 'catchphrase', 'vowels', 'trails', 'platy', 'blanks']) {
     const app = setup();
     app.evaluate(`Object.assign(state,{game:'${game}',mode:'quiz',score:4,completed:10,elapsedMs:91000})`);
     await app.evaluate('drawShareCard()');
@@ -198,7 +201,7 @@ test('Each share card shows its game art between the dividers and a Jonabot avat
     assert.ok(background, `${game} background missing`);
     backgrounds.add(background.color);
   }
-  assert.equal(backgrounds.size, 5, 'Every game needs its own share card background colour');
+  assert.equal(backgrounds.size, 6, 'Every game needs its own share card background colour');
 });
 
 test('Share card uses native file sharing when the browser supports it', async () => {
@@ -318,7 +321,7 @@ test('Timed games count down before accepting answers or starting the clock', ()
 test('Every game has a distinct colour and results use that game colour', () => {
   const app = setup();
   const themes = app.evaluate('GAME_THEMES');
-  assert.equal(new Set(Object.values(themes).map(theme => theme.accent)).size, 5);
+  assert.equal(new Set(Object.values(themes).map(theme => theme.accent)).size, 6);
   app.buttons[6].click();
   app.get('reveal-button').click();
   app.get('next-button').click();
@@ -369,6 +372,55 @@ test('All picture clues accept case, spaces, punctuation, and minor typos plus i
   assert.equal(app.evaluate("isCorrect('specter',PICTURES.find(q=>q.answer==='Spectre'))"), true);
   assert.equal(app.evaluate("isCorrect('Phantom Deep',PICTURES.find(q=>q.answer==='Phantom Deeps'))"), true);
   assert.equal(app.evaluate("PICTURES.filter(q=>q.answer==='Perigate').every(q=>isCorrect('Pear Gate',q)&&isCorrect('Perry Gate',q))"), true);
+});
+
+test('Mind the Gap uses one meaningful hidden word in 152 distinct trail titles', () => {
+  const trails = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'source', 'trails.json'), 'utf8'));
+  const questions = vm.runInNewContext(fs.readFileSync(path.join(__dirname, '..', 'docs', 'fill-blanks.js'), 'utf8') + '\nFILL_BLANKS');
+  const titles = new Map(trails.map(trail => [trail.id, trail.title]));
+  const stop = new Set('the at if a an and are as be but by do for from had has have he her him his how i in is it its la let me my no not of oh on or our she so than that them there this to up was we what when where who why with ye you your'.split(' '));
+  assert.equal(trails.length, 187);
+  assert.equal(questions.length, 152);
+  assert.equal(new Set(questions.map(q => q.id)).size, 152);
+  assert.equal(new Set(questions.map(q => q.clue.toLowerCase())).size, 152);
+  for (const q of questions) {
+    assert.equal(q.title, titles.get(q.id));
+    assert.equal(q.clue.split('_____').length, 2, q.title);
+    assert.equal(q.clue.replace('_____', q.answer), q.title);
+    assert.ok(!stop.has(q.answer.toLowerCase()), q.title);
+    assert.ok(q.answer.length >= 3, q.title);
+  }
+  assert.equal(questions.find(q => q.title === 'The Great Rank Glitch').answer, 'Glitch');
+  assert.equal(questions.find(q => q.title === 'No “I” In Conspiracy').answer, 'Conspiracy');
+  assert.ok(!questions.some(q => q.title === 'Time After Time'));
+});
+
+test('Mind the Gap uses typed answers, countdown, reveal and existing round rules', () => {
+  const app = setup();
+  app.buttons[10].click();
+  assert.equal(app.state().questions.length, 10);
+  assert.equal(app.state().countingDown, true);
+  assert.equal(app.get('game-title').textContent, 'Mind the Gap!');
+  assert.equal(app.get('answer-label').textContent, 'Missing word');
+  assert.match(app.get('blank-hint').textContent, /LETTERS · TYPE THE MISSING WORD/);
+  const q = app.state().questions[0];
+  assert.equal(app.get('clue').children[0].children[1].textContent, '?');
+  app.evaluate('finishCountdown()');
+  app.submit(q.answer.toLowerCase());
+  assert.equal(app.state().score, 1);
+  assert.equal(app.get('clue').children[0].textContent, q.title);
+  assert.equal(app.get('feedback').children[0].children[1].textContent, q.answer);
+  assert.equal(app.get('feedback').children[0].children[2].textContent, q.title);
+  app.get('next-button').click();
+  app.get('reveal-button').click();
+  assert.equal(app.state().score, 1);
+  assert.equal(app.get('clue').children[0].textContent, app.state().questions[1].title);
+  const unlimited = setup();
+  unlimited.buttons[11].click();
+  assert.equal(unlimited.state().questions.length, 152);
+  unlimited.evaluate('finishCountdown()');
+  unlimited.submit('a completely wrong word');
+  assert.equal(unlimited.state().elapsedMs !== null, true);
 });
 
 test('Browser Back returns from a game to the portal and Forward restores the run', () => {
