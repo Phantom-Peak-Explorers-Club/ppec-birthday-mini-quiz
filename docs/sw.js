@@ -1,4 +1,4 @@
-const CACHE_NAME = 'ppec-mini-quiz-v39';
+const CACHE_NAME = 'ppec-mini-quiz-v40';
 const CACHE_PREFIX = 'ppec-mini-quiz-';
 const pictures = [
   'Copper', 'Dr Winter', 'Hogwood', 'Leadbelly', 'Littlefield', 'Lovehart',
@@ -8,7 +8,8 @@ const pictures = [
   'Mayor Pocket', 'Perigate Pear Gate', 'Platman', 'RoboDoc', 'The Autohatter',
   'Beardy Hamm', 'Cogwright', 'Edgar Allan Crow', 'Electric Gamehouse',
   'Meowiarty', 'Sir Merrylegs', 'Spectre', 'Stickler',
-  'Furbish', 'Phantom Deeps', 'The Picture House'
+  'Furbish', 'Phantom Deeps', 'The Picture House',
+  'Gilded Lake', 'The Council of Pockets', 'The Silver Children'
 ];
 const files = [
   './', './index.html', './style.css', './app.js', './what-trail.js', './fill-blanks.js',
