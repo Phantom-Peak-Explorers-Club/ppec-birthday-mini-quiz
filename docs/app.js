@@ -98,7 +98,10 @@ const PICTURES = [
   ['Meowiarty','Meowiarty.jpg'],
   ['Sir Merrylegs','Sir Merrylegs.jpg'],
   ['Spectre','Spectre.jpg',undefined,['Specter']],
-  ['Stickler','Stickler.jpg']
+  ['Stickler','Stickler.jpg'],
+  ['Furbish','Furbish.jpg'],
+  ['Phantom Deeps','Phantom Deeps.jpg',undefined,['Phantom Deep']],
+  ['The Picture House','The Picture House.jpg']
 ].map(([answer,image,contributor,aliases=[]])=>({answer,image:`./assets/catchphrase/${encodeURIComponent(image)}`,contributor,
   aliases:[...aliases,...(answer==='Dr Winter'?['Dr. Winter','Doctor Winter','Doc Winter','Winter']:answer==='Rockbolt Theatre'?['The Rockbolt','The Rockbolt Theatre']:[])]
 }));
