@@ -1,4 +1,4 @@
-# Lost in the Lore! clue review
+# Lost in the Lore clue review
 
 Each clue is an excerpt from the trail description in `source/trails.json`. One complete named character, place, group or device is removed. The three hand-picked alternatives fit the role in that sentence. All four choices appear in the trail archive; the correct name is absent from the displayed title and the rest of the excerpt.
 

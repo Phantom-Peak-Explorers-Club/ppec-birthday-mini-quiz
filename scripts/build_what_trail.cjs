@@ -96,7 +96,7 @@ if (questions.length !== 187 || invalid.length) throw new Error(`Invalid questio
 
 fs.writeFileSync(path.join(root, 'docs', 'what-trail.js'), `const WHAT_TRAILS = ${JSON.stringify(questions, null, 2)};\n`);
 const lines = [
-  '# Trail and Error! question bank', '',
+  '# Trail and Error question bank', '',
   '187 questions drawn from the [PPEC Trail Notes archive](https://ppec.club/trail-notes/) (`source/trails.json` snapshot). Each has three answer choices total. The ten birthday quiz clues retain their original wording where available. The remaining clues are condensed from the archive’s trail recaps.', '',
   'The correct answer is shown in **bold** for review. The app shuffles the three choices when a question is played.', ''
 ];

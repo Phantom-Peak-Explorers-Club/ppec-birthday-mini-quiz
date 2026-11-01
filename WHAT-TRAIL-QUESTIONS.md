@@ -1,4 +1,4 @@
-# Trail and Error! question bank
+# Trail and Error question bank
 
 187 questions drawn from the [PPEC Trail Notes archive](https://ppec.club/trail-notes/) (`source/trails.json` snapshot). Each has three answer choices total. The ten birthday quiz clues retain their original wording where available. The remaining clues are condensed from the archive’s trail recaps.
 

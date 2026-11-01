@@ -213,7 +213,7 @@ if (errors.length) throw Error(errors.join('\n'));
 const trailOrder = new Map(trails.map((trail, index) => [trail.id, index]));
 questions.sort((a, b) => trailOrder.get(a.id) - trailOrder.get(b.id));
 fs.writeFileSync(path.join(root, 'docs', 'lore-gap.js'), `const LORE_GAP = ${JSON.stringify(questions, null, 2)};\n`);
-const review = ['# Lost in the Lore! clue review', '',
+const review = ['# Lost in the Lore clue review', '',
   'Each clue is an excerpt from the trail description in `source/trails.json`. One complete named character, place, group or device is removed. The three hand-picked alternatives fit the role in that sentence. All four choices appear in the trail archive; the correct name is absent from the displayed title and the rest of the excerpt.', '',
   '| Trail | Season | Missing word | Other choices | Description excerpt |', '|---|---|---|---|---|',
   ...questions.map(q => `| ${q.title} | ${q.season} ${q.year} | **${q.answer}** | ${q.options.slice(1).join(', ')} | ${q.clue.replaceAll('|', '\\|')} |`), ''];

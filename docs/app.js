@@ -150,13 +150,13 @@ let countdownGoTimer=null;
 let shareBlobPromise=null;
 let sharePreviewUrl=null;
 const GAME_THEMES={
-  anagrams:{accent:'#ffd13d',dark:'#4f3908',light:'#fff4b8',shareBg:'#6b4b0b'},
-  catchphrase:{accent:'#ff5d67',dark:'#581824',light:'#ffe1e3',shareBg:'#7d202b'},
-  vowels:{accent:'#ae80ff',dark:'#35165e',light:'#f0e4ff',shareBg:'#502482'},
-  trails:{accent:'#ff9b40',dark:'#573012',light:'#ffead0',shareBg:'#7d3f0c'},
-  platy:{accent:'#7bd86e',dark:'#1b4c22',light:'#e5ffda',shareBg:'#28692d'},
-  blanks:{accent:'#5bafff',dark:'#153e75',light:'#e1f1ff',shareBg:'#1d5791'},
-  lore:{accent:'#ff6eb5',dark:'#5d174a',light:'#ffe2f2',shareBg:'#892260'}
+  anagrams:{accent:'#ffd13d',dark:'#4f3908',light:'#fff4b8',shareBg:'#705006'},
+  catchphrase:{accent:'#ff5d67',dark:'#581824',light:'#ffe1e3',shareBg:'#99233a'},
+  vowels:{accent:'#ae80ff',dark:'#35165e',light:'#f0e4ff',shareBg:'#592993'},
+  trails:{accent:'#ff9b40',dark:'#573012',light:'#ffead0',shareBg:'#9c4810'},
+  platy:{accent:'#7bd86e',dark:'#1b4c22',light:'#e5ffda',shareBg:'#246f35'},
+  blanks:{accent:'#5bafff',dark:'#153e75',light:'#e1f1ff',shareBg:'#1765ac'},
+  lore:{accent:'#ff6eb5',dark:'#5d174a',light:'#ffe2f2',shareBg:'#9c266c'}
 };
 function shuffle(items){const out=[...items];for(let i=out.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[out[i],out[j]]=[out[j],out[i]]}return out}
 function normal(s){return s.normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]/g,'')}
@@ -251,7 +251,7 @@ function show(id,updateHistory=true){
   if(updateHistory&&previous!==id&&window.history?.pushState)window.history.pushState({ppecScreen:id,runId:state.runId},'',`#${id}`);
   window.scrollTo({top:0,behavior:'instant'});
 }
-function gameName(){return state.game==='anagrams'?'Littlefield’s Letters':state.game==='vowels'?'Vowel of Silence':state.game==='trails'?'Trail and Error!':state.game==='platy'?'Save-A-Platy':state.game==='blanks'?'Blankety Peak!':state.game==='lore'?'Lost in the Lore!':'Peak-a-Boo!'}
+function gameName(){return state.game==='anagrams'?'Littlefield’s Letters':state.game==='vowels'?'Vowel of Silence':state.game==='trails'?'Trail and Error':state.game==='platy'?'Save-A-Platy':state.game==='blanks'?'Blankety Peak':state.game==='lore'?'Lost in the Lore':'Peak-a-Boo'}
 function modeName(){return state.mode==='quiz'?'Quiz Round':'Unlimited'}
 function duration(ms){const seconds=Math.floor(ms/1000);return `${Math.floor(seconds/60)}:${String(seconds%60).padStart(2,'0')}`}
 function letterRow(value){
@@ -431,7 +431,7 @@ function render(){
   $('progress-fill').style.width=`${index/questions.length*100}%`;
   $('question-kind').textContent=game==='anagrams'?'UNSCRAMBLE THIS':game==='vowels'?'RESTORE THE VOWELS':game==='trails'?'IDENTIFY THE TRAIL':game==='platy'?'SAVE THE PLATYPUSES':game==='blanks'?'COMPLETE THE TRAIL TITLE':game==='lore'?'PICK THE MISSING WORD':'NAME THE PICTURE CLUE';
   $('game-title').textContent=gameName();
-  $('game-logo').src=`./assets/game-logos/${({anagrams:'anagrams',catchphrase:'catchphrase',vowels:'missing-vowels',trails:'what-trail',platy:'save-a-platy',blanks:'blankety-peak',lore:'lost-in-the-lore'})[game]}.svg?v=2`;
+  $('game-logo').src=`./assets/game-logos/${({anagrams:'anagrams',catchphrase:'catchphrase',vowels:'missing-vowels',trails:'what-trail',platy:'save-a-platy',blanks:'blankety-peak',lore:'lost-in-the-lore'})[game]}.png?v=4`;
   $('game-console').dataset.game=game;
   $('question-card').dataset.game=game;
   $('vowel-hint').hidden=game!=='vowels';
@@ -621,7 +621,7 @@ async function drawShareCard(){
   const theme=GAME_THEMES[state.game]||GAME_THEMES.anagrams;
   const logoName=({anagrams:'anagrams',catchphrase:'catchphrase',vowels:'missing-vowels',trails:'what-trail',platy:'save-a-platy',blanks:'blankety-peak',lore:'lost-in-the-lore'})[state.game]||'anagrams';
   const frame=new Image();frame.src='./assets/share-card-frame.jpg';
-  const logo=new Image();logo.src=`./assets/game-logos/${logoName}.svg?v=2`;
+  const logo=new Image();logo.src=`./assets/game-logos/${logoName}.png?v=4`;
   const avatar=new Image();avatar.src='./assets/jonabot-avatar.png';
   const [frameReady,logoReady,avatarReady]=await Promise.all([frame,logo,avatar].map(image=>image.decode().then(()=>true).catch(()=>false)));
   if(frameReady)c.drawImage(frame,0,0,1080,1080);
@@ -629,8 +629,8 @@ async function drawShareCard(){
     c.fillStyle='#230e2a';c.fillRect(0,0,1080,1080);
     c.strokeStyle='#e4ad57';c.lineWidth=15;c.strokeRect(24,24,1032,1032);
   }
-  c.globalAlpha=.64;c.fillStyle=theme.shareBg;c.fillRect(0,0,1080,1080);c.globalAlpha=1;
-  if(frameReady){c.globalCompositeOperation='screen';c.globalAlpha=.34;c.drawImage(frame,0,0,1080,1080);c.globalCompositeOperation='source-over';c.globalAlpha=1}
+  c.fillStyle=theme.shareBg;c.fillRect(0,0,1080,1080);
+  if(frameReady){c.globalCompositeOperation='screen';c.globalAlpha=.12;c.drawImage(frame,0,0,1080,1080);c.globalCompositeOperation='source-over';c.globalAlpha=1}
   if(avatarReady)c.drawImage(avatar,788,35,235,235);
   c.textAlign='left';
   c.fillStyle='#fff0cc';c.font='700 46px Fraunces, Georgia, serif';c.fillText('PPEC QUIZ',88,105);
