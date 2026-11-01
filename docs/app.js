@@ -503,6 +503,7 @@ function finishAnswer(correct,revealed=false,timedOut=false,response=''){
   const q=state.questions[state.index];
   state.completed=state.index+1;
   if(correct){state.score++;if(state.game==='catchphrase')state.points+=Math.max(0,24-state.openedTiles);if(state.game==='platy')state.points+=6-state.platyMisses}
+  if(state.game!=='catchphrase'&&state.game!=='platy')$('score-label').textContent=`${state.score} CORRECT`;
   if(state.game==='platy'){
     if(revealed)state.platyMisses=6;
     renderPlatyName(q.answer,true);renderPlatyLives();renderPlatyKeyboard();

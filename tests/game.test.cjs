@@ -408,6 +408,7 @@ test('Mind the Gap uses typed answers, countdown, reveal and existing round rule
   app.evaluate('finishCountdown()');
   app.submit(q.answer.toLowerCase());
   assert.equal(app.state().score, 1);
+  assert.equal(app.get('score-label').textContent, '1 CORRECT');
   assert.equal(app.get('clue').children[0].textContent, q.title);
   assert.equal(app.get('feedback').children[0].children[1].textContent, q.answer);
   assert.equal(app.get('feedback').children[0].children[2].textContent, q.title);
