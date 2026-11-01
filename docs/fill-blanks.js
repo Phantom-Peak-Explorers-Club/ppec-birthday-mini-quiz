@@ -5,7 +5,8 @@ const FILL_BLANKS = [
     "clue": "Lofty _____",
     "answer": "Ambitions",
     "year": 2022,
-    "season": "Launch"
+    "season": "Launch",
+    "seasonTitle": "Pilot Season"
   },
   {
     "id": "2022-launch-2",
@@ -13,7 +14,8 @@ const FILL_BLANKS = [
     "clue": "The Great Rank _____",
     "answer": "Glitch",
     "year": 2022,
-    "season": "Launch"
+    "season": "Launch",
+    "seasonTitle": "Pilot Season"
   },
   {
     "id": "2022-launch-3",
@@ -21,7 +23,8 @@ const FILL_BLANKS = [
     "clue": "Ghosts In The _____",
     "answer": "Videomatic",
     "year": 2022,
-    "season": "Launch"
+    "season": "Launch",
+    "seasonTitle": "Pilot Season"
   },
   {
     "id": "2022-launch-5",
@@ -29,7 +32,8 @@ const FILL_BLANKS = [
     "clue": "_____ Fuel Melts Wooden Beams",
     "answer": "Blimp",
     "year": 2022,
-    "season": "Launch"
+    "season": "Launch",
+    "seasonTitle": "Pilot Season"
   },
   {
     "id": "2022-launch-6",
@@ -37,7 +41,8 @@ const FILL_BLANKS = [
     "clue": "The _____ And The Platypus",
     "answer": "Wolf",
     "year": 2022,
-    "season": "Launch"
+    "season": "Launch",
+    "seasonTitle": "Pilot Season"
   },
   {
     "id": "2022-launch-7",
@@ -45,7 +50,8 @@ const FILL_BLANKS = [
     "clue": "The Phantom Of The _____",
     "answer": "Deeps",
     "year": 2022,
-    "season": "Launch"
+    "season": "Launch",
+    "seasonTitle": "Pilot Season"
   },
   {
     "id": "2022-launch-10",
@@ -53,7 +59,8 @@ const FILL_BLANKS = [
     "clue": "The Axiomatic _____",
     "answer": "Clock",
     "year": 2022,
-    "season": "Launch"
+    "season": "Launch",
+    "seasonTitle": "Pilot Season"
   },
   {
     "id": "2022-launch-11",
@@ -61,7 +68,8 @@ const FILL_BLANKS = [
     "clue": "No Stone _____",
     "answer": "Unturned",
     "year": 2022,
-    "season": "Launch"
+    "season": "Launch",
+    "seasonTitle": "Pilot Season"
   },
   {
     "id": "2022-launch-12",
@@ -69,7 +77,8 @@ const FILL_BLANKS = [
     "clue": "What's Up _____",
     "answer": "RoboDoc",
     "year": 2022,
-    "season": "Launch"
+    "season": "Launch",
+    "seasonTitle": "Pilot Season"
   },
   {
     "id": "2022-launch-13",
@@ -77,7 +86,8 @@ const FILL_BLANKS = [
     "clue": "The Blame _____",
     "answer": "Game",
     "year": 2022,
-    "season": "Launch"
+    "season": "Launch",
+    "seasonTitle": "Pilot Season"
   },
   {
     "id": "2022-launch-14",
@@ -85,7 +95,8 @@ const FILL_BLANKS = [
     "clue": "The Platypus _____",
     "answer": "Problem",
     "year": 2022,
-    "season": "Launch"
+    "season": "Launch",
+    "seasonTitle": "Pilot Season"
   },
   {
     "id": "2022-launch-15",
@@ -93,7 +104,8 @@ const FILL_BLANKS = [
     "clue": "Paternal _____",
     "answer": "Flame",
     "year": 2022,
-    "season": "Launch"
+    "season": "Launch",
+    "seasonTitle": "Pilot Season"
   },
   {
     "id": "2022-launch-16",
@@ -101,7 +113,8 @@ const FILL_BLANKS = [
     "clue": "The JONACO Union _____",
     "answer": "Spy",
     "year": 2022,
-    "season": "Launch"
+    "season": "Launch",
+    "seasonTitle": "Pilot Season"
   },
   {
     "id": "2022-autumn-1",
@@ -109,7 +122,8 @@ const FILL_BLANKS = [
     "clue": "Littlefield’s _____",
     "answer": "Letter",
     "year": 2022,
-    "season": "Autumn"
+    "season": "Autumn",
+    "seasonTitle": "Hallowed Peak"
   },
   {
     "id": "2022-autumn-2",
@@ -117,7 +131,8 @@ const FILL_BLANKS = [
     "clue": "_____ Stone Unturned",
     "answer": "Gnome",
     "year": 2022,
-    "season": "Autumn"
+    "season": "Autumn",
+    "seasonTitle": "Hallowed Peak"
   },
   {
     "id": "2022-autumn-5",
@@ -125,7 +140,8 @@ const FILL_BLANKS = [
     "clue": "Horror by _____",
     "answer": "Hogwood",
     "year": 2022,
-    "season": "Autumn"
+    "season": "Autumn",
+    "seasonTitle": "Hallowed Peak"
   },
   {
     "id": "2022-autumn-7",
@@ -133,7 +149,8 @@ const FILL_BLANKS = [
     "clue": "Squatters _____",
     "answer": "Rights",
     "year": 2022,
-    "season": "Autumn"
+    "season": "Autumn",
+    "seasonTitle": "Hallowed Peak"
   },
   {
     "id": "2022-autumn-8",
@@ -141,7 +158,8 @@ const FILL_BLANKS = [
     "clue": "The Mayor's _____",
     "answer": "Watch",
     "year": 2022,
-    "season": "Autumn"
+    "season": "Autumn",
+    "seasonTitle": "Hallowed Peak"
   },
   {
     "id": "2022-autumn-9",
@@ -149,7 +167,8 @@ const FILL_BLANKS = [
     "clue": "The Silver _____",
     "answer": "Children",
     "year": 2022,
-    "season": "Autumn"
+    "season": "Autumn",
+    "seasonTitle": "Hallowed Peak"
   },
   {
     "id": "2022-autumn-11",
@@ -157,7 +176,8 @@ const FILL_BLANKS = [
     "clue": "The _____ Of The Beast",
     "answer": "Numbers",
     "year": 2022,
-    "season": "Autumn"
+    "season": "Autumn",
+    "seasonTitle": "Hallowed Peak"
   },
   {
     "id": "2022-autumn-12",
@@ -165,7 +185,8 @@ const FILL_BLANKS = [
     "clue": "_____ At Large",
     "answer": "Medium",
     "year": 2022,
-    "season": "Autumn"
+    "season": "Autumn",
+    "seasonTitle": "Hallowed Peak"
   },
   {
     "id": "2022-autumn-14",
@@ -173,7 +194,8 @@ const FILL_BLANKS = [
     "clue": "A Special _____",
     "answer": "Invitation",
     "year": 2022,
-    "season": "Autumn"
+    "season": "Autumn",
+    "seasonTitle": "Hallowed Peak"
   },
   {
     "id": "2022-winter-1",
@@ -181,7 +203,8 @@ const FILL_BLANKS = [
     "clue": "It's A Winterful _____",
     "answer": "Life",
     "year": 2022,
-    "season": "Winter"
+    "season": "Winter",
+    "seasonTitle": "Wintermas"
   },
   {
     "id": "2022-winter-2",
@@ -189,7 +212,8 @@ const FILL_BLANKS = [
     "clue": "The Kirkyard _____",
     "answer": "Ghoul",
     "year": 2022,
-    "season": "Winter"
+    "season": "Winter",
+    "seasonTitle": "Wintermas"
   },
   {
     "id": "2022-winter-3",
@@ -197,7 +221,8 @@ const FILL_BLANKS = [
     "clue": "Platman _____",
     "answer": "Returns",
     "year": 2022,
-    "season": "Winter"
+    "season": "Winter",
+    "seasonTitle": "Wintermas"
   },
   {
     "id": "2022-winter-4",
@@ -205,7 +230,8 @@ const FILL_BLANKS = [
     "clue": "Sleigh _____",
     "answer": "Queen",
     "year": 2022,
-    "season": "Winter"
+    "season": "Winter",
+    "seasonTitle": "Wintermas"
   },
   {
     "id": "2022-winter-5",
@@ -213,7 +239,8 @@ const FILL_BLANKS = [
     "clue": "The Platypus, The Wizard And The _____",
     "answer": "Armoire",
     "year": 2022,
-    "season": "Winter"
+    "season": "Winter",
+    "seasonTitle": "Wintermas"
   },
   {
     "id": "2022-winter-6",
@@ -221,7 +248,8 @@ const FILL_BLANKS = [
     "clue": "What's In The _____?!",
     "answer": "Box",
     "year": 2022,
-    "season": "Winter"
+    "season": "Winter",
+    "seasonTitle": "Wintermas"
   },
   {
     "id": "2022-winter-8",
@@ -229,7 +257,8 @@ const FILL_BLANKS = [
     "clue": "Jonabot All The _____",
     "answer": "Way",
     "year": 2022,
-    "season": "Winter"
+    "season": "Winter",
+    "seasonTitle": "Wintermas"
   },
   {
     "id": "2022-winter-10",
@@ -237,7 +266,8 @@ const FILL_BLANKS = [
     "clue": "Sparks' _____",
     "answer": "Letter",
     "year": 2022,
-    "season": "Winter"
+    "season": "Winter",
+    "seasonTitle": "Wintermas"
   },
   {
     "id": "2022-winter-11",
@@ -245,7 +275,8 @@ const FILL_BLANKS = [
     "clue": "Winter At _____",
     "answer": "Hogwood",
     "year": 2022,
-    "season": "Winter"
+    "season": "Winter",
+    "seasonTitle": "Wintermas"
   },
   {
     "id": "2022-winter-13",
@@ -253,7 +284,8 @@ const FILL_BLANKS = [
     "clue": "Naughty Or _____",
     "answer": "Nice",
     "year": 2022,
-    "season": "Winter"
+    "season": "Winter",
+    "seasonTitle": "Wintermas"
   },
   {
     "id": "2023-spring-1",
@@ -261,7 +293,8 @@ const FILL_BLANKS = [
     "clue": "H&S Gone _____",
     "answer": "Mad",
     "year": 2023,
-    "season": "Spring"
+    "season": "Spring",
+    "seasonTitle": "Platypus Parade"
   },
   {
     "id": "2023-spring-2",
@@ -269,7 +302,8 @@ const FILL_BLANKS = [
     "clue": "Vanishing _____",
     "answer": "Act",
     "year": 2023,
-    "season": "Spring"
+    "season": "Spring",
+    "seasonTitle": "Platypus Parade"
   },
   {
     "id": "2023-spring-3",
@@ -277,7 +311,8 @@ const FILL_BLANKS = [
     "clue": "Nylon Genesis _____",
     "answer": "Evangelical",
     "year": 2023,
-    "season": "Spring"
+    "season": "Spring",
+    "seasonTitle": "Platypus Parade"
   },
   {
     "id": "2023-spring-4",
@@ -285,7 +320,8 @@ const FILL_BLANKS = [
     "clue": "Fortune Favours The _____",
     "answer": "Furb",
     "year": 2023,
-    "season": "Spring"
+    "season": "Spring",
+    "seasonTitle": "Platypus Parade"
   },
   {
     "id": "2023-spring-5",
@@ -293,7 +329,8 @@ const FILL_BLANKS = [
     "clue": "Littlefield’s Little _____",
     "answer": "Friend",
     "year": 2023,
-    "season": "Spring"
+    "season": "Spring",
+    "seasonTitle": "Platypus Parade"
   },
   {
     "id": "2023-spring-6",
@@ -301,7 +338,8 @@ const FILL_BLANKS = [
     "clue": "Play With _____",
     "answer": "Fire",
     "year": 2023,
-    "season": "Spring"
+    "season": "Spring",
+    "seasonTitle": "Platypus Parade"
   },
   {
     "id": "2023-spring-7",
@@ -309,7 +347,8 @@ const FILL_BLANKS = [
     "clue": "Who You Gonna _____?",
     "answer": "Jonagraph",
     "year": 2023,
-    "season": "Spring"
+    "season": "Spring",
+    "seasonTitle": "Platypus Parade"
   },
   {
     "id": "2023-spring-8",
@@ -317,7 +356,8 @@ const FILL_BLANKS = [
     "clue": "War Of The _____",
     "answer": "Reels",
     "year": 2023,
-    "season": "Spring"
+    "season": "Spring",
+    "seasonTitle": "Platypus Parade"
   },
   {
     "id": "2023-spring-9",
@@ -325,7 +365,8 @@ const FILL_BLANKS = [
     "clue": "Kindred _____",
     "answer": "Spirits",
     "year": 2023,
-    "season": "Spring"
+    "season": "Spring",
+    "seasonTitle": "Platypus Parade"
   },
   {
     "id": "2023-spring-10",
@@ -333,7 +374,8 @@ const FILL_BLANKS = [
     "clue": "Pity _____",
     "answer": "Parade",
     "year": 2023,
-    "season": "Spring"
+    "season": "Spring",
+    "seasonTitle": "Platypus Parade"
   },
   {
     "id": "2023-spring-11",
@@ -341,7 +383,8 @@ const FILL_BLANKS = [
     "clue": "The _____ Day",
     "answer": "Big",
     "year": 2023,
-    "season": "Spring"
+    "season": "Spring",
+    "seasonTitle": "Platypus Parade"
   },
   {
     "id": "2023-summer-1",
@@ -349,7 +392,8 @@ const FILL_BLANKS = [
     "clue": "Dead _____",
     "answer": "Ringer",
     "year": 2023,
-    "season": "Summer"
+    "season": "Summer",
+    "seasonTitle": "Summer's Peak"
   },
   {
     "id": "2023-summer-2",
@@ -357,7 +401,8 @@ const FILL_BLANKS = [
     "clue": "Radio Killed The Video _____",
     "answer": "Star",
     "year": 2023,
-    "season": "Summer"
+    "season": "Summer",
+    "seasonTitle": "Summer's Peak"
   },
   {
     "id": "2023-summer-4",
@@ -365,7 +410,8 @@ const FILL_BLANKS = [
     "clue": "The Diamar _____",
     "answer": "Code",
     "year": 2023,
-    "season": "Summer"
+    "season": "Summer",
+    "seasonTitle": "Summer's Peak"
   },
   {
     "id": "2023-summer-5",
@@ -373,7 +419,8 @@ const FILL_BLANKS = [
     "clue": "Under _____",
     "answer": "Refurbishment",
     "year": 2023,
-    "season": "Summer"
+    "season": "Summer",
+    "seasonTitle": "Summer's Peak"
   },
   {
     "id": "2023-summer-6",
@@ -381,7 +428,8 @@ const FILL_BLANKS = [
     "clue": "The Dramatic _____",
     "answer": "Question",
     "year": 2023,
-    "season": "Summer"
+    "season": "Summer",
+    "seasonTitle": "Summer's Peak"
   },
   {
     "id": "2023-summer-8",
@@ -389,7 +437,8 @@ const FILL_BLANKS = [
     "clue": "_____ Beyond",
     "answer": "Platman",
     "year": 2023,
-    "season": "Summer"
+    "season": "Summer",
+    "seasonTitle": "Summer's Peak"
   },
   {
     "id": "2023-summer-9",
@@ -397,7 +446,8 @@ const FILL_BLANKS = [
     "clue": "Keep Your _____ Close",
     "answer": "Friends",
     "year": 2023,
-    "season": "Summer"
+    "season": "Summer",
+    "seasonTitle": "Summer's Peak"
   },
   {
     "id": "2023-summer-10",
@@ -405,7 +455,8 @@ const FILL_BLANKS = [
     "clue": "Twirling _____",
     "answer": "Shadows",
     "year": 2023,
-    "season": "Summer"
+    "season": "Summer",
+    "seasonTitle": "Summer's Peak"
   },
   {
     "id": "2023-summer-11",
@@ -413,7 +464,8 @@ const FILL_BLANKS = [
     "clue": "Angels And _____",
     "answer": "Diamant",
     "year": 2023,
-    "season": "Summer"
+    "season": "Summer",
+    "seasonTitle": "Summer's Peak"
   },
   {
     "id": "2023-autumn-1",
@@ -421,7 +473,8 @@ const FILL_BLANKS = [
     "clue": "_____ For Some",
     "answer": "Unlucky",
     "year": 2023,
-    "season": "Autumn"
+    "season": "Autumn",
+    "seasonTitle": "Hallowed Peak"
   },
   {
     "id": "2023-autumn-2",
@@ -429,7 +482,8 @@ const FILL_BLANKS = [
     "clue": "Pocket Gets _____",
     "answer": "Cancelled",
     "year": 2023,
-    "season": "Autumn"
+    "season": "Autumn",
+    "seasonTitle": "Hallowed Peak"
   },
   {
     "id": "2023-autumn-3",
@@ -437,7 +491,8 @@ const FILL_BLANKS = [
     "clue": "Killing With _____",
     "answer": "Kindness",
     "year": 2023,
-    "season": "Autumn"
+    "season": "Autumn",
+    "seasonTitle": "Hallowed Peak"
   },
   {
     "id": "2023-autumn-5",
@@ -445,7 +500,8 @@ const FILL_BLANKS = [
     "clue": "Trick Or _____",
     "answer": "Treat",
     "year": 2023,
-    "season": "Autumn"
+    "season": "Autumn",
+    "seasonTitle": "Hallowed Peak"
   },
   {
     "id": "2023-autumn-6",
@@ -453,7 +509,8 @@ const FILL_BLANKS = [
     "clue": "The Devil's _____",
     "answer": "Dues",
     "year": 2023,
-    "season": "Autumn"
+    "season": "Autumn",
+    "seasonTitle": "Hallowed Peak"
   },
   {
     "id": "2023-autumn-7",
@@ -461,7 +518,8 @@ const FILL_BLANKS = [
     "clue": "Cosmic _____",
     "answer": "Counterparts",
     "year": 2023,
-    "season": "Autumn"
+    "season": "Autumn",
+    "seasonTitle": "Hallowed Peak"
   },
   {
     "id": "2023-autumn-8",
@@ -469,7 +527,8 @@ const FILL_BLANKS = [
     "clue": "Spirit Of The _____",
     "answer": "Season",
     "year": 2023,
-    "season": "Autumn"
+    "season": "Autumn",
+    "seasonTitle": "Hallowed Peak"
   },
   {
     "id": "2023-autumn-10",
@@ -477,7 +536,8 @@ const FILL_BLANKS = [
     "clue": "I Know What You Did Last _____",
     "answer": "Wintermas",
     "year": 2023,
-    "season": "Autumn"
+    "season": "Autumn",
+    "seasonTitle": "Hallowed Peak"
   },
   {
     "id": "2023-autumn-11",
@@ -485,7 +545,8 @@ const FILL_BLANKS = [
     "clue": "Chaos _____",
     "answer": "Reigns",
     "year": 2023,
-    "season": "Autumn"
+    "season": "Autumn",
+    "seasonTitle": "Hallowed Peak"
   },
   {
     "id": "2023-winter-1",
@@ -493,7 +554,8 @@ const FILL_BLANKS = [
     "clue": "A Winter _____",
     "answer": "Wonderland",
     "year": 2023,
-    "season": "Winter"
+    "season": "Winter",
+    "seasonTitle": "Christmas at the Peak"
   },
   {
     "id": "2023-winter-2",
@@ -501,7 +563,8 @@ const FILL_BLANKS = [
     "clue": "Parent _____",
     "answer": "Company",
     "year": 2023,
-    "season": "Winter"
+    "season": "Winter",
+    "seasonTitle": "Christmas at the Peak"
   },
   {
     "id": "2023-winter-4",
@@ -509,7 +572,8 @@ const FILL_BLANKS = [
     "clue": "Mayor Of The _____",
     "answer": "Universe",
     "year": 2023,
-    "season": "Winter"
+    "season": "Winter",
+    "seasonTitle": "Christmas at the Peak"
   },
   {
     "id": "2023-winter-5",
@@ -517,7 +581,8 @@ const FILL_BLANKS = [
     "clue": "Merry _____",
     "answer": "Mayhem",
     "year": 2023,
-    "season": "Winter"
+    "season": "Winter",
+    "seasonTitle": "Christmas at the Peak"
   },
   {
     "id": "2023-winter-6",
@@ -525,7 +590,8 @@ const FILL_BLANKS = [
     "clue": "The Platman _____",
     "answer": "Clause",
     "year": 2023,
-    "season": "Winter"
+    "season": "Winter",
+    "seasonTitle": "Christmas at the Peak"
   },
   {
     "id": "2023-winter-7",
@@ -533,7 +599,8 @@ const FILL_BLANKS = [
     "clue": "The Parent _____",
     "answer": "Trap",
     "year": 2023,
-    "season": "Winter"
+    "season": "Winter",
+    "seasonTitle": "Christmas at the Peak"
   },
   {
     "id": "2023-winter-9",
@@ -541,7 +608,8 @@ const FILL_BLANKS = [
     "clue": "Parasocial _____",
     "answer": "Activity",
     "year": 2023,
-    "season": "Winter"
+    "season": "Winter",
+    "seasonTitle": "Christmas at the Peak"
   },
   {
     "id": "2023-winter-10",
@@ -549,7 +617,8 @@ const FILL_BLANKS = [
     "clue": "How The Questioner Stole _____",
     "answer": "Wintermas",
     "year": 2023,
-    "season": "Winter"
+    "season": "Winter",
+    "seasonTitle": "Christmas at the Peak"
   },
   {
     "id": "2023-winter-11",
@@ -557,7 +626,8 @@ const FILL_BLANKS = [
     "clue": "Home For The _____",
     "answer": "Holidays",
     "year": 2023,
-    "season": "Winter"
+    "season": "Winter",
+    "seasonTitle": "Christmas at the Peak"
   },
   {
     "id": "2023-special-1",
@@ -565,7 +635,8 @@ const FILL_BLANKS = [
     "clue": "No “I” In _____",
     "answer": "Conspiracy",
     "year": 2023,
-    "season": "Special"
+    "season": "Special",
+    "seasonTitle": "Special Event Trails"
   },
   {
     "id": "2023-special-3",
@@ -573,7 +644,8 @@ const FILL_BLANKS = [
     "clue": "The Biggest _____",
     "answer": "Short",
     "year": 2023,
-    "season": "Special"
+    "season": "Special",
+    "seasonTitle": "Special Event Trails"
   },
   {
     "id": "2023-special-4",
@@ -581,7 +653,8 @@ const FILL_BLANKS = [
     "clue": "Platypus on the _____",
     "answer": "Rocks",
     "year": 2023,
-    "season": "Special"
+    "season": "Special",
+    "seasonTitle": "Special Event Trails"
   },
   {
     "id": "2024-spring-1",
@@ -589,7 +662,8 @@ const FILL_BLANKS = [
     "clue": "Chrono The Wonder _____",
     "answer": "Dog",
     "year": 2024,
-    "season": "Spring"
+    "season": "Spring",
+    "seasonTitle": "Festival of Innovation"
   },
   {
     "id": "2024-spring-2",
@@ -597,7 +671,8 @@ const FILL_BLANKS = [
     "clue": "Some _____ To Love",
     "answer": "Body",
     "year": 2024,
-    "season": "Spring"
+    "season": "Spring",
+    "seasonTitle": "Festival of Innovation"
   },
   {
     "id": "2024-spring-3",
@@ -605,7 +680,8 @@ const FILL_BLANKS = [
     "clue": "The Fear _____",
     "answer": "Factory",
     "year": 2024,
-    "season": "Spring"
+    "season": "Spring",
+    "seasonTitle": "Festival of Innovation"
   },
   {
     "id": "2024-spring-4",
@@ -613,7 +689,8 @@ const FILL_BLANKS = [
     "clue": "Scaly _____",
     "answer": "Underbelly",
     "year": 2024,
-    "season": "Spring"
+    "season": "Spring",
+    "seasonTitle": "Festival of Innovation"
   },
   {
     "id": "2024-spring-5",
@@ -621,7 +698,8 @@ const FILL_BLANKS = [
     "clue": "The Phantom Of The Picture _____",
     "answer": "House",
     "year": 2024,
-    "season": "Spring"
+    "season": "Spring",
+    "seasonTitle": "Festival of Innovation"
   },
   {
     "id": "2024-spring-7",
@@ -629,7 +707,8 @@ const FILL_BLANKS = [
     "clue": "The _____ You Know",
     "answer": "Devil",
     "year": 2024,
-    "season": "Spring"
+    "season": "Spring",
+    "seasonTitle": "Festival of Innovation"
   },
   {
     "id": "2024-spring-8",
@@ -637,7 +716,8 @@ const FILL_BLANKS = [
     "clue": "Sweet _____",
     "answer": "Disposition",
     "year": 2024,
-    "season": "Spring"
+    "season": "Spring",
+    "seasonTitle": "Festival of Innovation"
   },
   {
     "id": "2024-spring-9",
@@ -645,7 +725,8 @@ const FILL_BLANKS = [
     "clue": "The Last _____",
     "answer": "Laugh",
     "year": 2024,
-    "season": "Spring"
+    "season": "Spring",
+    "seasonTitle": "Festival of Innovation"
   },
   {
     "id": "2024-spring-11",
@@ -653,7 +734,8 @@ const FILL_BLANKS = [
     "clue": "Straight To The _____",
     "answer": "Moon",
     "year": 2024,
-    "season": "Spring"
+    "season": "Spring",
+    "seasonTitle": "Festival of Innovation"
   },
   {
     "id": "2024-summer-3",
@@ -661,7 +743,8 @@ const FILL_BLANKS = [
     "clue": "Whiskers In The _____",
     "answer": "Dark",
     "year": 2024,
-    "season": "Summer"
+    "season": "Summer",
+    "seasonTitle": "Starlit Summer"
   },
   {
     "id": "2024-summer-4",
@@ -669,7 +752,8 @@ const FILL_BLANKS = [
     "clue": "Pocket _____",
     "answer": "Dial",
     "year": 2024,
-    "season": "Summer"
+    "season": "Summer",
+    "seasonTitle": "Starlit Summer"
   },
   {
     "id": "2024-summer-6",
@@ -677,7 +761,8 @@ const FILL_BLANKS = [
     "clue": "Post Nuclear _____",
     "answer": "Family",
     "year": 2024,
-    "season": "Summer"
+    "season": "Summer",
+    "seasonTitle": "Starlit Summer"
   },
   {
     "id": "2024-summer-7",
@@ -685,7 +770,8 @@ const FILL_BLANKS = [
     "clue": "Death and _____",
     "answer": "Taxes",
     "year": 2024,
-    "season": "Summer"
+    "season": "Summer",
+    "seasonTitle": "Starlit Summer"
   },
   {
     "id": "2024-summer-8",
@@ -693,7 +779,8 @@ const FILL_BLANKS = [
     "clue": "Failure to _____",
     "answer": "Launch",
     "year": 2024,
-    "season": "Summer"
+    "season": "Summer",
+    "seasonTitle": "Starlit Summer"
   },
   {
     "id": "2024-summer-9",
@@ -701,7 +788,8 @@ const FILL_BLANKS = [
     "clue": "_____ Conjurations",
     "answer": "Cosmic",
     "year": 2024,
-    "season": "Summer"
+    "season": "Summer",
+    "seasonTitle": "Starlit Summer"
   },
   {
     "id": "2024-summer-10",
@@ -709,7 +797,8 @@ const FILL_BLANKS = [
     "clue": "Love Is _____",
     "answer": "Blind",
     "year": 2024,
-    "season": "Summer"
+    "season": "Summer",
+    "seasonTitle": "Starlit Summer"
   },
   {
     "id": "2024-summer-11",
@@ -717,7 +806,8 @@ const FILL_BLANKS = [
     "clue": "Ocean of _____",
     "answer": "Silence",
     "year": 2024,
-    "season": "Summer"
+    "season": "Summer",
+    "seasonTitle": "Starlit Summer"
   },
   {
     "id": "2024-autumn-1",
@@ -725,7 +815,8 @@ const FILL_BLANKS = [
     "clue": "Failure Is Not An _____",
     "answer": "Option",
     "year": 2024,
-    "season": "Autumn"
+    "season": "Autumn",
+    "seasonTitle": "Hallowed Peak"
   },
   {
     "id": "2024-autumn-3",
@@ -733,7 +824,8 @@ const FILL_BLANKS = [
     "clue": "Look Who's _____",
     "answer": "Talking",
     "year": 2024,
-    "season": "Autumn"
+    "season": "Autumn",
+    "seasonTitle": "Hallowed Peak"
   },
   {
     "id": "2024-autumn-4",
@@ -741,7 +833,8 @@ const FILL_BLANKS = [
     "clue": "Tricky _____",
     "answer": "Treats",
     "year": 2024,
-    "season": "Autumn"
+    "season": "Autumn",
+    "seasonTitle": "Hallowed Peak"
   },
   {
     "id": "2024-autumn-5",
@@ -749,7 +842,8 @@ const FILL_BLANKS = [
     "clue": "Absnormal _____",
     "answer": "Abduction",
     "year": 2024,
-    "season": "Autumn"
+    "season": "Autumn",
+    "seasonTitle": "Hallowed Peak"
   },
   {
     "id": "2024-autumn-6",
@@ -757,7 +851,8 @@ const FILL_BLANKS = [
     "clue": "The Silence of the _____",
     "answer": "Toys",
     "year": 2024,
-    "season": "Autumn"
+    "season": "Autumn",
+    "seasonTitle": "Hallowed Peak"
   },
   {
     "id": "2024-autumn-7",
@@ -765,7 +860,8 @@ const FILL_BLANKS = [
     "clue": "The Shape of _____",
     "answer": "Goo",
     "year": 2024,
-    "season": "Autumn"
+    "season": "Autumn",
+    "seasonTitle": "Hallowed Peak"
   },
   {
     "id": "2024-autumn-8",
@@ -773,7 +869,8 @@ const FILL_BLANKS = [
     "clue": "Final _____",
     "answer": "Countdown",
     "year": 2024,
-    "season": "Autumn"
+    "season": "Autumn",
+    "seasonTitle": "Hallowed Peak"
   },
   {
     "id": "2024-autumn-9",
@@ -781,7 +878,8 @@ const FILL_BLANKS = [
     "clue": "Viva La _____",
     "answer": "Resistance",
     "year": 2024,
-    "season": "Autumn"
+    "season": "Autumn",
+    "seasonTitle": "Hallowed Peak"
   },
   {
     "id": "2024-autumn-11",
@@ -789,7 +887,8 @@ const FILL_BLANKS = [
     "clue": "The Great _____",
     "answer": "Undoing",
     "year": 2024,
-    "season": "Autumn"
+    "season": "Autumn",
+    "seasonTitle": "Hallowed Peak"
   },
   {
     "id": "2024-winter-1",
@@ -797,7 +896,8 @@ const FILL_BLANKS = [
     "clue": "The Hum _____",
     "answer": "Bug",
     "year": 2024,
-    "season": "Winter"
+    "season": "Winter",
+    "seasonTitle": "Wintermas"
   },
   {
     "id": "2024-winter-2",
@@ -805,7 +905,8 @@ const FILL_BLANKS = [
     "clue": "The Final _____",
     "answer": "Question",
     "year": 2024,
-    "season": "Winter"
+    "season": "Winter",
+    "seasonTitle": "Wintermas"
   },
   {
     "id": "2024-winter-3",
@@ -813,7 +914,8 @@ const FILL_BLANKS = [
     "clue": "Live and Let _____",
     "answer": "Dad",
     "year": 2024,
-    "season": "Winter"
+    "season": "Winter",
+    "seasonTitle": "Wintermas"
   },
   {
     "id": "2024-winter-4",
@@ -821,7 +923,8 @@ const FILL_BLANKS = [
     "clue": "Dial P for _____",
     "answer": "Puppet",
     "year": 2024,
-    "season": "Winter"
+    "season": "Winter",
+    "seasonTitle": "Wintermas"
   },
   {
     "id": "2024-winter-5",
@@ -829,7 +932,8 @@ const FILL_BLANKS = [
     "clue": "The Darkest _____",
     "answer": "Friday",
     "year": 2024,
-    "season": "Winter"
+    "season": "Winter",
+    "seasonTitle": "Wintermas"
   },
   {
     "id": "2024-winter-7",
@@ -837,7 +941,8 @@ const FILL_BLANKS = [
     "clue": "Quantum of _____",
     "answer": "Postage",
     "year": 2024,
-    "season": "Winter"
+    "season": "Winter",
+    "seasonTitle": "Wintermas"
   },
   {
     "id": "2024-winter-9",
@@ -845,7 +950,8 @@ const FILL_BLANKS = [
     "clue": "Inner _____",
     "answer": "Spectre",
     "year": 2024,
-    "season": "Winter"
+    "season": "Winter",
+    "seasonTitle": "Wintermas"
   },
   {
     "id": "2024-winter-10",
@@ -853,7 +959,8 @@ const FILL_BLANKS = [
     "clue": "Oh Come All Ye _____",
     "answer": "Thirsty",
     "year": 2024,
-    "season": "Winter"
+    "season": "Winter",
+    "seasonTitle": "Wintermas"
   },
   {
     "id": "2024-winter-11",
@@ -861,7 +968,8 @@ const FILL_BLANKS = [
     "clue": "There Was No Boat _____",
     "answer": "Ride",
     "year": 2024,
-    "season": "Winter"
+    "season": "Winter",
+    "seasonTitle": "Wintermas"
   },
   {
     "id": "2025-spring-1",
@@ -869,7 +977,8 @@ const FILL_BLANKS = [
     "clue": "_____ Takes It All",
     "answer": "Winner",
     "year": 2025,
-    "season": "Spring"
+    "season": "Spring",
+    "seasonTitle": "JONACON"
   },
   {
     "id": "2025-spring-2",
@@ -877,7 +986,8 @@ const FILL_BLANKS = [
     "clue": "_____ Never After",
     "answer": "Happily",
     "year": 2025,
-    "season": "Spring"
+    "season": "Spring",
+    "seasonTitle": "JONACON"
   },
   {
     "id": "2025-spring-3",
@@ -885,7 +995,8 @@ const FILL_BLANKS = [
     "clue": "Let Them Eat _____",
     "answer": "Cake",
     "year": 2025,
-    "season": "Spring"
+    "season": "Spring",
+    "seasonTitle": "JONACON"
   },
   {
     "id": "2025-spring-4",
@@ -893,7 +1004,8 @@ const FILL_BLANKS = [
     "clue": "Operation _____",
     "answer": "Placeholder",
     "year": 2025,
-    "season": "Spring"
+    "season": "Spring",
+    "seasonTitle": "JONACON"
   },
   {
     "id": "2025-spring-5",
@@ -901,7 +1013,8 @@ const FILL_BLANKS = [
     "clue": "Feast, Play, _____",
     "answer": "Die",
     "year": 2025,
-    "season": "Spring"
+    "season": "Spring",
+    "seasonTitle": "JONACON"
   },
   {
     "id": "2025-spring-8",
@@ -909,7 +1022,8 @@ const FILL_BLANKS = [
     "clue": "Bad to the _____",
     "answer": "Bone",
     "year": 2025,
-    "season": "Spring"
+    "season": "Spring",
+    "seasonTitle": "JONACON"
   },
   {
     "id": "2025-spring-9",
@@ -917,7 +1031,8 @@ const FILL_BLANKS = [
     "clue": "Too Fast, Too _____",
     "answer": "Furrious",
     "year": 2025,
-    "season": "Spring"
+    "season": "Spring",
+    "seasonTitle": "JONACON"
   },
   {
     "id": "2025-spring-11",
@@ -925,7 +1040,8 @@ const FILL_BLANKS = [
     "clue": "Fiesta of _____",
     "answer": "Friendship",
     "year": 2025,
-    "season": "Spring"
+    "season": "Spring",
+    "seasonTitle": "JONACON"
   },
   {
     "id": "2025-summer-1",
@@ -933,7 +1049,8 @@ const FILL_BLANKS = [
     "clue": "Double _____",
     "answer": "Act",
     "year": 2025,
-    "season": "Summer"
+    "season": "Summer",
+    "seasonTitle": "Burning Blimp"
   },
   {
     "id": "2025-summer-2",
@@ -941,7 +1058,8 @@ const FILL_BLANKS = [
     "clue": "_____ Change",
     "answer": "Pocket",
     "year": 2025,
-    "season": "Summer"
+    "season": "Summer",
+    "seasonTitle": "Burning Blimp"
   },
   {
     "id": "2025-summer-3",
@@ -949,7 +1067,8 @@ const FILL_BLANKS = [
     "clue": "The Graveyard _____",
     "answer": "Groove",
     "year": 2025,
-    "season": "Summer"
+    "season": "Summer",
+    "seasonTitle": "Burning Blimp"
   },
   {
     "id": "2025-summer-5",
@@ -957,7 +1076,8 @@ const FILL_BLANKS = [
     "clue": "Unbox Me, _____",
     "answer": "Coward",
     "year": 2025,
-    "season": "Summer"
+    "season": "Summer",
+    "seasonTitle": "Burning Blimp"
   },
   {
     "id": "2025-summer-6",
@@ -965,7 +1085,8 @@ const FILL_BLANKS = [
     "clue": "Less _____",
     "answer": "Miserable",
     "year": 2025,
-    "season": "Summer"
+    "season": "Summer",
+    "seasonTitle": "Burning Blimp"
   },
   {
     "id": "2025-summer-7",
@@ -973,7 +1094,8 @@ const FILL_BLANKS = [
     "clue": "No Strings _____",
     "answer": "Attached",
     "year": 2025,
-    "season": "Summer"
+    "season": "Summer",
+    "seasonTitle": "Burning Blimp"
   },
   {
     "id": "2025-summer-8",
@@ -981,7 +1103,8 @@ const FILL_BLANKS = [
     "clue": "A Sweet _____",
     "answer": "Sacrifice",
     "year": 2025,
-    "season": "Summer"
+    "season": "Summer",
+    "seasonTitle": "Burning Blimp"
   },
   {
     "id": "2025-summer-9",
@@ -989,7 +1112,8 @@ const FILL_BLANKS = [
     "clue": "Finger Lickin' _____",
     "answer": "Good",
     "year": 2025,
-    "season": "Summer"
+    "season": "Summer",
+    "seasonTitle": "Burning Blimp"
   },
   {
     "id": "2025-summer-10",
@@ -997,7 +1121,8 @@ const FILL_BLANKS = [
     "clue": "Wild _____",
     "answer": "Card",
     "year": 2025,
-    "season": "Summer"
+    "season": "Summer",
+    "seasonTitle": "Burning Blimp"
   },
   {
     "id": "2025-summer-11",
@@ -1005,7 +1130,8 @@ const FILL_BLANKS = [
     "clue": "A Waste of _____",
     "answer": "Time",
     "year": 2025,
-    "season": "Summer"
+    "season": "Summer",
+    "seasonTitle": "Burning Blimp"
   },
   {
     "id": "2025-autumn-1",
@@ -1013,7 +1139,8 @@ const FILL_BLANKS = [
     "clue": "Dude Where’s My _____",
     "answer": "Mummy",
     "year": 2025,
-    "season": "Autumn"
+    "season": "Autumn",
+    "seasonTitle": "Hallowed Peak"
   },
   {
     "id": "2025-autumn-2",
@@ -1021,7 +1148,8 @@ const FILL_BLANKS = [
     "clue": "A Murder Most _____",
     "answer": "Fowl",
     "year": 2025,
-    "season": "Autumn"
+    "season": "Autumn",
+    "seasonTitle": "Hallowed Peak"
   },
   {
     "id": "2025-autumn-3",
@@ -1029,7 +1157,8 @@ const FILL_BLANKS = [
     "clue": "The Great Blimp _____",
     "answer": "Robbery",
     "year": 2025,
-    "season": "Autumn"
+    "season": "Autumn",
+    "seasonTitle": "Hallowed Peak"
   },
   {
     "id": "2025-autumn-4",
@@ -1037,7 +1166,8 @@ const FILL_BLANKS = [
     "clue": "Call of the _____",
     "answer": "Deep",
     "year": 2025,
-    "season": "Autumn"
+    "season": "Autumn",
+    "seasonTitle": "Hallowed Peak"
   },
   {
     "id": "2025-autumn-5",
@@ -1045,7 +1175,8 @@ const FILL_BLANKS = [
     "clue": "Domestic _____",
     "answer": "Sin",
     "year": 2025,
-    "season": "Autumn"
+    "season": "Autumn",
+    "seasonTitle": "Hallowed Peak"
   },
   {
     "id": "2025-autumn-6",
@@ -1053,7 +1184,8 @@ const FILL_BLANKS = [
     "clue": "_____ Night Out",
     "answer": "Ghouls",
     "year": 2025,
-    "season": "Autumn"
+    "season": "Autumn",
+    "seasonTitle": "Hallowed Peak"
   },
   {
     "id": "2025-autumn-7",
@@ -1061,7 +1193,8 @@ const FILL_BLANKS = [
     "clue": "A Knight’s _____",
     "answer": "Honour",
     "year": 2025,
-    "season": "Autumn"
+    "season": "Autumn",
+    "seasonTitle": "Hallowed Peak"
   },
   {
     "id": "2025-autumn-8",
@@ -1069,7 +1202,8 @@ const FILL_BLANKS = [
     "clue": "The _____ Zone",
     "answer": "Axiomatic",
     "year": 2025,
-    "season": "Autumn"
+    "season": "Autumn",
+    "seasonTitle": "Hallowed Peak"
   },
   {
     "id": "2025-autumn-9",
@@ -1077,7 +1211,8 @@ const FILL_BLANKS = [
     "clue": "A Fault in Our _____",
     "answer": "Star",
     "year": 2025,
-    "season": "Autumn"
+    "season": "Autumn",
+    "seasonTitle": "Hallowed Peak"
   },
   {
     "id": "2025-autumn-10",
@@ -1085,7 +1220,8 @@ const FILL_BLANKS = [
     "clue": "_____ with the Most",
     "answer": "Ghost",
     "year": 2025,
-    "season": "Autumn"
+    "season": "Autumn",
+    "seasonTitle": "Hallowed Peak"
   },
   {
     "id": "2025-autumn-11",
@@ -1093,7 +1229,8 @@ const FILL_BLANKS = [
     "clue": "Flight of the _____",
     "answer": "Furbish",
     "year": 2025,
-    "season": "Autumn"
+    "season": "Autumn",
+    "seasonTitle": "Hallowed Peak"
   },
   {
     "id": "2025-autumn-12",
@@ -1101,7 +1238,8 @@ const FILL_BLANKS = [
     "clue": "The Coin Lands _____",
     "answer": "Sideways",
     "year": 2025,
-    "season": "Autumn"
+    "season": "Autumn",
+    "seasonTitle": "Hallowed Peak"
   },
   {
     "id": "2025-winter-1",
@@ -1109,7 +1247,8 @@ const FILL_BLANKS = [
     "clue": "The _____ Place",
     "answer": "Bright",
     "year": 2025,
-    "season": "Winter"
+    "season": "Winter",
+    "seasonTitle": "Wintermas"
   },
   {
     "id": "2025-winter-2",
@@ -1117,7 +1256,8 @@ const FILL_BLANKS = [
     "clue": "Meet The _____",
     "answer": "Perigates",
     "year": 2025,
-    "season": "Winter"
+    "season": "Winter",
+    "seasonTitle": "Wintermas"
   },
   {
     "id": "2025-winter-3",
@@ -1125,7 +1265,8 @@ const FILL_BLANKS = [
     "clue": "A Very Merry _____",
     "answer": "Wintermas",
     "year": 2025,
-    "season": "Winter"
+    "season": "Winter",
+    "seasonTitle": "Wintermas"
   },
   {
     "id": "2025-winter-4",
@@ -1133,7 +1274,8 @@ const FILL_BLANKS = [
     "clue": "Book, Line and _____",
     "answer": "Sinker",
     "year": 2025,
-    "season": "Winter"
+    "season": "Winter",
+    "seasonTitle": "Wintermas"
   },
   {
     "id": "2025-winter-6",
@@ -1141,7 +1283,8 @@ const FILL_BLANKS = [
     "clue": "The Priest And The _____",
     "answer": "Prisoner",
     "year": 2025,
-    "season": "Winter"
+    "season": "Winter",
+    "seasonTitle": "Wintermas"
   },
   {
     "id": "2025-winter-7",
@@ -1149,7 +1292,8 @@ const FILL_BLANKS = [
     "clue": "Coffee Is For _____",
     "answer": "Closers",
     "year": 2025,
-    "season": "Winter"
+    "season": "Winter",
+    "seasonTitle": "Wintermas"
   },
   {
     "id": "2025-winter-8",
@@ -1157,7 +1301,8 @@ const FILL_BLANKS = [
     "clue": "A Developing _____",
     "answer": "Situation",
     "year": 2025,
-    "season": "Winter"
+    "season": "Winter",
+    "seasonTitle": "Wintermas"
   },
   {
     "id": "2025-winter-9",
@@ -1165,7 +1310,8 @@ const FILL_BLANKS = [
     "clue": "The Man With The _____ Hat",
     "answer": "Bowler",
     "year": 2025,
-    "season": "Winter"
+    "season": "Winter",
+    "seasonTitle": "Wintermas"
   },
   {
     "id": "2025-winter-10",
@@ -1173,7 +1319,8 @@ const FILL_BLANKS = [
     "clue": "Off The _____",
     "answer": "Rails",
     "year": 2025,
-    "season": "Winter"
+    "season": "Winter",
+    "seasonTitle": "Wintermas"
   },
   {
     "id": "2025-winter-11",
@@ -1181,7 +1328,8 @@ const FILL_BLANKS = [
     "clue": "Death Of A _____",
     "answer": "Mailman",
     "year": 2025,
-    "season": "Winter"
+    "season": "Winter",
+    "seasonTitle": "Wintermas"
   },
   {
     "id": "2026-finale-1",
@@ -1189,7 +1337,8 @@ const FILL_BLANKS = [
     "clue": "Homeward _____",
     "answer": "Bound",
     "year": 2026,
-    "season": "Finale"
+    "season": "Finale",
+    "seasonTitle": "The Great Undoing"
   },
   {
     "id": "2026-finale-2",
@@ -1197,7 +1346,8 @@ const FILL_BLANKS = [
     "clue": "Back To The _____",
     "answer": "Furbish",
     "year": 2026,
-    "season": "Finale"
+    "season": "Finale",
+    "seasonTitle": "The Great Undoing"
   },
   {
     "id": "2026-finale-3",
@@ -1205,7 +1355,8 @@ const FILL_BLANKS = [
     "clue": "Access _____",
     "answer": "Denied",
     "year": 2026,
-    "season": "Finale"
+    "season": "Finale",
+    "seasonTitle": "The Great Undoing"
   },
   {
     "id": "2026-finale-4",
@@ -1213,6 +1364,7 @@ const FILL_BLANKS = [
     "clue": "My Dinner With _____",
     "answer": "Jonas",
     "year": 2026,
-    "season": "Finale"
+    "season": "Finale",
+    "seasonTitle": "The Great Undoing"
   }
 ];

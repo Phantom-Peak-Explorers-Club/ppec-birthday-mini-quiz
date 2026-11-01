@@ -152,7 +152,7 @@ const GAME_THEMES={
   vowels:{accent:'#bea7ff',dark:'#342453',light:'#f0e9ff',shareBg:'#3e276b'},
   trails:{accent:'#f48f7b',dark:'#4b2931',light:'#ffe8dd',shareBg:'#762b35'},
   platy:{accent:'#a8df6e',dark:'#173b2a',light:'#ecffdc',shareBg:'#275832'},
-  blanks:{accent:'#ffad87',dark:'#4a283b',light:'#fff0e6',shareBg:'#71344b'}
+  blanks:{accent:'#72b5ff',dark:'#142d57',light:'#e9f3ff',shareBg:'#153e78'}
 };
 function shuffle(items){const out=[...items];for(let i=out.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[out[i],out[j]]=[out[j],out[i]]}return out}
 function normal(s){return s.normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]/g,'')}
@@ -409,7 +409,7 @@ function start(game,mode){
   if(sharePreviewUrl){URL.revokeObjectURL(sharePreviewUrl);sharePreviewUrl=null}
   $('share-preview-image').hidden=true;
   $('share-preview').classList.remove('is-rendered');
-  state={game,mode,questions,index:0,score:0,points:0,completed:0,openedTiles:0,tileButtons:[],choiceButtons:[],answered:false,countingDown:game==='anagrams'||game==='vowels'||game==='blanks',startedAt:Date.now(),elapsedMs:null,exhausted:false,platyMisses:0,platyGuessed:new Set(),runId:Date.now()+Math.random()};
+  state={game,mode,questions,index:0,score:0,points:0,completed:0,openedTiles:0,tileButtons:[],choiceButtons:[],answered:false,countingDown:game==='anagrams'||game==='vowels',startedAt:Date.now(),elapsedMs:null,exhausted:false,platyMisses:0,platyGuessed:new Set(),runId:Date.now()+Math.random()};
   show('game');render();if(state.countingDown)startCountdown();
 }
 function render(){
@@ -426,16 +426,22 @@ function render(){
   $('progress-fill').style.width=`${index/questions.length*100}%`;
   $('question-kind').textContent=game==='anagrams'?'UNSCRAMBLE THIS':game==='vowels'?'RESTORE THE VOWELS':game==='trails'?'IDENTIFY THE TRAIL':game==='platy'?'SAVE THE PLATYPUSES':game==='blanks'?'COMPLETE THE TRAIL TITLE':'NAME THE PICTURE CLUE';
   $('game-title').textContent=gameName();
-  $('game-logo').src=`./assets/game-logos/${({anagrams:'anagrams',catchphrase:'catchphrase',vowels:'missing-vowels',trails:'what-trail',platy:'save-a-platy',blanks:'fill-the-blanks'})[game]}.${game==='blanks'?'svg':'png'}${game==='blanks'?'':'?v=2'}`;
+  $('game-logo').src=`./assets/game-logos/${({anagrams:'anagrams',catchphrase:'catchphrase',vowels:'missing-vowels',trails:'what-trail',platy:'save-a-platy',blanks:'mind-the-gap-blue'})[game]}.${game==='blanks'?'svg':'png'}${game==='blanks'?'':'?v=2'}`;
   $('game-console').dataset.game=game;
   $('question-card').dataset.game=game;
   $('vowel-hint').hidden=game!=='vowels';
   $('blank-hint').hidden=game!=='blanks';
+  $('blank-instruction').hidden=game!=='blanks';
+  $('blank-source').hidden=game!=='blanks';
   if(game==='vowels'){
     const count=q.answer.replace(/[^A-Za-z]/g,'').length;
     $('vowel-hint').textContent=`${count} ${count===1?'LETTER':'LETTERS'}`;
   }
-  if(game==='blanks')$('blank-hint').textContent=`${q.answer.replace(/[^\p{L}\p{N}]/gu,'').length} LETTERS · TYPE THE MISSING WORD`;
+  if(game==='blanks'){
+    $('blank-instruction').textContent='Fill in the blank in the trail name below';
+    $('blank-hint').textContent=`${q.answer.replace(/[^\p{L}\p{N}]/gu,'').length} LETTERS · TYPE THE MISSING WORD`;
+    $('blank-source').textContent=`${q.season} ${q.year} · ${q.seasonTitle}`;
+  }
   $('clue').replaceChildren();
   $('platy-lives').hidden=game!=='platy';$('platy-keyboard').hidden=game!=='platy';$('platy-reveal').hidden=true;
   if(game==='platy'){
@@ -495,7 +501,7 @@ function render(){
   $('next-button').hidden=true;$('reveal-button').hidden=false;
   $('timer-label').textContent='30s';$('timer-fill').style.width='100%';
   if(game!=='trails'&&game!=='platy'&&!state.countingDown)$('answer-input').focus();
-  if((game==='anagrams'||game==='vowels'||game==='blanks')&&!state.countingDown)startTimer();
+  if((game==='anagrams'||game==='vowels')&&!state.countingDown)startTimer();
 }
 function finishAnswer(correct,revealed=false,timedOut=false,response=''){
   if(state.answered||state.countingDown)return;
@@ -581,7 +587,7 @@ async function drawShareCard(){
   const canvas=document.createElement('canvas');canvas.width=1080;canvas.height=1080;
   const c=canvas.getContext('2d');
   const theme=GAME_THEMES[state.game]||GAME_THEMES.anagrams;
-  const logoName=({anagrams:'anagrams',catchphrase:'catchphrase',vowels:'missing-vowels',trails:'what-trail',platy:'save-a-platy',blanks:'fill-the-blanks'})[state.game]||'anagrams';
+  const logoName=({anagrams:'anagrams',catchphrase:'catchphrase',vowels:'missing-vowels',trails:'what-trail',platy:'save-a-platy',blanks:'mind-the-gap-blue'})[state.game]||'anagrams';
   const frame=new Image();frame.src='./assets/share-card-frame.jpg';
   const logo=new Image();logo.src=`./assets/game-logos/${logoName}.${state.game==='blanks'?'svg':'png'}`;
   const avatar=new Image();avatar.src='./assets/jonabot-avatar.png';
@@ -702,7 +708,7 @@ window.addEventListener?.('popstate',event=>{
   if(ppecScreen==='game'&&runId===state.runId){
     show('game',false);
     if(state.countingDown)startCountdown();
-    else if(!state.answered&&(state.game==='anagrams'||state.game==='vowels'||state.game==='blanks')){
+    else if(!state.answered&&(state.game==='anagrams'||state.game==='vowels')){
       if(Date.now()>=questionDeadline)finishAnswer(false,false,true);
       else{tickTimer();questionTimer=setInterval(tickTimer,200)}
     }

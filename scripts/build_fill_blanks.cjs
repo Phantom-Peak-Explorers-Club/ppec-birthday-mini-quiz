@@ -81,7 +81,7 @@ for (const trail of trails) {
   if (seen.has(normalized)) throw Error(`Duplicate clue: ${trail.title} and ${seen.get(normalized)}`);
   seen.set(normalized, trail.title);
   if (tokens.some(part => part.index !== token.index && part.text.toLowerCase() === answer.toLowerCase())) throw Error(`Answer visible in ${trail.title}`);
-  questions.push({id:trail.id, title:trail.title, clue, answer, year:trail.year, season:trail.season,
+  questions.push({id:trail.id, title:trail.title, clue, answer, year:trail.year, season:trail.season, seasonTitle:trail.seasonTitle,
     ...(trail.contributor ? {contributor:trail.contributor} : {})});
   review.push(`| ${trail.title} | **${answer}** | ${clue} |`);
 }

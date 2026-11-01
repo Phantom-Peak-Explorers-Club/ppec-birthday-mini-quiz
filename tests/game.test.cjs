@@ -377,14 +377,18 @@ test('All picture clues accept case, spaces, punctuation, and minor typos plus i
 test('Mind the Gap uses one meaningful hidden word in 152 distinct trail titles', () => {
   const trails = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'source', 'trails.json'), 'utf8'));
   const questions = vm.runInNewContext(fs.readFileSync(path.join(__dirname, '..', 'docs', 'fill-blanks.js'), 'utf8') + '\nFILL_BLANKS');
-  const titles = new Map(trails.map(trail => [trail.id, trail.title]));
+  const titles = new Map(trails.map(trail => [trail.id, trail]));
   const stop = new Set('the at if a an and are as be but by do for from had has have he her him his how i in is it its la let me my no not of oh on or our she so than that them there this to up was we what when where who why with ye you your'.split(' '));
   assert.equal(trails.length, 187);
   assert.equal(questions.length, 152);
   assert.equal(new Set(questions.map(q => q.id)).size, 152);
   assert.equal(new Set(questions.map(q => q.clue.toLowerCase())).size, 152);
   for (const q of questions) {
-    assert.equal(q.title, titles.get(q.id));
+    const trail = titles.get(q.id);
+    assert.equal(q.title, trail.title);
+    assert.equal(q.season, trail.season);
+    assert.equal(q.year, trail.year);
+    assert.equal(q.seasonTitle, trail.seasonTitle);
     assert.equal(q.clue.split('_____').length, 2, q.title);
     assert.equal(q.clue.replace('_____', q.answer), q.title);
     assert.ok(!stop.has(q.answer.toLowerCase()), q.title);
@@ -395,17 +399,22 @@ test('Mind the Gap uses one meaningful hidden word in 152 distinct trail titles'
   assert.ok(!questions.some(q => q.title === 'Time After Time'));
 });
 
-test('Mind the Gap uses typed answers, countdown, reveal and existing round rules', () => {
+test('Mind the Gap is untimed and shows the instruction, season, year, reveal and round rules', () => {
   const app = setup();
   app.buttons[10].click();
   assert.equal(app.state().questions.length, 10);
-  assert.equal(app.state().countingDown, true);
+  assert.equal(app.state().countingDown, false);
+  assert.equal(app.get('start-countdown').hidden, true);
   assert.equal(app.get('game-title').textContent, 'Mind the Gap!');
+  assert.equal(app.get('blank-instruction').textContent, 'Fill in the blank in the trail name below');
+  assert.equal(app.get('blank-instruction').hidden, false);
   assert.equal(app.get('answer-label').textContent, 'Missing word');
   assert.match(app.get('blank-hint').textContent, /LETTERS · TYPE THE MISSING WORD/);
   const q = app.state().questions[0];
+  assert.equal(app.get('blank-source').textContent, `${q.season} ${q.year} · ${q.seasonTitle}`);
   assert.equal(app.get('clue').children[0].children[1].textContent, '?');
-  app.evaluate('finishCountdown()');
+  app.advance(60000);
+  assert.equal(app.state().answered, false);
   app.submit(q.answer.toLowerCase());
   assert.equal(app.state().score, 1);
   assert.equal(app.get('score-label').textContent, '1 CORRECT');
@@ -419,9 +428,11 @@ test('Mind the Gap uses typed answers, countdown, reveal and existing round rule
   const unlimited = setup();
   unlimited.buttons[11].click();
   assert.equal(unlimited.state().questions.length, 152);
-  unlimited.evaluate('finishCountdown()');
+  unlimited.advance(60000);
+  assert.equal(unlimited.state().answered, false);
   unlimited.submit('a completely wrong word');
   assert.equal(unlimited.state().elapsedMs !== null, true);
+  assert.match(fs.readFileSync(path.join(__dirname, '..', 'docs', 'style.css'), 'utf8'), /data-game="blanks"\] \.timer-instrument,[^\n]*\.timer-track\{display:none\}/);
 });
 
 test('Browser Back returns from a game to the portal and Forward restores the run', () => {

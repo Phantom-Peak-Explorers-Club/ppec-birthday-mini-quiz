@@ -12,10 +12,10 @@
   <link rel="icon" type="image/png" href="./assets/app-icon-v3-192.png">
   <link rel="apple-touch-icon" href="./assets/app-icon-v3-180.png">
   <link rel="preload" href="./assets/fonts/fraunces-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="./style.css?v=26">
+  <link rel="stylesheet" href="./style.css?v=27">
   <script src="./what-trail.js" defer></script>
   <script src="./fill-blanks.js" defer></script>
-  <script src="./app.js?v=31" defer></script>
+  <script src="./app.js?v=32" defer></script>
 </head>
 <body>
   <main class="shell">
@@ -55,7 +55,7 @@
           <div class="card-body"><h2>Save-A-Platy</h2><p>Guess trail names. Save up to six platypuses per clue.</p><div class="mode-buttons"><button class="play-button" type="button" data-game="platy" data-mode="quiz">Quiz Round <span aria-hidden="true">↗</span></button><button class="play-button secondary" type="button" data-game="platy" data-mode="unlimited">Unlimited <span aria-hidden="true">∞</span></button></div></div>
         </article>
         <article class="game-card blanks-game-card">
-          <div class="card-icon blanks-icon"><img src="./assets/game-logos/fill-the-blanks.svg" alt="" width="512" height="512"></div>
+          <div class="card-icon blanks-icon"><img src="./assets/game-logos/mind-the-gap-blue.svg" alt="" width="512" height="512"></div>
           <div class="card-body"><h2>Mind the Gap!</h2><p>Complete the missing word in a trail title.</p><div class="mode-buttons"><button class="play-button" type="button" data-game="blanks" data-mode="quiz">Quiz Round <span aria-hidden="true">↗</span></button><button class="play-button secondary" type="button" data-game="blanks" data-mode="unlimited">Unlimited <span aria-hidden="true">∞</span></button></div></div>
         </article>
         </div>
@@ -73,8 +73,10 @@
       <div class="question-card" id="question-card">
         <p class="eyebrow" id="question-kind"></p>
         <div class="game-title-row"><img id="game-logo" src="./assets/game-logos/anagrams.png?v=2" alt="" width="512" height="512"><h1 id="game-title"></h1></div>
+        <p id="blank-instruction" class="blank-instruction" hidden>Fill in the blank in the trail name below</p>
         <div id="platy-lives" class="platy-lives" aria-live="polite" hidden></div>
         <div id="clue" class="clue"></div>
+        <p id="blank-source" class="blank-source" hidden></p>
         <div id="platy-keyboard" class="platy-keyboard" role="group" aria-label="Guess a letter" hidden></div>
         <div id="platy-reveal" class="platy-reveal" role="status" aria-live="polite" hidden><div class="platy-reveal-total"><strong id="platy-reveal-count">0</strong><span>PLATYPUSES SAVED</span></div><div id="platy-reveal-icons" class="platy-reveal-icons" aria-hidden="true"></div></div>
         <div id="trail-choices" class="trail-choices" hidden></div>

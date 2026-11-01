@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="A trail card with a missing word">
+  <defs>
+    <linearGradient id="card" x2="0" y2="1"><stop stop-color="#fff5df"/><stop offset="1" stop-color="#f2dcb7"/></linearGradient>
+    <filter id="shadow"><feDropShadow dx="0" dy="15" stdDeviation="13" flood-color="#140d1a" flood-opacity=".55"/></filter>
+  </defs>
+  <circle cx="256" cy="256" r="225" fill="#142d57" stroke="#72b5ff" stroke-width="13"/>
+  <circle cx="256" cy="256" r="198" fill="none" stroke="#72b5ff" stroke-opacity=".3" stroke-width="4" stroke-dasharray="7 11"/>
+  <g filter="url(#shadow)" transform="rotate(-6 256 256)">
+    <rect x="93" y="114" width="326" height="286" rx="24" fill="url(#card)" stroke="#5589d0" stroke-width="9"/>
+    <path d="M130 176h252M130 332h252" stroke="#caa990" stroke-width="7" stroke-linecap="round"/>
+    <text x="256" y="230" text-anchor="middle" font-family="Georgia,serif" font-size="45" font-weight="bold" fill="#142d57">MIND THE</text>
+    <rect x="142" y="258" width="228" height="68" rx="11" fill="#142d57"/>
+    <path d="M163 306h29m81 0h80" stroke="#72b5ff" stroke-width="8" stroke-linecap="round"/>
+    <text x="231" y="314" text-anchor="middle" font-family="Arial,sans-serif" font-size="57" font-weight="bold" fill="#d0e7ff">?</text>
+  </g>
+</svg>

@@ -368,14 +368,19 @@ footer{text-align:center;padding:0 0 25px;color:#81758b;font:600 10px 'IBM Plex 
 @keyframes platy-count-in{from{opacity:.2;transform:translateY(8px) scale(.75)}to{opacity:1;transform:translateY(0) scale(1)}}
 @media(max-width:640px){.game-console[data-game="platy"] .clue{min-height:110px;padding:11px 7px}.platy-lives{padding:4px 8px;margin-bottom:9px}.platy-lives strong{font-size:9px}.platy-life-icons{gap:1px}.platy-life-icons img{width:35px;height:29px}.platy-name{gap:7px 10px}.platy-word{gap:1px}.platy-letter{min-width:clamp(15px,4.2vw,21px);height:26px;font-size:clamp(12px,3.8vw,18px)}.platy-keyboard{grid-template-columns:repeat(9,minmax(0,1fr));gap:4px;margin-bottom:9px}.platy-key{height:38px;font-size:15px}}
 
-.blanks-game-card{--game-accent:#ffad87;--game-dark:#4a283b;--game-light:#fff0e6}
-.game-console[data-game="blanks"]{--game-accent:#ffad87;--game-dark:#4a283b}
-.share-preview[data-game="blanks"]{--game-accent:#ffad87;--game-dark:#4a283b;--game-light:#fff0e6}
-.game-console[data-game="blanks"] .clue{background:repeating-linear-gradient(0deg,#ffd0ae09 0 2px,transparent 2px 6px),radial-gradient(ellipse at 50% 45%,#50324a,#211926 78%)}
+.blanks-game-card{--game-accent:#72b5ff;--game-dark:#142d57;--game-light:#e9f3ff}
+.game-console[data-game="blanks"]{--game-accent:#72b5ff;--game-dark:#142d57}
+.share-preview[data-game="blanks"]{--game-accent:#72b5ff;--game-dark:#142d57;--game-light:#e9f3ff}
+.game-console[data-game="blanks"] .timer-instrument,.game-console[data-game="blanks"] .timer-track{display:none}
+.game-console[data-game="blanks"] .question-meta{grid-template-columns:1fr 1fr}
+.game-console[data-game="blanks"] .clue{background:repeating-linear-gradient(0deg,#c5ddff0b 0 2px,transparent 2px 6px),radial-gradient(ellipse at 50% 45%,#25456e,#111d35 78%)}
 .blank-title{max-width:100%;margin:0;color:#fff0df;font:700 clamp(25px,4.6vw,45px)/1.4 Fraunces,Georgia,serif;text-align:center;white-space:pre-wrap;overflow-wrap:anywhere}
-.blank-space{display:inline-flex;align-items:center;justify-content:center;min-width:2.5em;height:1.12em;margin:0 .08em;border-bottom:5px solid #ffad87;border-radius:5px;background:#ffad8722;color:#ffcfad;font:800 .85em 'IBM Plex Mono',monospace;vertical-align:baseline}
-.blank-title.solved{color:#b9f0c9}.blank-title.failed{color:#ffd5bd}
-.blank-hint{margin:-2px 0 15px;color:#ffcfad;font:700 10px 'IBM Plex Mono',monospace;letter-spacing:.11em;text-align:center}
+.blank-space{display:inline-flex;align-items:center;justify-content:center;min-width:2.5em;height:1.12em;margin:0 .08em;border-bottom:5px solid #72b5ff;border-radius:5px;background:#72b5ff22;color:#d0e7ff;font:800 .85em 'IBM Plex Mono',monospace;vertical-align:baseline}
+.blank-title.solved{color:#b9f0c9}.blank-title.failed{color:#d0e7ff}
+.blank-instruction{margin:0 0 14px;color:#e3efff;font:600 clamp(14px,2vw,17px)/1.4 Fraunces,Georgia,serif;text-align:center}
+.blank-source{margin:-2px 0 14px;color:#a9d0ff;font:700 10px 'IBM Plex Mono',monospace;letter-spacing:.1em;text-align:center;text-transform:uppercase}
+.blank-hint{margin:-2px 0 15px;color:#c8deff;font:700 10px 'IBM Plex Mono',monospace;letter-spacing:.11em;text-align:center}
+#blank-instruction[hidden],#blank-source[hidden]{display:none}
 .blank-complete{display:block;margin-top:7px;color:#d9c9c9;font-size:13px;line-height:1.35}
 @media(max-width:640px){.blank-title{font-size:clamp(22px,6.4vw,32px)}.blank-space{border-bottom-width:3px}.game-console[data-game="blanks"] .clue{min-height:150px}}
 @media(max-width:360px){.platy-letter{min-width:14px;font-size:12px}.platy-life-icons img{width:24px}}
