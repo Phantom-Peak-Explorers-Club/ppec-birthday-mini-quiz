@@ -431,7 +431,7 @@ function render(){
   $('progress-fill').style.width=`${index/questions.length*100}%`;
   $('question-kind').textContent=game==='anagrams'?'UNSCRAMBLE THIS':game==='vowels'?'RESTORE THE VOWELS':game==='trails'?'IDENTIFY THE TRAIL':game==='platy'?'SAVE THE PLATYPUSES':game==='blanks'?'COMPLETE THE TRAIL TITLE':game==='lore'?'PICK THE MISSING WORD':'NAME THE PICTURE CLUE';
   $('game-title').textContent=gameName();
-  $('game-logo').src=`./assets/game-logos/${({anagrams:'anagrams',catchphrase:'catchphrase',vowels:'missing-vowels',trails:'what-trail',platy:'save-a-platy',blanks:'blankety-peak',lore:'lost-in-the-lore'})[game]}.${game==='blanks'||game==='lore'?'svg':'png'}${game==='blanks'||game==='lore'?'':'?v=2'}`;
+  $('game-logo').src=`./assets/game-logos/${({anagrams:'anagrams',catchphrase:'catchphrase',vowels:'missing-vowels',trails:'what-trail',platy:'save-a-platy',blanks:'blankety-peak',lore:'lost-in-the-lore'})[game]}.svg?v=2`;
   $('game-console').dataset.game=game;
   $('question-card').dataset.game=game;
   $('vowel-hint').hidden=game!=='vowels';
@@ -621,7 +621,7 @@ async function drawShareCard(){
   const theme=GAME_THEMES[state.game]||GAME_THEMES.anagrams;
   const logoName=({anagrams:'anagrams',catchphrase:'catchphrase',vowels:'missing-vowels',trails:'what-trail',platy:'save-a-platy',blanks:'blankety-peak',lore:'lost-in-the-lore'})[state.game]||'anagrams';
   const frame=new Image();frame.src='./assets/share-card-frame.jpg';
-  const logo=new Image();logo.src=`./assets/game-logos/${logoName}.${state.game==='blanks'||state.game==='lore'?'svg':'png'}`;
+  const logo=new Image();logo.src=`./assets/game-logos/${logoName}.svg?v=2`;
   const avatar=new Image();avatar.src='./assets/jonabot-avatar.png';
   const [frameReady,logoReady,avatarReady]=await Promise.all([frame,logo,avatar].map(image=>image.decode().then(()=>true).catch(()=>false)));
   if(frameReady)c.drawImage(frame,0,0,1080,1080);

@@ -3,13 +3,13 @@
     <linearGradient id="paper" x2="0" y2="1"><stop stop-color="#fff4e9"/><stop offset="1" stop-color="#f5d3df"/></linearGradient>
     <filter id="shadow"><feDropShadow dx="0" dy="14" stdDeviation="12" flood-color="#130b1b" flood-opacity=".6"/></filter>
   </defs>
-  <circle cx="256" cy="256" r="225" fill="#522040" stroke="#ff80bd" stroke-width="13"/>
-  <circle cx="256" cy="256" r="198" fill="none" stroke="#ff80bd" stroke-opacity=".35" stroke-width="4" stroke-dasharray="7 11"/>
+  <circle cx="256" cy="256" r="225" fill="#5d174a" stroke="#ff6eb5" stroke-width="13"/>
+  <circle cx="256" cy="256" r="198" fill="none" stroke="#ff6eb5" stroke-opacity=".35" stroke-width="4" stroke-dasharray="7 11"/>
   <g filter="url(#shadow)">
     <path d="M80 155q85-45 176 5 91-50 176-5v222q-89-34-176 14-87-48-176-14z" fill="url(#paper)" stroke="#e782b1" stroke-width="9" stroke-linejoin="round"/>
     <path d="M256 160v231" stroke="#c47b9c" stroke-width="7"/>
     <path d="M114 212h108M114 240h108M114 268h74M290 212h108M290 240h108M290 268h62" stroke="#ad86a1" stroke-width="8" stroke-linecap="round"/>
-    <rect x="286" y="296" width="116" height="53" rx="9" fill="#522040"/>
+    <rect x="286" y="296" width="116" height="53" rx="9" fill="#5d174a"/>
     <text x="344" y="336" text-anchor="middle" font-family="Georgia,serif" font-size="46" font-weight="bold" fill="#ffb6d8">?</text>
   </g>
 </svg>

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Vowel tiles filling empty spaces">
+  <defs>
+    <linearGradient id="paper" x2="0" y2="1"><stop stop-color="#fff8f4"/><stop offset="1" stop-color="#e2d1f7"/></linearGradient>
+    <filter id="shadow"><feDropShadow dx="0" dy="14" stdDeviation="12" flood-color="#130b1b" flood-opacity=".55"/></filter>
+  </defs>
+  <circle cx="256" cy="256" r="225" fill="#35165e" stroke="#ae80ff" stroke-width="13"/>
+  <circle cx="256" cy="256" r="198" fill="none" stroke="#ae80ff" stroke-opacity=".35" stroke-width="4" stroke-dasharray="7 11"/>
+  <g filter="url(#shadow)">
+    <rect x="91" y="128" width="330" height="254" rx="29" fill="url(#paper)" stroke="#9770ce" stroke-width="9"/>
+    <g font-family="Georgia,serif" font-size="69" font-weight="bold" text-anchor="middle">
+      <rect x="119" y="215" width="78" height="88" rx="12" fill="#fffdf4" stroke="#8c69ba" stroke-width="6"/><text x="158" y="282" fill="#35165e">P</text>
+      <rect x="217" y="215" width="78" height="88" rx="12" fill="#35165e" stroke="#ae80ff" stroke-width="6" stroke-dasharray="10 7"/><text x="256" y="282" fill="#f0e4ff">E</text>
+      <rect x="315" y="215" width="78" height="88" rx="12" fill="#fffdf4" stroke="#8c69ba" stroke-width="6"/><text x="354" y="282" fill="#35165e">K</text>
+    </g>
+    <path d="M256 151v41m-17-17 17 18 17-18" fill="none" stroke="#35165e" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M128 331h256" stroke="#a885cd" stroke-width="7" stroke-linecap="round"/>
+  </g>
+</svg>

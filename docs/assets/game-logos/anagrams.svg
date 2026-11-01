@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Letter tiles being rearranged">
+  <defs>
+    <linearGradient id="paper" x2="0" y2="1"><stop stop-color="#fff8e5"/><stop offset="1" stop-color="#f3dfad"/></linearGradient>
+    <filter id="shadow"><feDropShadow dx="0" dy="14" stdDeviation="12" flood-color="#130d15" flood-opacity=".55"/></filter>
+  </defs>
+  <circle cx="256" cy="256" r="225" fill="#4f3908" stroke="#ffd13d" stroke-width="13"/>
+  <circle cx="256" cy="256" r="198" fill="none" stroke="#ffd13d" stroke-opacity=".35" stroke-width="4" stroke-dasharray="7 11"/>
+  <g filter="url(#shadow)">
+    <rect x="91" y="123" width="330" height="266" rx="29" fill="url(#paper)" stroke="#c59120" stroke-width="9"/>
+    <g font-family="Georgia,serif" font-size="75" font-weight="bold" text-anchor="middle" fill="#4f3908">
+      <rect x="117" y="158" width="81" height="81" rx="11" fill="#fffdf2" stroke="#c59120" stroke-width="6"/><text x="157" y="222">P</text>
+      <rect x="216" y="158" width="81" height="81" rx="11" fill="#fffdf2" stroke="#c59120" stroke-width="6"/><text x="256" y="222">E</text>
+      <rect x="315" y="158" width="81" height="81" rx="11" fill="#fffdf2" stroke="#c59120" stroke-width="6"/><text x="355" y="222">A</text>
+    </g>
+    <path d="M152 309c47 41 161 42 207-4" fill="none" stroke="#4f3908" stroke-width="18" stroke-linecap="round"/>
+    <path d="m335 277 33 26-34 28" fill="none" stroke="#4f3908" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M125 343h262" stroke="#c59120" stroke-width="7" stroke-linecap="round"/>
+  </g>
+</svg>

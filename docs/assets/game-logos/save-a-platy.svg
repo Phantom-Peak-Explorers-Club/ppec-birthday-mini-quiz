@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="A platypus saved by a word puzzle">
+  <defs>
+    <linearGradient id="paper" x2="0" y2="1"><stop stop-color="#f8ffe9"/><stop offset="1" stop-color="#dbefcb"/></linearGradient>
+    <filter id="shadow"><feDropShadow dx="0" dy="14" stdDeviation="12" flood-color="#0d1710" flood-opacity=".55"/></filter>
+  </defs>
+  <circle cx="256" cy="256" r="225" fill="#1b4c22" stroke="#7bd86e" stroke-width="13"/>
+  <circle cx="256" cy="256" r="198" fill="none" stroke="#7bd86e" stroke-opacity=".35" stroke-width="4" stroke-dasharray="7 11"/>
+  <g filter="url(#shadow)">
+    <rect x="91" y="112" width="330" height="286" rx="29" fill="url(#paper)" stroke="#67a65d" stroke-width="9"/>
+    <path d="M181 224q-13-69 75-78 87 9 75 78-5 79-75 80-70-1-75-80z" fill="#9b643d" stroke="#1b4c22" stroke-width="9"/>
+    <path d="M180 251q-42-24-39-58 36-17 66 21M332 251q42-24 39-58-36-17-66 21" fill="#9b643d" stroke="#1b4c22" stroke-width="8"/>
+    <path d="M195 252q60-41 122 0-8 34-61 37-53-3-61-37z" fill="#e6a34f" stroke="#1b4c22" stroke-width="8"/>
+    <circle cx="226" cy="218" r="8" fill="#171d16"/><circle cx="286" cy="218" r="8" fill="#171d16"/>
+    <path d="M153 341h41m27 0h41m27 0h41m27 0h7" stroke="#1b4c22" stroke-width="17" stroke-linecap="round"/>
+    <path d="m353 150 8-18 8 18 19 3-14 13 4 19-17-9-17 9 4-19-14-13z" fill="#7bd86e" stroke="#1b4c22" stroke-width="5"/>
+  </g>
+</svg>

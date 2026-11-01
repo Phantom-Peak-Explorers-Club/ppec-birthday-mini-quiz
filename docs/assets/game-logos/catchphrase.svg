@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Picture panels revealing a hidden clue">
+  <defs>
+    <linearGradient id="paper" x2="0" y2="1"><stop stop-color="#fff5ee"/><stop offset="1" stop-color="#f5d2d3"/></linearGradient>
+    <filter id="shadow"><feDropShadow dx="0" dy="14" stdDeviation="12" flood-color="#130b1b" flood-opacity=".55"/></filter>
+  </defs>
+  <circle cx="256" cy="256" r="225" fill="#581824" stroke="#ff5d67" stroke-width="13"/>
+  <circle cx="256" cy="256" r="198" fill="none" stroke="#ff5d67" stroke-opacity=".35" stroke-width="4" stroke-dasharray="7 11"/>
+  <g filter="url(#shadow)">
+    <rect x="100" y="104" width="312" height="304" rx="29" fill="url(#paper)" stroke="#dd6770" stroke-width="9"/>
+    <rect x="126" y="132" width="260" height="246" rx="17" fill="#581824"/>
+    <path d="M126 214h260M126 296h260M212 132v246M300 132v246" stroke="#ff9a9f" stroke-width="8"/>
+    <circle cx="256" cy="255" r="58" fill="#ffd39c" stroke="#581824" stroke-width="7"/>
+    <path d="M215 258q41-21 82 0-13 36-41 43-28-7-41-43z" fill="#dd8f54" stroke="#581824" stroke-width="6"/>
+    <circle cx="235" cy="241" r="6" fill="#581824"/><circle cx="277" cy="241" r="6" fill="#581824"/>
+    <path d="M326 150h60v63h-60z" fill="#ff5d67" stroke="#581824" stroke-width="6"/>
+    <text x="356" y="198" text-anchor="middle" font-family="Georgia,serif" font-size="55" font-weight="bold" fill="#fff7ea">?</text>
+  </g>
+</svg>

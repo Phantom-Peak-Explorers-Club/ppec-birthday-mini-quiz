@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="A trail story card and three answers">
+  <defs>
+    <linearGradient id="paper" x2="0" y2="1"><stop stop-color="#fff8e9"/><stop offset="1" stop-color="#f6dfc1"/></linearGradient>
+    <filter id="shadow"><feDropShadow dx="0" dy="14" stdDeviation="12" flood-color="#160d16" flood-opacity=".55"/></filter>
+  </defs>
+  <circle cx="256" cy="256" r="225" fill="#573012" stroke="#ff9b40" stroke-width="13"/>
+  <circle cx="256" cy="256" r="198" fill="none" stroke="#ff9b40" stroke-opacity=".35" stroke-width="4" stroke-dasharray="7 11"/>
+  <g filter="url(#shadow)">
+    <rect x="93" y="115" width="326" height="282" rx="27" fill="url(#paper)" stroke="#d58133" stroke-width="9"/>
+    <path d="M130 163h181M130 193h144M130 223h165" stroke="#b69372" stroke-width="10" stroke-linecap="round"/>
+    <path d="M134 286q62-79 127 7 60-72 121-8" fill="none" stroke="#573012" stroke-width="17" stroke-linecap="round"/>
+    <circle cx="134" cy="286" r="14" fill="#ff9b40" stroke="#573012" stroke-width="5"/>
+    <circle cx="382" cy="285" r="14" fill="#ff9b40" stroke="#573012" stroke-width="5"/>
+    <path d="M151 338h51m53 0h51m53 0h29" stroke="#b69372" stroke-width="14" stroke-linecap="round"/>
+    <circle cx="225" cy="338" r="13" fill="#ff9b40"/><circle cx="329" cy="338" r="13" fill="#ff9b40"/>
+  </g>
+</svg>

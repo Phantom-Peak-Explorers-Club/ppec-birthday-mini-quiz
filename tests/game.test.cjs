@@ -649,7 +649,7 @@ test('Save-A-Platy uses all 187 trail names, keeps used keys in place, and score
   await app.evaluate('drawShareCard()');
   assert.ok(app.canvasText.includes('5'));
   assert.ok(app.canvasText.includes('PLATYPUSES'));
-  assert.ok(app.canvasImages.some(image => image.src.includes('save-a-platy.png')));
+  assert.ok(app.canvasImages.some(image => image.src.includes('save-a-platy.svg')));
 });
 
 test('Save-A-Platy Unlimited ends after six mistakes and awards the accumulated score', () => {
