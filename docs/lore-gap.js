@@ -6,9 +6,9 @@ const LORE_GAP = [
     "answer": "Jonas",
     "options": [
       "Jonas",
-      "Bonka",
-      "Fritz",
-      "Horus"
+      "Giffard",
+      "Perigate",
+      "Furbish"
     ],
     "season": "Launch",
     "year": 2022,
@@ -21,9 +21,9 @@ const LORE_GAP = [
     "answer": "Cogwright",
     "options": [
       "Cogwright",
-      "Aggrogoth",
-      "Leadbelly",
-      "PeakFoot"
+      "Jonas",
+      "Littlefield",
+      "Perigate"
     ],
     "season": "Launch",
     "year": 2022,
@@ -37,8 +37,8 @@ const LORE_GAP = [
     "options": [
       "Miramine",
       "Miramaze",
-      "Jarnia",
-      "Summerhouse"
+      "Summerhouse",
+      "JonaLabs"
     ],
     "season": "Launch",
     "year": 2022,
@@ -47,13 +47,13 @@ const LORE_GAP = [
   {
     "id": "2022-autumn-10",
     "title": "Perigiest",
-    "clue": "Despite believing they were pranked by The Resistance, it turns out a ghost called _____ was trying to get Perigate’s attention for a date!",
-    "answer": "Sam",
+    "clue": "Despite believing they were pranked by The _____, it turns out a ghost called Sam was trying to get Perigate’s attention for a date!",
+    "answer": "Resistance",
     "options": [
-      "Sam",
-      "Pax",
-      "Vox",
-      "Finn"
+      "Resistance",
+      "Cooperative",
+      "GhoulBusters",
+      "JIA"
     ],
     "season": "Autumn",
     "year": 2022,
@@ -66,9 +66,9 @@ const LORE_GAP = [
     "answer": "Arrogoth",
     "options": [
       "Arrogoth",
-      "Lovehart",
-      "Blizzard",
-      "PeakFoot"
+      "Migas",
+      "Pigbert",
+      "Omegamon"
     ],
     "season": "Autumn",
     "year": 2022,
@@ -81,9 +81,9 @@ const LORE_GAP = [
     "answer": "Leadbelly",
     "options": [
       "Leadbelly",
-      "Cogwright",
-      "Aggrogoth",
-      "Blizzard"
+      "Halloway",
+      "Perigate",
+      "Stickler"
     ],
     "season": "Winter",
     "year": 2022,
@@ -96,9 +96,9 @@ const LORE_GAP = [
     "answer": "Pax",
     "options": [
       "Pax",
-      "Sam",
-      "Vox",
-      "Finn"
+      "Hogwood",
+      "Rexford",
+      "Littlefield"
     ],
     "season": "Winter",
     "year": 2022,
@@ -111,9 +111,9 @@ const LORE_GAP = [
     "answer": "Pius",
     "options": [
       "Pius",
-      "Finn",
-      "Myne",
-      "Temu"
+      "Brutus",
+      "Halloway",
+      "Giffard"
     ],
     "season": "Spring",
     "year": 2023,
@@ -126,9 +126,9 @@ const LORE_GAP = [
     "answer": "Boarbark",
     "options": [
       "Boarbark",
-      "Lovehart",
-      "Arrogoth",
-      "Blizzard"
+      "Sheldrake",
+      "Crow",
+      "Hamm"
     ],
     "season": "Spring",
     "year": 2023,
@@ -141,9 +141,9 @@ const LORE_GAP = [
     "answer": "RoboDJ",
     "options": [
       "RoboDJ",
-      "Blimpy",
-      "Copper",
-      "Eunice"
+      "RoboDoc",
+      "Jonabot",
+      "Prostlebot"
     ],
     "season": "Spring",
     "year": 2023,
@@ -157,8 +157,8 @@ const LORE_GAP = [
     "options": [
       "Terence",
       "Spectre",
-      "Jacques",
-      "Todrick"
+      "Perigate",
+      "Copper"
     ],
     "season": "Summer",
     "year": 2023,
@@ -171,9 +171,9 @@ const LORE_GAP = [
     "answer": "Aggrogoth",
     "options": [
       "Aggrogoth",
-      "Leadbelly",
-      "Cogwright",
-      "Blizzard"
+      "Migas",
+      "Pigbert",
+      "Omegamon"
     ],
     "season": "Autumn",
     "year": 2023,
@@ -182,13 +182,13 @@ const LORE_GAP = [
   {
     "id": "2023-winter-4",
     "title": "Mayor Of The Universe",
-    "clue": "Hogwood denies sending it, while Pocket’s _____ profile shows an interdimensional error.",
-    "answer": "Jumble",
+    "clue": "_____ denies sending it, while Pocket’s Jumble profile shows an interdimensional error.",
+    "answer": "Hogwood",
     "options": [
-      "Jumble",
-      "JonAssist",
-      "Jonagraph",
-      "Jonavision"
+      "Hogwood",
+      "Littlefield",
+      "Perigate",
+      "Furbish"
     ],
     "season": "Winter",
     "year": 2023,
@@ -201,9 +201,9 @@ const LORE_GAP = [
     "answer": "Mason",
     "options": [
       "Mason",
-      "Bonka",
-      "Fritz",
-      "Horus"
+      "Charles",
+      "Horus",
+      "Myne"
     ],
     "season": "Spring",
     "year": 2024,
@@ -216,9 +216,9 @@ const LORE_GAP = [
     "answer": "Pius",
     "options": [
       "Pius",
-      "Finn",
-      "Myne",
-      "Temu"
+      "Halloway",
+      "Perigate",
+      "Spectre"
     ],
     "season": "Spring",
     "year": 2024,
@@ -231,9 +231,9 @@ const LORE_GAP = [
     "answer": "Eunice",
     "options": [
       "Eunice",
-      "Walter",
-      "Blimpy",
-      "Copper"
+      "Bonzo",
+      "Beardy",
+      "Boarbark"
     ],
     "season": "Spring",
     "year": 2024,
@@ -242,13 +242,13 @@ const LORE_GAP = [
   {
     "id": "2024-summer-3",
     "title": "Whiskers In The Dark",
-    "clue": "A group of demon raccoons led by _____ has stolen the Phrenograph and taken a device from RoboDoc that they intend to use as a bomb.",
-    "answer": "Fritz",
+    "clue": "A group of demon raccoons led by Fritz has stolen the _____ and taken a device from RoboDoc that they intend to use as a bomb.",
+    "answer": "Phrenograph",
     "options": [
-      "Fritz",
-      "Bonka",
-      "Horus",
-      "Jonas"
+      "Phrenograph",
+      "Jonagraph",
+      "Jonahedron",
+      "Videomatic"
     ],
     "season": "Summer",
     "year": 2024,
@@ -261,9 +261,9 @@ const LORE_GAP = [
     "answer": "Jacques",
     "options": [
       "Jacques",
-      "Todrick",
-      "Alfonse",
-      "Pigbert"
+      "Rexford",
+      "Giffard",
+      "Perigate"
     ],
     "season": "Summer",
     "year": 2024,
@@ -276,9 +276,9 @@ const LORE_GAP = [
     "answer": "Alfonse",
     "options": [
       "Alfonse",
-      "Todrick",
-      "Pigbert",
-      "Furbish"
+      "Furbish",
+      "Lovehart",
+      "Perigate"
     ],
     "season": "Autumn",
     "year": 2024,
@@ -287,13 +287,13 @@ const LORE_GAP = [
   {
     "id": "2024-autumn-4",
     "title": "Tricky Treats",
-    "clue": "You win one and learn the teens are crones and have captured the Candyman - aka _____!",
-    "answer": "Bonka",
+    "clue": "_____ has had teenagers stealing all their Billy Bonka chocolate looking for a Purple Ticket to meet Bonka themself!",
+    "answer": "Datchery",
     "options": [
-      "Bonka",
-      "Fritz",
-      "Horus",
-      "Jonas"
+      "Datchery",
+      "Halloway",
+      "Littlefield",
+      "Pocket"
     ],
     "season": "Autumn",
     "year": 2024,
@@ -306,9 +306,9 @@ const LORE_GAP = [
     "answer": "DojaPlat",
     "options": [
       "DojaPlat",
-      "PeakFoot",
-      "Perigate",
-      "Stickler"
+      "RoboDJ",
+      "Narvis",
+      "Sparks"
     ],
     "season": "Winter",
     "year": 2024,
@@ -317,13 +317,13 @@ const LORE_GAP = [
   {
     "id": "2024-winter-4",
     "title": "Dial P for Puppet",
-    "clue": "Hogwood asks you to investigate the murder of _____ the Toad.",
-    "answer": "Todrick",
+    "clue": "_____ asks you to investigate the murder of Todrick the Toad.",
+    "answer": "Hogwood",
     "options": [
-      "Todrick",
+      "Hogwood",
       "Spectre",
-      "Jacques",
-      "Terence"
+      "Halloway",
+      "Perigate"
     ],
     "season": "Winter",
     "year": 2024,
@@ -336,9 +336,9 @@ const LORE_GAP = [
     "answer": "Kappa",
     "options": [
       "Kappa",
-      "Bonka",
-      "Fritz",
-      "Horus"
+      "Pius",
+      "Halloway",
+      "Brutus"
     ],
     "season": "Summer",
     "year": 2025,
@@ -351,9 +351,9 @@ const LORE_GAP = [
     "answer": "PeakFoot",
     "options": [
       "PeakFoot",
-      "Lovehart",
-      "Arrogoth",
-      "Blizzard"
+      "Gronch",
+      "Wereplatypus",
+      "Bureausaur"
     ],
     "season": "Summer",
     "year": 2025,
@@ -366,9 +366,9 @@ const LORE_GAP = [
     "answer": "Pigbert",
     "options": [
       "Pigbert",
-      "Hogwood",
-      "Rexford",
-      "RoboDoc"
+      "Chrono",
+      "Walter",
+      "Todrick"
     ],
     "season": "Summer",
     "year": 2025,
@@ -377,13 +377,13 @@ const LORE_GAP = [
   {
     "id": "2025-autumn-1",
     "title": "Dude Where’s My Mummy",
-    "clue": "Halloway recruits graveyard guards to find King _____, a mummy loose during the Lunar Festival.",
-    "answer": "Temu",
+    "clue": "_____ recruits graveyard guards to find King Temu, a mummy loose during the Lunar Festival.",
+    "answer": "Halloway",
     "options": [
-      "Temu",
-      "Finn",
-      "Myne",
-      "Pius"
+      "Halloway",
+      "Spectre",
+      "Datchery",
+      "Perigate"
     ],
     "season": "Autumn",
     "year": 2025,
@@ -392,13 +392,13 @@ const LORE_GAP = [
   {
     "id": "2025-autumn-3",
     "title": "The Great Blimp Robbery",
-    "clue": "JONACO is hunting the blimp thieves _____ and McScrimbles.",
-    "answer": "Blimpy",
+    "clue": "_____ admits they are Blimpy and recruits you to steal the Jonas family jewels.",
+    "answer": "Copper",
     "options": [
-      "Blimpy",
       "Copper",
-      "Eunice",
-      "RoboDJ"
+      "Sparks",
+      "Furbish",
+      "Perigate"
     ],
     "season": "Autumn",
     "year": 2025,
@@ -407,13 +407,13 @@ const LORE_GAP = [
   {
     "id": "2025-autumn-5",
     "title": "Domestic Sin",
-    "clue": "Stickler’s Cool Squad has lost a package, so you infiltrate Raccoon City and join a special mission with _____ the Raccoon.",
-    "answer": "Walter",
+    "clue": "_____’s Cool Squad has lost a package, so you infiltrate Raccoon City and join a special mission with Walter the Raccoon.",
+    "answer": "Stickler",
     "options": [
-      "Walter",
-      "Blimpy",
+      "Stickler",
       "Copper",
-      "Eunice"
+      "Sparks",
+      "Perigate"
     ],
     "season": "Autumn",
     "year": 2025,
@@ -426,9 +426,9 @@ const LORE_GAP = [
     "answer": "Finn",
     "options": [
       "Finn",
-      "Myne",
-      "Pius",
-      "Temu"
+      "Giffard",
+      "Stickler",
+      "Jacques"
     ],
     "season": "Winter",
     "year": 2025,
@@ -441,9 +441,9 @@ const LORE_GAP = [
     "answer": "Horus",
     "options": [
       "Horus",
-      "Bonka",
-      "Fritz",
-      "Jonas"
+      "Silver",
+      "Jorum",
+      "Winter"
     ],
     "season": "Winter",
     "year": 2025,
@@ -452,13 +452,13 @@ const LORE_GAP = [
   {
     "id": "2025-winter-10",
     "title": "Off The Rails",
-    "clue": "A protest fails, so you take a conductor job through Rexford and submit a suggestion to save the shop. CEO _____ Bland refuses.",
-    "answer": "Myne",
+    "clue": "A protest fails, so you take a conductor job through _____ and submit a suggestion to save the shop.",
+    "answer": "Rexford",
     "options": [
-      "Myne",
-      "Finn",
-      "Pius",
-      "Temu"
+      "Rexford",
+      "Perigate",
+      "Littlefield",
+      "Copper"
     ],
     "season": "Winter",
     "year": 2025,
@@ -471,9 +471,9 @@ const LORE_GAP = [
     "answer": "Blizzard",
     "options": [
       "Blizzard",
-      "Arrogoth",
-      "PeakFoot",
-      "Perigate"
+      "Kim",
+      "Feast",
+      "Knuckles"
     ],
     "season": "Winter",
     "year": 2025,
@@ -486,9 +486,9 @@ const LORE_GAP = [
     "answer": "Littlefield",
     "options": [
       "Littlefield",
-      "Nethersole",
-      "Aggrogoth",
-      "Leadbelly"
+      "Perigate",
+      "Datchery",
+      "Cogwright"
     ],
     "season": "Finale",
     "year": 2026,

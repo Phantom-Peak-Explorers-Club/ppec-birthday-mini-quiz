@@ -176,7 +176,7 @@ test('The on-screen tile previews the same PNG blob used by Save PNG', async () 
 });
 
 test('Letter and trail share cards use correct-answer scores', async () => {
-  for (const [game, label] of [['anagrams', 'Littlefield’s Letters'], ['vowels', 'Vowel of Silence'], ['trails', 'Trail and Error!'], ['blanks', 'Mind the Gap!'], ['lore', 'Pick-a-Word!']]) {
+  for (const [game, label] of [['anagrams', 'Littlefield’s Letters'], ['vowels', 'Vowel of Silence'], ['trails', 'Trail and Error!'], ['blanks', 'Blankety Peak!'], ['lore', 'Lost in the Lore!']]) {
     const app = setup();
     app.evaluate(`Object.assign(state,{game:'${game}',mode:'quiz',score:8,completed:10,elapsedMs:91000})`);
     await app.evaluate('drawShareCard()');
@@ -377,7 +377,7 @@ test('All picture clues accept case, spaces, punctuation, and minor typos plus i
   assert.equal(app.evaluate("PICTURES.filter(q=>q.answer==='Perigate').every(q=>isCorrect('Pear Gate',q)&&isCorrect('Perry Gate',q))"), true);
 });
 
-test('Mind the Gap uses one meaningful hidden word in 152 distinct trail titles', () => {
+test('Blankety Peak uses one meaningful hidden word in 152 distinct trail titles', () => {
   const trails = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'source', 'trails.json'), 'utf8'));
   const questions = vm.runInNewContext(fs.readFileSync(path.join(__dirname, '..', 'docs', 'fill-blanks.js'), 'utf8') + '\nFILL_BLANKS');
   const titles = new Map(trails.map(trail => [trail.id, trail]));
@@ -402,13 +402,13 @@ test('Mind the Gap uses one meaningful hidden word in 152 distinct trail titles'
   assert.ok(!questions.some(q => q.title === 'Time After Time'));
 });
 
-test('Mind the Gap is untimed and shows the instruction, season, year, reveal and round rules', () => {
+test('Blankety Peak is untimed and shows the instruction, season, year, reveal and round rules', () => {
   const app = setup();
   app.buttons[10].click();
   assert.equal(app.state().questions.length, 10);
   assert.equal(app.state().countingDown, false);
   assert.equal(app.get('start-countdown').hidden, true);
-  assert.equal(app.get('game-title').textContent, 'Mind the Gap!');
+  assert.equal(app.get('game-title').textContent, 'Blankety Peak!');
   assert.equal(app.get('blank-instruction').textContent, 'Fill in the blank in the trail name below');
   assert.equal(app.get('blank-instruction').hidden, false);
   assert.equal(app.get('answer-label').textContent, 'Missing word');
@@ -438,7 +438,7 @@ test('Mind the Gap is untimed and shows the instruction, season, year, reveal an
   assert.match(fs.readFileSync(path.join(__dirname, '..', 'docs', 'style.css'), 'utf8'), /data-game="blanks"\] \.timer-instrument,[^\n]*\.timer-track\{display:none\}/);
 });
 
-test('Lost in the Lore uses description words and four factual choices, separate from Mind the Gap', () => {
+test('Lost in the Lore uses description words and four contextual choices, separate from Blankety Peak', () => {
   const trails = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'source', 'trails.json'), 'utf8'));
   const questions = vm.runInNewContext(fs.readFileSync(path.join(__dirname, '..', 'docs', 'lore-gap.js'), 'utf8') + '\nLORE_GAP');
   const byId = new Map(trails.map(trail => [trail.id, trail]));
@@ -457,9 +457,14 @@ test('Lost in the Lore uses description words and four factual choices, separate
     assert.ok(trail.searchText.includes(q.clue.replace('_____', q.answer)), q.title);
     assert.ok(!trail.title.toLowerCase().includes(q.answer.toLowerCase()), q.title);
     assert.ok(!q.clue.toLowerCase().includes(q.answer.toLowerCase()), q.title);
+    for (const option of q.options.slice(1)) assert.ok(!`${q.title} ${q.clue}`.toLowerCase().includes(option.toLowerCase()), `${q.title}: ${option}`);
   }
   assert.equal(questions.find(q => q.title === 'Question Me This').answer, 'Cogwright');
-  assert.equal(questions.find(q => q.title === 'Mayor Of The Universe').answer, 'Jumble');
+  assert.equal(questions.find(q => q.title === 'Mayor Of The Universe').answer, 'Hogwood');
+  assert.deepEqual(Array.from(questions.find(q => q.answer === 'Arrogoth').options), ['Arrogoth', 'Migas', 'Pigbert', 'Omegamon']);
+  assert.deepEqual(Array.from(questions.find(q => q.answer === 'Aggrogoth').options), ['Aggrogoth', 'Migas', 'Pigbert', 'Omegamon']);
+  assert.deepEqual(Array.from(questions.find(q => q.answer === 'Horus').options), ['Horus', 'Silver', 'Jorum', 'Winter']);
+  assert.deepEqual(Array.from(questions.find(q => q.answer === 'RoboDJ').options), ['RoboDJ', 'RoboDoc', 'Jonabot', 'Prostlebot']);
   assert.equal(vm.runInNewContext(fs.readFileSync(path.join(__dirname, '..', 'docs', 'fill-blanks.js'), 'utf8') + '\nFILL_BLANKS.length'), 152);
 });
 
@@ -468,7 +473,7 @@ test('Lost in the Lore shows title and season, accepts a choice, and has no time
   app.buttons[12].click();
   assert.equal(app.state().questions.length, 10);
   assert.equal(app.state().countingDown, false);
-  assert.equal(app.get('game-title').textContent, 'Pick-a-Word!');
+  assert.equal(app.get('game-title').textContent, 'Lost in the Lore!');
   assert.equal(app.get('blank-instruction').hidden, true);
   assert.equal(app.get('lore-heading').hidden, false);
   assert.equal(app.get('lore-choices').hidden, false);
@@ -494,7 +499,7 @@ test('Lost in the Lore shows title and season, accepts a choice, and has no time
   wrong.click();
   assert.equal(unlimited.state().elapsedMs !== null, true);
   unlimited.get('next-button').click();
-  assert.equal(unlimited.get('share-game').textContent, 'Pick-a-Word!');
+  assert.equal(unlimited.get('share-game').textContent, 'Lost in the Lore!');
 });
 
 test('Browser Back returns from a game to the portal and Forward restores the run', () => {
