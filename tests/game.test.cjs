@@ -285,7 +285,7 @@ test('A 30-second timeout ends an Unlimited run', () => {
   const app = setup();
   app.startTimed(1);
   app.advance(30000);
-  assert.equal(app.get('feedback').children[0].textContent, 'Time’s up!');
+  assert.equal(app.get('feedback').children[0].children[0].textContent, 'TIME’S UP');
   app.get('next-button').click();
   assert.equal(app.get('share-score').textContent, '0 right');
   assert.equal(app.get('share-time').textContent, 'Time 0:30');
@@ -309,7 +309,7 @@ test('Timed games count down before accepting answers or starting the clock', ()
   app.advance(29000);
   assert.equal(app.state().answered, false);
   app.advance(1000);
-  assert.equal(app.get('feedback').children[0].textContent, 'Time’s up!');
+  assert.equal(app.get('feedback').children[0].children[0].textContent, 'TIME’S UP');
   const picture = setup();
   picture.buttons[2].click();
   assert.equal(picture.get('start-countdown').hidden, true);
@@ -338,9 +338,9 @@ test('Catchphrase has no timer and accepts a small typo after a panel is opened'
   assert.equal(app.state().score, 1);
   assert.equal(app.state().points, 23);
   assert.equal(app.get('game-title').textContent, 'Say What You See?');
-  assert.equal(app.get('feedback').children[1].textContent, q.answer);
-  assert.equal(app.get('feedback').children[2].children[0].textContent, '+23 POINTS');
-  assert.match(app.get('feedback').children[2].children[1].textContent, /1 OF 24 PANELS USED/);
+  assert.equal(app.get('feedback').children[0].children[1].textContent, q.answer);
+  assert.equal(app.get('feedback').children[1].children[0].textContent, '+23');
+  assert.match(app.get('feedback').children[1].children[1].textContent, /1 \/ 24 PANELS/);
 });
 
 test('Picture clues include the approved set, TomB_90 ideas, and one Perigate per run', () => {
@@ -388,7 +388,7 @@ test('Anagrams and Missing Vowels keep exact answer matching', () => {
   app.submit(answer.slice(0, -1) + 'x');
   assert.equal(app.state().score, 0);
   assert.equal(app.get('clue').children[0].children.map(letter => letter.textContent).join('').replaceAll('\u00a0', ' '), answer);
-  assert.equal(app.get('feedback').children[0].textContent, 'Not quite');
+  assert.equal(app.get('feedback').children[0].children[0].textContent, 'NOT QUITE');
 });
 
 test('A wrong Missing Vowels answer still reveals the completed word', () => {

@@ -474,7 +474,7 @@ function render(){
   $('reveal-stats').textContent=game==='catchphrase'?'CHOOSE PANELS TO REVEAL · 24 POSSIBLE POINTS':'';
   $('answer-form').hidden=game==='trails'||game==='platy';$('answer-input').value='';
   $('answer-input').disabled=game==='catchphrase';$('answer-submit').disabled=game==='catchphrase';
-  $('feedback').hidden=true;$('feedback').className='feedback';
+  $('feedback').hidden=true;$('feedback').className='answer-reveal';
   $('next-button').hidden=true;$('reveal-button').hidden=false;
   $('timer-label').textContent='30s';$('timer-fill').style.width='100%';
   if(game!=='trails'&&game!=='platy'&&!state.countingDown)$('answer-input').focus();
@@ -510,21 +510,21 @@ function finishAnswer(correct,revealed=false,timedOut=false,response=''){
       feedback.hidden=true;feedback.replaceChildren();
       $('next-button').hidden=false;$('next-button').textContent=ends?'See your results →':'Next question →';$('next-button').focus();return;
     }
-    feedback.hidden=false;feedback.classList.add(correct?'correct':'incorrect');feedback.replaceChildren();
-    if(state.game==='catchphrase'){
-      feedback.className=`feedback picture-feedback ${correct?'correct':'incorrect'}`;
-      const kicker=document.createElement('span');kicker.className='picture-answer-kicker';kicker.textContent=correct?'YOU SAW IT!':revealed?'ANSWER REVEALED':'THE PICTURE WAS';
-      const hero=document.createElement('strong');hero.className='picture-answer-hero';hero.textContent=q.answer;
-      const scoreBox=document.createElement('div');scoreBox.className='picture-score-box';
-      const points=document.createElement('b');points.textContent=`+${correct?Math.max(0,24-state.openedTiles):0} POINTS`;
-      const panels=document.createElement('span');panels.textContent=`${state.openedTiles} OF 24 PANELS USED · ${state.points} TOTAL POINTS`;
-      scoreBox.append(points,panels);feedback.append(kicker,hero,scoreBox);
-      $('next-button').hidden=false;$('next-button').textContent=ends?'See your results →':'Next question →';$('next-button').focus();return;
+    feedback.hidden=false;feedback.className=`answer-reveal ${correct?'correct':'incorrect'}`;feedback.replaceChildren();
+    const main=document.createElement('div');main.className='answer-reveal-main';
+    const kicker=document.createElement('span');kicker.className='answer-reveal-kicker';
+    kicker.textContent=correct?({anagrams:'UNSCRAMBLED',vowels:'VOWELS FOUND',catchphrase:'YOU SAW IT!',trails:'TRAIL FOUND'}[state.game]||'CORRECT'):timedOut?'TIME’S UP':revealed?'ANSWER REVEALED':'NOT QUITE';
+    const hero=document.createElement('strong');hero.className='answer-reveal-answer';
+    const shownAnswer=state.game==='vowels'&&correct?q.accepted.find(answer=>normal(answer)===normal(response))||q.answer:q.answer;
+    hero.textContent=shownAnswer;main.append(kicker,hero);
+    if(state.game==='vowels'&&q.accepted.length>1){
+      const others=q.accepted.filter(answer=>normal(answer)!==normal(shownAnswer));
+      if(others.length){const alternatives=document.createElement('span');alternatives.className='answer-reveal-alternatives';alternatives.textContent=`Also accepted: ${others.join(' · ')}`;main.append(alternatives)}
     }
-    const heading=document.createElement('strong');heading.textContent=correct?'That’s right!':timedOut?'Time’s up!':revealed?'Answer revealed':'Not quite';
-    const possible=state.game==='vowels'&&q.accepted.length>1?q.accepted.join(' or '):q.answer;
-    const answer=document.createElement('span');answer.textContent=(correct&&state.game==='vowels'?`Accepted: ${possible}.`:correct?`The answer is ${possible}.`:`${q.accepted?.length>1?'Possible answers were':'The answer was'} ${possible}.`)+(correct&&state.game==='catchphrase'?` ${Math.max(0,24-state.openedTiles)} points from ${state.openedTiles} panels opened.`:'');
-    feedback.append(heading,answer);
+    const scoreBox=document.createElement('div');scoreBox.className='answer-reveal-score';
+    const points=document.createElement('strong');points.textContent=state.game==='catchphrase'?`+${correct?Math.max(0,24-state.openedTiles):0}`:correct?'+1':'+0';
+    const detail=document.createElement('span');detail.textContent=state.game==='catchphrase'?`POINTS · ${state.openedTiles} / 24 PANELS`:`${state.score} RIGHT THIS RUN`;
+    scoreBox.append(points,detail);feedback.append(main,scoreBox);
     $('next-button').hidden=false;$('next-button').textContent=ends?'See your results →':'Next question →';$('next-button').focus();
   };
   if(state.game==='anagrams'){

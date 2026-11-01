@@ -35,7 +35,7 @@ button:focus-visible,input:focus-visible{outline:3px solid var(--gold);outline-o
 .picture-stage{position:relative;width:min(100%,660px);aspect-ratio:3/2;overflow:hidden;border:1px solid #8bbcb8;border-radius:4px;box-shadow:0 8px 24px #0009}.picture-stage img{display:block;width:100%;height:100%;object-fit:cover}.picture-cover{position:absolute;inset:0;display:grid;grid-template-columns:repeat(6,1fr);grid-template-rows:repeat(4,1fr)}.picture-tile{min-width:0;min-height:0;border:1px solid #ffffff21;border-radius:0;background:linear-gradient(135deg,#45305e,#25172f);color:transparent;transition:opacity .2s,transform .2s}.picture-tile:nth-child(3n){background:linear-gradient(135deg,#534067,#2a183b)}.picture-tile:hover,.picture-tile:focus-visible{background:#785c8e}.picture-tile.open{opacity:0;pointer-events:none;transform:scale(.92)}.reveal-stats{font-size:10px;color:#a5dcd3;margin:0 0 17px}.question-credit{font-size:12px;color:#d3b4d6;font-style:italic;text-align:right;margin:0 0 14px}
 .question-credit{font-size:11px;line-height:1.4;color:#cbbdd1;font-style:normal;text-align:left;margin:0 0 12px}
 .question-credit strong{color:#f5cf78;font-weight:800}
-label{display:block;margin-bottom:8px;color:#c5bacc;font-size:12px;font-weight:700}.answer-row{display:flex;gap:10px}input{flex:1;min-width:0;min-height:46px;padding:10px 14px;border:1px solid #756982;border-radius:6px;background:#0e1119;color:#fff5dd;font-size:16px}input::placeholder{color:#8f8599}.reveal-button{margin-top:15px}.feedback{margin-top:18px;border-left:4px solid #c9944b;border-radius:4px;background:#312436;padding:13px 16px;color:#f5e9d5;line-height:1.45}.feedback strong{display:block;margin-bottom:3px}.feedback.correct{border-color:#7acdab;background:#183d39}.feedback.incorrect{border-color:#dd776e;background:#43282e}.next-button{margin-top:17px}
+label{display:block;margin-bottom:8px;color:#c5bacc;font-size:12px;font-weight:700}.answer-row{display:flex;gap:10px}input{flex:1;min-width:0;min-height:46px;padding:10px 14px;border:1px solid #756982;border-radius:6px;background:#0e1119;color:#fff5dd;font-size:16px}input::placeholder{color:#8f8599}.reveal-button{margin-top:15px}.next-button{margin-top:17px}
 .answer-row input:disabled,.answer-row button:disabled{opacity:.5;cursor:not-allowed}
 .results-screen{max-width:930px;margin:auto}.results-card{padding:30px;border:1px solid #806688;border-radius:12px;background:#1b1625;box-shadow:0 20px 60px #0008}.results-card .eyebrow{margin:0 0 7px}.results-card h1{font-size:clamp(29px,4vw,44px);letter-spacing:-.045em;margin:0 0 23px}.share-preview{position:relative;display:flex;align-items:center;width:100%;min-height:350px;overflow:hidden;border:3px solid #e9b957;border-radius:10px;background:radial-gradient(circle at 80% 66%,#653078,transparent 42%),linear-gradient(130deg,#1b1330,#432052 68%,#672966);box-shadow:inset 0 0 0 9px #24142c,inset 0 0 0 11px #dcb7636e}.share-preview:before{content:'';position:absolute;inset:0;background:radial-gradient(#f8d389 1px,transparent 2px);background-size:65px 60px;opacity:.18}.share-content{position:relative;z-index:2;display:flex;flex-direction:column;align-items:flex-start;gap:8px;width:66%;padding:34px 0 32px 42px}.share-brand{color:#eac777;font-size:11px}.share-brand span{margin:0 5px}.share-game{font-size:clamp(28px,4vw,44px);font-weight:800;letter-spacing:-.055em;line-height:1.1;margin:12px 0 1px}.share-mode{padding:5px 8px;border:1px solid #e4b860;border-radius:3px;color:#f5d989;font-size:10px}.share-score{color:#ffe0a0;font-size:clamp(38px,5vw,64px);font-weight:800;letter-spacing:-.06em;line-height:1}.share-detail,.share-time{color:#e7dce9;font-size:12px}.share-footer{color:#c5a6cb;font-size:9px;margin-top:13px}.share-art{position:absolute;right:10px;bottom:-15px;width:38%;height:100%;display:flex;align-items:flex-end;justify-content:center;z-index:1}.share-art img{display:block;width:min(100%,330px);max-height:100%;object-fit:contain;filter:drop-shadow(0 5px 18px #0008)}.share-art span{position:absolute;top:33px;right:24px;color:#ffcf61;font-size:43px}.result-note{color:#d4c8d8;line-height:1.5;font-size:14px}.share-actions,.result-actions{display:flex;align-items:center;gap:20px;flex-wrap:wrap}.share-actions .text-button,.result-actions .text-button{color:#f1ca81}.share-status{min-height:18px;color:#c9d7bf;font-size:12px}.result-actions{padding-top:17px;border-top:1px solid #64516a}
 footer{text-align:center;padding:0 0 25px;color:#81758b;font:600 10px 'IBM Plex Mono',monospace;letter-spacing:.15em}footer span{color:#cfa255}
@@ -119,11 +119,6 @@ footer{text-align:center;padding:0 0 25px;color:#81758b;font:600 10px 'IBM Plex 
 
 .topbar-actions{display:flex;align-items:center;gap:12px}.install-button{border:1px solid #d5ad62;border-radius:5px;background:#e7be73;color:#28182a;padding:7px 11px;font:700 11px 'IBM Plex Mono',monospace}.install-button:hover{background:#ffe1a0}
 .vowel-solution .vowel-insert{color:#ffdc84;text-shadow:0 0 12px #ffcf67,0 0 24px #f8a93b91}
-.picture-feedback{display:flex;flex-direction:column;align-items:center;gap:10px;padding:20px 22px!important;text-align:center;border:2px solid #d3aa65!important;background:radial-gradient(circle at 50% 0,#654054,#241725 65%)!important;box-shadow:inset 0 0 0 4px #1b1320,0 0 18px #e8bf5c33}
-.picture-answer-kicker{color:#eac178;font:700 10px 'IBM Plex Mono',monospace;letter-spacing:.18em}
-.picture-answer-hero{display:block!important;margin:0!important;color:#fff2ca;font:700 clamp(31px,5vw,49px)/1.08 Fraunces,Georgia,serif;text-wrap:balance;text-shadow:0 3px 1px #000,0 0 18px #e8b9619c}
-.picture-score-box{display:flex;align-items:center;justify-content:space-between;gap:10px;width:min(100%,420px);margin-top:6px;padding:9px 13px;border:1px solid #b18f6b;border-radius:6px;background:#100f19;color:#d7c6d8;text-align:left;font:700 10px 'IBM Plex Mono',monospace;letter-spacing:.05em}
-.picture-score-box b{color:#f0d28d;white-space:nowrap}.picture-score-box span{font-size:9px;text-align:right}
 .trail-verdict{position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;border-radius:14px;background:#0c2b2de8;color:#d8ffe9;text-align:center;animation:trail-reveal .65s cubic-bezier(.2,1,.3,1) both}
 .trail-verdict.wrong{background:#401f2ae8;color:#ffe1d7}.trail-verdict-symbol{font:700 67px/.9 Georgia,serif;text-shadow:0 0 20px currentColor}.trail-verdict strong{font:800 clamp(19px,3vw,31px) 'IBM Plex Mono',monospace;letter-spacing:.14em}
 .trail-choice.right{animation:trail-correct-pulse .65s ease-out}.trail-choice.wrong{animation:trail-wrong-shake .45s ease-out}
@@ -141,8 +136,8 @@ footer{text-align:center;padding:0 0 25px;color:#81758b;font:600 10px 'IBM Plex 
   .game-console .clue{min-height:135px;margin-bottom:10px;padding:8px}.game-console[data-game="trails"] .clue{min-height:115px;padding:10px}
   .trail-recap{font-size:15px;line-height:1.35}.trail-choices{gap:6px;margin-top:10px}.trail-choice{min-height:44px;padding:6px 9px;font-size:13px;gap:8px}.choice-letter{width:27px;height:27px;font-size:12px}
   .game-console .question-card label{margin-bottom:5px}.game-console input{min-height:40px}.game-console .primary-button{min-height:40px}
-  .game-console .reveal-button{margin-top:9px}.game-console .feedback{margin-top:10px;padding:10px 12px}.game-console .next-button{margin-top:10px}
-  .game-console .console-foot{padding-top:9px}.picture-feedback{padding:13px!important}.picture-answer-hero{font-size:29px}.picture-score-box{flex-wrap:wrap}.picture-score-box span{text-align:left}
+  .game-console .reveal-button{margin-top:9px}.game-console .next-button{margin-top:10px}
+  .game-console .console-foot{padding-top:9px}
   .trail-verdict-symbol{font-size:49px}.trail-verdict strong{font-size:19px}
 }
 @media(prefers-reduced-motion:reduce){.trail-verdict,.trail-choice.right,.trail-choice.wrong{animation:none}}
@@ -351,6 +346,16 @@ footer{text-align:center;padding:0 0 25px;color:#81758b;font:600 10px 'IBM Plex 
 @keyframes platy-letter-shimmer{0%{color:#e8ffd6;text-shadow:none}45%{color:#fff2bb;text-shadow:0 0 16px #f9e9a8;transform:translateY(-5px)}100%{color:#e8ffd6;text-shadow:0 0 6px #b5e881;transform:translateY(0)}}
 .platy-reveal{display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:66px;margin:0 0 13px;padding:9px 15px;border:1px solid #b6df7f;border-radius:9px;background:linear-gradient(110deg,#1f4230,#102d25);box-shadow:inset 0 0 0 2px #6b9c4a44,0 0 18px #b5e88133;animation:platy-reveal-in .24s ease-out both}
 .platy-reveal[hidden]{display:none}
+.answer-reveal{--reveal-accent:var(--game-accent);display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:16px;min-height:66px;margin:0 0 13px;padding:11px 15px;border:1px solid var(--reveal-accent);border-radius:9px;background:linear-gradient(110deg,var(--game-dark),#102126);box-shadow:inset 0 0 0 2px #ffffff12,0 0 18px #ffffff18;animation:platy-reveal-in .24s ease-out both}
+.answer-reveal[hidden]{display:none}
+.answer-reveal.incorrect{--reveal-accent:#f49a8e;background:linear-gradient(110deg,#49262e,#271c28);box-shadow:inset 0 0 0 2px #e9918230,0 0 18px #e9918222}
+.answer-reveal-main{display:flex;flex-direction:column;align-items:flex-start;gap:3px;min-width:0}
+.answer-reveal-kicker{color:var(--reveal-accent);font:700 10px 'IBM Plex Mono',monospace;letter-spacing:.09em}
+.answer-reveal-answer{color:#fff0d6;font:700 clamp(21px,3vw,32px)/1.12 Fraunces,Georgia,serif;overflow-wrap:anywhere;text-wrap:balance}
+.answer-reveal-alternatives{color:#e1d3da;font-size:11px;line-height:1.3}
+.answer-reveal-score{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-width:98px;padding-left:14px;border-left:1px solid #ffffff35;text-align:center}
+.answer-reveal-score strong{color:var(--reveal-accent);font:700 36px/1 Fraunces,Georgia,serif}
+.answer-reveal-score span{max-width:125px;color:#e7dfe0;font:700 9px/1.25 'IBM Plex Mono',monospace;letter-spacing:.04em}
 .platy-reveal-total{display:flex;align-items:baseline;gap:9px;color:#e9ffd3;white-space:nowrap}
 .platy-reveal-total strong{font:700 37px Fraunces,Georgia,serif;line-height:1;color:#c6f797}
 .platy-reveal-total span{font:700 10px 'IBM Plex Mono',monospace;letter-spacing:.07em}
@@ -365,7 +370,8 @@ footer{text-align:center;padding:0 0 25px;color:#81758b;font:600 10px 'IBM Plex 
 @media(max-width:360px){.platy-letter{min-width:14px;font-size:12px}.platy-life-icons img{width:24px}}
 @media(max-width:640px){.platy-reveal{min-height:56px;padding:7px 8px;gap:4px}.platy-reveal-total{gap:5px}.platy-reveal-total strong{font-size:29px}.platy-reveal-total span{font-size:7px}.platy-reveal-icons{gap:0}.platy-reveal-icons img{width:27px;height:23px}}
 @media(max-width:360px){.platy-reveal-icons img{width:22px}.platy-reveal-total strong{font-size:25px}}
-@media(prefers-reduced-motion:reduce){.platy-name.solving .platy-letter.found,.platy-reveal,.platy-reveal-icons img.counted{animation:none}}
+@media(max-width:640px){.answer-reveal{gap:9px;padding:9px 10px}.answer-reveal-answer{font-size:clamp(20px,6vw,27px)}.answer-reveal-score{min-width:75px;padding-left:8px}.answer-reveal-score strong{font-size:29px}.answer-reveal-score span{font-size:8px}}
+@media(prefers-reduced-motion:reduce){.platy-name.solving .platy-letter.found,.platy-reveal,.platy-reveal-icons img.counted,.answer-reveal{animation:none}}
 .portal-banner-copy h1,.game-grid .card-body h2,.results-card h1,.share-game,.share-score{font-family:Fraunces,Georgia,serif;font-weight:700}
 @media(max-width:640px){
   .game-top-avatar{width:32px;height:32px}
