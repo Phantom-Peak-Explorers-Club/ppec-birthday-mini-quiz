@@ -150,13 +150,13 @@ let countdownGoTimer=null;
 let shareBlobPromise=null;
 let sharePreviewUrl=null;
 const GAME_THEMES={
-  anagrams:{accent:'#f2c56d',dark:'#392415',light:'#fff0c8',shareBg:'#704313'},
-  catchphrase:{accent:'#65ddd0',dark:'#103c43',light:'#ddfff7',shareBg:'#07525b'},
-  vowels:{accent:'#bea7ff',dark:'#342453',light:'#f0e9ff',shareBg:'#3e276b'},
-  trails:{accent:'#f48f7b',dark:'#4b2931',light:'#ffe8dd',shareBg:'#762b35'},
-  platy:{accent:'#a8df6e',dark:'#173b2a',light:'#ecffdc',shareBg:'#275832'},
-  blanks:{accent:'#72b5ff',dark:'#142d57',light:'#e9f3ff',shareBg:'#153e78'},
-  lore:{accent:'#ff80bd',dark:'#522040',light:'#ffe3f1',shareBg:'#7a2855'}
+  anagrams:{accent:'#ffd13d',dark:'#4f3908',light:'#fff4b8',shareBg:'#6b4b0b'},
+  catchphrase:{accent:'#ff5d67',dark:'#581824',light:'#ffe1e3',shareBg:'#7d202b'},
+  vowels:{accent:'#ae80ff',dark:'#35165e',light:'#f0e4ff',shareBg:'#502482'},
+  trails:{accent:'#ff9b40',dark:'#573012',light:'#ffead0',shareBg:'#7d3f0c'},
+  platy:{accent:'#7bd86e',dark:'#1b4c22',light:'#e5ffda',shareBg:'#28692d'},
+  blanks:{accent:'#5bafff',dark:'#153e75',light:'#e1f1ff',shareBg:'#1d5791'},
+  lore:{accent:'#ff6eb5',dark:'#5d174a',light:'#ffe2f2',shareBg:'#892260'}
 };
 function shuffle(items){const out=[...items];for(let i=out.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[out[i],out[j]]=[out[j],out[i]]}return out}
 function normal(s){return s.normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]/g,'')}

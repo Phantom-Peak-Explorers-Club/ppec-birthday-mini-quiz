@@ -415,3 +415,23 @@ footer{text-align:center;padding:0 0 25px;color:#81758b;font:600 10px 'IBM Plex 
   .game-grid .mode-buttons{gap:4px}
   .game-grid .mode-buttons .play-button{padding:6px 5px;font-size:10px}
 }
+
+/* Each game owns a distinct colour family across its card and play screen. */
+.anagram-game-card,.game-console[data-game="anagrams"]{--game-accent:#ffd13d;--game-dark:#4f3908;--game-surface:#3b2c0d;--game-light:#fff4b8}
+.picture-game-card,.game-console[data-game="catchphrase"]{--game-accent:#ff5d67;--game-dark:#581824;--game-surface:#411b27;--game-light:#ffe1e3}
+.vowel-game-card,.game-console[data-game="vowels"]{--game-accent:#ae80ff;--game-dark:#35165e;--game-surface:#2c1c49;--game-light:#f0e4ff}
+.trail-game-card,.game-console[data-game="trails"]{--game-accent:#ff9b40;--game-dark:#573012;--game-surface:#402913;--game-light:#ffead0}
+.platy-game-card,.game-console[data-game="platy"]{--game-accent:#7bd86e;--game-dark:#1b4c22;--game-surface:#1b3a25;--game-light:#e5ffda}
+.blanks-game-card,.game-console[data-game="blanks"]{--game-accent:#5bafff;--game-dark:#153e75;--game-surface:#192f54;--game-light:#e1f1ff}
+.lore-game-card,.game-console[data-game="lore"]{--game-accent:#ff6eb5;--game-dark:#5d174a;--game-surface:#451b3c;--game-light:#ffe2f2}
+.game-grid>.game-card{background:linear-gradient(115deg,var(--game-dark),var(--game-surface) 68%,#17131e)}
+.game-grid .card-icon{background:radial-gradient(circle at 50% 42%,var(--game-dark),var(--game-surface) 80%)}
+.game-grid .play-button{border-color:var(--game-accent);background:var(--game-accent);color:#1a1520}
+.game-grid .play-button:hover{border-color:var(--game-light);background:var(--game-light)}
+.game-grid .play-button.secondary{border-color:var(--game-accent);color:var(--game-light)}
+.game-grid .play-button.secondary:hover{border-color:var(--game-light);background:var(--game-dark);color:var(--game-light)}
+.game-console{border-color:var(--game-accent);background:radial-gradient(circle at 50% -30%,var(--game-dark),transparent 58%),repeating-linear-gradient(90deg,#251b21 0 2px,#2d2028 2px 5px,#21191f 5px 10px);box-shadow:inset 0 0 0 2px var(--game-accent),inset 0 0 0 8px #17121a,inset 0 0 30px 13px #120e11,0 27px 50px #000b}
+.game-console .question-card{background:linear-gradient(145deg,var(--game-surface),#15121d 85%);border-color:var(--game-accent);border-top-width:7px}
+.game-console .clue{background:repeating-linear-gradient(0deg,#ffffff08 0 2px,transparent 2px 6px),radial-gradient(ellipse at 50% 45%,var(--game-dark),#11121d 82%)}
+.game-console[data-game="catchphrase"] .clue{background:#0b1117}
+.game-console .primary-button{color:#1a1520}

@@ -442,8 +442,8 @@ test('Lost in the Lore uses description words and four contextual choices, separ
   const trails = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'source', 'trails.json'), 'utf8'));
   const questions = vm.runInNewContext(fs.readFileSync(path.join(__dirname, '..', 'docs', 'lore-gap.js'), 'utf8') + '\nLORE_GAP');
   const byId = new Map(trails.map(trail => [trail.id, trail]));
-  assert.equal(questions.length, 33);
-  assert.equal(new Set(questions.map(q => q.id)).size, 33);
+  assert.equal(questions.length, 168);
+  assert.equal(new Set(questions.map(q => q.id)).size, 168);
   for (const q of questions) {
     const trail = byId.get(q.id);
     assert.equal(q.title, trail.title);
@@ -454,7 +454,7 @@ test('Lost in the Lore uses description words and four contextual choices, separ
     assert.equal(new Set(q.options).size, 4);
     assert.ok(q.options.includes(q.answer));
     assert.equal(q.clue.split('_____').length, 2);
-    assert.ok(trail.searchText.includes(q.clue.replace('_____', q.answer)), q.title);
+    assert.ok(trail.searchText.toLowerCase().includes(q.clue.replace('_____', q.answer).toLowerCase()), q.title);
     assert.ok(!trail.title.toLowerCase().includes(q.answer.toLowerCase()), q.title);
     assert.ok(!q.clue.toLowerCase().includes(q.answer.toLowerCase()), q.title);
     for (const option of q.options.slice(1)) assert.ok(!`${q.title} ${q.clue}`.toLowerCase().includes(option.toLowerCase()), `${q.title}: ${option}`);
@@ -463,7 +463,8 @@ test('Lost in the Lore uses description words and four contextual choices, separ
   assert.equal(questions.find(q => q.title === 'Mayor Of The Universe').answer, 'Hogwood');
   assert.deepEqual(Array.from(questions.find(q => q.answer === 'Arrogoth').options), ['Arrogoth', 'Migas', 'Pigbert', 'Omegamon']);
   assert.deepEqual(Array.from(questions.find(q => q.answer === 'Aggrogoth').options), ['Aggrogoth', 'Migas', 'Pigbert', 'Omegamon']);
-  assert.deepEqual(Array.from(questions.find(q => q.answer === 'Horus').options), ['Horus', 'Silver', 'Jorum', 'Winter']);
+  assert.deepEqual(Array.from(questions.find(q => q.answer === 'Dr Horus').options), ['Dr Horus', 'Dr Silver', 'Dr Jorum', 'Dr Winter']);
+  assert.deepEqual(Array.from(questions.find(q => q.answer === 'Finn Diesel').options), ['Finn Diesel', 'Mason Briggs', 'Myne Bland', 'Alvin Sheldrake']);
   assert.deepEqual(Array.from(questions.find(q => q.answer === 'RoboDJ').options), ['RoboDJ', 'RoboDoc', 'Jonabot', 'Prostlebot']);
   assert.equal(vm.runInNewContext(fs.readFileSync(path.join(__dirname, '..', 'docs', 'fill-blanks.js'), 'utf8') + '\nFILL_BLANKS.length'), 152);
 });
@@ -494,7 +495,7 @@ test('Lost in the Lore shows title and season, accepts a choice, and has no time
   assert.equal(app.state().score, 1);
   const unlimited = setup();
   unlimited.buttons[13].click();
-  assert.equal(unlimited.state().questions.length, 33);
+  assert.equal(unlimited.state().questions.length, 168);
   const wrong = unlimited.state().choiceButtons.find(button => button.dataset.answer !== unlimited.state().questions[0].answer);
   wrong.click();
   assert.equal(unlimited.state().elapsedMs !== null, true);

@@ -12,7 +12,7 @@ Trail and Error! and Save-A-Platy draw from a snapshot of all 187 public Trail N
 
 Blankety Peak! removes one meaningful word from 152 of those trail titles. Players type that word; each clue shows its season and year, and the reveal shows the complete title. Single-word titles, repeated-word clues, and weak or ambiguous titles are excluded. The [title-by-title review](FILL-THE-BLANKS-REVIEW.md) lists all 187 decisions. Regenerate the review and `docs/fill-blanks.js` with `node scripts/build_fill_blanks.cjs` after refreshing the trail snapshot.
 
-Lost in the Lore! shows the trail title, season and year above an excerpt from its description. One named character, place, group or device is blanked; players choose from four context-matched words. The [clue review](LOST-IN-THE-LORE-REVIEW.md) lists all 33 curated clues and choices. Regenerate it and `docs/lore-gap.js` with `node scripts/build_lore_gap.cjs` after refreshing the trail snapshot.
+Lost in the Lore! shows the trail title, season and year above an excerpt from its description. One complete named character, place, group or device is blanked; players choose from four context-matched names. The [clue review](LOST-IN-THE-LORE-REVIEW.md) lists all 168 curated clues and choices. Regenerate it and `docs/lore-gap.js` with `node scripts/build_lore_gap.cjs` after refreshing the trail snapshot.
 
 Run `node --test tests/game.test.cjs` to check the game rules. Serve `docs/` over HTTPS or localhost to test web app installation and offline caching; simply opening `docs/index.html` also works for the quiz itself. The manifest, service worker, and icons live in `docs/`. Browser Back and Forward move between portal, game, and results screens. No account, build step, or backend is required.
 
