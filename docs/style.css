@@ -491,8 +491,17 @@ footer{text-align:center;padding:0 0 25px;color:#81758b;font:600 10px 'IBM Plex 
 @media(max-width:640px){.timeline-stage{grid-template-columns:1fr;gap:5px}.timeline-trail{min-height:75px;padding:10px;gap:5px}.timeline-anchor strong{font-size:22px}.timeline-candidate strong{font-size:20px}.timeline-prompt{font-size:12px}.timeline-crystal{font-size:23px;line-height:1}.game-console[data-game="timeline"] .clue{min-height:0;padding:12px}.timeline-choices{gap:5px;margin-top:9px}.timeline-choice{display:grid;justify-items:center;align-content:center;min-width:0;min-height:57px;padding:5px 2px;gap:2px;text-align:center;font-size:12px}.timeline-choice .choice-letter{width:23px;height:23px;font-size:13px}}
 @media(max-width:640px){.timeline-feedback-panel{padding:18px}.timeline-feedback-seasons{grid-template-columns:1fr;gap:7px}.timeline-feedback-seasons p{padding:10px}.timeline-feedback-seasons b{font-size:15px}}
 @media(prefers-reduced-motion:reduce){.timeline-feedback-modal.is-incorrect .timeline-feedback-panel{animation:none}}
-.game-grid .tutorial-button{align-self:flex-start;margin-top:9px;padding:4px 0;border:0;background:none;color:var(--game-accent);font:700 11px 'IBM Plex Mono',monospace;text-align:left;cursor:pointer}
-.game-grid .tutorial-button:hover,.game-grid .tutorial-button:focus-visible{text-decoration:underline;text-underline-offset:3px}
+.game-grid .mode-buttons{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));align-items:stretch;gap:6px;margin-top:auto}
+.game-grid .game-card .mode-buttons .play-button{display:flex;flex-direction:column;width:100%;min-width:0;min-height:54px;gap:2px;padding:6px 3px;border-radius:7px;font:800 11px/1.1 'DM Sans',Arial,sans-serif;text-align:center;white-space:normal;cursor:pointer}
+.game-grid .mode-buttons .play-button span{font-size:15px;line-height:1}
+.game-grid .game-card .mode-buttons .play-button[data-mode="quiz"]{border-color:#e9c878;background:#e9c878;color:#251a17}
+.game-grid .game-card .mode-buttons .play-button[data-mode="unlimited"]{border-color:#82d9d3;background:#82d9d3;color:#112729}
+.game-grid .game-card .mode-buttons .tutorial-button{border-color:#b9a6ee;background:#b9a6ee;color:#241a39}
+.game-grid .game-card .mode-buttons .play-button[data-mode="quiz"]:hover{border-color:#ffe2a4;background:#ffe2a4}
+.game-grid .game-card .mode-buttons .play-button[data-mode="unlimited"]:hover{border-color:#a7f3ec;background:#a7f3ec;color:#112729}
+.game-grid .game-card .mode-buttons .tutorial-button:hover{border-color:#d8caff;background:#d8caff;color:#241a39}
+.game-grid .mode-buttons .play-button:focus-visible{outline:2px solid #fff;outline-offset:2px}
+@media(max-width:640px){.game-grid .mode-buttons{gap:4px}.game-grid .game-card .mode-buttons .play-button{min-height:52px;padding:5px 2px;font-size:10px}}
 .game-console[data-mode="tutorial"] .timer-instrument,.game-console[data-mode="tutorial"] .timer-track{display:none}
 .game-console[data-mode="tutorial"] .question-meta{grid-template-columns:1fr 1fr}
 .tutorial-coach{margin:0 0 15px;padding:16px 18px;border:2px solid var(--game-accent);border-radius:9px;background:linear-gradient(120deg,var(--game-dark),#18162c);box-shadow:0 8px 24px #0006;color:#f4ecdf}
