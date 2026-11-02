@@ -762,6 +762,7 @@ test('Blue diamant timeline chains trails and treats a season as one point in ti
   assert.equal(app.get('next-button').hidden, true);
   assert.match(app.get('timeline-feedback-base').textContent, new RegExp(String(first.anchor.year)));
   assert.match(app.get('timeline-feedback-candidate').textContent, new RegExp(String(first.candidate.year)));
+  assert.equal(app.get('timeline-feedback-answer').textContent, `It was ${first.candidate.season} ${first.candidate.year}`);
   app.get('timeline-next-button').click();
   assert.equal(app.state().index, 1);
   assert.equal(app.get('clue').children[0].children[0].children[1].textContent, first.candidate.title);
@@ -786,7 +787,8 @@ test('Blue diamant Unlimited ends on the first incorrect placement', () => {
   assert.equal(app.state().score, 0);
   assert.equal(app.get('timeline-feedback-modal').className, 'timeline-feedback-modal is-incorrect');
   assert.equal(app.get('timeline-feedback-heading').textContent, 'Incorrect!');
-  assert.equal(app.get('timeline-feedback-answer').textContent, answer);
+  const candidate = app.state().questions[0].candidate;
+  assert.equal(app.get('timeline-feedback-answer').textContent, `It was ${candidate.season} ${candidate.year}`);
   app.get('timeline-next-button').click();
   assert.equal(app.get('share-score').textContent, '0 right');
   assert.equal(app.get('share-detail').textContent, '0 correct · 1 question completed');
