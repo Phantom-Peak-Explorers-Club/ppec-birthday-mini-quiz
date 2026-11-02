@@ -544,9 +544,10 @@ footer{text-align:center;padding:0 0 25px;color:#81758b;font:600 10px 'IBM Plex 
 .lead-feedback-modal.is-incorrect .timeline-feedback-panel:before{display:none}
 .lead-feedback-modal.is-incorrect h2,.lead-feedback-modal.is-incorrect .timeline-feedback-answer{text-shadow:none;color:#ff9cb2}
 .lead-feedback-modal .primary-button{background:#39ddb8;border-color:#39ddb8;color:#0c282a}
-.game-grid>.jumble-game-card{position:relative;overflow:hidden;border:3px solid transparent;border-radius:14px;background:linear-gradient(120deg,#08090d,#17131e 58%,#080a10) padding-box,conic-gradient(from 25deg,#f65263,#ffbd43,#b7df55,#43d9bb,#4e9eff,#a66cff,#f65263) border-box;box-shadow:0 16px 38px #0009,0 0 28px #b168ff28;animation:jumble-glow 5s ease-in-out infinite}
-.game-grid>.jumble-game-card:after{content:'';position:absolute;inset:-80% auto -80% -70%;width:40%;transform:rotate(25deg);background:linear-gradient(90deg,transparent,#ffffff13,transparent);pointer-events:none;animation:jumble-shuffle 8s ease-in-out infinite}
-.game-grid>.jumble-game-card .card-icon{background:radial-gradient(circle,#262029,#08090d 75%);border-color:#e8bf70}
+.game-grid>.jumble-game-card{position:relative;overflow:hidden;border:3px solid transparent;border-radius:14px;background:linear-gradient(120deg,#08090d,#17131e 58%,#080a10) padding-box,conic-gradient(from 25deg,#f65263,#ffbd43,#b7df55,#43d9bb,#4e9eff,#a66cff,#f65263) border-box;box-shadow:0 0 0 1px #f6d78c66,0 0 20px #9c72ff77,0 14px 34px #000b;animation:jumble-glow 4.8s ease-in-out infinite}
+.game-grid>.jumble-game-card:before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 75% 20%,#6e65ff30,transparent 48%),radial-gradient(circle at 22% 90%,#f6d78c24,transparent 55%);pointer-events:none}
+.game-grid>.jumble-game-card:after{content:'';position:absolute;inset:-85% auto -85% -65%;width:38%;transform:rotate(23deg);background:linear-gradient(90deg,transparent,#86dfff29 25%,#fff6d880 50%,#d09aff38 75%,transparent);filter:blur(7px);mix-blend-mode:screen;pointer-events:none;animation:jumble-shuffle 5.5s ease-in-out infinite}
+.game-grid>.jumble-game-card .card-icon{z-index:1;background:radial-gradient(circle,#262029,#08090d 75%);border-color:#e8bf70}
 .game-grid>.jumble-game-card .card-icon:before{border-color:#e8bf70;background:radial-gradient(circle,#33201e,#08090d 75%)}
 .game-grid>.jumble-game-card .card-body{position:relative;z-index:1}
 .game-grid>.jumble-game-card .card-body h2{color:#fff5dd;font-size:21px}
@@ -564,7 +565,7 @@ footer{text-align:center;padding:0 0 25px;color:#81758b;font:600 10px 'IBM Plex 
 .challenge-banner{margin:0 0 13px;padding:8px 12px;border:1px solid #c4a65c;border-radius:6px;background:linear-gradient(100deg,#101015,#27202a,#101015);color:#f6d78c;font:800 11px 'IBM Plex Mono',monospace;letter-spacing:.1em}
 .tutorial-finish #tutorial-start-quiz[hidden]{display:none}
 .game-console[data-challenge="true"] #tutorial-start-unlimited{width:100%;min-height:46px;border:1px solid #f6d78c;border-radius:6px;background:#f6d78c;color:#17131e;font-weight:800}
-@keyframes jumble-glow{50%{box-shadow:0 16px 38px #0009,0 0 34px #e1b54d66}}
-@keyframes jumble-shuffle{0%,68%{left:-70%}85%,100%{left:140%}}
+@keyframes jumble-glow{50%{box-shadow:0 0 0 2px #f6d78ca8,0 0 24px #f6d78caa,0 0 46px #a578ff88,0 14px 34px #000b}}
+@keyframes jumble-shuffle{0%,8%{left:-65%}68%,100%{left:135%}}
 @media(max-width:640px){.game-grid>.jumble-game-card .card-body h2{font-size:18px}.game-grid>.jumble-game-card .mode-buttons .play-button{min-height:52px;font-size:10px}.jumble-kicker{font-size:8px;letter-spacing:.07em}}
-@media(prefers-reduced-motion:reduce){.game-grid>.jumble-game-card,.game-grid>.jumble-game-card:after{animation:none}}
+@media(prefers-reduced-motion:reduce){.game-grid>.jumble-game-card,.game-grid>.jumble-game-card:after{animation:none}.game-grid>.jumble-game-card:after{display:none}}
