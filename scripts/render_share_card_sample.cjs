@@ -14,7 +14,8 @@ const game = process.argv[2] || 'catchphrase';
 const names = {
   anagrams: 'Littlefield’s Letters', catchphrase: 'Peak-a-Boo', vowels: 'Vowel of Silence',
   trails: 'Trail and Error', platy: 'Save-A-Platy', blanks: 'Blankety Peak', lore: 'Lost in the Lore',
-  timeline: 'Fun With Blue Diamant', lead: 'Whose Trail Is It Anyway?'
+  timeline: 'Fun With Blue Diamant', lead: 'Whose Trail Is It Anyway?',
+  jumble: 'Jonabot Jr’s Jumble Challenge'
 };
 if (!names[game]) throw new Error(`Unknown game: ${game}`);
 
@@ -24,7 +25,7 @@ const output = path.join(repo, 'design-previews', `share-card-${game}-sample.png
 const htmlPath = path.join(docs, '.share-card-sample.html');
 const profile = fs.mkdtempSync(path.join(os.tmpdir(), 'ppec-share-preview-'));
 const sample = {
-  game, mode: 'unlimited', points: game === 'catchphrase' ? 47 : 0,
+  game, challenge: game === 'jumble', mode: 'unlimited', points: game === 'catchphrase' ? 47 : 0,
   score: game === 'catchphrase' ? 3 : 8, completed: 10, elapsedMs: 123000
 };
 const html = `<!doctype html><html><head><meta charset="utf-8"><style>

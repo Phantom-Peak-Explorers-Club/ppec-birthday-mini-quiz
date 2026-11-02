@@ -34,6 +34,7 @@ test('portal games follow their colour order and the new PNG logo is cached', ()
   const sw = fs.readFileSync(path.join(root, 'docs', 'sw.js'), 'utf8');
   const classes = [...html.matchAll(/<article class="game-card ([^"]+)">/g)].map(match => match[1]);
   assert.deepEqual(classes, [
+    'jumble-game-card',
     'picture-game-card', 'trail-game-card', 'anagram-game-card',
     'platy-game-card', 'lead-game-card', 'blanks-game-card',
     'timeline-game-card', 'vowel-game-card', 'lore-game-card'
@@ -42,6 +43,9 @@ test('portal games follow their colour order and the new PNG logo is cached', ()
   assert.match(html, /game-logos\/whose-trail-it-anyway\.png/);
   assert.match(sw, /whose-trail-it-anyway/);
   assert.ok(fs.existsSync(path.join(root, 'docs', 'assets', 'game-logos', 'whose-trail-it-anyway.png')));
+  assert.match(html, /Jonabot Jr’s Jumble Challenge/);
+  assert.match(sw, /jonabot-jumble-challenge/);
+  assert.ok(fs.existsSync(path.join(root, 'docs', 'assets', 'game-logos', 'jonabot-jumble-challenge.png')));
 });
 
 function makeElement(dataset = {}) {
@@ -88,9 +92,10 @@ function setup() {
     makeElement({ game: 'timeline', mode: 'quiz' }),
     makeElement({ game: 'timeline', mode: 'unlimited' }),
     makeElement({ game: 'lead', mode: 'quiz' }),
-    makeElement({ game: 'lead', mode: 'unlimited' })
+    makeElement({ game: 'lead', mode: 'unlimited' }),
+    makeElement({ game: 'jumble', mode: 'unlimited' })
   ];
-  const tutorials = ['anagrams', 'catchphrase', 'vowels', 'trails', 'platy', 'blanks', 'lore', 'timeline', 'lead']
+  const tutorials = ['anagrams', 'catchphrase', 'vowels', 'trails', 'platy', 'blanks', 'lore', 'timeline', 'lead', 'jumble']
     .map(game => makeElement({ tutorial: game }));
   const screens = ['home', 'game', 'results'].map(get);
   const context = vm.createContext({
@@ -350,7 +355,7 @@ test('Timed games count down before accepting answers or starting the clock', ()
 test('Every game has a distinct colour and results use that game colour', () => {
   const app = setup();
   const themes = app.evaluate('GAME_THEMES');
-  assert.equal(new Set(Object.values(themes).map(theme => theme.accent)).size, 9);
+  assert.equal(new Set(Object.values(themes).map(theme => theme.accent)).size, 10);
   app.buttons[6].click();
   app.get('reveal-button').click();
   app.get('next-button').click();
@@ -877,7 +882,7 @@ test('lead game shows a steady incorrect result and ends Unlimited on a wrong an
 
 test('Every game has a guided practice path that ends without scoring', () => {
   const html = fs.readFileSync(path.join(__dirname, '..', 'docs', 'index.html'), 'utf8');
-  assert.equal((html.match(/data-tutorial="/g) || []).length, 9);
+  assert.equal((html.match(/data-tutorial="/g) || []).length, 10);
   const cases = [
     ['anagrams', 0, app => {
       app.get('tutorial-next').click();
@@ -951,6 +956,86 @@ test('Every game has a guided practice path that ends without scoring', () => {
     assert.equal(app.state().mode, 'quiz', game);
     assert.equal(app.state().score, 0, game);
   }
+});
+
+test('Jumble Challenge draws from all nine games without a clock and ends on one wrong answer', () => {
+  const app = setup();
+  app.buttons[18].click();
+  const pool = app.state().questions;
+  assert.equal(app.state().challenge, true);
+  assert.equal(app.state().mode, 'unlimited');
+  assert.deepEqual([...new Set(pool.map(q => q.game))].sort(),
+    ['anagrams','catchphrase','vowels','trails','platy','blanks','lore','timeline','lead'].sort());
+  assert.equal(pool.slice(0,100).every((q, i) => i === 0 || q.game !== pool[i-1].game), true);
+  assert.match(fs.readFileSync(path.join(__dirname, '..', 'docs', 'style.css'), 'utf8'), /data-challenge="true"\] \.timer-instrument/);
+  app.advance(60000);
+  assert.equal(app.state().answered, false);
+  app.evaluate("state.questions=[{...ANAGRAMS.find(q=>q.answer==='PLATYPUS'),game:'anagrams'},{...WHOSE_TRAILS[0],game:'lead'}];state.index=0;render()");
+  assert.equal(app.state().countingDown, false);
+  app.submit('PLATYPUS');
+  assert.equal(app.state().score, 1);
+  app.get('next-button').click();
+  assert.equal(app.state().game, 'lead');
+  assert.equal(app.get('game-title').textContent, 'Whose Trail Is It Anyway?');
+  app.get('lead-select').value = app.evaluate('LEAD_NAMES').find(name => name !== app.state().questions[1].answer);
+  app.get('lead-answer-form').listeners.submit({ preventDefault() {} });
+  assert.equal(app.state().elapsedMs !== null, true);
+  app.get('lead-next-button').click();
+  assert.equal(app.get('share-game').textContent, 'Jonabot Jr’s Jumble Challenge');
+  assert.equal(app.get('share-score').textContent, '1 right');
+  assert.equal(app.get('share-preview').dataset.game, 'jumble');
+});
+
+test('Jumble tutorial guides two game types then launches its unlimited run', () => {
+  const app = setup();
+  app.tutorials[9].click();
+  assert.equal(app.state().challenge, true);
+  assert.equal(app.state().game, 'anagrams');
+  app.get('tutorial-next').click();
+  app.get('answer-input').value = 'PLATYPUS'; app.get('answer-input').listeners.input();
+  app.submit('PLATYPUS');
+  assert.equal(app.state().index, 1);
+  assert.equal(app.state().game, 'catchphrase');
+  app.get('tutorial-next').click();
+  app.state().tileButtons[0].click();
+  app.get('answer-input').value = 'Copper'; app.get('answer-input').listeners.input();
+  app.submit('Copper');
+  assert.equal(app.get('tutorial-finish').hidden, false);
+  assert.equal(app.get('tutorial-start-quiz').hidden, true);
+  assert.equal(app.state().score, 0);
+  app.get('tutorial-start-unlimited').click();
+  assert.equal(app.state().mode, 'unlimited');
+  assert.equal(app.state().challenge, true);
+});
+
+test('Jumble Challenge can play and score every source game in one run', () => {
+  const app = setup();
+  app.buttons[18].click();
+  app.evaluate(`state.questions=[
+    {...ANAGRAMS.find(q=>q.answer==='PLATYPUS'),game:'anagrams'},
+    {...PICTURES.find(q=>q.answer==='Copper'),game:'catchphrase'},
+    {...vowelQuestions().find(q=>q.answer==='COPPER'),game:'vowels'},
+    {...WHAT_TRAILS[0],game:'trails'},
+    {...WHAT_TRAILS.find(q=>q.answer==='Wild Card'),game:'platy'},
+    {...FILL_BLANKS.find(q=>q.title==='Wild Card'),game:'blanks'},
+    {...LORE_GAP[0],game:'lore'},
+    {...timelineQuestions()[0],game:'timeline'},
+    {...WHOSE_TRAILS[0],game:'lead'}
+  ];state.index=0;render()`);
+  app.submit('PLATYPUS'); app.get('next-button').click();
+  app.state().tileButtons[0].click(); app.submit('Copper'); app.get('next-button').click();
+  app.submit('COPPER'); app.get('next-button').click();
+  app.get('trail-choices').children.find(button => button.dataset.answer === app.state().questions[3].answer).click(); app.get('next-button').click();
+  for (const letter of 'WILDCAR') app.get('platy-keyboard').children.find(button => button.textContent === letter).click();
+  app.get('next-button').click();
+  app.submit(app.state().questions[5].answer); app.get('next-button').click();
+  app.get('lore-choices').children.find(button => button.dataset.answer === app.state().questions[6].answer).click(); app.get('next-button').click();
+  app.get('timeline-choices').children.find(button => button.dataset.answer === app.state().questions[7].answer).click(); app.get('timeline-next-button').click();
+  app.get('lead-select').value = app.state().questions[8].answer;
+  app.get('lead-answer-form').listeners.submit({ preventDefault() {} }); app.get('lead-next-button').click();
+  assert.equal(app.state().score, 9);
+  assert.equal(app.get('share-score').textContent, '9 right');
+  assert.equal(app.get('share-game').textContent, 'Jonabot Jr’s Jumble Challenge');
 });
 
 test('Tutorial wrong answers give a hint and let the player retry', () => {

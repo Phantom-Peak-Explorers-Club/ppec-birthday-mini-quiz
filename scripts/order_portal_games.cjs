@@ -1,8 +1,9 @@
 const fs = require('node:fs');
 const path = require('node:path');
 
-// Red, orange, yellow, green, jade, cyan, blue, violet, then magenta.
+// Featured special mode, then red, orange, yellow, green, jade, cyan, blue, violet, magenta.
 const order = [
+  'jumble-game-card',
   'picture-game-card', 'trail-game-card', 'anagram-game-card',
   'platy-game-card', 'lead-game-card', 'blanks-game-card',
   'timeline-game-card', 'vowel-game-card', 'lore-game-card'

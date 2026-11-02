@@ -142,7 +142,7 @@ MISSING_VOWELS.push(...ACCESSIBLE_TRAIL_VOWELS);
 const vowelAnswers=new Set(MISSING_VOWELS.map(q=>q.answer));
 MISSING_VOWELS.push(...LORE_TERMS.filter(q=>!vowelAnswers.has(q.answer)).map(q=>({answer:q.answer})));
 const $=id=>document.getElementById(id);
-let state={game:null,mode:null,questions:[],index:0,score:0,points:0,completed:0,openedTiles:0,tileButtons:[],answered:false,startedAt:0,elapsedMs:null,exhausted:false,platyMisses:0,platyGuessed:new Set()};
+let state={game:null,mode:null,challenge:false,questions:[],index:0,score:0,points:0,completed:0,openedTiles:0,tileButtons:[],answered:false,startedAt:0,elapsedMs:null,exhausted:false,platyMisses:0,platyGuessed:new Set()};
 let questionTimer=null;
 let questionDeadline=0;
 let countdownTimer=null;
@@ -158,7 +158,8 @@ const GAME_THEMES={
   blanks:{accent:'#b9ecff',dark:'#255576',light:'#f3fcff',shareBg:'#75b4d0',shareLift:.12},
   lore:{accent:'#ff6eb5',dark:'#5d174a',light:'#ffe2f2',shareBg:'#9c266c'},
   timeline:{accent:'#6f8ff3',dark:'#0a1e46',light:'#e7eeff',shareBg:'#1a3a82'},
-  lead:{accent:'#39ddb8',dark:'#0b4244',light:'#dcfff3',shareBg:'#0b6157'}
+  lead:{accent:'#39ddb8',dark:'#0b4244',light:'#dcfff3',shareBg:'#0b6157'},
+  jumble:{accent:'#f6d78c',dark:'#101015',light:'#fff4d9',shareBg:'#16121e'}
 };
 function shuffle(items){const out=[...items];for(let i=out.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[out[i],out[j]]=[out[j],out[i]]}return out}
 function timelineRelation(anchor,candidate){return candidate.rank<anchor.rank?'Before':candidate.rank>anchor.rank?'After':'Same Season'}
@@ -185,6 +186,15 @@ function timelineQuestions(){
   return questions;
 }
 const TUTORIAL_STEPS={
+  jumble:[
+    {heading:'My rules, my shuffle',text:()=> 'I draw from every game. No clock, no ten-question finish line. One wrong answer ends your run. First, untangle these letters for me.',target:'clue',action:'next'},
+    {heading:'Type the name',text:()=> 'This is Littlefield’s Letters. Type the unscrambled name in the answer box. I will switch games after you get it right.',target:'answer-form',action:'input'},
+    {heading:'Check your answer',text:()=> 'Press Check answer. In the real challenge, this is where a wrong answer would end everything. I am feeling merciful in practice.',target:'answer-submit',action:'answer'},
+    {heading:'A new game arrives',text:()=> 'Now it is Peak-a-Boo. Each new question can use a different game’s rules. Open a picture panel to see what is hiding.',target:'clue',action:'next'},
+    {heading:'Open a panel',text:()=> 'Tap a panel. You can open more if you need them; fewer open panels earn more picture points, but your challenge streak counts correct answers.',target:'clue',action:'panel'},
+    {heading:'Name the picture',text:()=> 'Type what you see. I have enabled the answer box now that you opened a panel.',target:'answer-form',action:'input'},
+    {heading:'Keep the streak alive',text:()=> 'Check your answer. In the real challenge, I shuffle in another game if you are right. One wrong answer and I stop the run.',target:'answer-submit',action:'answer'}
+  ],
   anagrams:[
     {heading:'Find the real name',text:()=> 'Littlefield put these letters in the wrong order. Again. I need you to turn them back into a Peak name. In a real round, I give you 30 seconds.',target:'clue',action:'next'},
     {heading:'Type the unscrambled name',text:()=> 'Type the whole name in my answer box. Capitals and spaces are fine. Littlefield’s filing system is the problem, not yours.',target:'answer-form',action:'input'},
@@ -236,6 +246,7 @@ const TUTORIAL_STEPS={
   ]
 };
 const TUTORIAL_END={
+  jumble:'You have played two kinds of clue. The real challenge draws from all nine games, stays untimed, and ends on your first wrong answer. My shuffle has no mercy setting.',
   anagrams:'Excellent. I will give you ten timed clues in Quiz Round. In Unlimited, one wrong answer or a 30-second timeout ends your run.',
   catchphrase:'Nicely seen. I turn unopened panels into points when you are right. Quiz Round has ten clues; Unlimited ends when you miss one.',
   vowels:'The consonants are relieved. I give you 30 seconds per real clue; one wrong answer or timeout ends an Unlimited run.',
@@ -247,6 +258,7 @@ const TUTORIAL_END={
   lead:'Correct. I give you ten trail files in Quiz Round. Unlimited keeps going until you pick the wrong townsfolk, or my archive runs out.'
 };
 function tutorialQuestions(game){
+  if(game==='jumble')return [{...ANAGRAMS.find(q=>q.answer==='PLATYPUS'),game:'anagrams'},{...PICTURES.find(q=>q.answer==='Copper'),game:'catchphrase'}];
   if(game==='anagrams')return [ANAGRAMS.find(q=>q.answer==='PLATYPUS')];
   if(game==='catchphrase')return [PICTURES.find(q=>q.answer==='Copper')];
   if(game==='vowels')return [vowelQuestions().find(q=>q.answer==='COPPER')];
@@ -257,6 +269,24 @@ function tutorialQuestions(game){
   if(game==='lead')return [WHOSE_TRAILS.find(q=>q.title==='Sparksquatch')];
   const anchor=TIME_TRAILS[0],middle=TIME_TRAILS[1],later=TIME_TRAILS.find(q=>q.rank>middle.rank);
   return [{anchor,candidate:middle,answer:'Same Season'},{anchor:middle,candidate:later,answer:'After'}];
+}
+function jumbleQuestions(){
+  const pools={
+    anagrams:shuffle(ANAGRAMS),catchphrase:pictureQuestions(),vowels:vowelQuestions(),
+    trails:shuffle(WHAT_TRAILS),platy:shuffle(WHAT_TRAILS),blanks:shuffle(FILL_BLANKS),
+    lore:shuffle(LORE_GAP),timeline:timelineQuestions(),lead:shuffle(WHOSE_TRAILS)
+  };
+  const questions=[];
+  let previous=null;
+  while(true){
+    const available=Object.keys(pools).filter(game=>pools[game].length);
+    if(!available.length)break;
+    const choices=available.filter(game=>game!==previous);
+    const game=shuffle(choices.length?choices:available)[0];
+    questions.push({...pools[game].pop(),game});
+    previous=game;
+  }
+  return questions;
 }
 function normal(s){return s.normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]/g,'')}
 function typoDistance(a,b){
@@ -350,7 +380,9 @@ function show(id,updateHistory=true){
   if(updateHistory&&previous!==id&&window.history?.pushState)window.history.pushState({ppecScreen:id,runId:state.runId},'',`#${id}`);
   window.scrollTo({top:0,behavior:'instant'});
 }
-function gameName(){return state.game==='anagrams'?'Littlefield’s Letters':state.game==='vowels'?'Vowel of Silence':state.game==='trails'?'Trail and Error':state.game==='platy'?'Save-A-Platy':state.game==='blanks'?'Blankety Peak':state.game==='lore'?'Lost in the Lore':state.game==='timeline'?'Fun With Blue Diamant':state.game==='lead'?'Whose Trail Is It Anyway?':'Peak-a-Boo'}
+function gameNameFor(game){return game==='anagrams'?'Littlefield’s Letters':game==='vowels'?'Vowel of Silence':game==='trails'?'Trail and Error':game==='platy'?'Save-A-Platy':game==='blanks'?'Blankety Peak':game==='lore'?'Lost in the Lore':game==='timeline'?'Fun With Blue Diamant':game==='lead'?'Whose Trail Is It Anyway?':'Peak-a-Boo'}
+function gameName(){return state.challenge?'Jonabot Jr’s Jumble Challenge':gameNameFor(state.game)}
+function tutorialSteps(){return TUTORIAL_STEPS[state.challenge?'jumble':state.game]}
 function modeName(){return state.mode==='quiz'?'Quiz Round':'Unlimited'}
 function clearTutorialSpotlight(){
   if(state.tutorialTarget)$(state.tutorialTarget).classList.remove('tutorial-spotlight');
@@ -359,7 +391,7 @@ function clearTutorialSpotlight(){
 function renderTutorialCoach(note=''){
   if(state.mode!=='tutorial')return;
   clearTutorialSpotlight();
-  const steps=TUTORIAL_STEPS[state.game];
+  const steps=tutorialSteps();
   const done=state.tutorialStep>=steps.length;
   const step=steps[state.tutorialStep];
   $('tutorial-coach').hidden=false;
@@ -367,9 +399,11 @@ function renderTutorialCoach(note=''){
   $('tutorial-heading').textContent=done?'You survived my tutorial':`Step ${state.tutorialStep+1} of ${steps.length} · ${step.heading}`;
   const q=state.questions[state.index];
   const outcome=done&&state.game==='timeline'?` The final trail was ${q.candidate.season} ${q.candidate.year}, so ${q.answer} was right.`:done&&state.game==='catchphrase'?` That picture clue was ${q.answer}.`:'';
-  $('tutorial-text').textContent=(done?TUTORIAL_END[state.game]+outcome:step.text(q))+(note?` ${note}`:'');
+  $('tutorial-text').textContent=(done?TUTORIAL_END[state.challenge?'jumble':state.game]+outcome:step.text(q))+(note?` ${note}`:'');
   $('tutorial-next').hidden=done||step.action!=='next';
   $('tutorial-finish').hidden=!done;
+  $('tutorial-start-quiz').hidden=state.challenge;
+  $('tutorial-start-unlimited').textContent=state.challenge?'Start Jumble Challenge ∞':'Play Unlimited ∞';
   if(!done){
     state.tutorialTarget=step.target;
     $(step.target).classList.add('tutorial-spotlight');
@@ -378,7 +412,7 @@ function renderTutorialCoach(note=''){
 }
 function advanceTutorial(action){
   if(state.mode!=='tutorial')return;
-  const step=TUTORIAL_STEPS[state.game][state.tutorialStep];
+  const step=tutorialSteps()[state.tutorialStep];
   if(step?.action===action){state.tutorialStep++;renderTutorialCoach()}
 }
 function tutorialHint(){
@@ -389,11 +423,15 @@ function tutorialHint(){
 }
 function finishTutorialAnswer(correct){
   const q=state.questions[state.index];
-  if(state.game!=='platy'&&TUTORIAL_STEPS[state.game][state.tutorialStep]?.action!=='answer'){
+  if(state.game!=='platy'&&tutorialSteps()[state.tutorialStep]?.action!=='answer'){
     renderTutorialCoach('Ah, enthusiasm. Follow the highlighted step first, please.');return;
   }
   if(!correct){tutorialHint();return}
   state.answered=true;
+  if(state.challenge&&state.index===0){
+    $('clue').replaceChildren(letterRow(q.answer));$('clue').children[0].classList.add('solved');
+    state.index=1;state.tutorialStep=3;render();return;
+  }
   if(state.game==='timeline'&&state.index===0){
     state.index=1;state.tutorialStep=3;render();return;
   }
@@ -406,9 +444,9 @@ function finishTutorialAnswer(correct){
   if(['trails','lore','timeline'].includes(state.game))for(const button of state.choiceButtons){button.disabled=true;if(button.dataset.answer===q.answer){button.classList.remove('wrong');button.classList.add('right')}}
   $('answer-form').hidden=true;$('lead-answer-form').hidden=true;$('reveal-button').hidden=true;
   $('question-card').inert=true;
-  state.tutorialStep=TUTORIAL_STEPS[state.game].length;
+  state.tutorialStep=tutorialSteps().length;
   renderTutorialCoach();
-  $('tutorial-start-quiz').focus();
+  (state.challenge?$('tutorial-start-unlimited'):$('tutorial-start-quiz')).focus();
 }
 function duration(ms){const seconds=Math.floor(ms/1000);return `${Math.floor(seconds/60)}:${String(seconds%60).padStart(2,'0')}`}
 function letterRow(value){
@@ -523,7 +561,7 @@ function animatePlatySave(saved){
   const revealTotal=()=>{
     $('platy-keyboard').hidden=true;panel.hidden=false;count.textContent=String(saved);
     [...icons.children].forEach((icon,index)=>{if(index<saved)icon.className='counted'});
-    $('score-label').textContent=`${state.points} SAVED`;
+    if(!state.challenge)$('score-label').textContent=`${state.points} SAVED`;
   };
   if(!row?.animate||reduced){revealTotal();return null}
   row.classList.add('solving');
@@ -544,7 +582,7 @@ function animatePlatySave(saved){
       icons.children[index].className='counted';
       count.textContent=String(index+1);
     }
-    $('score-label').textContent=`${state.points} SAVED`;
+    if(!state.challenge)$('score-label').textContent=`${state.points} SAVED`;
   });
 }
 function guessPlatyLetter(letter){
@@ -570,6 +608,7 @@ function start(game,mode){
   clearTutorialSpotlight();
   let source;
   if(mode==='tutorial')source=tutorialQuestions(game);
+  else if(game==='jumble')source=jumbleQuestions();
   else if(game==='anagrams')source=[1,2,3,4].flatMap(tier=>shuffle(ANAGRAMS.filter(q=>q.tier===tier)));
   else if(game==='vowels')source=vowelQuestions();
   else if(game==='trails'||game==='platy')source=shuffle(WHAT_TRAILS);
@@ -584,7 +623,7 @@ function start(game,mode){
   if(sharePreviewUrl){URL.revokeObjectURL(sharePreviewUrl);sharePreviewUrl=null}
   $('share-preview-image').hidden=true;
   $('share-preview').classList.remove('is-rendered');
-  state={game,mode,questions,index:0,score:0,points:0,completed:0,openedTiles:0,tileButtons:[],choiceButtons:[],answered:false,countingDown:mode!=='tutorial'&&(game==='anagrams'||game==='vowels'),startedAt:Date.now(),elapsedMs:null,exhausted:false,platyMisses:0,platyGuessed:new Set(),tutorialStep:0,tutorialTarget:null,runId:Date.now()+Math.random()};
+  state={game:game==='jumble'?questions[0].game:game,challenge:game==='jumble',mode,questions,index:0,score:0,points:0,completed:0,openedTiles:0,tileButtons:[],choiceButtons:[],answered:false,countingDown:mode!=='tutorial'&&game!=='jumble'&&(game==='anagrams'||game==='vowels'),startedAt:Date.now(),elapsedMs:null,exhausted:false,platyMisses:0,platyGuessed:new Set(),tutorialStep:0,tutorialTarget:null,runId:Date.now()+Math.random()};
   show('game');render();if(state.countingDown)startCountdown();
 }
 function render(){
@@ -593,6 +632,7 @@ function render(){
   $('timeline-feedback-modal').hidden=true;
   $('lead-feedback-modal').hidden=true;
   $('question-card').inert=false;
+  if(state.challenge)state.game=state.questions[state.index].game;
   const {game,mode,questions,index,score}=state;
   const q=questions[index];
   state.answered=false;
@@ -600,14 +640,17 @@ function render(){
   state.tileButtons=[];
   state.choiceButtons=[];
   $('question-count').textContent=mode==='tutorial'?`PRACTICE ${index+1} / ${questions.length}`:`${index+1} / ${questions.length}`;
-  $('score-label').textContent=mode==='tutorial'?'NO SCORE':game==='catchphrase'?`${state.points} POINTS`:game==='platy'?`${state.points} SAVED`:`${score} CORRECT`;
+  $('score-label').textContent=mode==='tutorial'?'NO SCORE':state.challenge?`${score} CORRECT`:game==='catchphrase'?`${state.points} POINTS`:game==='platy'?`${state.points} SAVED`:`${score} CORRECT`;
   $('progress-line').hidden=mode==='unlimited'||mode==='tutorial';
   $('progress-fill').style.width=`${index/questions.length*100}%`;
   $('question-kind').textContent=game==='anagrams'?'UNSCRAMBLE THIS':game==='vowels'?'RESTORE THE VOWELS':game==='trails'?'IDENTIFY THE TRAIL':game==='platy'?'SAVE THE PLATYPUSES':game==='blanks'?'COMPLETE THE TRAIL TITLE':game==='lore'?'PICK THE MISSING WORD':game==='timeline'?'PLACE THE NEXT TRAIL IN TIME':game==='lead'?'WHO NEEDED HELP?':'NAME THE PICTURE CLUE';
-  $('game-title').textContent=gameName();
+  $('game-title').textContent=state.challenge?gameNameFor(game):gameName();
   $('game-logo').src=`./assets/game-logos/${({anagrams:'anagrams',catchphrase:'catchphrase',vowels:'missing-vowels',trails:'what-trail',platy:'save-a-platy',blanks:'blankety-peak',lore:'lost-in-the-lore',timeline:'fun-with-blue-diamant',lead:'whose-trail-it-anyway'})[game]}.png?v=4`;
   $('game-console').dataset.game=game;
   $('game-console').dataset.mode=mode;
+  $('game-console').dataset.challenge=state.challenge?'true':'false';
+  $('challenge-banner').hidden=!state.challenge;
+  if(state.challenge)$('challenge-banner').textContent=`JONABOT JR’S JUMBLE CHALLENGE · ${mode==='tutorial'?'PRACTICE':'STREAK'} ${index+1}`;
   $('tutorial-coach').hidden=mode!=='tutorial';
   $('question-card').dataset.game=game;
   $('vowel-hint').hidden=game!=='vowels';
@@ -645,7 +688,7 @@ function render(){
       tile.setAttribute('aria-label',`Reveal panel ${tileIndex+1}`);
       tile.addEventListener('click',()=>{
         if(state.answered||tile.disabled)return;
-        if(state.mode==='tutorial'&&TUTORIAL_STEPS.catchphrase[state.tutorialStep]?.action==='next'){
+        if(state.mode==='tutorial'&&tutorialSteps()[state.tutorialStep]?.action==='next'){
           renderTutorialCoach('Ah, enthusiasm. Follow the highlighted step first, please.');return;
         }
         tile.disabled=true;tile.classList.add('open');state.openedTiles++;
@@ -745,7 +788,7 @@ function render(){
   $('timer-label').textContent='30s';$('timer-fill').style.width='100%';
   if(game==='lead')$('lead-select').focus();
   else if(game!=='trails'&&game!=='platy'&&game!=='lore'&&game!=='timeline'&&!state.countingDown)$('answer-input').focus();
-  if((game==='anagrams'||game==='vowels')&&!state.countingDown&&mode!=='tutorial')startTimer();
+  if((game==='anagrams'||game==='vowels')&&!state.countingDown&&mode!=='tutorial'&&!state.challenge)startTimer();
   if(mode==='tutorial')renderTutorialCoach();
 }
 function showTimelineFeedback(q,correct,revealed,ends){
@@ -780,16 +823,16 @@ function finishAnswer(correct,revealed=false,timedOut=false,response=''){
   const q=state.questions[state.index];
   state.completed=state.index+1;
   if(correct){state.score++;if(state.game==='catchphrase')state.points+=Math.max(0,24-state.openedTiles);if(state.game==='platy')state.points+=6-state.platyMisses}
-  if(state.game!=='catchphrase'&&state.game!=='platy')$('score-label').textContent=`${state.score} CORRECT`;
+  if(state.challenge||state.game!=='catchphrase'&&state.game!=='platy')$('score-label').textContent=`${state.score} CORRECT`;
   if(state.game==='platy'){
     if(revealed)state.platyMisses=6;
     renderPlatyName(q.answer,true);renderPlatyLives();renderPlatyKeyboard();
     if(!correct)$('clue').children[0].classList.add('failed');
-    if(!correct)$('score-label').textContent=`${state.points} SAVED`;
+    if(!correct&&!state.challenge)$('score-label').textContent=`${state.points} SAVED`;
   }
   if(state.game==='catchphrase'){
     for(const tile of state.tileButtons){tile.disabled=true;tile.classList.add('open')}
-    $('score-label').textContent=`${state.points} POINTS`;
+    if(!state.challenge)$('score-label').textContent=`${state.points} POINTS`;
     $('reveal-stats').textContent=`${state.openedTiles} / 24 PANELS USED · ${correct?Math.max(0,24-state.openedTiles):0} POINTS AWARDED`;
   }
   if(state.game==='blanks'){
@@ -869,22 +912,22 @@ function next(){
   if(state.elapsedMs!==null){results()}else{state.index++;render()}
 }
 function results(){
-  $('share-preview').dataset.game=state.game;
+  $('share-preview').dataset.game=state.challenge?'jumble':state.game;
   $('share-game').textContent=gameName();$('share-mode').textContent=modeName();
-  $('share-score').textContent=state.game==='catchphrase'?`${state.points} points`:state.game==='platy'?`${state.points} platypuses saved`:`${state.score} right`;
-  $('share-detail').textContent=state.game==='platy'?`${state.score} ${state.score===1?'trail':'trails'} solved · ${state.completed} ${state.completed===1?'question':'questions'} completed`:`${state.score} correct · ${state.completed} ${state.completed===1?'question':'questions'} completed`;
+  $('share-score').textContent=!state.challenge&&state.game==='catchphrase'?`${state.points} points`:!state.challenge&&state.game==='platy'?`${state.points} platypuses saved`:`${state.score} right`;
+  $('share-detail').textContent=!state.challenge&&state.game==='platy'?`${state.score} ${state.score===1?'trail':'trails'} solved · ${state.completed} ${state.completed===1?'question':'questions'} completed`:`${state.score} correct · ${state.completed} ${state.completed===1?'question':'questions'} completed`;
   $('share-time').textContent=`Time ${duration(state.elapsedMs)}`;
-  $('result-note').textContent=state.exhausted?'More questions coming soon. You cleared every clue currently in the game!':state.mode==='unlimited'?'Your run ended on that clue. Give it another go!':state.game==='anagrams'?'Littlefield would be proud of your letter work.':state.game==='vowels'?'The missing letters have been found.':state.game==='trails'?'Another story recovered from the archive.':state.game==='blanks'?'You restored the missing trail words.':state.game==='lore'?'You filled in the missing pieces of the Peak’s stories.':state.game==='timeline'?'You kept the Peak’s history in order.':state.game==='lead'?'All those trail files, and you still found the names. I am almost impressed.':'You’ve had a good look around the Peak.';
+  $('result-note').textContent=state.exhausted?'More questions coming soon. You cleared every clue currently in the game!':state.challenge?'One wrong answer ended my shuffle. Come back and see which game I throw at you next.':state.mode==='unlimited'?'Your run ended on that clue. Give it another go!':state.game==='anagrams'?'Littlefield would be proud of your letter work.':state.game==='vowels'?'The missing letters have been found.':state.game==='trails'?'Another story recovered from the archive.':state.game==='blanks'?'You restored the missing trail words.':state.game==='lore'?'You filled in the missing pieces of the Peak’s stories.':state.game==='timeline'?'You kept the Peak’s history in order.':state.game==='lead'?'All those trail files, and you still found the names. I am almost impressed.':'You’ve had a good look around the Peak.';
   $('results-title').textContent=state.exhausted?'You cleared the set!':state.score>=8?'A fine showing, explorer!':state.score>=5?'Nicely done, explorer!':'The Peak has more secrets…';
   $('share-status').textContent='';show('results');
 }
-function shareText(){const score=state.game==='catchphrase'?`${state.points} points, ${state.score} correct`:state.game==='platy'?`${state.points} platypuses saved, ${state.score} trails solved`:`${state.score} correct`;return `PPEC Quiz · ${gameName()} · ${modeName()} · ${score} · ${state.completed} questions completed · ${duration(state.elapsedMs)}`}
+function shareText(){const score=!state.challenge&&state.game==='catchphrase'?`${state.points} points, ${state.score} correct`:!state.challenge&&state.game==='platy'?`${state.points} platypuses saved, ${state.score} trails solved`:`${state.score} correct`;return `PPEC Quiz · ${gameName()} · ${modeName()} · ${score} · ${state.completed} questions completed · ${duration(state.elapsedMs)}`}
 async function drawShareCard(){
   await document.fonts?.load('700 72px Fraunces');
   const canvas=document.createElement('canvas');canvas.width=1080;canvas.height=1080;
   const c=canvas.getContext('2d');
-  const theme=GAME_THEMES[state.game]||GAME_THEMES.anagrams;
-  const logoName=({anagrams:'anagrams',catchphrase:'catchphrase',vowels:'missing-vowels',trails:'what-trail',platy:'save-a-platy',blanks:'blankety-peak',lore:'lost-in-the-lore',timeline:'fun-with-blue-diamant',lead:'whose-trail-it-anyway'})[state.game]||'anagrams';
+  const theme=GAME_THEMES[state.challenge?'jumble':state.game]||GAME_THEMES.anagrams;
+  const logoName=state.challenge?'jonabot-jumble-challenge':({anagrams:'anagrams',catchphrase:'catchphrase',vowels:'missing-vowels',trails:'what-trail',platy:'save-a-platy',blanks:'blankety-peak',lore:'lost-in-the-lore',timeline:'fun-with-blue-diamant',lead:'whose-trail-it-anyway'})[state.game]||'anagrams';
   const frame=new Image();frame.src='./assets/share-card-master.jpg';
   const logo=new Image();logo.src=`./assets/game-logos/${logoName}.png?v=4`;
   const avatar=new Image();avatar.src='./assets/jonabot-avatar.png';
@@ -908,15 +951,15 @@ async function drawShareCard(){
   c.textAlign='left';
   c.fillStyle='#fff0cc';c.font='700 46px Fraunces, Georgia, serif';c.fillText('PPEC QUIZ',88,105);
   c.fillStyle=theme.accent;c.font='700 27px DM Sans, Arial, sans-serif';c.fillText(modeName().toUpperCase(),89,150);
-  c.fillStyle='#fff0cc';c.font=`700 ${['timeline','lead'].includes(state.game)?54:72}px Fraunces, Georgia, serif`;c.fillText(gameName(),86,250,680);
+  c.fillStyle='#fff0cc';c.font=`700 ${state.challenge?45:['timeline','lead'].includes(state.game)?54:72}px Fraunces, Georgia, serif`;c.fillText(gameName(),86,250,680);
   c.fillStyle=theme.accent;c.fillRect(66,283,948,4);
   c.fillStyle=theme.accent;c.beginPath();c.arc(540,285,10,0,Math.PI*2);c.fill();
   c.fillStyle='#fff0cc';c.font='700 250px Fraunces, Georgia, serif';
   c.shadowColor='rgba(255,255,255,.55)';c.shadowBlur=12;
-  c.fillText(String(state.game==='catchphrase'||state.game==='platy'?state.points:state.score),91,566,435);
+  c.fillText(String(!state.challenge&&(state.game==='catchphrase'||state.game==='platy')?state.points:state.score),91,566,435);
   c.shadowColor='transparent';c.shadowBlur=0;
-  c.fillStyle=theme.accent;c.font=`700 ${state.game==='platy'?58:88}px Fraunces, Georgia, serif`;c.fillText(state.game==='catchphrase'?'POINTS':state.game==='platy'?'PLATYPUSES':'RIGHT',95,662,450);
-  if(state.game==='catchphrase'||state.game==='platy'){
+  c.fillStyle=theme.accent;c.font=`700 ${!state.challenge&&state.game==='platy'?58:88}px Fraunces, Georgia, serif`;c.fillText(state.challenge?'RIGHT':state.game==='catchphrase'?'POINTS':state.game==='platy'?'PLATYPUSES':'RIGHT',95,662,450);
+  if(!state.challenge&&(state.game==='catchphrase'||state.game==='platy')){
     c.fillStyle='#fff0cc';c.font='700 29px DM Sans, Arial, sans-serif';c.fillText(state.game==='platy'?`SAVED · ${state.score} ${state.score===1?'TRAIL':'TRAILS'} SOLVED`:`${state.score} CORRECT`,102,713,435);
   }
   if(logoReady)c.drawImage(logo,555,312,430,430);
@@ -1005,7 +1048,7 @@ $('answer-input').addEventListener('input',()=>{if($('answer-input').value.trim(
 $('reveal-button').addEventListener('click',()=>state.mode==='tutorial'?tutorialHint():finishAnswer(false,true));
 $('tutorial-next').addEventListener('click',()=>advanceTutorial('next'));
 $('tutorial-start-quiz').addEventListener('click',()=>start(state.game,'quiz'));
-$('tutorial-start-unlimited').addEventListener('click',()=>start(state.game,'unlimited'));
+$('tutorial-start-unlimited').addEventListener('click',()=>start(state.challenge?'jumble':state.game,'unlimited'));
 document.addEventListener?.('keydown',event=>{
   if(state.game!=='platy'||$('game').hidden||event.altKey||event.ctrlKey||event.metaKey||event.repeat||!(/^[a-z]$/i.test(event.key)))return;
   if(['INPUT','TEXTAREA'].includes(document.activeElement?.tagName))return;
@@ -1014,7 +1057,7 @@ document.addEventListener?.('keydown',event=>{
 $('next-button').addEventListener('click',next);
 $('timeline-next-button').addEventListener('click',next);
 $('lead-next-button').addEventListener('click',next);
-$('again-button').addEventListener('click',()=>start(state.game,state.mode));
+$('again-button').addEventListener('click',()=>start(state.challenge?'jumble':state.game,state.mode));
 $('share-button').addEventListener('click',()=>shareCard());
 $('share-preview').addEventListener('click',()=>shareCard());
 $('download-button').addEventListener('click',()=>shareCard(false));
@@ -1027,7 +1070,7 @@ window.addEventListener?.('popstate',event=>{
   if(ppecScreen==='game'&&runId===state.runId){
     show('game',false);
     if(state.countingDown)startCountdown();
-    else if(!state.answered&&(state.game==='anagrams'||state.game==='vowels')){
+    else if(!state.challenge&&!state.answered&&(state.game==='anagrams'||state.game==='vowels')){
       if(Date.now()>=questionDeadline)finishAnswer(false,false,true);
       else{tickTimer();questionTimer=setInterval(tickTimer,200)}
     }

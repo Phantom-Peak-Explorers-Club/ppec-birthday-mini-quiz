@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#260936">
-  <meta name="description" content="Play nine PPEC Quiz games, including Whose Trail Is It Anyway?, Fun With Blue Diamant, Peak-a-Boo and more.">
+  <meta name="description" content="Play nine PPEC Quiz games plus Jonabot Jr’s Jumble Challenge, an untimed mix of every game.">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <title>PPEC Quiz</title>
@@ -12,13 +12,13 @@
   <link rel="icon" type="image/png" href="./assets/app-icon-v3-192.png">
   <link rel="apple-touch-icon" href="./assets/app-icon-v3-180.png">
   <link rel="preload" href="./assets/fonts/fraunces-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="./style.css?v=39">
+  <link rel="stylesheet" href="./style.css?v=40">
   <script src="./what-trail.js" defer></script>
   <script src="./fill-blanks.js" defer></script>
   <script src="./lore-gap.js?v=3" defer></script>
   <script src="./timeline.js" defer></script>
   <script src="./whose-trail.js" defer></script>
-  <script src="./app.js?v=49" defer></script>
+  <script src="./app.js?v=50" defer></script>
 </head>
 <body>
   <main class="shell">
@@ -37,6 +37,10 @@
         </div>
         <div class="choose-heading"><span>CHOOSE A GAME</span></div>
         <div class="game-grid">
+        <article class="game-card jumble-game-card">
+          <div class="card-icon jumble-icon"><img src="./assets/game-logos/jonabot-jumble-challenge.png" alt="" width="512" height="512"></div>
+          <div class="card-body"><span class="jumble-kicker">✦ JONABOT JR’S SPECIAL MODE ✦</span><h2>Jonabot Jr’s Jumble Challenge</h2><p>I have put all nine games in one suspiciously well-shuffled pile. No clock. One wrong answer and I end your run.</p><div class="mode-buttons"><button class="play-button secondary" type="button" data-game="jumble" data-mode="unlimited">Play Unlimited <span aria-hidden="true">∞</span></button><button class="play-button tutorial-button" type="button" data-tutorial="jumble">Guided Tutorial <span aria-hidden="true">?</span></button></div></div>
+        </article>
         <article class="game-card picture-game-card">
           <div class="card-icon picture-icon"><img src="./assets/game-logos/catchphrase.png?v=4" alt="" width="512" height="512"></div>
           <div class="card-body"><h2>Peak-a-Boo</h2><p>Open the picture panels and say what you see...my optical sensors are on a tea break.</p><div class="mode-buttons"><button class="play-button" type="button" data-game="catchphrase" data-mode="quiz">Quiz Round <span aria-hidden="true">↗</span></button><button class="play-button secondary" type="button" data-game="catchphrase" data-mode="unlimited">Unlimited <span aria-hidden="true">∞</span></button><button class="play-button tutorial-button" type="button" data-tutorial="catchphrase">Tutorial <span aria-hidden="true">?</span></button></div></div>
@@ -92,6 +96,7 @@
         <div id="tutorial-finish" class="tutorial-finish" hidden><button id="tutorial-start-quiz" class="primary-button" type="button">Start Quiz Round →</button><button id="tutorial-start-unlimited" class="text-button" type="button">Play Unlimited ∞</button></div>
       </div>
       <div class="question-card" id="question-card">
+        <p id="challenge-banner" class="challenge-banner" hidden></p>
         <p class="eyebrow" id="question-kind"></p>
         <div class="game-title-row"><img id="game-logo" src="./assets/game-logos/anagrams.png?v=4" alt="" width="512" height="512"><h1 id="game-title"></h1></div>
         <p id="blank-instruction" class="blank-instruction" hidden>Fill in the blank in the trail name below</p>
