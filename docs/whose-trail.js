@@ -750,7 +750,7 @@ const WHOSE_TRAILS = [
     "year": 2025,
     "season": "Winter",
     "seasonTitle": "Wintermas",
-    "answer": "Edgar Allan Crow"
+    "answer": "Halloway"
   },
   {
     "id": "2025-winter-2",
@@ -846,7 +846,6 @@ const LEAD_NAMES = [
   "Copper",
   "Datchery",
   "Dr Winter",
-  "Edgar Allan Crow",
   "Giffard",
   "Halloway",
   "Hogwood",

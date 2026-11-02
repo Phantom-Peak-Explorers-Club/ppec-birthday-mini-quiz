@@ -14,7 +14,7 @@ const game = process.argv[2] || 'catchphrase';
 const names = {
   anagrams: 'Littlefield’s Letters', catchphrase: 'Peak-a-Boo', vowels: 'Vowel of Silence',
   trails: 'Trail and Error', platy: 'Save-A-Platy', blanks: 'Blankety Peak', lore: 'Lost in the Lore',
-  timeline: 'Fun With Blue Diamant'
+  timeline: 'Fun With Blue Diamant', lead: 'Whose Trail Is It Anyway?'
 };
 if (!names[game]) throw new Error(`Unknown game: ${game}`);
 

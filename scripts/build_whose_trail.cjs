@@ -7,7 +7,7 @@ const trails = JSON.parse(fs.readFileSync(path.join(root, 'source', 'trails.json
 // mainCharacter alone is not sufficient: some archive records change hands.
 const reviewedIds = JSON.parse(fs.readFileSync(path.join(root, 'source', 'whose-trail-reviewed.json'), 'utf8'));
 const byId = new Map(trails.map(trail => [trail.id, trail]));
-const leadAliases = {Platman: 'Rexford'};
+const leadAliases = {Platman: 'Rexford', 'Edgar Allan Crow': 'Halloway'};
 const leadCorrections = {'2025-autumn-2': 'Lovehart'};
 const questions = reviewedIds.map(id => {
   const {title, year, season, seasonTitle, mainCharacter} = byId.get(id) || {};

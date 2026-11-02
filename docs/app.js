@@ -158,7 +158,7 @@ const GAME_THEMES={
   blanks:{accent:'#b9ecff',dark:'#255576',light:'#f3fcff',shareBg:'#75b4d0',shareLift:.12},
   lore:{accent:'#ff6eb5',dark:'#5d174a',light:'#ffe2f2',shareBg:'#9c266c'},
   timeline:{accent:'#6f8ff3',dark:'#0a1e46',light:'#e7eeff',shareBg:'#1a3a82'},
-  lead:{accent:'#6cf0dc',dark:'#103e3f',light:'#dffff7',shareBg:'#12635f'}
+  lead:{accent:'#39ddb8',dark:'#0b4244',light:'#dcfff3',shareBg:'#0b6157'}
 };
 function shuffle(items){const out=[...items];for(let i=out.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[out[i],out[j]]=[out[j],out[i]]}return out}
 function timelineRelation(anchor,candidate){return candidate.rank<anchor.rank?'Before':candidate.rank>anchor.rank?'After':'Same Season'}
@@ -350,7 +350,7 @@ function show(id,updateHistory=true){
   if(updateHistory&&previous!==id&&window.history?.pushState)window.history.pushState({ppecScreen:id,runId:state.runId},'',`#${id}`);
   window.scrollTo({top:0,behavior:'instant'});
 }
-function gameName(){return state.game==='anagrams'?'Littlefield’s Letters':state.game==='vowels'?'Vowel of Silence':state.game==='trails'?'Trail and Error':state.game==='platy'?'Save-A-Platy':state.game==='blanks'?'Blankety Peak':state.game==='lore'?'Lost in the Lore':state.game==='timeline'?'Fun With Blue Diamant':state.game==='lead'?'Whose Trail Is It?':'Peak-a-Boo'}
+function gameName(){return state.game==='anagrams'?'Littlefield’s Letters':state.game==='vowels'?'Vowel of Silence':state.game==='trails'?'Trail and Error':state.game==='platy'?'Save-A-Platy':state.game==='blanks'?'Blankety Peak':state.game==='lore'?'Lost in the Lore':state.game==='timeline'?'Fun With Blue Diamant':state.game==='lead'?'Whose Trail Is It Anyway?':'Peak-a-Boo'}
 function modeName(){return state.mode==='quiz'?'Quiz Round':'Unlimited'}
 function clearTutorialSpotlight(){
   if(state.tutorialTarget)$(state.tutorialTarget).classList.remove('tutorial-spotlight');
@@ -605,7 +605,7 @@ function render(){
   $('progress-fill').style.width=`${index/questions.length*100}%`;
   $('question-kind').textContent=game==='anagrams'?'UNSCRAMBLE THIS':game==='vowels'?'RESTORE THE VOWELS':game==='trails'?'IDENTIFY THE TRAIL':game==='platy'?'SAVE THE PLATYPUSES':game==='blanks'?'COMPLETE THE TRAIL TITLE':game==='lore'?'PICK THE MISSING WORD':game==='timeline'?'PLACE THE NEXT TRAIL IN TIME':game==='lead'?'WHO NEEDED HELP?':'NAME THE PICTURE CLUE';
   $('game-title').textContent=gameName();
-  $('game-logo').src=`./assets/game-logos/${({anagrams:'anagrams',catchphrase:'catchphrase',vowels:'missing-vowels',trails:'what-trail',platy:'save-a-platy',blanks:'blankety-peak',lore:'lost-in-the-lore',timeline:'fun-with-blue-diamant',lead:'whose-trail'})[game]}.png?v=4`;
+  $('game-logo').src=`./assets/game-logos/${({anagrams:'anagrams',catchphrase:'catchphrase',vowels:'missing-vowels',trails:'what-trail',platy:'save-a-platy',blanks:'blankety-peak',lore:'lost-in-the-lore',timeline:'fun-with-blue-diamant',lead:'whose-trail-it-anyway'})[game]}.png?v=4`;
   $('game-console').dataset.game=game;
   $('game-console').dataset.mode=mode;
   $('tutorial-coach').hidden=mode!=='tutorial';
@@ -884,7 +884,7 @@ async function drawShareCard(){
   const canvas=document.createElement('canvas');canvas.width=1080;canvas.height=1080;
   const c=canvas.getContext('2d');
   const theme=GAME_THEMES[state.game]||GAME_THEMES.anagrams;
-  const logoName=({anagrams:'anagrams',catchphrase:'catchphrase',vowels:'missing-vowels',trails:'what-trail',platy:'save-a-platy',blanks:'blankety-peak',lore:'lost-in-the-lore',timeline:'fun-with-blue-diamant',lead:'whose-trail'})[state.game]||'anagrams';
+  const logoName=({anagrams:'anagrams',catchphrase:'catchphrase',vowels:'missing-vowels',trails:'what-trail',platy:'save-a-platy',blanks:'blankety-peak',lore:'lost-in-the-lore',timeline:'fun-with-blue-diamant',lead:'whose-trail-it-anyway'})[state.game]||'anagrams';
   const frame=new Image();frame.src='./assets/share-card-master.jpg';
   const logo=new Image();logo.src=`./assets/game-logos/${logoName}.png?v=4`;
   const avatar=new Image();avatar.src='./assets/jonabot-avatar.png';

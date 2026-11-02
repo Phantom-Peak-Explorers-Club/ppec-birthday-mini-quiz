@@ -28,6 +28,22 @@ test('PPEC Quiz is the installed app name and the banner names Jonabot Jr', () =
   assert.match(app.evaluate('shareText.toString()'), /PPEC Quiz/);
 });
 
+test('portal games follow their colour order and the new PNG logo is cached', () => {
+  const root = path.join(__dirname, '..');
+  const html = fs.readFileSync(path.join(root, 'docs', 'index.html'), 'utf8');
+  const sw = fs.readFileSync(path.join(root, 'docs', 'sw.js'), 'utf8');
+  const classes = [...html.matchAll(/<article class="game-card ([^"]+)">/g)].map(match => match[1]);
+  assert.deepEqual(classes, [
+    'picture-game-card', 'trail-game-card', 'anagram-game-card',
+    'platy-game-card', 'lead-game-card', 'blanks-game-card',
+    'timeline-game-card', 'vowel-game-card', 'lore-game-card'
+  ]);
+  assert.match(html, /Whose Trail Is It Anyway\?/);
+  assert.match(html, /game-logos\/whose-trail-it-anyway\.png/);
+  assert.match(sw, /whose-trail-it-anyway/);
+  assert.ok(fs.existsSync(path.join(root, 'docs', 'assets', 'game-logos', 'whose-trail-it-anyway.png')));
+});
+
 function makeElement(dataset = {}) {
   return {
     dataset, hidden: false, value: '', textContent: '', style: {}, children: [],
@@ -813,11 +829,14 @@ test('lead game uses reviewed start-and-end trails and every available lead name
   assert.equal(names.includes('Madame Mechanica'), false);
   assert.equal(names.includes('Platman'), false);
   assert.equal(names.includes('Sherlock Bones'), false);
+  assert.equal(names.includes('Edgar Allan Crow'), false);
   assert.equal(pool.find(q => q.title === 'A Knight’s Honour').answer, 'Rexford');
   assert.equal(pool.find(q => q.title === 'A Murder Most Fowl').answer, 'Lovehart');
+  assert.equal(pool.find(q => q.title === 'The Bright Place').answer, 'Halloway');
   assert.equal(pool.some(q => q.title === 'The Mayor\'s Watch'), false);
   assert.equal(pool.some(q => q.title === 'Trick Or Treat'), false);
   app.buttons[16].click();
+  assert.equal(app.get('game-title').textContent, 'Whose Trail Is It Anyway?');
   assert.equal(app.state().questions.length, 10);
   assert.equal(app.get('lead-answer-form').hidden, false);
   assert.equal(app.get('answer-form').hidden, true);
