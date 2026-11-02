@@ -475,6 +475,7 @@ footer{text-align:center;padding:0 0 25px;color:#81758b;font:600 10px 'IBM Plex 
 .timeline-feedback-kicker{margin:0 0 7px;color:#b7c9ff;font:700 11px 'IBM Plex Mono',monospace;letter-spacing:.13em}
 .timeline-feedback-panel h2{margin:0;color:#fff5db;font:700 clamp(29px,4vw,42px)/1.15 Fraunces,Georgia,serif}
 .timeline-feedback-modal.is-correct h2{color:#7ff0a7;text-shadow:0 0 18px #45ed8a66}
+.timeline-feedback-modal.is-correct .timeline-feedback-answer,.timeline-feedback-modal.is-correct .timeline-feedback-seasons b{color:#7ff0a7}
 .timeline-feedback-answer{display:block;margin:10px 0 18px;color:#b7c9ff;font:700 clamp(36px,6vw,55px)/1 Fraunces,Georgia,serif}
 .timeline-feedback-seasons{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px;text-align:left}
 .timeline-feedback-seasons p{display:grid;align-content:start;gap:7px;min-width:0;margin:0;padding:13px;border:1px solid #7e9bdf;border-radius:7px;background:#081839aa}
@@ -485,6 +486,7 @@ footer{text-align:center;padding:0 0 25px;color:#81758b;font:600 10px 'IBM Plex 
 .timeline-feedback-modal.is-incorrect .timeline-feedback-panel:before{content:'';position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,#ff668e14 0 2px,transparent 2px 7px);mix-blend-mode:screen}
 .timeline-feedback-modal.is-incorrect h2{color:#ff7695;text-shadow:-2px 0 #41e3ff,2px 0 #ff3d7f}
 .timeline-feedback-modal.is-incorrect .timeline-feedback-answer{color:#ffb7c9;text-shadow:-2px 0 #41e3ff,2px 0 #ff3d7f}
+.timeline-feedback-modal.is-incorrect .timeline-feedback-seasons b{color:#ff9cb2}
 @keyframes timeline-glitch{0%,88%,100%{transform:translate(0)}89%{transform:translate(-3px,1px)}90%{transform:translate(3px,-1px)}91%{transform:translate(-1px,2px)}92%{transform:translate(0)}}
 @media(max-width:640px){.timeline-stage{grid-template-columns:1fr;gap:5px}.timeline-trail{min-height:75px;padding:10px;gap:5px}.timeline-anchor strong{font-size:22px}.timeline-candidate strong{font-size:20px}.timeline-prompt{font-size:12px}.timeline-crystal{font-size:23px;line-height:1}.game-console[data-game="timeline"] .clue{min-height:0;padding:12px}.timeline-choices{gap:5px;margin-top:9px}.timeline-choice{display:grid;justify-items:center;align-content:center;min-width:0;min-height:57px;padding:5px 2px;gap:2px;text-align:center;font-size:12px}.timeline-choice .choice-letter{width:23px;height:23px;font-size:13px}}
 @media(max-width:640px){.timeline-feedback-panel{padding:18px}.timeline-feedback-seasons{grid-template-columns:1fr;gap:7px}.timeline-feedback-seasons p{padding:10px}.timeline-feedback-seasons b{font-size:15px}}
