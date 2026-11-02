@@ -71,12 +71,14 @@ function setup() {
     makeElement({ game: 'timeline', mode: 'quiz' }),
     makeElement({ game: 'timeline', mode: 'unlimited' })
   ];
+  const tutorials = ['anagrams', 'catchphrase', 'vowels', 'trails', 'platy', 'blanks', 'lore', 'timeline']
+    .map(game => makeElement({ tutorial: game }));
   const screens = ['home', 'game', 'results'].map(get);
   const context = vm.createContext({
     document: {
       addEventListener(type, handler) { listeners[`document-${type}`] = handler; },
       getElementById: get,
-      querySelectorAll: selector => selector === '.screen' ? screens : buttons,
+      querySelectorAll: selector => selector === '.screen' ? screens : selector === '[data-tutorial]' ? tutorials : buttons,
       createElement: tag => {
         if (tag === 'canvas') return {
           width: 0, height: 0,
@@ -113,7 +115,7 @@ function setup() {
   vm.runInContext(source, context);
   const state = () => vm.runInContext('state', context);
   const submit = answer => { get('answer-input').value = answer; get('answer-form').listeners.submit({ preventDefault() {} }); };
-  return { get, buttons, state, submit, canvasText, canvasImages, canvasFills, objectUrls, wasDownloaded: () => downloadClicked,
+  return { get, buttons, tutorials, state, submit, canvasText, canvasImages, canvasFills, objectUrls, wasDownloaded: () => downloadClicked,
     keydown: key => listeners['document-keydown']?.({key,repeat:false,altKey:false,ctrlKey:false,metaKey:false}),
     rerender: () => vm.runInContext('render()', context),
     startTimed: index => { buttons[index].click(); vm.runInContext('finishCountdown()', context); },
@@ -792,4 +794,102 @@ test('Blue diamant Unlimited ends on the first incorrect placement', () => {
   app.get('timeline-next-button').click();
   assert.equal(app.get('share-score').textContent, '0 right');
   assert.equal(app.get('share-detail').textContent, '0 correct · 1 question completed');
+});
+
+test('Every game has a guided practice path that ends without scoring', () => {
+  const html = fs.readFileSync(path.join(__dirname, '..', 'docs', 'index.html'), 'utf8');
+  assert.equal((html.match(/data-tutorial="/g) || []).length, 8);
+  const cases = [
+    ['anagrams', 0, app => {
+      app.get('tutorial-next').click();
+      app.get('answer-input').value = 'PLATYPUS'; app.get('answer-input').listeners.input();
+      app.submit('PLATYPUS');
+    }],
+    ['catchphrase', 1, app => {
+      app.get('tutorial-next').click();
+      app.state().tileButtons[0].click();
+      assert.equal(app.state().openedTiles, 1);
+      app.get('answer-input').value = 'Copper'; app.get('answer-input').listeners.input();
+      app.submit('Copper');
+    }],
+    ['vowels', 2, app => {
+      app.get('tutorial-next').click();
+      app.get('answer-input').value = 'COPPER'; app.get('answer-input').listeners.input();
+      app.submit('COPPER');
+    }],
+    ['trails', 3, app => {
+      app.get('tutorial-next').click(); app.get('tutorial-next').click();
+      const q = app.state().questions[0];
+      app.get('trail-choices').children.find(button => button.dataset.answer === q.answer).click();
+    }],
+    ['platy', 4, app => {
+      app.get('tutorial-next').click();
+      const keys = app.get('platy-keyboard');
+      keys.children.find(button => button.textContent === 'W').click();
+      app.get('tutorial-next').click();
+      for (const letter of 'ILDCAR') keys.children.find(button => button.textContent === letter).click();
+    }],
+    ['blanks', 5, app => {
+      app.get('tutorial-next').click();
+      app.get('answer-input').value = 'Card'; app.get('answer-input').listeners.input();
+      app.submit('Card');
+    }],
+    ['lore', 6, app => {
+      app.get('tutorial-next').click(); app.get('tutorial-next').click();
+      const q = app.state().questions[0];
+      app.get('lore-choices').children.find(button => button.dataset.answer === q.answer).click();
+    }],
+    ['timeline', 7, app => {
+      app.get('tutorial-next').click(); app.get('tutorial-next').click();
+      app.get('timeline-choices').children.find(button => button.dataset.answer === 'Same Season').click();
+      assert.equal(app.state().index, 1);
+      assert.equal(app.state().questions[1].anchor.title, app.state().questions[0].candidate.title);
+      app.get('tutorial-next').click();
+      app.get('timeline-choices').children.find(button => button.dataset.answer === 'After').click();
+    }]
+  ];
+  for (const [game, index, play] of cases) {
+    const app = setup();
+    app.tutorials[index].click();
+    assert.equal(app.state().game, game);
+    assert.equal(app.state().mode, 'tutorial');
+    assert.equal(app.get('score-label').textContent, 'NO SCORE');
+    assert.equal(app.state().countingDown, false);
+    assert.equal(app.get('tutorial-coach').hidden, false);
+    play(app);
+    assert.equal(app.get('tutorial-finish').hidden, false, game);
+    assert.match(app.get('tutorial-heading').textContent, /You survived my tutorial/, game);
+    if (game === 'timeline') assert.match(app.get('tutorial-text').textContent, /so After was right/);
+    if (game === 'catchphrase') assert.match(app.get('tutorial-text').textContent, /That picture clue was Copper/);
+    assert.equal(app.state().score, 0, game);
+    assert.equal(app.state().completed, 0, game);
+    app.get('tutorial-start-quiz').click();
+    assert.equal(app.state().mode, 'quiz', game);
+    assert.equal(app.state().score, 0, game);
+  }
+});
+
+test('Tutorial wrong answers give a hint and let the player retry', () => {
+  const app = setup();
+  app.tutorials[3].click();
+  app.get('tutorial-next').click(); app.get('tutorial-next').click();
+  const q = app.state().questions[0];
+  app.get('trail-choices').children.find(button => button.dataset.answer !== q.answer).click();
+  assert.equal(app.state().answered, false);
+  assert.match(app.get('tutorial-text').textContent, /I will help: the practice answer is Lofty Ambitions/);
+  app.get('trail-choices').children.find(button => button.dataset.answer === q.answer).click();
+  assert.equal(app.get('tutorial-finish').hidden, false);
+});
+
+test('Save-A-Platy tutorial restarts practice after six missed letters', () => {
+  const app = setup();
+  app.tutorials[4].click();
+  app.get('tutorial-next').click();
+  app.get('platy-keyboard').children.find(button => button.textContent === 'B').click();
+  app.get('tutorial-next').click();
+  for (const letter of 'EFGHJ') app.get('platy-keyboard').children.find(button => button.textContent === letter).click();
+  assert.equal(app.state().platyMisses, 0);
+  assert.equal(app.state().platyGuessed.size, 0);
+  assert.equal(app.state().answered, false);
+  assert.match(app.get('tutorial-text').textContent, /recruited six more/);
 });

@@ -491,3 +491,21 @@ footer{text-align:center;padding:0 0 25px;color:#81758b;font:600 10px 'IBM Plex 
 @media(max-width:640px){.timeline-stage{grid-template-columns:1fr;gap:5px}.timeline-trail{min-height:75px;padding:10px;gap:5px}.timeline-anchor strong{font-size:22px}.timeline-candidate strong{font-size:20px}.timeline-prompt{font-size:12px}.timeline-crystal{font-size:23px;line-height:1}.game-console[data-game="timeline"] .clue{min-height:0;padding:12px}.timeline-choices{gap:5px;margin-top:9px}.timeline-choice{display:grid;justify-items:center;align-content:center;min-width:0;min-height:57px;padding:5px 2px;gap:2px;text-align:center;font-size:12px}.timeline-choice .choice-letter{width:23px;height:23px;font-size:13px}}
 @media(max-width:640px){.timeline-feedback-panel{padding:18px}.timeline-feedback-seasons{grid-template-columns:1fr;gap:7px}.timeline-feedback-seasons p{padding:10px}.timeline-feedback-seasons b{font-size:15px}}
 @media(prefers-reduced-motion:reduce){.timeline-feedback-modal.is-incorrect .timeline-feedback-panel{animation:none}}
+.game-grid .tutorial-button{align-self:flex-start;margin-top:9px;padding:4px 0;border:0;background:none;color:var(--game-accent);font:700 11px 'IBM Plex Mono',monospace;text-align:left;cursor:pointer}
+.game-grid .tutorial-button:hover,.game-grid .tutorial-button:focus-visible{text-decoration:underline;text-underline-offset:3px}
+.game-console[data-mode="tutorial"] .timer-instrument,.game-console[data-mode="tutorial"] .timer-track{display:none}
+.game-console[data-mode="tutorial"] .question-meta{grid-template-columns:1fr 1fr}
+.tutorial-coach{margin:0 0 15px;padding:16px 18px;border:2px solid var(--game-accent);border-radius:9px;background:linear-gradient(120deg,var(--game-dark),#18162c);box-shadow:0 8px 24px #0006;color:#f4ecdf}
+.tutorial-coach[hidden],.tutorial-next[hidden],.tutorial-finish[hidden]{display:none}
+.tutorial-host{display:flex;align-items:center;gap:12px}
+.tutorial-host img{width:54px;height:54px;flex:none;object-fit:contain;filter:drop-shadow(0 3px 6px #0008)}
+.tutorial-kicker{display:block;margin-bottom:6px;color:var(--game-accent);font:700 10px 'IBM Plex Mono',monospace;letter-spacing:.12em}
+.tutorial-coach strong{display:block;color:#fff3d8;font:700 22px/1.2 Fraunces,Georgia,serif}
+.tutorial-coach p{margin:9px 0 0;font-size:14px;line-height:1.5}
+.tutorial-next{margin-top:12px;padding:8px 0;border:0;background:none;color:var(--game-accent);font:700 12px 'IBM Plex Mono',monospace;cursor:pointer}
+.tutorial-next:hover,.tutorial-next:focus-visible{text-decoration:underline;text-underline-offset:3px}
+.tutorial-finish{display:flex;flex-wrap:wrap;gap:9px;margin-top:15px}
+.tutorial-finish .primary-button,.tutorial-finish .text-button{min-height:40px}
+.tutorial-coach.complete{border-color:#8be3a3;background:linear-gradient(120deg,#174536,#18243a)}
+.game-console .tutorial-spotlight{outline:3px solid var(--game-accent);outline-offset:5px;box-shadow:0 0 18px var(--game-accent)}
+@media(max-width:640px){.tutorial-coach{padding:13px}.tutorial-host img{width:45px;height:45px}.tutorial-coach strong{font-size:19px}.tutorial-coach p{font-size:13px}.tutorial-finish .primary-button,.tutorial-finish .text-button{flex:1}}

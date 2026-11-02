@@ -2,6 +2,8 @@
 
 A static birthday quiz with eight games: Littlefield’s Letters, Peak-a-Boo, Vowel of Silence, Trail and Error, Save-A-Platy, Blankety Peak, Lost in the Lore, and Fun With Blue Diamant. The portal and game screen are styled as a compact game console featuring Jonabot Jr.
 
+Every game card has a guided tutorial. Tutorials use that game’s real controls and an archive-backed practice clue, highlight one step at a time, offer hints and retries, and explain the scoring rules before launching Quiz Round or Unlimited. Practice has no timer, score, results card, or share card. Fun With Blue Diamant has two practice placements to demonstrate how the offered trail becomes the next base.
+
 Each game offers a ten-question Quiz Round or Unlimited. Unlimited ends at the first incorrect or revealed answer, or when the question pool runs out. A cleared pool displays “More questions coming soon.” Littlefield’s Letters and Vowel of Silence start with a 3–2–1–Go countdown, then give 30 seconds per clue. The other six games are untimed. In the picture game, players choose squares from a 6×4 cover and earn `24 - panels opened` points for a correct answer. It accepts punctuation/spacing variants, a few natural short forms, and minor typing errors. The word games require the intended answer.
 
 Anagram answers animate the scrambled letters into the solved order, and Vowel of Silence drops the restored vowels into place, including after a wrong guess. Results show the game, mode, score, questions completed, and elapsed time. Players can share a square 1080 × 1080 PNG card or copy a text result. Each game has its own bold colour on the portal, console, result preview, and exported card.

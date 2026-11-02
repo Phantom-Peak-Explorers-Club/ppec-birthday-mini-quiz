@@ -12,12 +12,12 @@
   <link rel="icon" type="image/png" href="./assets/app-icon-v3-192.png">
   <link rel="apple-touch-icon" href="./assets/app-icon-v3-180.png">
   <link rel="preload" href="./assets/fonts/fraunces-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="./style.css?v=35">
+  <link rel="stylesheet" href="./style.css?v=36">
   <script src="./what-trail.js" defer></script>
   <script src="./fill-blanks.js" defer></script>
   <script src="./lore-gap.js?v=3" defer></script>
   <script src="./timeline.js" defer></script>
-  <script src="./app.js?v=46" defer></script>
+  <script src="./app.js?v=47" defer></script>
 </head>
 <body>
   <main class="shell">
@@ -38,35 +38,35 @@
         <div class="game-grid">
         <article class="game-card anagram-game-card">
           <div class="card-icon letters-icon"><img src="./assets/game-logos/anagrams.png?v=4" alt="" width="512" height="512"></div>
-          <div class="card-body"><h2>Littlefield’s Letters</h2><p>Littlefield scrambled the Peak’s names and phrases. Again. Put them back in order.</p><div class="mode-buttons"><button class="play-button" type="button" data-game="anagrams" data-mode="quiz">Quiz Round <span aria-hidden="true">↗</span></button><button class="play-button secondary" type="button" data-game="anagrams" data-mode="unlimited">Unlimited <span aria-hidden="true">∞</span></button></div></div>
+          <div class="card-body"><h2>Littlefield’s Letters</h2><p>Littlefield scrambled the Peak’s names and phrases. Again. Put them back in order.</p><div class="mode-buttons"><button class="play-button" type="button" data-game="anagrams" data-mode="quiz">Quiz Round <span aria-hidden="true">↗</span></button><button class="play-button secondary" type="button" data-game="anagrams" data-mode="unlimited">Unlimited <span aria-hidden="true">∞</span></button></div><button class="tutorial-button" type="button" data-tutorial="anagrams">Guided tutorial →</button></div>
         </article>
         <article class="game-card picture-game-card">
           <div class="card-icon picture-icon"><img src="./assets/game-logos/catchphrase.png?v=4" alt="" width="512" height="512"></div>
-          <div class="card-body"><h2>Peak-a-Boo</h2><p>Open the picture panels and say what you see...my optical sensors are on a tea break.</p><div class="mode-buttons"><button class="play-button" type="button" data-game="catchphrase" data-mode="quiz">Quiz Round <span aria-hidden="true">↗</span></button><button class="play-button secondary" type="button" data-game="catchphrase" data-mode="unlimited">Unlimited <span aria-hidden="true">∞</span></button></div></div>
+          <div class="card-body"><h2>Peak-a-Boo</h2><p>Open the picture panels and say what you see...my optical sensors are on a tea break.</p><div class="mode-buttons"><button class="play-button" type="button" data-game="catchphrase" data-mode="quiz">Quiz Round <span aria-hidden="true">↗</span></button><button class="play-button secondary" type="button" data-game="catchphrase" data-mode="unlimited">Unlimited <span aria-hidden="true">∞</span></button></div><button class="tutorial-button" type="button" data-tutorial="catchphrase">Guided tutorial →</button></div>
         </article>
         <article class="game-card vowel-game-card">
           <div class="card-icon vowels-icon"><img src="./assets/game-logos/missing-vowels.png?v=4" alt="" width="512" height="512"></div>
-          <div class="card-body"><h2>Vowel of Silence</h2><p>The vowels have gone missing. Put them back before the consonants complain.</p><div class="mode-buttons"><button class="play-button" type="button" data-game="vowels" data-mode="quiz">Quiz Round <span aria-hidden="true">↗</span></button><button class="play-button secondary" type="button" data-game="vowels" data-mode="unlimited">Unlimited <span aria-hidden="true">∞</span></button></div><p id="vowels-soon" class="soon-note" hidden>Question list coming soon</p></div>
+          <div class="card-body"><h2>Vowel of Silence</h2><p>The vowels have gone missing. Put them back before the consonants complain.</p><div class="mode-buttons"><button class="play-button" type="button" data-game="vowels" data-mode="quiz">Quiz Round <span aria-hidden="true">↗</span></button><button class="play-button secondary" type="button" data-game="vowels" data-mode="unlimited">Unlimited <span aria-hidden="true">∞</span></button></div><button class="tutorial-button" type="button" data-tutorial="vowels">Guided tutorial →</button><p id="vowels-soon" class="soon-note" hidden>Question list coming soon</p></div>
         </article>
         <article class="game-card trail-game-card">
           <div class="card-icon trail-icon"><img src="./assets/game-logos/what-trail.png?v=4" alt="" width="512" height="512"></div>
-          <div class="card-body"><h2>Trail and Error</h2><p>The trails lost their names! Find the right title before Perigate files a complaint.</p><div class="mode-buttons"><button class="play-button" type="button" data-game="trails" data-mode="quiz">Quiz Round <span aria-hidden="true">↗</span></button><button class="play-button secondary" type="button" data-game="trails" data-mode="unlimited">Unlimited <span aria-hidden="true">∞</span></button></div></div>
+          <div class="card-body"><h2>Trail and Error</h2><p>The trails lost their names! Find the right title before Perigate files a complaint.</p><div class="mode-buttons"><button class="play-button" type="button" data-game="trails" data-mode="quiz">Quiz Round <span aria-hidden="true">↗</span></button><button class="play-button secondary" type="button" data-game="trails" data-mode="unlimited">Unlimited <span aria-hidden="true">∞</span></button></div><button class="tutorial-button" type="button" data-tutorial="trails">Guided tutorial →</button></div>
         </article>
         <article class="game-card platy-game-card">
           <div class="card-icon platy-icon"><img src="./assets/game-logos/save-a-platy.png?v=4" alt="" width="512" height="512"></div>
-          <div class="card-body"><h2>Save-A-Platy</h2><p>Hangman has death. We have six cuddly platypuses. A clear triumph of game design. Guess the trail title, letter by letter.</p><div class="mode-buttons"><button class="play-button" type="button" data-game="platy" data-mode="quiz">Quiz Round <span aria-hidden="true">↗</span></button><button class="play-button secondary" type="button" data-game="platy" data-mode="unlimited">Unlimited <span aria-hidden="true">∞</span></button></div></div>
+          <div class="card-body"><h2>Save-A-Platy</h2><p>Hangman has death. We have six cuddly platypuses. A clear triumph of game design. Guess the trail title, letter by letter.</p><div class="mode-buttons"><button class="play-button" type="button" data-game="platy" data-mode="quiz">Quiz Round <span aria-hidden="true">↗</span></button><button class="play-button secondary" type="button" data-game="platy" data-mode="unlimited">Unlimited <span aria-hidden="true">∞</span></button></div><button class="tutorial-button" type="button" data-tutorial="platy">Guided tutorial →</button></div>
         </article>
         <article class="game-card blanks-game-card">
           <div class="card-icon blanks-icon"><img src="./assets/game-logos/blankety-peak.png?v=4" alt="" width="512" height="512"></div>
-          <div class="card-body"><h2>Blankety Peak</h2><p>A word has escaped from a trail title. Put it back before JONACO notices.</p><div class="mode-buttons"><button class="play-button" type="button" data-game="blanks" data-mode="quiz">Quiz Round <span aria-hidden="true">↗</span></button><button class="play-button secondary" type="button" data-game="blanks" data-mode="unlimited">Unlimited <span aria-hidden="true">∞</span></button></div></div>
+          <div class="card-body"><h2>Blankety Peak</h2><p>A word has escaped from a trail title. Put it back before JONACO notices.</p><div class="mode-buttons"><button class="play-button" type="button" data-game="blanks" data-mode="quiz">Quiz Round <span aria-hidden="true">↗</span></button><button class="play-button secondary" type="button" data-game="blanks" data-mode="unlimited">Unlimited <span aria-hidden="true">∞</span></button></div><button class="tutorial-button" type="button" data-tutorial="blanks">Guided tutorial →</button></div>
         </article>
         <article class="game-card lore-game-card">
           <div class="card-icon lore-icon"><img src="./assets/game-logos/lost-in-the-lore.png?v=4" alt="" width="512" height="512"></div>
-          <div class="card-body"><h2>Lost in the Lore</h2><p>A name has vanished from a trail story. Pick the right one. I deny everything.</p><div class="mode-buttons"><button class="play-button" type="button" data-game="lore" data-mode="quiz">Quiz Round <span aria-hidden="true">↗</span></button><button class="play-button secondary" type="button" data-game="lore" data-mode="unlimited">Unlimited <span aria-hidden="true">∞</span></button></div></div>
+          <div class="card-body"><h2>Lost in the Lore</h2><p>A name has vanished from a trail story. Pick the right one. I deny everything.</p><div class="mode-buttons"><button class="play-button" type="button" data-game="lore" data-mode="quiz">Quiz Round <span aria-hidden="true">↗</span></button><button class="play-button secondary" type="button" data-game="lore" data-mode="unlimited">Unlimited <span aria-hidden="true">∞</span></button></div><button class="tutorial-button" type="button" data-tutorial="lore">Guided tutorial →</button></div>
         </article>
         <article class="game-card timeline-game-card">
           <div class="card-icon timeline-icon"><img src="./assets/game-logos/fun-with-blue-diamant.png" alt="" width="512" height="512"></div>
-          <div class="card-body"><h2>Fun With Blue Diamant</h2><p>My timeline is doing backflips. Place each trail before, after or in the same season as the last.</p><div class="mode-buttons"><button class="play-button" type="button" data-game="timeline" data-mode="quiz">Quiz Round <span aria-hidden="true">↗</span></button><button class="play-button secondary" type="button" data-game="timeline" data-mode="unlimited">Unlimited <span aria-hidden="true">∞</span></button></div></div>
+          <div class="card-body"><h2>Fun With Blue Diamant</h2><p>My timeline is doing backflips. Place each trail before, after or in the same season as the last.</p><div class="mode-buttons"><button class="play-button" type="button" data-game="timeline" data-mode="quiz">Quiz Round <span aria-hidden="true">↗</span></button><button class="play-button secondary" type="button" data-game="timeline" data-mode="unlimited">Unlimited <span aria-hidden="true">∞</span></button></div><button class="tutorial-button" type="button" data-tutorial="timeline">Guided tutorial →</button></div>
         </article>
         </div>
       </div>
@@ -80,6 +80,12 @@
       <div class="progress-line" id="progress-line"><span id="progress-fill"></span></div>
       <div class="question-meta"><span class="instrument"><small>CLUE REGISTER</small><b id="question-count"></b></span><span class="instrument"><small>SCORE REGISTER</small><b id="score-label"></b></span><span class="instrument timer-instrument"><small>TIME REMAINING</small><b id="timer-label" role="timer" aria-live="off">30s</b></span></div>
       <div class="timer-track" aria-hidden="true"><span id="timer-fill"></span></div>
+      <div id="tutorial-coach" class="tutorial-coach" hidden>
+        <div class="tutorial-host"><img src="./assets/jonabot-avatar.png" alt="Jonabot Jr"><div><span class="tutorial-kicker">JONABOT JR / PRACTICE RUN</span><strong id="tutorial-heading">Let’s try one together</strong></div></div>
+        <p id="tutorial-text" aria-live="polite"></p>
+        <button id="tutorial-next" class="tutorial-next" type="button">Continue with Jonabot →</button>
+        <div id="tutorial-finish" class="tutorial-finish" hidden><button id="tutorial-start-quiz" class="primary-button" type="button">Start Quiz Round →</button><button id="tutorial-start-unlimited" class="text-button" type="button">Play Unlimited ∞</button></div>
+      </div>
       <div class="question-card" id="question-card">
         <p class="eyebrow" id="question-kind"></p>
         <div class="game-title-row"><img id="game-logo" src="./assets/game-logos/anagrams.png?v=4" alt="" width="512" height="512"><h1 id="game-title"></h1></div>
