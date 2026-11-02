@@ -7,6 +7,7 @@ const vm = require('node:vm');
 const source = fs.readFileSync(path.join(__dirname, '..', 'docs', 'what-trail.js'), 'utf8') + '\n' +
   fs.readFileSync(path.join(__dirname, '..', 'docs', 'fill-blanks.js'), 'utf8') + '\n' +
   fs.readFileSync(path.join(__dirname, '..', 'docs', 'lore-gap.js'), 'utf8') + '\n' +
+  fs.readFileSync(path.join(__dirname, '..', 'docs', 'timeline.js'), 'utf8') + '\n' +
   fs.readFileSync(path.join(__dirname, '..', 'docs', 'app.js'), 'utf8');
 
 test('PPEC Quiz is the installed app name and the banner names Jonabot Jr', () => {
@@ -66,7 +67,9 @@ function setup() {
     makeElement({ game: 'blanks', mode: 'quiz' }),
     makeElement({ game: 'blanks', mode: 'unlimited' }),
     makeElement({ game: 'lore', mode: 'quiz' }),
-    makeElement({ game: 'lore', mode: 'unlimited' })
+    makeElement({ game: 'lore', mode: 'unlimited' }),
+    makeElement({ game: 'timeline', mode: 'quiz' }),
+    makeElement({ game: 'timeline', mode: 'unlimited' })
   ];
   const screens = ['home', 'game', 'results'].map(get);
   const context = vm.createContext({
@@ -192,7 +195,7 @@ test('Letter and trail share cards use correct-answer scores', async () => {
 
 test('Each share card shows its game art between the dividers and a Jonabot avatar', async () => {
   const backgrounds = new Set();
-  for (const game of ['anagrams', 'catchphrase', 'vowels', 'trails', 'platy', 'blanks', 'lore']) {
+  for (const game of ['anagrams', 'catchphrase', 'vowels', 'trails', 'platy', 'blanks', 'lore', 'timeline']) {
     const app = setup();
     app.evaluate(`Object.assign(state,{game:'${game}',mode:'quiz',score:4,completed:10,elapsedMs:91000})`);
     await app.evaluate('drawShareCard()');
@@ -206,7 +209,7 @@ test('Each share card shows its game art between the dividers and a Jonabot avat
     assert.equal(background.color, app.evaluate(`GAME_THEMES.${game}.shareBg`), `${game} share colour differs from its theme`);
     backgrounds.add(background.color);
   }
-  assert.equal(backgrounds.size, 7, 'Every game needs its own share card background colour');
+  assert.equal(backgrounds.size, 8, 'Every game needs its own share card background colour');
 });
 
 test('Share card uses native file sharing when the browser supports it', async () => {
@@ -326,7 +329,7 @@ test('Timed games count down before accepting answers or starting the clock', ()
 test('Every game has a distinct colour and results use that game colour', () => {
   const app = setup();
   const themes = app.evaluate('GAME_THEMES');
-  assert.equal(new Set(Object.values(themes).map(theme => theme.accent)).size, 7);
+  assert.equal(new Set(Object.values(themes).map(theme => theme.accent)).size, 8);
   app.buttons[6].click();
   app.get('reveal-button').click();
   app.get('next-button').click();
@@ -724,4 +727,55 @@ test('Recent trail anagrams and guessable trail vowel clues match archived title
   assert.equal(app.evaluate('ACCESSIBLE_TRAIL_VOWELS.every(q=>q.year>=2024&&WHAT_TRAILS.some(trail=>trail.answer.toUpperCase()===q.answer))'), true);
   assert.equal(app.evaluate("vowelQuestions().some(q=>q.answer==='ACCESS DENIED'&&q.clue==='CCSS DND')"), true);
   assert.equal(app.evaluate("vowelQuestions().some(q=>q.answer==='NO STRINGS ATTACHED')"), true);
+});
+
+test('Blue diamant timeline chains trails and treats a season as one point in time', () => {
+  const app = setup();
+  app.buttons[14].click();
+  const questions = app.state().questions;
+  assert.equal(questions.length, 10);
+  assert.equal(app.get('game-title').textContent, 'Fun With Blue Diamant');
+  assert.equal(app.get('timeline-choices').children.length, 3);
+  assert.equal(app.get('answer-form').hidden, true);
+  assert.equal(app.get('clue').children[0].children[0].children[0].textContent, 'BASE TRAIL');
+  assert.match(app.get('clue').children[0].children[0].children[2].textContent, /\d{4}/);
+  assert.equal(app.get('clue').children[0].children[2].children[0].textContent, 'THIS TRAIL');
+  assert.equal(app.get('clue').children[0].children[2].children[2].textContent,
+    `Does this trail come before, after or during the same season as ${questions[0].anchor.title}?`);
+  for (let i = 0; i < questions.length; i++) {
+    const q = questions[i];
+    const expected = q.anchor.rank === q.candidate.rank ? 'Same Season' : q.anchor.rank > q.candidate.rank ? 'Before' : 'After';
+    assert.equal(q.answer, expected);
+    if (i) assert.equal(q.anchor.id, questions[i - 1].candidate.id);
+  }
+  assert.ok(questions.filter(q => q.answer === 'Same Season').length >= 2);
+  const first = questions[0];
+  app.get('timeline-choices').children.find(button => button.dataset.answer === first.answer).click();
+  assert.equal(app.state().score, 1);
+  assert.equal(app.get('next-button').hidden, false);
+  app.get('next-button').click();
+  assert.equal(app.state().index, 1);
+  assert.equal(app.get('clue').children[0].children[0].children[1].textContent, first.candidate.title);
+  for (let i = 1; i < questions.length; i++) {
+    app.get('timeline-choices').children.find(button => button.dataset.answer === questions[i].answer).click();
+    app.get('next-button').click();
+  }
+  assert.equal(app.state().score, 10);
+  assert.equal(app.get('share-game').textContent, 'Fun With Blue Diamant');
+  assert.equal(app.get('share-preview').dataset.game, 'timeline');
+  const trails = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'source', 'trails.json'), 'utf8'));
+  const dramatic = trails.find(trail => trail.title === 'The Dramatic Question');
+  assert.match(dramatic.searchText, /blue diamant controls time, red controls space/);
+});
+
+test('Blue diamant Unlimited ends on the first incorrect placement', () => {
+  const app = setup();
+  app.buttons[15].click();
+  const answer = app.state().questions[0].answer;
+  app.get('timeline-choices').children.find(button => button.dataset.answer !== answer).click();
+  assert.equal(app.state().completed, 1);
+  assert.equal(app.state().score, 0);
+  app.get('next-button').click();
+  assert.equal(app.get('share-score').textContent, '0 right');
+  assert.equal(app.get('share-detail').textContent, '0 correct · 1 question completed');
 });

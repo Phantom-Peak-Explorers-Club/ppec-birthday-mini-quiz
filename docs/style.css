@@ -424,6 +424,7 @@ footer{text-align:center;padding:0 0 25px;color:#81758b;font:600 10px 'IBM Plex 
 .platy-game-card,.game-console[data-game="platy"]{--game-accent:#7bd86e;--game-dark:#1b4c22;--game-surface:#1b3a25;--game-light:#e5ffda}
 .blanks-game-card,.game-console[data-game="blanks"]{--game-accent:#5bafff;--game-dark:#153e75;--game-surface:#192f54;--game-light:#e1f1ff}
 .lore-game-card,.game-console[data-game="lore"]{--game-accent:#ff6eb5;--game-dark:#5d174a;--game-surface:#451b3c;--game-light:#ffe2f2}
+.timeline-game-card,.game-console[data-game="timeline"]{--game-accent:#37caff;--game-dark:#0c365d;--game-surface:#103454;--game-light:#e2faff}
 .game-grid>.game-card{background:linear-gradient(115deg,var(--game-dark),var(--game-surface) 68%,#17131e)}
 .game-grid .card-icon{background:radial-gradient(circle at 50% 42%,var(--game-dark),var(--game-surface) 80%)}
 .game-grid .play-button{border-color:var(--game-accent);background:var(--game-accent);color:#1a1520}
@@ -444,3 +445,24 @@ footer{text-align:center;padding:0 0 25px;color:#81758b;font:600 10px 'IBM Plex 
 .share-preview[data-game="platy"]{--game-accent:#7bd86e;--game-dark:#246f35;--game-light:#e5ffda}
 .share-preview[data-game="blanks"]{--game-accent:#5bafff;--game-dark:#1765ac;--game-light:#e1f1ff}
 .share-preview[data-game="lore"]{--game-accent:#ff6eb5;--game-dark:#9c266c;--game-light:#ffe2f2}
+.share-preview[data-game="timeline"]{--game-accent:#37caff;--game-dark:#126b9d;--game-light:#e2faff}
+.game-console[data-game="timeline"] .game-title-row h1{min-width:0;overflow-wrap:anywhere}
+.game-console[data-game="timeline"] .timer-instrument,.game-console[data-game="timeline"] .timer-track{display:none}
+.game-console[data-game="timeline"] .question-meta{grid-template-columns:1fr 1fr}
+.game-console[data-game="timeline"] .clue{min-height:245px;background:repeating-linear-gradient(0deg,#37caff0b 0 2px,transparent 2px 6px),radial-gradient(ellipse at 50% 45%,#174b75,#0b1a35 82%)}
+.timeline-stage{display:grid;grid-template-columns:minmax(0,1fr) 48px minmax(0,1fr);align-items:center;gap:13px;width:100%}
+.timeline-trail{display:grid;align-content:center;gap:12px;min-height:190px;padding:17px;border:2px solid #4b95bf;border-radius:10px;background:linear-gradient(145deg,#174466,#102b4c);box-shadow:inset 0 1px #c4f5ff33,0 10px 22px #0005;text-align:center}
+.timeline-trail small{color:#90dfff;font:700 10px 'IBM Plex Mono',monospace;letter-spacing:.1em}
+.timeline-trail strong{color:#fff5db;font:700 clamp(19px,2.6vw,28px)/1.2 Fraunces,Georgia,serif;overflow-wrap:anywhere}
+.timeline-date{color:#b7eaff;font:700 10px 'IBM Plex Mono',monospace;letter-spacing:.06em;text-transform:uppercase}
+.timeline-anchor{border:3px solid #a5ebff;background:linear-gradient(145deg,#1e5b81,#123559);box-shadow:inset 0 0 0 3px #37caff44,0 0 20px #37caff55,0 10px 22px #0005}
+.timeline-anchor strong{font-size:clamp(22px,3vw,31px)}
+.timeline-candidate{border-color:#37caff;background:linear-gradient(145deg,#195a7d,#123559)}
+.timeline-prompt{margin:0;color:#dff7ff;font:600 clamp(12px,1.6vw,15px)/1.4 'DM Sans',Arial,sans-serif}
+.timeline-crystal{color:#8ceaff;text-align:center;font-size:37px;text-shadow:0 0 17px #59dfff}
+.timeline-choices{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:16px 0 0}
+.timeline-choice{justify-content:center;border-color:#4a9ac4;background:linear-gradient(110deg,#19405f,#12283f)}
+.timeline-choice:hover:not(:disabled),.timeline-choice:focus-visible{background:#245c7b;border-color:#7ddfff}
+.timeline-choice .choice-letter{border-color:#37caff;color:#a9edff}
+.timeline-verdict{display:block;margin-top:5px;color:#daecf6;font-size:13px;line-height:1.3}
+@media(max-width:640px){.timeline-stage{grid-template-columns:1fr;gap:5px}.timeline-trail{min-height:75px;padding:10px;gap:5px}.timeline-anchor strong{font-size:22px}.timeline-candidate strong{font-size:20px}.timeline-prompt{font-size:12px}.timeline-crystal{font-size:23px;line-height:1}.game-console[data-game="timeline"] .clue{min-height:0;padding:12px}.timeline-choices{gap:5px;margin-top:9px}.timeline-choice{display:grid;justify-items:center;align-content:center;min-width:0;min-height:57px;padding:5px 2px;gap:2px;text-align:center;font-size:12px}.timeline-choice .choice-letter{width:23px;height:23px;font-size:13px}}

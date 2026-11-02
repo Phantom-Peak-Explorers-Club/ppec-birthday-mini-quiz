@@ -13,7 +13,8 @@ if (!themes || !draw) throw new Error('Could not locate the share card renderer 
 const game = process.argv[2] || 'catchphrase';
 const names = {
   anagrams: 'Littlefield’s Letters', catchphrase: 'Peak-a-Boo', vowels: 'Vowel of Silence',
-  trails: 'Trail and Error', platy: 'Save-A-Platy', blanks: 'Blankety Peak', lore: 'Lost in the Lore'
+  trails: 'Trail and Error', platy: 'Save-A-Platy', blanks: 'Blankety Peak', lore: 'Lost in the Lore',
+  timeline: 'Fun With Blue Diamant'
 };
 if (!names[game]) throw new Error(`Unknown game: ${game}`);
 

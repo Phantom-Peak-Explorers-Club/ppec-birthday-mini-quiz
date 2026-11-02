@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#260936">
-  <meta name="description" content="Play seven PPEC Quiz games: Littlefield’s Letters, Peak-a-Boo, Vowel of Silence, Trail and Error, Save-A-Platy, Blankety Peak and Lost in the Lore.">
+  <meta name="description" content="Play eight PPEC Quiz games, including Fun With Blue Diamant, Littlefield’s Letters, Peak-a-Boo and more.">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <title>PPEC Quiz</title>
@@ -12,11 +12,12 @@
   <link rel="icon" type="image/png" href="./assets/app-icon-v3-192.png">
   <link rel="apple-touch-icon" href="./assets/app-icon-v3-180.png">
   <link rel="preload" href="./assets/fonts/fraunces-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="./style.css?v=30">
+  <link rel="stylesheet" href="./style.css?v=31">
   <script src="./what-trail.js" defer></script>
   <script src="./fill-blanks.js" defer></script>
   <script src="./lore-gap.js?v=3" defer></script>
-  <script src="./app.js?v=41" defer></script>
+  <script src="./timeline.js" defer></script>
+  <script src="./app.js?v=42" defer></script>
 </head>
 <body>
   <main class="shell">
@@ -63,6 +64,10 @@
           <div class="card-icon lore-icon"><img src="./assets/game-logos/lost-in-the-lore.png?v=4" alt="" width="512" height="512"></div>
           <div class="card-body"><h2>Lost in the Lore</h2><p>Pick the missing name from a trail story.</p><div class="mode-buttons"><button class="play-button" type="button" data-game="lore" data-mode="quiz">Quiz Round <span aria-hidden="true">↗</span></button><button class="play-button secondary" type="button" data-game="lore" data-mode="unlimited">Unlimited <span aria-hidden="true">∞</span></button></div></div>
         </article>
+        <article class="game-card timeline-game-card">
+          <div class="card-icon timeline-icon"><img src="./assets/game-logos/fun-with-blue-diamant.png" alt="" width="512" height="512"></div>
+          <div class="card-body"><h2>Fun With Blue Diamant</h2><p>Place each new trail before, after, or in the same season as the last.</p><div class="mode-buttons"><button class="play-button" type="button" data-game="timeline" data-mode="quiz">Quiz Round <span aria-hidden="true">↗</span></button><button class="play-button secondary" type="button" data-game="timeline" data-mode="unlimited">Unlimited <span aria-hidden="true">∞</span></button></div></div>
+        </article>
         </div>
       </div>
     </section>
@@ -87,6 +92,7 @@
         <div id="platy-reveal" class="platy-reveal" role="status" aria-live="polite" hidden><div class="platy-reveal-total"><strong id="platy-reveal-count">0</strong><span>PLATYPUSES SAVED</span></div><div id="platy-reveal-icons" class="platy-reveal-icons" aria-hidden="true"></div></div>
         <div id="trail-choices" class="trail-choices" hidden></div>
         <div id="lore-choices" class="lore-choices" role="group" aria-label="Choose the missing word" hidden></div>
+        <div id="timeline-choices" class="timeline-choices" role="group" aria-label="Place the next trail in time" hidden></div>
         <p id="vowel-hint" class="vowel-hint" hidden></p>
         <p id="blank-hint" class="blank-hint" hidden></p>
         <p id="reveal-stats" class="reveal-stats" hidden></p>
