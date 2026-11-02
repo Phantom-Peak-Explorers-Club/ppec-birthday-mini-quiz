@@ -12,12 +12,12 @@
   <link rel="icon" type="image/png" href="./assets/app-icon-v3-192.png">
   <link rel="apple-touch-icon" href="./assets/app-icon-v3-180.png">
   <link rel="preload" href="./assets/fonts/fraunces-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="./style.css?v=32">
+  <link rel="stylesheet" href="./style.css?v=33">
   <script src="./what-trail.js" defer></script>
   <script src="./fill-blanks.js" defer></script>
   <script src="./lore-gap.js?v=3" defer></script>
   <script src="./timeline.js" defer></script>
-  <script src="./app.js?v=43" defer></script>
+  <script src="./app.js?v=44" defer></script>
 </head>
 <body>
   <main class="shell">
@@ -104,6 +104,15 @@
         </form>
         <button id="reveal-button" class="text-button reveal-button" type="button">Reveal answer</button>
         <button id="next-button" class="primary-button next-button" type="button" hidden>Next question <span aria-hidden="true">→</span></button>
+      </div>
+      <div id="timeline-feedback-modal" class="timeline-feedback-modal" role="dialog" aria-modal="true" aria-labelledby="timeline-feedback-heading" hidden>
+        <div class="timeline-feedback-panel">
+          <p id="timeline-feedback-kicker" class="timeline-feedback-kicker"></p>
+          <h2 id="timeline-feedback-heading"></h2>
+          <strong id="timeline-feedback-answer" class="timeline-feedback-answer"></strong>
+          <div class="timeline-feedback-seasons"><p><small>BASE TRAIL</small><b id="timeline-feedback-base"></b></p><p><small>THIS TRAIL</small><b id="timeline-feedback-candidate"></b></p></div>
+          <button id="timeline-next-button" class="primary-button" type="button">Next question →</button>
+        </div>
       </div>
       <div class="console-foot"><span>✦ &nbsp; HACKED BY JONABOT JR</span><span>EST. PHANTOM PEAK</span></div>
       </div>

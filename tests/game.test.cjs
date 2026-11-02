@@ -756,13 +756,17 @@ test('Blue diamant timeline chains trails and treats a season as one point in ti
   const first = questions[0];
   app.get('timeline-choices').children.find(button => button.dataset.answer === first.answer).click();
   assert.equal(app.state().score, 1);
-  assert.equal(app.get('next-button').hidden, false);
-  app.get('next-button').click();
+  assert.equal(app.get('timeline-feedback-modal').hidden, false);
+  assert.equal(app.get('timeline-feedback-modal').className, 'timeline-feedback-modal is-correct');
+  assert.equal(app.get('next-button').hidden, true);
+  assert.match(app.get('timeline-feedback-base').textContent, new RegExp(String(first.anchor.year)));
+  assert.match(app.get('timeline-feedback-candidate').textContent, new RegExp(String(first.candidate.year)));
+  app.get('timeline-next-button').click();
   assert.equal(app.state().index, 1);
   assert.equal(app.get('clue').children[0].children[0].children[1].textContent, first.candidate.title);
   for (let i = 1; i < questions.length; i++) {
     app.get('timeline-choices').children.find(button => button.dataset.answer === questions[i].answer).click();
-    app.get('next-button').click();
+    app.get('timeline-next-button').click();
   }
   assert.equal(app.state().score, 10);
   assert.equal(app.get('share-game').textContent, 'Fun With Blue Diamant');
@@ -779,7 +783,9 @@ test('Blue diamant Unlimited ends on the first incorrect placement', () => {
   app.get('timeline-choices').children.find(button => button.dataset.answer !== answer).click();
   assert.equal(app.state().completed, 1);
   assert.equal(app.state().score, 0);
-  app.get('next-button').click();
+  assert.equal(app.get('timeline-feedback-modal').className, 'timeline-feedback-modal is-incorrect');
+  assert.equal(app.get('timeline-feedback-answer').textContent, answer);
+  app.get('timeline-next-button').click();
   assert.equal(app.get('share-score').textContent, '0 right');
   assert.equal(app.get('share-detail').textContent, '0 correct · 1 question completed');
 });

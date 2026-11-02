@@ -9,12 +9,17 @@ const htmlPath = path.join(docs, '.timeline-preview.html');
 const mobile = process.argv.includes('--mobile');
 const game = process.argv.find(arg => arg.startsWith('--game='))?.slice(7) || 'timeline';
 if (!['timeline', 'blanks'].includes(game)) throw new Error(`Unsupported preview game: ${game}`);
+const answer = process.argv.find(arg => arg.startsWith('--answer='))?.slice(9);
+if (answer && (game !== 'timeline' || !['correct', 'incorrect'].includes(answer))) throw new Error('Feedback preview requires timeline and correct or incorrect');
 const name = game === 'timeline' ? 'fun-with-blue-diamant' : 'blankety-peak';
-const output = path.join(root, 'design-previews', `${name}-${mobile ? 'mobile' : 'game'}-preview.png`);
+const output = path.join(root, 'design-previews', `${name}-${answer ? `${answer}-feedback` : mobile ? 'mobile' : 'game'}-preview.png`);
 const chrome = 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe';
 const profile = fs.mkdtempSync(path.join(os.tmpdir(), 'ppec-timeline-preview-'));
+const startScript = answer
+  ? `start('timeline','quiz');const right=state.questions[0].answer;[...document.querySelectorAll('#timeline-choices button')].find(button=>button.dataset.answer${answer === 'correct' ? '===' : '!=='}right).click()`
+  : `start('${game}','quiz')`;
 const html = fs.readFileSync(path.join(docs, 'index.html'), 'utf8').replace('</body>',
-  `<script>window.addEventListener('load',()=>start('${game}','quiz'))</script></body>`);
+  `<script>window.addEventListener('load',()=>{${startScript}})</script></body>`);
 
 try {
   fs.writeFileSync(htmlPath, html);

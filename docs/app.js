@@ -444,6 +444,8 @@ function start(game,mode){
 }
 function render(){
   stopTimer();
+  $('timeline-feedback-modal').hidden=true;
+  $('question-card').inert=false;
   const {game,mode,questions,index,score}=state;
   const q=questions[index];
   state.answered=false;
@@ -581,6 +583,19 @@ function render(){
   if(game!=='trails'&&game!=='platy'&&game!=='lore'&&game!=='timeline'&&!state.countingDown)$('answer-input').focus();
   if((game==='anagrams'||game==='vowels')&&!state.countingDown)startTimer();
 }
+function showTimelineFeedback(q,correct,revealed,ends){
+  const modal=$('timeline-feedback-modal');
+  modal.className=`timeline-feedback-modal ${correct?'is-correct':revealed?'is-revealed':'is-incorrect'}`;
+  $('timeline-feedback-kicker').textContent=correct?'CORRECT PLACEMENT':revealed?'ANSWER REVEALED':'TIMELINE GLITCH';
+  $('timeline-feedback-heading').textContent=correct?'You placed it!':revealed?'Here is the order':'That is out of order';
+  $('timeline-feedback-answer').textContent=q.answer;
+  $('timeline-feedback-base').textContent=`${q.anchor.title} · ${q.anchor.season} ${q.anchor.year} · ${q.anchor.seasonTitle}`;
+  $('timeline-feedback-candidate').textContent=`${q.candidate.title} · ${q.candidate.season} ${q.candidate.year} · ${q.candidate.seasonTitle}`;
+  $('timeline-next-button').textContent=ends?'See your results →':'Next question →';
+  $('question-card').inert=true;
+  modal.hidden=false;
+  $('timeline-next-button').focus();
+}
 function finishAnswer(correct,revealed=false,timedOut=false,response=''){
   if(state.answered||state.countingDown)return;
   stopTimer();state.answered=true;
@@ -616,6 +631,11 @@ function finishAnswer(correct,revealed=false,timedOut=false,response=''){
   const ends=state.mode==='unlimited'&&!correct||state.index===state.questions.length-1;
   if(ends){state.elapsedMs=Date.now()-state.startedAt;state.exhausted=state.mode==='unlimited'&&correct&&state.index===state.questions.length-1;prepareShareCard()}
   $('answer-form').hidden=true;$('reveal-button').hidden=true;
+  if(state.game==='timeline'){
+    $('feedback').hidden=true;$('next-button').hidden=true;
+    showTimelineFeedback(q,correct,revealed,ends);
+    return;
+  }
   const finishReveal=()=>{
     const feedback=$('feedback');
     if(state.game==='platy'){
@@ -660,7 +680,10 @@ function finishAnswer(correct,revealed=false,timedOut=false,response=''){
   }
   finishReveal();
 }
-function next(){if(state.elapsedMs!==null){results()}else{state.index++;render()}}
+function next(){
+  if(state.game==='timeline'){$('timeline-feedback-modal').hidden=true;$('question-card').inert=false}
+  if(state.elapsedMs!==null){results()}else{state.index++;render()}
+}
 function results(){
   $('share-preview').dataset.game=state.game;
   $('share-game').textContent=gameName();$('share-mode').textContent=modeName();
@@ -796,6 +819,7 @@ document.addEventListener?.('keydown',event=>{
   guessPlatyLetter(event.key.toUpperCase());
 });
 $('next-button').addEventListener('click',next);
+$('timeline-next-button').addEventListener('click',next);
 $('again-button').addEventListener('click',()=>start(state.game,state.mode));
 $('share-button').addEventListener('click',()=>shareCard());
 $('share-preview').addEventListener('click',()=>shareCard());
