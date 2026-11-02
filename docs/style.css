@@ -518,3 +518,27 @@ footer{text-align:center;padding:0 0 25px;color:#81758b;font:600 10px 'IBM Plex 
 .tutorial-coach.complete{border-color:#8be3a3;background:linear-gradient(120deg,#174536,#18243a)}
 .game-console .tutorial-spotlight{outline:3px solid var(--game-accent);outline-offset:5px;box-shadow:0 0 18px var(--game-accent)}
 @media(max-width:640px){.tutorial-coach{padding:13px}.tutorial-host img{width:45px;height:45px}.tutorial-coach strong{font-size:19px}.tutorial-coach p{font-size:13px}.tutorial-finish .primary-button,.tutorial-finish .text-button{flex:1}}
+.lead-game-card,.game-console[data-game="lead"]{--game-accent:#6cf0dc;--game-dark:#103e3f;--game-surface:#174b4b;--game-light:#dffff7}
+.share-preview[data-game="lead"]{--game-accent:#6cf0dc;--game-dark:#12635f;--game-light:#dffff7}
+.game-console[data-game="lead"] .timer-instrument,.game-console[data-game="lead"] .timer-track{display:none}
+.game-console[data-game="lead"] .question-meta{grid-template-columns:1fr 1fr}
+.game-console[data-game="lead"] .clue{min-height:210px;border-color:#78d7ca;background:repeating-linear-gradient(0deg,#6cf0dc0c 0 2px,transparent 2px 7px),radial-gradient(ellipse at 50% 45%,#225d5a,#0e252d 80%)}
+.lead-file{display:grid;justify-items:center;gap:8px;width:min(100%,560px);padding:24px 20px;border:1px solid #9fe7d6;border-radius:9px;background:linear-gradient(145deg,#e5f5df,#a9d4c9);box-shadow:0 13px 30px #0006,inset 0 0 0 5px #ffffff38;color:#153b3d;text-align:center}
+.lead-file small{font:800 11px 'IBM Plex Mono',monospace;letter-spacing:.17em;color:#397976}
+.lead-file strong{font:700 clamp(28px,5vw,43px)/1.12 Fraunces,Georgia,serif;overflow-wrap:anywhere}
+.lead-file span{font:800 16px 'DM Sans',Arial,sans-serif}
+.lead-file em{font:700 15px Fraunces,Georgia,serif;color:#36645b}
+.lead-answer-row{display:flex;gap:10px}
+.lead-answer-row select{flex:1;min-width:0;min-height:48px;padding:10px 13px;border:1px solid #7edbcf;border-radius:6px;background:#0e2428;color:#fff8e4;font:600 16px 'DM Sans',Arial,sans-serif}
+.lead-answer-row select:focus-visible{outline:2px solid #9effe9;outline-offset:2px}
+@media(max-width:640px){.game-console[data-game="lead"] .clue{min-height:165px;padding:13px}.lead-file{padding:19px 12px}.lead-answer-row{flex-direction:column}.lead-answer-row .primary-button{width:100%}}
+.lead-question{margin:9px 0 12px;color:#dffff7;font:700 clamp(17px,3vw,22px)/1.3 Fraunces,Georgia,serif}
+.lead-feedback-modal .timeline-feedback-panel{border-color:#6cf0dc;background:linear-gradient(150deg,#185251,#102c35 80%)}
+.lead-feedback-modal .timeline-feedback-answer{overflow-wrap:anywhere;font-size:clamp(32px,6vw,54px)}
+.lead-feedback-context{margin:0 0 20px;color:#e0fff5;font:700 17px/1.35 Fraunces,Georgia,serif;overflow-wrap:anywhere}
+.lead-feedback-modal.is-correct .lead-feedback-context{color:#7ff0a7}
+.lead-feedback-modal.is-incorrect .lead-feedback-context{color:#ff9cb2}
+.lead-feedback-modal.is-incorrect .timeline-feedback-panel{animation:none;border-color:#ff7695;box-shadow:inset 0 0 0 4px #ff769522,0 20px 65px #000c}
+.lead-feedback-modal.is-incorrect .timeline-feedback-panel:before{display:none}
+.lead-feedback-modal.is-incorrect h2,.lead-feedback-modal.is-incorrect .timeline-feedback-answer{text-shadow:none;color:#ff9cb2}
+.lead-feedback-modal .primary-button{background:#6cf0dc;border-color:#6cf0dc;color:#0c282a}

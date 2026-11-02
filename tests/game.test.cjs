@@ -8,6 +8,7 @@ const source = fs.readFileSync(path.join(__dirname, '..', 'docs', 'what-trail.js
   fs.readFileSync(path.join(__dirname, '..', 'docs', 'fill-blanks.js'), 'utf8') + '\n' +
   fs.readFileSync(path.join(__dirname, '..', 'docs', 'lore-gap.js'), 'utf8') + '\n' +
   fs.readFileSync(path.join(__dirname, '..', 'docs', 'timeline.js'), 'utf8') + '\n' +
+  fs.readFileSync(path.join(__dirname, '..', 'docs', 'whose-trail.js'), 'utf8') + '\n' +
   fs.readFileSync(path.join(__dirname, '..', 'docs', 'app.js'), 'utf8');
 
 test('PPEC Quiz is the installed app name and the banner names Jonabot Jr', () => {
@@ -69,9 +70,11 @@ function setup() {
     makeElement({ game: 'lore', mode: 'quiz' }),
     makeElement({ game: 'lore', mode: 'unlimited' }),
     makeElement({ game: 'timeline', mode: 'quiz' }),
-    makeElement({ game: 'timeline', mode: 'unlimited' })
+    makeElement({ game: 'timeline', mode: 'unlimited' }),
+    makeElement({ game: 'lead', mode: 'quiz' }),
+    makeElement({ game: 'lead', mode: 'unlimited' })
   ];
-  const tutorials = ['anagrams', 'catchphrase', 'vowels', 'trails', 'platy', 'blanks', 'lore', 'timeline']
+  const tutorials = ['anagrams', 'catchphrase', 'vowels', 'trails', 'platy', 'blanks', 'lore', 'timeline', 'lead']
     .map(game => makeElement({ tutorial: game }));
   const screens = ['home', 'game', 'results'].map(get);
   const context = vm.createContext({
@@ -331,7 +334,7 @@ test('Timed games count down before accepting answers or starting the clock', ()
 test('Every game has a distinct colour and results use that game colour', () => {
   const app = setup();
   const themes = app.evaluate('GAME_THEMES');
-  assert.equal(new Set(Object.values(themes).map(theme => theme.accent)).size, 8);
+  assert.equal(new Set(Object.values(themes).map(theme => theme.accent)).size, 9);
   app.buttons[6].click();
   app.get('reveal-button').click();
   app.get('next-button').click();
@@ -796,9 +799,66 @@ test('Blue diamant Unlimited ends on the first incorrect placement', () => {
   assert.equal(app.get('share-detail').textContent, '0 correct · 1 question completed');
 });
 
+test('lead game uses reviewed start-and-end trails and every available lead name', () => {
+  const root = path.join(__dirname, '..');
+  const reviewed = JSON.parse(fs.readFileSync(path.join(root, 'source', 'whose-trail-reviewed.json'), 'utf8'));
+  const app = setup();
+  const pool = app.evaluate('WHOSE_TRAILS');
+  const names = app.evaluate('LEAD_NAMES');
+  assert.ok(pool.length >= 50);
+  assert.equal(pool.length, reviewed.length);
+  assert.equal(new Set(pool.map(q => q.id)).size, pool.length);
+  assert.deepEqual([...new Set(pool.map(q => q.answer))].sort(), [...names].sort());
+  assert.equal(app.get('lead-select').children.length, names.length);
+  assert.equal(names.includes('Madame Mechanica'), false);
+  assert.equal(names.includes('Platman'), false);
+  assert.equal(names.includes('Sherlock Bones'), false);
+  assert.equal(pool.find(q => q.title === 'A Knight’s Honour').answer, 'Rexford');
+  assert.equal(pool.find(q => q.title === 'A Murder Most Fowl').answer, 'Lovehart');
+  assert.equal(pool.some(q => q.title === 'The Mayor\'s Watch'), false);
+  assert.equal(pool.some(q => q.title === 'Trick Or Treat'), false);
+  app.buttons[16].click();
+  assert.equal(app.state().questions.length, 10);
+  assert.equal(app.get('lead-answer-form').hidden, false);
+  assert.equal(app.get('answer-form').hidden, true);
+  const q = app.state().questions[0];
+  assert.equal(app.get('clue').children[0].children[1].textContent, q.title);
+  assert.equal(app.get('clue').children[0].children[2].textContent, `${q.season} ${q.year}`);
+  assert.equal(app.get('clue').children[0].children[3].textContent, q.seasonTitle);
+  assert.match(fs.readFileSync(path.join(root, 'docs', 'index.html'), 'utf8'), /Which Townsfolk needed help in the trail:/);
+  app.get('lead-select').value = q.answer;
+  app.get('lead-answer-form').listeners.submit({ preventDefault() {} });
+  assert.equal(app.state().score, 1);
+  assert.equal(app.get('lead-feedback-modal').hidden, false);
+  assert.equal(app.get('lead-feedback-modal').className, 'timeline-feedback-modal lead-feedback-modal is-correct');
+  assert.equal(app.get('lead-feedback-heading').textContent, 'Correct!');
+  assert.equal(app.get('lead-feedback-answer').textContent, q.answer);
+  app.get('lead-next-button').click();
+  assert.equal(app.state().index, 1);
+  assert.equal(app.get('lead-feedback-modal').hidden, true);
+});
+
+test('lead game shows a steady incorrect result and ends Unlimited on a wrong answer', () => {
+  const app = setup();
+  app.buttons[17].click();
+  const q = app.state().questions[0];
+  const wrong = app.evaluate('LEAD_NAMES').find(name => name !== q.answer);
+  app.get('lead-select').value = wrong;
+  app.get('lead-answer-form').listeners.submit({ preventDefault() {} });
+  assert.equal(app.get('lead-feedback-modal').className, 'timeline-feedback-modal lead-feedback-modal is-incorrect');
+  assert.equal(app.get('lead-feedback-heading').textContent, 'Incorrect!');
+  assert.equal(app.get('lead-feedback-answer').textContent, q.answer);
+  assert.equal(app.get('lead-next-button').textContent, 'See your results →');
+  app.get('lead-next-button').click();
+  assert.equal(app.get('share-score').textContent, '0 right');
+  const css = fs.readFileSync(path.join(__dirname, '..', 'docs', 'style.css'), 'utf8');
+  assert.match(css, /\.lead-feedback-modal\.is-incorrect \.timeline-feedback-panel\{animation:none/);
+  assert.match(css, /\.lead-feedback-modal\.is-incorrect \.timeline-feedback-panel:before\{display:none\}/);
+});
+
 test('Every game has a guided practice path that ends without scoring', () => {
   const html = fs.readFileSync(path.join(__dirname, '..', 'docs', 'index.html'), 'utf8');
-  assert.equal((html.match(/data-tutorial="/g) || []).length, 8);
+  assert.equal((html.match(/data-tutorial="/g) || []).length, 9);
   const cases = [
     ['anagrams', 0, app => {
       app.get('tutorial-next').click();
@@ -846,6 +906,11 @@ test('Every game has a guided practice path that ends without scoring', () => {
       assert.equal(app.state().questions[1].anchor.title, app.state().questions[0].candidate.title);
       app.get('tutorial-next').click();
       app.get('timeline-choices').children.find(button => button.dataset.answer === 'After').click();
+    }],
+    ['lead', 8, app => {
+      app.get('tutorial-next').click();
+      app.get('lead-select').value = 'Sparks'; app.get('lead-select').listeners.change();
+      app.get('lead-answer-form').listeners.submit({ preventDefault() {} });
     }]
   ];
   for (const [game, index, play] of cases) {

@@ -1,4 +1,4 @@
-const CACHE_NAME = 'ppec-mini-quiz-v57';
+const CACHE_NAME = 'ppec-mini-quiz-v58';
 const CACHE_PREFIX = 'ppec-mini-quiz-';
 const pictures = [
   'Copper', 'Dr Winter', 'Hogwood', 'Leadbelly', 'Littlefield', 'Lovehart',
@@ -12,10 +12,10 @@ const pictures = [
   'Gilded Lake', 'The Council of Pockets', 'The Silver Children'
 ];
 const files = [
-  './', './index.html', './style.css', './app.js', './what-trail.js', './fill-blanks.js', './lore-gap.js', './timeline.js',
+  './', './index.html', './style.css', './app.js', './what-trail.js', './fill-blanks.js', './lore-gap.js', './timeline.js', './whose-trail.js',
   './manifest.webmanifest', './assets/fonts/fraunces-latin-variable.woff2', './assets/jonabot-jr.png', './assets/jonabot-avatar.png', './assets/jonabot-quiz-hero.png', './assets/jonabot-countdown-card.png', './assets/share-card-master.jpg', './assets/platy-life.png',
   './assets/app-icon-v3-180.png', './assets/app-icon-v3-192.png', './assets/app-icon-v3-512.png',
-  ...['anagrams', 'catchphrase', 'missing-vowels', 'what-trail', 'save-a-platy', 'blankety-peak', 'lost-in-the-lore', 'fun-with-blue-diamant']
+  ...['anagrams', 'catchphrase', 'missing-vowels', 'what-trail', 'save-a-platy', 'blankety-peak', 'lost-in-the-lore', 'fun-with-blue-diamant', 'whose-trail']
     .map(name => `./assets/game-logos/${name}.png`),
   ...pictures.map(name => `./assets/catchphrase/${encodeURIComponent(name)}.jpg`)
 ];

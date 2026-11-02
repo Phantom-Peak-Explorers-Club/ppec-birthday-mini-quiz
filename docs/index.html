@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#260936">
-  <meta name="description" content="Play eight PPEC Quiz games, including Fun With Blue Diamant, Littlefield’s Letters, Peak-a-Boo and more.">
+  <meta name="description" content="Play nine PPEC Quiz games, including Whose Trail Is It?, Fun With Blue Diamant, Peak-a-Boo and more.">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <title>PPEC Quiz</title>
@@ -12,12 +12,13 @@
   <link rel="icon" type="image/png" href="./assets/app-icon-v3-192.png">
   <link rel="apple-touch-icon" href="./assets/app-icon-v3-180.png">
   <link rel="preload" href="./assets/fonts/fraunces-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="./style.css?v=37">
+  <link rel="stylesheet" href="./style.css?v=38">
   <script src="./what-trail.js" defer></script>
   <script src="./fill-blanks.js" defer></script>
   <script src="./lore-gap.js?v=3" defer></script>
   <script src="./timeline.js" defer></script>
-  <script src="./app.js?v=47" defer></script>
+  <script src="./whose-trail.js" defer></script>
+  <script src="./app.js?v=48" defer></script>
 </head>
 <body>
   <main class="shell">
@@ -68,6 +69,10 @@
           <div class="card-icon timeline-icon"><img src="./assets/game-logos/fun-with-blue-diamant.png" alt="" width="512" height="512"></div>
           <div class="card-body"><h2>Fun With Blue Diamant</h2><p>My timeline is doing backflips. Place each trail before, after or in the same season as the last.</p><div class="mode-buttons"><button class="play-button" type="button" data-game="timeline" data-mode="quiz">Quiz Round <span aria-hidden="true">↗</span></button><button class="play-button secondary" type="button" data-game="timeline" data-mode="unlimited">Unlimited <span aria-hidden="true">∞</span></button><button class="play-button tutorial-button" type="button" data-tutorial="timeline">Tutorial <span aria-hidden="true">?</span></button></div></div>
         </article>
+        <article class="game-card lead-game-card">
+          <div class="card-icon lead-icon"><img src="./assets/game-logos/whose-trail.png" alt="" width="512" height="512"></div>
+          <div class="card-body"><h2>Whose Trail Is It?</h2><p>I have the trail title and date. You tell me which townsfolk needed help. My filing system demands a name.</p><div class="mode-buttons"><button class="play-button" type="button" data-game="lead" data-mode="quiz">Quiz Round <span aria-hidden="true">↗</span></button><button class="play-button secondary" type="button" data-game="lead" data-mode="unlimited">Unlimited <span aria-hidden="true">∞</span></button><button class="play-button tutorial-button" type="button" data-tutorial="lead">Tutorial <span aria-hidden="true">?</span></button></div></div>
+        </article>
         </div>
       </div>
     </section>
@@ -92,6 +97,7 @@
         <p id="blank-instruction" class="blank-instruction" hidden>Fill in the blank in the trail name below</p>
         <div id="lore-heading" class="lore-heading" hidden><strong id="lore-title"></strong><span id="lore-source"></span></div>
         <div id="platy-lives" class="platy-lives" aria-live="polite" hidden></div>
+        <p id="lead-question" class="lead-question" hidden>Which Townsfolk needed help in the trail:</p>
         <div id="clue" class="clue"></div>
         <p id="blank-source" class="blank-source" hidden></p>
         <div id="platy-keyboard" class="platy-keyboard" role="group" aria-label="Guess a letter" hidden></div>
@@ -108,6 +114,10 @@
           <label id="answer-label" for="answer-input">Your answer</label>
           <div class="answer-row"><input id="answer-input" name="answer" type="text" autocapitalize="off" spellcheck="false" required placeholder="Type your answer"><button class="primary-button" id="answer-submit" type="submit">Check answer</button></div>
         </form>
+        <form id="lead-answer-form" class="lead-answer-form" autocomplete="off" hidden>
+          <label for="lead-select">Choose the townsfolk</label>
+          <div class="lead-answer-row"><select id="lead-select" name="lead" required><option value="">Choose a townsfolk…</option></select><button class="primary-button" id="lead-submit" type="submit">Check answer</button></div>
+        </form>
         <button id="reveal-button" class="text-button reveal-button" type="button">Reveal answer</button>
         <button id="next-button" class="primary-button next-button" type="button" hidden>Next question <span aria-hidden="true">→</span></button>
       </div>
@@ -118,6 +128,15 @@
           <strong id="timeline-feedback-answer" class="timeline-feedback-answer"></strong>
           <div class="timeline-feedback-seasons"><p><small>BASE TRAIL</small><b id="timeline-feedback-base"></b></p><p><small>THIS TRAIL</small><b id="timeline-feedback-candidate"></b></p></div>
           <button id="timeline-next-button" class="primary-button" type="button">Next question →</button>
+        </div>
+      </div>
+      <div id="lead-feedback-modal" class="timeline-feedback-modal lead-feedback-modal" role="dialog" aria-modal="true" aria-labelledby="lead-feedback-heading" hidden>
+        <div class="timeline-feedback-panel">
+          <p id="lead-feedback-kicker" class="timeline-feedback-kicker"></p>
+          <h2 id="lead-feedback-heading"></h2>
+          <strong id="lead-feedback-answer" class="timeline-feedback-answer"></strong>
+          <p id="lead-feedback-context" class="lead-feedback-context"></p>
+          <button id="lead-next-button" class="primary-button" type="button">Next question →</button>
         </div>
       </div>
       <div class="console-foot"><span>✦ &nbsp; HACKED BY JONABOT JR</span><span>EST. PHANTOM PEAK</span></div>
