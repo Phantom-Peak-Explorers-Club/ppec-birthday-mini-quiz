@@ -758,6 +758,7 @@ test('Blue diamant timeline chains trails and treats a season as one point in ti
   assert.equal(app.state().score, 1);
   assert.equal(app.get('timeline-feedback-modal').hidden, false);
   assert.equal(app.get('timeline-feedback-modal').className, 'timeline-feedback-modal is-correct');
+  assert.equal(app.get('timeline-feedback-heading').textContent, 'Correct!');
   assert.equal(app.get('next-button').hidden, true);
   assert.match(app.get('timeline-feedback-base').textContent, new RegExp(String(first.anchor.year)));
   assert.match(app.get('timeline-feedback-candidate').textContent, new RegExp(String(first.candidate.year)));
@@ -784,6 +785,7 @@ test('Blue diamant Unlimited ends on the first incorrect placement', () => {
   assert.equal(app.state().completed, 1);
   assert.equal(app.state().score, 0);
   assert.equal(app.get('timeline-feedback-modal').className, 'timeline-feedback-modal is-incorrect');
+  assert.equal(app.get('timeline-feedback-heading').textContent, 'Incorrect!');
   assert.equal(app.get('timeline-feedback-answer').textContent, answer);
   app.get('timeline-next-button').click();
   assert.equal(app.get('share-score').textContent, '0 right');

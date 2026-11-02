@@ -587,7 +587,7 @@ function showTimelineFeedback(q,correct,revealed,ends){
   const modal=$('timeline-feedback-modal');
   modal.className=`timeline-feedback-modal ${correct?'is-correct':revealed?'is-revealed':'is-incorrect'}`;
   $('timeline-feedback-kicker').textContent=correct?'CORRECT PLACEMENT':revealed?'ANSWER REVEALED':'TIMELINE GLITCH';
-  $('timeline-feedback-heading').textContent=correct?'You placed it!':revealed?'Here is the order':'That is out of order';
+  $('timeline-feedback-heading').textContent=correct?'Correct!':revealed?'Here is the order':'Incorrect!';
   $('timeline-feedback-answer').textContent=q.answer;
   $('timeline-feedback-base').textContent=`${q.anchor.title} · ${q.anchor.season} ${q.anchor.year} · ${q.anchor.seasonTitle}`;
   $('timeline-feedback-candidate').textContent=`${q.candidate.title} · ${q.candidate.season} ${q.candidate.year} · ${q.candidate.seasonTitle}`;
