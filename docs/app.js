@@ -643,8 +643,18 @@ function render(){
   $('score-label').textContent=mode==='tutorial'?'NO SCORE':state.challenge?`${score} CORRECT`:game==='catchphrase'?`${state.points} POINTS`:game==='platy'?`${state.points} SAVED`:`${score} CORRECT`;
   $('progress-line').hidden=mode==='unlimited'||mode==='tutorial';
   $('progress-fill').style.width=`${index/questions.length*100}%`;
-  $('question-kind').textContent=game==='anagrams'?'UNSCRAMBLE THIS':game==='vowels'?'RESTORE THE VOWELS':game==='trails'?'IDENTIFY THE TRAIL':game==='platy'?'SAVE THE PLATYPUSES':game==='blanks'?'COMPLETE THE TRAIL TITLE':game==='lore'?'PICK THE MISSING WORD':game==='timeline'?'PLACE THE NEXT TRAIL IN TIME':game==='lead'?'WHO NEEDED HELP?':'NAME THE PICTURE CLUE';
+  $('question-kind').textContent=game==='anagrams'?'UNSCRAMBLE THIS':game==='vowels'?'RESTORE THE VOWELS':game==='trails'?'IDENTIFY THE TRAIL':game==='platy'?'GUESS THE TRAIL TITLE':game==='blanks'?'COMPLETE THE TRAIL TITLE':game==='lore'?'PICK THE MISSING WORD':game==='timeline'?'PLACE THE NEXT TRAIL IN TIME':game==='lead'?'WHO NEEDED HELP?':'NAME THE PICTURE CLUE';
   $('game-title').textContent=state.challenge?gameNameFor(game):gameName();
+  const instructions={
+    anagrams:'Unscramble the letters and type the answer.',
+    catchphrase:'Open picture panels, then type what you see.',
+    vowels:'Add the missing vowels and type the full answer.',
+    trails:'Read the story and choose its trail title.',
+    platy:'Guess the trail title one letter at a time.',
+    lore:'Read the excerpt and choose the missing name.'
+  };
+  $('game-instruction').hidden=!instructions[game];
+  $('game-instruction').textContent=instructions[game]||'';
   $('game-logo').src=`./assets/game-logos/${({anagrams:'anagrams',catchphrase:'catchphrase',vowels:'missing-vowels',trails:'what-trail',platy:'save-a-platy',blanks:'blankety-peak',lore:'lost-in-the-lore',timeline:'fun-with-blue-diamant',lead:'whose-trail-it-anyway'})[game]}.png?v=4`;
   $('game-console').dataset.game=game;
   $('game-console').dataset.mode=mode;

@@ -363,6 +363,37 @@ test('Every game has a distinct colour and results use that game colour', () => 
   assert.equal(app.get('share-preview').dataset.game, 'trails');
 });
 
+test('every game screen gives a direct instruction, including Jumble switches', () => {
+  const sources = [
+    ['anagrams',0,/Unscramble the letters/],
+    ['catchphrase',2,/Open picture panels/],
+    ['vowels',4,/Add the missing vowels/],
+    ['trails',6,/Read the story/],
+    ['platy',8,/Guess the trail title one letter at a time/],
+    ['lore',12,/Read the excerpt/]
+  ];
+  for (const [game,index,instruction] of sources) {
+    const app = setup(); app.buttons[index].click();
+    assert.equal(app.get('game-instruction').hidden, false, game);
+    assert.match(app.get('game-instruction').textContent, instruction, game);
+    if (game === 'platy') assert.equal(app.get('question-kind').textContent, 'GUESS THE TRAIL TITLE');
+  }
+  const blanks = setup(); blanks.buttons[10].click();
+  assert.equal(blanks.get('blank-instruction').hidden, false);
+  assert.match(blanks.get('blank-instruction').textContent, /Fill in the blank/);
+  const timeline = setup(); timeline.buttons[14].click();
+  const candidate = timeline.get('clue').children[0].children[2];
+  assert.match(candidate.children.find(item => item.className === 'timeline-prompt').textContent, /Does this trail come before/);
+  const lead = setup(); lead.buttons[16].click();
+  assert.equal(lead.get('lead-question').hidden, false);
+  assert.match(fs.readFileSync(path.join(__dirname, '..', 'docs', 'index.html'), 'utf8'), /Which Townsfolk needed help in the trail:/);
+  const jumble = setup(); jumble.buttons[18].click();
+  jumble.evaluate("state.questions=[{...ANAGRAMS[0],game:'anagrams'},{...WHAT_TRAILS[0],game:'platy'}];state.index=0;render()");
+  assert.match(jumble.get('game-instruction').textContent, /Unscramble the letters/);
+  jumble.evaluate('state.index=1;render()');
+  assert.match(jumble.get('game-instruction').textContent, /Guess the trail title/);
+});
+
 test('Catchphrase has no timer and accepts a small typo after a panel is opened', () => {
   const app = setup();
   app.buttons[3].click();

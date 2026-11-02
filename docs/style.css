@@ -115,6 +115,8 @@ footer{text-align:center;padding:0 0 25px;color:#81758b;font:600 10px 'IBM Plex 
 .game-title-row{display:flex;align-items:center;gap:14px;margin:0 0 19px}
 .game-title-row img{flex:none;width:66px;height:66px;object-fit:contain;filter:drop-shadow(0 4px 8px #0009)}
 .game-console .game-title-row h1{margin:0}
+.game-instruction{margin:0 0 15px;color:var(--game-light);font:700 clamp(14px,1.6vw,16px)/1.35 'DM Sans',Arial,sans-serif}
+#game-instruction[hidden]{display:none}
 @media(max-width:640px){.card-icon{height:100%;min-height:155px}.card-icon img{width:76px;height:76px}.game-title-row{gap:9px;margin-bottom:17px}.game-title-row img{width:46px;height:46px}}
 
 .topbar-actions{display:flex;align-items:center;gap:12px}.install-button{border:1px solid #d5ad62;border-radius:5px;background:#e7be73;color:#28182a;padding:7px 11px;font:700 11px 'IBM Plex Mono',monospace}.install-button:hover{background:#ffe1a0}
