@@ -4,6 +4,8 @@ const TIME_TRAILS=[
   {
     "id": "2022-launch-1",
     "title": "Lofty Ambitions",
+    "summary": "Sparks is in the resistance! But they needed to destroy vital intel to protect the resistance group called “The Cooperative”!",
+    "searchText": "Sparks is in the resistance! But they needed to destroy vital intel to protect the resistance group called “The Cooperative”!",
     "year": 2022,
     "season": "Launch",
     "seasonTitle": "Pilot Season",
@@ -12,6 +14,8 @@ const TIME_TRAILS=[
   {
     "id": "2022-launch-2",
     "title": "The Great Rank Glitch",
+    "summary": "Littlefield is rank zero thanks to Jonas being weirded out by them. We like Littlefield!",
+    "searchText": "Littlefield is rank zero thanks to Jonas being weirded out by them. We like Littlefield!",
     "year": 2022,
     "season": "Launch",
     "seasonTitle": "Pilot Season",
@@ -20,6 +24,8 @@ const TIME_TRAILS=[
   {
     "id": "2022-launch-3",
     "title": "Ghosts In The Videomatic",
+    "summary": "Cogwright's dad is the ghost in the machine messing with stuff. Cogwright told you the Videomatics were actually made by their father - and they uploaded their mind to the system. The father haunts them…",
+    "searchText": "Cogwright's dad is the ghost in the machine messing with stuff. Cogwright told you the Videomatics were actually made by their father - and they uploaded their mind to the system. The father haunts them as a final act of revenge against Jonas.",
     "year": 2022,
     "season": "Launch",
     "seasonTitle": "Pilot Season",
@@ -28,6 +34,8 @@ const TIME_TRAILS=[
   {
     "id": "2022-launch-4",
     "title": "Question Me This",
+    "summary": "The Questioner is Cogwright, who is the person who runs the Jonagraph.",
+    "searchText": "The Questioner is Cogwright, who is the person who runs the Jonagraph.",
     "year": 2022,
     "season": "Launch",
     "seasonTitle": "Pilot Season",
@@ -36,6 +44,8 @@ const TIME_TRAILS=[
   {
     "id": "2022-launch-5",
     "title": "Blimp Fuel Melts Wooden Beams",
+    "summary": "Dr Winter used a diamant-based medicine overdose to poison the mayor and therefore caused the blimp crash.",
+    "searchText": "Dr Winter used a diamant-based medicine overdose to poison the mayor and therefore caused the blimp crash.",
     "year": 2022,
     "season": "Launch",
     "seasonTitle": "Pilot Season",
@@ -44,6 +54,8 @@ const TIME_TRAILS=[
   {
     "id": "2022-launch-6",
     "title": "The Wolf And The Platypus",
+    "summary": "Jonas is using diamant and infusing it into film with negative results for those who watch - The film is Hogwood’s project.",
+    "searchText": "Jonas is using diamant and infusing it into film with negative results for those who watch - The film is Hogwood’s project.",
     "year": 2022,
     "season": "Launch",
     "seasonTitle": "Pilot Season",
@@ -52,6 +64,8 @@ const TIME_TRAILS=[
   {
     "id": "2022-launch-7",
     "title": "The Phantom Of The Deeps",
+    "summary": "Sparks believes it’s a ghost, but it is someone Jonas is hiding.",
+    "searchText": "Sparks believes it’s a ghost, but it is someone Jonas is hiding.",
     "year": 2022,
     "season": "Launch",
     "seasonTitle": "Pilot Season",
@@ -60,6 +74,8 @@ const TIME_TRAILS=[
   {
     "id": "2022-launch-8",
     "title": "The Plat-Man",
+    "summary": "It is Rexford, the one who runs the tours in the old town. Nethersole shut down the experiment to mix Platypus and Man.",
+    "searchText": "It is Rexford, the one who runs the tours in the old town. Nethersole shut down the experiment to mix Platypus and Man.",
     "year": 2022,
     "season": "Launch",
     "seasonTitle": "Pilot Season",
@@ -68,6 +84,8 @@ const TIME_TRAILS=[
   {
     "id": "2022-launch-9",
     "title": "The Last Resort",
+    "summary": "It was Datchery’s father, the former owner of Miramine who caused The Geoquakes with a rogue drilling machine called “The Last Resort” that’s still loose underground.",
+    "searchText": "It was Datchery’s father, the former owner of Miramine who caused The Geoquakes with a rogue drilling machine called “The Last Resort” that’s still loose underground.",
     "year": 2022,
     "season": "Launch",
     "seasonTitle": "Pilot Season",
@@ -76,6 +94,8 @@ const TIME_TRAILS=[
   {
     "id": "2022-launch-10",
     "title": "The Axiomatic Clock",
+    "summary": "Weird portal (given to Pocket by Jonas) to another dimension that tastes of hair and purple! Hogwood survived the trip.",
+    "searchText": "Weird portal (given to Pocket by Jonas) to another dimension that tastes of hair and purple! Hogwood survived the trip.",
     "year": 2022,
     "season": "Launch",
     "seasonTitle": "Pilot Season",
@@ -84,6 +104,8 @@ const TIME_TRAILS=[
   {
     "id": "2022-launch-11",
     "title": "No Stone Unturned",
+    "summary": "Sparks took a girl \"F\" away, Florence Young, who was just Grubediah Stubbs in an all-new body. Nethersole felt quite responsible for Grubediah’s death during a rock hunt.",
+    "searchText": "Sparks took a girl \"F\" away, Florence Young, who was just Grubediah Stubbs in an all-new body. Nethersole felt quite responsible for Grubediah’s death during a rock hunt.",
     "year": 2022,
     "season": "Launch",
     "seasonTitle": "Pilot Season",
@@ -92,6 +114,8 @@ const TIME_TRAILS=[
   {
     "id": "2022-launch-12",
     "title": "What's Up RoboDoc",
+    "summary": "You end up creating a new mega consciousness instead of hooking RoboDoc up with Madame Mechanica.",
+    "searchText": "You end up creating a new mega consciousness instead of hooking RoboDoc up with Madame Mechanica.",
     "year": 2022,
     "season": "Launch",
     "seasonTitle": "Pilot Season",
@@ -100,6 +124,8 @@ const TIME_TRAILS=[
   {
     "id": "2022-launch-13",
     "title": "The Blame Game",
+    "summary": "Pocket’s clone stole the hat, and the clone is much better than the Pocket in Phantom Peak.",
+    "searchText": "Pocket’s clone stole the hat, and the clone is much better than the Pocket in Phantom Peak.",
     "year": 2022,
     "season": "Launch",
     "seasonTitle": "Pilot Season",
@@ -108,6 +134,8 @@ const TIME_TRAILS=[
   {
     "id": "2022-launch-14",
     "title": "The Platypus Problem",
+    "summary": "Ender believes their pet has run away to the circus - the pet was actually taken prisoner due to Ender’s role in selling up phantom peak to Jonah.",
+    "searchText": "Ender believes their pet has run away to the circus - the pet was actually taken prisoner due to Ender’s role in selling up phantom peak to Jonah.",
     "year": 2022,
     "season": "Launch",
     "seasonTitle": "Pilot Season",
@@ -116,6 +144,8 @@ const TIME_TRAILS=[
   {
     "id": "2022-launch-15",
     "title": "Paternal Flame",
+    "summary": "Giffard believes that Jonas might be their father - it turns out the old mayor is their actual dad - and is still alive!",
+    "searchText": "Giffard believes that Jonas might be their father - it turns out the old mayor is their actual dad - and is still alive!",
     "year": 2022,
     "season": "Launch",
     "seasonTitle": "Pilot Season",
@@ -124,6 +154,8 @@ const TIME_TRAILS=[
   {
     "id": "2022-launch-16",
     "title": "The JONACO Union Spy",
+    "summary": "Narvis the DJ is suspected, after digging you find Sparks is the spy and you decide to frame Pocket.",
+    "searchText": "Narvis the DJ is suspected, after digging you find Sparks is the spy and you decide to frame Pocket.",
     "year": 2022,
     "season": "Launch",
     "seasonTitle": "Pilot Season",
@@ -132,6 +164,8 @@ const TIME_TRAILS=[
   {
     "id": "2022-autumn-1",
     "title": "Littlefield’s Letter",
+    "summary": "Littlefield gets a genie which results in Narvis being reassigned to another post office. A fake letter from Jonas was the djinn in disguise, which also created a talking platypus for Sparks.",
+    "searchText": "Littlefield gets a genie which results in Narvis being reassigned to another post office. A fake letter from Jonas was the djinn in disguise, which also created a talking platypus for Sparks.",
     "year": 2022,
     "season": "Autumn",
     "seasonTitle": "Hallowed Peak",
@@ -140,6 +174,8 @@ const TIME_TRAILS=[
   {
     "id": "2022-autumn-2",
     "title": "Gnome Stone Unturned",
+    "summary": "Nethersole is reunited with Queen of Gnomes in a romantic fashion after clearing up that JONACO ruined Area 14, not Miramine.",
+    "searchText": "Nethersole is reunited with Queen of Gnomes in a romantic fashion after clearing up that JONACO ruined Area 14, not Miramine.",
     "year": 2022,
     "season": "Autumn",
     "seasonTitle": "Hallowed Peak",
@@ -148,6 +184,8 @@ const TIME_TRAILS=[
   {
     "id": "2022-autumn-3",
     "title": "The Platycurse",
+    "summary": "Halloway thinks they are cursed, with a mark on their leg in the shape of a platypus. Health and Safety sends you to have your brain 'cleansed'. Marks are caused by Eggs of Trust, which are made up of…",
+    "searchText": "Halloway thinks they are cursed, with a mark on their leg in the shape of a platypus. Health and Safety sends you to have your brain 'cleansed'. Marks are caused by Eggs of Trust, which are made up of diamant.",
     "year": 2022,
     "season": "Autumn",
     "seasonTitle": "Hallowed Peak",
@@ -156,6 +194,8 @@ const TIME_TRAILS=[
   {
     "id": "2022-autumn-4",
     "title": "The Jonahedron",
+    "summary": "JONACO is sending people back in time, Copper’s grandfather Rusty being one victim. Spectre and Vox are investigating.",
+    "searchText": "JONACO is sending people back in time, Copper’s grandfather Rusty being one victim. Spectre and Vox are investigating.",
     "year": 2022,
     "season": "Autumn",
     "seasonTitle": "Hallowed Peak",
@@ -164,6 +204,8 @@ const TIME_TRAILS=[
   {
     "id": "2022-autumn-5",
     "title": "Horror by Hogwood",
+    "summary": "Hogwood’s mother is sabotaging their films – A cursed camera used to film made it happen. Mother never approved…",
+    "searchText": "Hogwood’s mother is sabotaging their films – A cursed camera used to film made it happen. Mother never approved…",
     "year": 2022,
     "season": "Autumn",
     "seasonTitle": "Hallowed Peak",
@@ -172,6 +214,8 @@ const TIME_TRAILS=[
   {
     "id": "2022-autumn-6",
     "title": "The Wereplatypus",
+    "summary": "Dr Silver and JonaLabs found Gérard and deliberately tried to reproduce in him what had accidentally made Rexford the original Platman. They hoped to create another Platman, but Gérard could not bear the expectations and ran away to write greeting cards.",
+    "searchText": "Dr Silver and JonaLabs found Gérard and deliberately tried to reproduce in him what had accidentally made Rexford the original Platman. They hoped to create another Platman, but Gérard could not bear the expectations and ran away to write greeting cards.",
     "year": 2022,
     "season": "Autumn",
     "seasonTitle": "Hallowed Peak",
@@ -180,6 +224,8 @@ const TIME_TRAILS=[
   {
     "id": "2022-autumn-7",
     "title": "Squatters Rights",
+    "summary": "We used salt to get rid of the haunted doll possessed by an imp which haunted Phantom Peak (caused by Sparks and The Resistance) - it was causing health and safety issues with expansion in the old town.",
+    "searchText": "We used salt to get rid of the haunted doll possessed by an imp which haunted Phantom Peak (caused by Sparks and The Resistance) - it was causing health and safety issues with expansion in the old town.",
     "year": 2022,
     "season": "Autumn",
     "seasonTitle": "Hallowed Peak",
@@ -188,6 +234,8 @@ const TIME_TRAILS=[
   {
     "id": "2022-autumn-8",
     "title": "The Mayor's Watch",
+    "summary": "Pocket’s watch is haunted by a ghost — wrongly believed to be Mayor Furbish’s - which means it needs to be destroyed.",
+    "searchText": "Pocket’s watch is haunted by a ghost — wrongly believed to be Mayor Furbish’s - which means it needs to be destroyed.",
     "year": 2022,
     "season": "Autumn",
     "seasonTitle": "Hallowed Peak",
@@ -196,6 +244,8 @@ const TIME_TRAILS=[
   {
     "id": "2022-autumn-9",
     "title": "The Silver Children",
+    "summary": "Sparks was running a club based on their love of JonaCola - they rebranded as The Silver Children but Sparks shut it down after a spooky encounter.",
+    "searchText": "Sparks was running a club based on their love of JonaCola - they rebranded as The Silver Children but Sparks shut it down after a spooky encounter.",
     "year": 2022,
     "season": "Autumn",
     "seasonTitle": "Hallowed Peak",
@@ -204,6 +254,8 @@ const TIME_TRAILS=[
   {
     "id": "2022-autumn-10",
     "title": "Perigiest",
+    "summary": "Despite believing they were pranked by The Resistance, it turns out a ghost called Sam was trying to get Perigate’s attention for a date!",
+    "searchText": "Despite believing they were pranked by The Resistance, it turns out a ghost called Sam was trying to get Perigate’s attention for a date!",
     "year": 2022,
     "season": "Autumn",
     "seasonTitle": "Hallowed Peak",
@@ -212,6 +264,8 @@ const TIME_TRAILS=[
   {
     "id": "2022-autumn-11",
     "title": "The Numbers Of The Beast",
+    "summary": "Arrogoth, a demon summoned by Cogwright to be better with numbers, wants a job as a JONACO accountant. Stickler helped out in the end by arranging an interview!",
+    "searchText": "Arrogoth, a demon summoned by Cogwright to be better with numbers, wants a job as a JONACO accountant. Stickler helped out in the end by arranging an interview!",
     "year": 2022,
     "season": "Autumn",
     "seasonTitle": "Hallowed Peak",
@@ -220,6 +274,8 @@ const TIME_TRAILS=[
   {
     "id": "2022-autumn-12",
     "title": "Medium At Large",
+    "summary": "You help Madame Mechanica escape from RoboDoc and JONACO’s clutches!",
+    "searchText": "You help Madame Mechanica escape from RoboDoc and JONACO’s clutches!",
     "year": 2022,
     "season": "Autumn",
     "seasonTitle": "Hallowed Peak",
@@ -228,6 +284,8 @@ const TIME_TRAILS=[
   {
     "id": "2022-autumn-13",
     "title": "What Do You Think You Are",
+    "summary": "Datchery’s grandfather turns out to have buried Datchery in their family crypt in an attempt to steal Miramine from them.",
+    "searchText": "Datchery’s grandfather turns out to have buried Datchery in their family crypt in an attempt to steal Miramine from them.",
     "year": 2022,
     "season": "Autumn",
     "seasonTitle": "Hallowed Peak",
@@ -236,6 +294,8 @@ const TIME_TRAILS=[
   {
     "id": "2022-autumn-14",
     "title": "A Special Invitation",
+    "summary": "We have been noticed…Jonas is aware of us now...",
+    "searchText": "We have been noticed…Jonas is aware of us now...",
     "year": 2022,
     "season": "Autumn",
     "seasonTitle": "Hallowed Peak",
@@ -244,6 +304,8 @@ const TIME_TRAILS=[
   {
     "id": "2022-winter-1",
     "title": "It's A Winterful Life",
+    "summary": "Winter has been haunted! Winter punched the ghost and collected some ectoplasm. On investigation, Pax is the one behind the prank!",
+    "searchText": "Winter has been haunted! Winter punched the ghost and collected some ectoplasm. On investigation, Pax is the one behind the prank!",
     "year": 2022,
     "season": "Winter",
     "seasonTitle": "Wintermas",
@@ -252,6 +314,8 @@ const TIME_TRAILS=[
   {
     "id": "2022-winter-2",
     "title": "The Kirkyard Ghoul",
+    "summary": "Spectre and Vox are recruiting! We find a ghost who's thirsty but on deeper digging, it's just a viral ad for JonaCola made by JONACO!",
+    "searchText": "Spectre and Vox are recruiting! We find a ghost who's thirsty but on deeper digging, it's just a viral ad for JonaCola made by JONACO!",
     "year": 2022,
     "season": "Winter",
     "seasonTitle": "Wintermas",
@@ -260,6 +324,8 @@ const TIME_TRAILS=[
   {
     "id": "2022-winter-3",
     "title": "Platman Returns",
+    "summary": "Platman is back - and Platman is here to break out the imprisoned Father Platmas! After helping Cogwright work out who stole their pie - Ender! - you work out the activation key for the door is with…",
+    "searchText": "Platman is back - and Platman is here to break out the imprisoned Father Platmas! After helping Cogwright work out who stole their pie - Ender! - you work out the activation key for the door is with Bellamy. You sneak a pic and give it to Father Platmas, aiding Father Platmas’s escape.",
     "year": 2022,
     "season": "Winter",
     "seasonTitle": "Wintermas",
@@ -268,6 +334,8 @@ const TIME_TRAILS=[
   {
     "id": "2022-winter-4",
     "title": "Sleigh Queen",
+    "summary": "Despite Perigate’s usual wins, you manage to convince Littlefield to enter and, with Nethersole’s help, manage to rig the Sleigh Queen competition for our favourite postie!",
+    "searchText": "Despite Perigate’s usual wins, you manage to convince Littlefield to enter and, with Nethersole’s help, manage to rig the Sleigh Queen competition for our favourite postie!",
     "year": 2022,
     "season": "Winter",
     "seasonTitle": "Wintermas",
@@ -276,6 +344,8 @@ const TIME_TRAILS=[
   {
     "id": "2022-winter-5",
     "title": "The Platypus, The Wizard And The Armoire",
+    "summary": "Littlefield fell into a story! Jarnia! But it appears it’s a pocket dimension created by Dr Winter and will destroy the whole universe if it’s not stopped. You made Littlefield destroy it with 3 pushes of…",
+    "searchText": "Littlefield fell into a story! Jarnia! But it appears it’s a pocket dimension created by Dr Winter and will destroy the whole universe if it’s not stopped. You made Littlefield destroy it with 3 pushes of their lamp light switch.",
     "year": 2022,
     "season": "Winter",
     "seasonTitle": "Wintermas",
@@ -284,6 +354,8 @@ const TIME_TRAILS=[
   {
     "id": "2022-winter-6",
     "title": "What's In The Box?!",
+    "summary": "Leadbelly has a box they are unsure of - It’s wrapped in caution tape! After a bit of checking, you realise it's just a Secret Santa gift. (It was a hard hat!).",
+    "searchText": "Leadbelly has a box they are unsure of - It’s wrapped in caution tape! After a bit of checking, you realise it's just a Secret Santa gift. (It was a hard hat!).",
     "year": 2022,
     "season": "Winter",
     "seasonTitle": "Wintermas",
@@ -292,6 +364,8 @@ const TIME_TRAILS=[
   {
     "id": "2022-winter-7",
     "title": "The Earworm",
+    "summary": "Sparks has been playing a song that causes ACTUAL earworms! Bellamy, the deputy mayor, is sick of it and tasks you with getting to the bottom of things. Turns out to be a spectral worm, cured by singing…",
+    "searchText": "Sparks has been playing a song that causes ACTUAL earworms! Bellamy, the deputy mayor, is sick of it and tasks you with getting to the bottom of things. Turns out to be a spectral worm, cured by singing the Wintermas song, Platypus In The Snow.",
     "year": 2022,
     "season": "Winter",
     "seasonTitle": "Wintermas",
@@ -300,6 +374,8 @@ const TIME_TRAILS=[
   {
     "id": "2022-winter-8",
     "title": "Jonabot All The Way",
+    "summary": "Everyone is sold out of the hottest Wintermas toy - the Mini Jonabot! After lots of asking around, you discover Madame Mechanica has been collecting the sentient bots, and asks you to recruit Datchery to…",
+    "searchText": "Everyone is sold out of the hottest Wintermas toy - the Mini Jonabot! After lots of asking around, you discover Madame Mechanica has been collecting the sentient bots, and asks you to recruit Datchery to The Resistance to help.",
     "year": 2022,
     "season": "Winter",
     "seasonTitle": "Wintermas",
@@ -308,6 +384,8 @@ const TIME_TRAILS=[
   {
     "id": "2022-winter-9",
     "title": "Blobsleigh",
+    "summary": "Pax missed their old sleigh team - however, JONACO has been experimenting and has turned their old team into one blob sleigh-rider!",
+    "searchText": "Pax missed their old sleigh team - however, JONACO has been experimenting and has turned their old team into one blob sleigh-rider!",
     "year": 2022,
     "season": "Winter",
     "seasonTitle": "Wintermas",
@@ -316,6 +394,8 @@ const TIME_TRAILS=[
   {
     "id": "2022-winter-10",
     "title": "Sparks' Letter",
+    "summary": "Sparks is worried they're on the naughty list - turns out that their letter to Father Platmas was destroyed so you replace it with a fake to make them feel better.",
+    "searchText": "Sparks is worried they're on the naughty list - turns out that their letter to Father Platmas was destroyed so you replace it with a fake to make them feel better.",
     "year": 2022,
     "season": "Winter",
     "seasonTitle": "Wintermas",
@@ -324,6 +404,8 @@ const TIME_TRAILS=[
   {
     "id": "2022-winter-11",
     "title": "Winter At Hogwood",
+    "summary": "Hogwood’s latest film has been banned and is being turned into a weapon by JONACO.",
+    "searchText": "Hogwood’s latest film has been banned and is being turned into a weapon by JONACO.",
     "year": 2022,
     "season": "Winter",
     "seasonTitle": "Wintermas",
@@ -332,6 +414,8 @@ const TIME_TRAILS=[
   {
     "id": "2022-winter-12",
     "title": "Deck The Halloway’s",
+    "summary": "Halloway is being pranked - turns out to be Sparks who stole the diamant wand and created a living snowman...who melted! The melted snowman makes for a great Wintermas present for Halloway.",
+    "searchText": "Halloway is being pranked - turns out to be Sparks who stole the diamant wand and created a living snowman...who melted! The melted snowman makes for a great Wintermas present for Halloway.",
     "year": 2022,
     "season": "Winter",
     "seasonTitle": "Wintermas",
@@ -340,6 +424,8 @@ const TIME_TRAILS=[
   {
     "id": "2022-winter-13",
     "title": "Naughty Or Nice",
+    "summary": "Nethersole, the only one on the good list, shows you that a nice letter to Father Platmas is good for a place on the Nice List.",
+    "searchText": "Nethersole, the only one on the good list, shows you that a nice letter to Father Platmas is good for a place on the Nice List.",
     "year": 2022,
     "season": "Winter",
     "seasonTitle": "Wintermas",
@@ -348,6 +434,8 @@ const TIME_TRAILS=[
   {
     "id": "2023-spring-1",
     "title": "H&S Gone Mad",
+    "summary": "Pax recruits you as a spy to find out who is behind the popping of balloons around Phantom Peak. Turns out the resistance is behind the poppings and you become a resistance member to find out what's going…",
+    "searchText": "Pax recruits you as a spy to find out who is behind the popping of balloons around Phantom Peak. Turns out the resistance is behind the poppings and you become a resistance member to find out what's going on. In the end you discover Leadbelly’s typewriter is haunted - and is manifesting their mysteries into real life.",
     "year": 2023,
     "season": "Spring",
     "seasonTitle": "Platypus Parade",
@@ -356,6 +444,8 @@ const TIME_TRAILS=[
   {
     "id": "2023-spring-2",
     "title": "Vanishing Act",
+    "summary": "Zenia is public enemy No. 1! There are posters all over town and you reach out to the resistance (Sparks!) to see if you can help. Unfortunately what you uncover is not great news – Zenia is an AI Bot…",
+    "searchText": "Zenia is public enemy No. 1! There are posters all over town and you reach out to the resistance (Sparks!) to see if you can help. Unfortunately what you uncover is not great news – Zenia is an AI Bot, created by Jonas. Zenia is no longer needed…the takeover of the Old Town is almost complete! You made sure to tell Sparks about the betrayal.",
     "year": 2023,
     "season": "Spring",
     "seasonTitle": "Platypus Parade",
@@ -364,6 +454,8 @@ const TIME_TRAILS=[
   {
     "id": "2023-spring-3",
     "title": "Nylon Genesis Evangelical",
+    "summary": "Pius has a problem with furniture turning up unannounced at the church! You do some digging on their behalf and find you can get rid of the infernal furniture with songs about how bad the furniture is.…",
+    "searchText": "Pius has a problem with furniture turning up unannounced at the church! You do some digging on their behalf and find you can get rid of the infernal furniture with songs about how bad the furniture is. *Cue bad singing about shoddy workmanship*.",
     "year": 2023,
     "season": "Spring",
     "seasonTitle": "Platypus Parade",
@@ -372,6 +464,8 @@ const TIME_TRAILS=[
   {
     "id": "2023-spring-4",
     "title": "Fortune Favours The Furb",
+    "summary": "Cogwright has half a treasure map and is looking for Treasure Hunters. Furbish is involved and you seek out his best friend in Phantom Peak - Copper - for more info. From there you find out the other half…",
+    "searchText": "Cogwright has half a treasure map and is looking for Treasure Hunters. Furbish is involved and you seek out his best friend in Phantom Peak - Copper - for more info. From there you find out the other half of the map is held by a group called FUPA (Furbish Protection Act). Turns out the \"treasure\" is Furbish! He is alive, and waiting underground for the right time to return.",
     "year": 2023,
     "season": "Spring",
     "seasonTitle": "Platypus Parade",
@@ -380,6 +474,8 @@ const TIME_TRAILS=[
   {
     "id": "2023-spring-5",
     "title": "Littlefield’s Little Friend",
+    "summary": "Littlefield has a new robot friend in the Jonapost office - but it keeps eating letters! You trace the fault to a dangerous error that means the bot will kill whomever the owner loves most - and…",
+    "searchText": "Littlefield has a new robot friend in the Jonapost office - but it keeps eating letters! You trace the fault to a dangerous error that means the bot will kill whomever the owner loves most - and Littlefield LOVES Jonas! Unfortunately, that's the second new civilisation Littlefield has now killed!",
     "year": 2023,
     "season": "Spring",
     "seasonTitle": "Platypus Parade",
@@ -388,6 +484,8 @@ const TIME_TRAILS=[
   {
     "id": "2023-spring-6",
     "title": "Play With Fire",
+    "summary": "You find the saloon burnt out after an arson attack-with Nethersole reportedly dying in the fire. However, it turns out Nethersole faked their death due to guilt over selling the town out and allowing…",
+    "searchText": "You find the saloon burnt out after an arson attack-with Nethersole reportedly dying in the fire. However, it turns out Nethersole faked their death due to guilt over selling the town out and allowing JONACO in!",
     "year": 2023,
     "season": "Spring",
     "seasonTitle": "Platypus Parade",
@@ -396,6 +494,8 @@ const TIME_TRAILS=[
   {
     "id": "2023-spring-7",
     "title": "Who You Gonna Jonagraph?",
+    "summary": "Spectre is worried about a rival Paranormal Investor outfit - GhoulBusters. After using Halloway’s recent ghost sightings to contact them, you discover the GhoulBusters are actually demons, and Vox…",
+    "searchText": "Spectre is worried about a rival Paranormal Investor outfit - GhoulBusters. After using Halloway’s recent ghost sightings to contact them, you discover the GhoulBusters are actually demons, and Vox - Spectre's partner - gives you instructions to get rid of them with the Mirrors.",
     "year": 2023,
     "season": "Spring",
     "seasonTitle": "Platypus Parade",
@@ -404,6 +504,8 @@ const TIME_TRAILS=[
   {
     "id": "2023-spring-8",
     "title": "War Of The Reels",
+    "summary": "Hogwood is upset when Boarbark wins best film at the festival. You discover that Boarbark has been using a JonaCamera, which causes memory loss. Hogwood and Boarbark are the same person: the camera made…",
+    "searchText": "Hogwood is upset when Boarbark wins best film at the festival. You discover that Boarbark has been using a JonaCamera, which causes memory loss. Hogwood and Boarbark are the same person: the camera made Hogwood forget they were working under a pen name.",
     "year": 2023,
     "season": "Spring",
     "seasonTitle": "Platypus Parade",
@@ -412,6 +514,8 @@ const TIME_TRAILS=[
   {
     "id": "2023-spring-9",
     "title": "Kindred Spirits",
+    "summary": "Dr Winter is looking for some evil apprentices - you apply and are tasked with finding out more about a tiny evil hat Winter has found. After some digging around and discussions with a spooked Sparks, you…",
+    "searchText": "Dr Winter is looking for some evil apprentices - you apply and are tasked with finding out more about a tiny evil hat Winter has found. After some digging around and discussions with a spooked Sparks, you reveal it is Terence the Talking Platypus (created by Sparks in an earlier season) seeking revenge! Winter seems impressed by the talking platypus!",
     "year": 2023,
     "season": "Spring",
     "seasonTitle": "Platypus Parade",
@@ -420,6 +524,8 @@ const TIME_TRAILS=[
   {
     "id": "2023-spring-10",
     "title": "Pity Parade",
+    "summary": "Perigate needs help preparing for the big parade! You are tasked with fixing RoboDJ. By doing so, you discover Madame Mechanica is involved and is being stopped from hacking the mainframe by an alarm. You…",
+    "searchText": "Perigate needs help preparing for the big parade! You are tasked with fixing RoboDJ. By doing so, you discover Madame Mechanica is involved and is being stopped from hacking the mainframe by an alarm. You need a distraction so you fake a birth certificate to say it's Jonas's birthday, causing massive embarrassment and a rank decrease for Perigate who asks all to sing Happy Birthday at the closing ceremony - it turns out it is NOT Jonas's birthday at all!",
     "year": 2023,
     "season": "Spring",
     "seasonTitle": "Platypus Parade",
@@ -428,6 +534,8 @@ const TIME_TRAILS=[
   {
     "id": "2023-spring-11",
     "title": "The Big Day",
+    "summary": "You watch a videomatic of a conversation between Dr. Winter and Jonas – Something is under Phantom Peak and its power source appears to be their target. You told Winter what you know…",
+    "searchText": "You watch a videomatic of a conversation between Dr. Winter and Jonas – Something is under Phantom Peak and its power source appears to be their target. You told Winter what you know…",
     "year": 2023,
     "season": "Spring",
     "seasonTitle": "Platypus Parade",
@@ -436,6 +544,8 @@ const TIME_TRAILS=[
   {
     "id": "2023-summer-1",
     "title": "Dead Ringer",
+    "summary": "Sparks has been buying stuff from a Greymarket site and has ended up with a weird looking skull! After tracking down Datchery as the seller and a lab test with Dr Winter, you find a message from Sparks in…",
+    "searchText": "Sparks has been buying stuff from a Greymarket site and has ended up with a weird looking skull! After tracking down Datchery as the seller and a lab test with Dr Winter, you find a message from Sparks in the future warning themselves not to join the Janus 2 project - and that skull is Sparks all along.",
     "year": 2023,
     "season": "Summer",
     "seasonTitle": "Summer's Peak",
@@ -444,6 +554,8 @@ const TIME_TRAILS=[
   {
     "id": "2023-summer-2",
     "title": "Radio Killed The Video Star",
+    "summary": "You find a broken JAM box and report to Cogwright who maintains such things. You find out that these boxes use rose diamant and were created by Charles Datchery. The Diamar, first people of the land…",
+    "searchText": "You find a broken JAM box and report to Cogwright who maintains such things. You find out that these boxes use rose diamant and were created by Charles Datchery. The Diamar, first people of the land, trapped souls in the diamant - causing the voices that can be heard. You tell Cogwright what you know.",
     "year": 2023,
     "season": "Summer",
     "seasonTitle": "Summer's Peak",
@@ -452,6 +564,8 @@ const TIME_TRAILS=[
   {
     "id": "2023-summer-3",
     "title": "Ei8Ht",
+    "summary": "Someone has lost their rank 8 badge! You check it out at the lost and found and get pointed towards Rexford. It’s not theirs so you decide to try becoming a rank 8 yourself to see if that helps. In the…",
+    "searchText": "Someone has lost their rank 8 badge! You check it out at the lost and found and get pointed towards Rexford. It’s not theirs so you decide to try becoming a rank 8 yourself to see if that helps. In the process, you learn that the badge is holding a ghost that needs to be destroyed by dipping the badge in ink! Datchery gladly obliges.",
     "year": 2023,
     "season": "Summer",
     "seasonTitle": "Summer's Peak",
@@ -460,6 +574,8 @@ const TIME_TRAILS=[
   {
     "id": "2023-summer-4",
     "title": "The Diamar Code",
+    "summary": "You watch the trailer for the new Hogwood film and are tasked with finding the code to a cryptex. You find an old note from Bellamy admitting to staging a death in the art hall and pointing you to the…",
+    "searchText": "You watch the trailer for the new Hogwood film and are tasked with finding the code to a cryptex. You find an old note from Bellamy admitting to staging a death in the art hall and pointing you to the graveyard. You check the monoliths and find a code. Turns out Camcom are behind the whole thing as a marketing campaign!",
     "year": 2023,
     "season": "Summer",
     "seasonTitle": "Summer's Peak",
@@ -468,6 +584,8 @@ const TIME_TRAILS=[
   {
     "id": "2023-summer-5",
     "title": "Under Refurbishment",
+    "summary": "You find Pro Furbish graffiti in the bathrooms and examine his old office for clues. After watching Furbish's video obituary, you speak to Pius who is concerned about a cult. Sparks is involved and tells…",
+    "searchText": "You find Pro Furbish graffiti in the bathrooms and examine his old office for clues. After watching Furbish's video obituary, you speak to Pius who is concerned about a cult. Sparks is involved and tells you it's actually a group of people who believe Furbish will return! You find a Videomatic code on a monolith (weird because the monoliths are ancient!) and find Furbish is behind his own cult! He's alive and building support!",
     "year": 2023,
     "season": "Summer",
     "seasonTitle": "Summer's Peak",
@@ -476,6 +594,8 @@ const TIME_TRAILS=[
   {
     "id": "2023-summer-6",
     "title": "The Dramatic Question",
+    "summary": "You find an advert for Spectre and Vox, they want to investigate Jonas! But locals will not talk to Jonas, so you as tourists are perfect. You learn from Littlefield about an upcoming museum and a Men…",
+    "searchText": "You find an advert for Spectre and Vox, they want to investigate Jonas! But locals will not talk to Jonas, so you as tourists are perfect. You learn from Littlefield about an upcoming museum and a Men Bason, who donated a piece of art which sends you to the electric mail. From there you talk to Pocket about the axiomatic clock and look into purple diamant - unique to Phantom Peak and wildly powerful. We must tell Spectre the truth: that Jonas found a fragment of something as a child, laden with Purple Diamant. Now Jonas is looking for the rest, something Jonas calls “The Gift From The Deeps.” You learn that blue diamant controls time, red controls space - purple does both!",
     "year": 2023,
     "season": "Summer",
     "seasonTitle": "Summer's Peak",
@@ -484,6 +604,8 @@ const TIME_TRAILS=[
   {
     "id": "2023-summer-7",
     "title": "Littlefield's Little Package",
+    "summary": "Littlefield has lost a package! And now they're being blackmailed! You find other victims and eventually get a message from Terence, who didn't steal the package but has CCTV. The package seems to have…",
+    "searchText": "Littlefield has lost a package! And now they're being blackmailed! You find other victims and eventually get a message from Terence, who didn't steal the package but has CCTV. The package seems to have grown a leg and left on its own. It was caught by Spectre who tells you it is cursed and needs to be opened by a postal worker to transfer the curse - poor Littlefield! On opening, it was revealed as Schrodinger’s Curse – a 50/50 chance for a monster in that box to be dead or to rip your face off! (Luckily, it was dead!).",
     "year": 2023,
     "season": "Summer",
     "seasonTitle": "Summer's Peak",
@@ -492,6 +614,8 @@ const TIME_TRAILS=[
   {
     "id": "2023-summer-8",
     "title": "Platman Beyond",
+    "summary": "You ask Rexford for proof of their Platman connections, and then find out Rexford is worried about a copy Platman! Rexford sends you to the Summerhouse. There you start the hunt to find the Questioner…",
+    "searchText": "You ask Rexford for proof of their Platman connections, and then find out Rexford is worried about a copy Platman! Rexford sends you to the Summerhouse. There you start the hunt to find the Questioner, Cogwright, their nemesis who appears to have released not one, but many Platmen! You learn of an alternate Phantom Peak - Phantom City! Rexford closes the portal with Salt to keep the peak safe.",
     "year": 2023,
     "season": "Summer",
     "seasonTitle": "Summer's Peak",
@@ -500,6 +624,8 @@ const TIME_TRAILS=[
   {
     "id": "2023-summer-9",
     "title": "Keep Your Friends Close",
+    "summary": "Dr Winter is being mocked by a tiny hat on the platypus on the lake. Winter wants you to find out what Terence is doing. Terence has started a scheme - Hustlepus University to train betapusses to…",
+    "searchText": "Dr Winter is being mocked by a tiny hat on the platypus on the lake. Winter wants you to find out what Terence is doing. Terence has started a scheme - Hustlepus University to train betapusses to alphapusses. You complete some tasks to join and learn the truth about the evil group Terence is forming – and they want Winter to join! You deliver the message to Winter who accepts thanks to the offers of gifts such as teeth or Pocket’s latest book.",
     "year": 2023,
     "season": "Summer",
     "seasonTitle": "Summer's Peak",
@@ -508,6 +634,8 @@ const TIME_TRAILS=[
   {
     "id": "2023-summer-10",
     "title": "Twirling Shadows",
+    "summary": "Halloway knows of a ghost trapped in a JAM box but is finding Spectre too expensive. You find out that something is up with JAM box 2. You go to RoboDoc to discuss the voices you hear. You call the old…",
+    "searchText": "Halloway knows of a ghost trapped in a JAM box but is finding Spectre too expensive. You find out that something is up with JAM box 2. You go to RoboDoc to discuss the voices you hear. You call the old undertakers who points you to a Jonavision channel – which has theories of aliens causing the blimp crash! You find details of a secret meeting happening in the Datchery crypt and uncover the platypole in the old town is a drill, releasing souls trapped in the diamant! You disconnect the drill and tell Halloway.",
     "year": 2023,
     "season": "Summer",
     "seasonTitle": "Summer's Peak",
@@ -516,6 +644,8 @@ const TIME_TRAILS=[
   {
     "id": "2023-summer-11",
     "title": "Angels And Diamant",
+    "summary": "Pius is worried about the Infernal Echidna and gives you a Videomatic code. You watch a video telling you there is a problem with the Jonahedron and to stop the potential damage, Rexford (AKA Platman)…",
+    "searchText": "Pius is worried about the Infernal Echidna and gives you a Videomatic code. You watch a video telling you there is a problem with the Jonahedron and to stop the potential damage, Rexford (AKA Platman) MUST STEAL THE COSMIC PLATYPUS EGG! (Which Rexford does at the end of the day, saving the town again!).",
     "year": 2023,
     "season": "Summer",
     "seasonTitle": "Summer's Peak",
@@ -524,6 +654,8 @@ const TIME_TRAILS=[
   {
     "id": "2023-autumn-1",
     "title": "Unlucky For Some",
+    "summary": "Perigate recruits you to infiltrate the Pocket Mayoral Campaign and help unlock a box they have found. After your usual investigation, you find it belonged to Mayor Nazabod. Opening it reveals a cursed…",
+    "searchText": "Perigate recruits you to infiltrate the Pocket Mayoral Campaign and help unlock a box they have found. After your usual investigation, you find it belonged to Mayor Nazabod. Opening it reveals a cursed mask – which you can choose to warn Perigate about or lie and tell them it’s for good luck.",
     "year": 2023,
     "season": "Autumn",
     "seasonTitle": "Hallowed Peak",
@@ -532,6 +664,8 @@ const TIME_TRAILS=[
   {
     "id": "2023-autumn-2",
     "title": "Pocket Gets Cancelled",
+    "summary": "Pocket has been cancelled thanks to a speech they gave and a painting of Jonas…as a bald man. You try to convince Pocket that the painting is hurting their chances – they share their apology and you learn…",
+    "searchText": "Pocket has been cancelled thanks to a speech they gave and a painting of Jonas…as a bald man. You try to convince Pocket that the painting is hurting their chances – they share their apology and you learn Platman has also been cancelled. You find mention of The Lady – who helped Sandra from HR before (Bloody Sandra!) and learn you can pass the cancellation on by passing the curse causing it to a willing person – so you convince Littlefield to take the hit! You pass the gossip to Halloway to spread about town.",
     "year": 2023,
     "season": "Autumn",
     "seasonTitle": "Hallowed Peak",
@@ -540,6 +674,8 @@ const TIME_TRAILS=[
   {
     "id": "2023-autumn-3",
     "title": "Killing With Kindness",
+    "summary": "Dr Winter is unhappy again - this time because someone is spreading nice rumours about Winter around town. You ask around and find a TV show called The Kind Doctor. Turns out to be propaganda made by the…",
+    "searchText": "Dr Winter is unhappy again - this time because someone is spreading nice rumours about Winter around town. You ask around and find a TV show called The Kind Doctor. Turns out to be propaganda made by the gnomes who want Winter to lead them but think the general Gnome population might need some softening up first. You convince Winter to take the job, crowning Winter and even receiving a rare compliment!",
     "year": 2023,
     "season": "Autumn",
     "seasonTitle": "Hallowed Peak",
@@ -548,6 +684,8 @@ const TIME_TRAILS=[
   {
     "id": "2023-autumn-4",
     "title": "Five Nights at RoboDJ’s",
+    "summary": "Spectre thinks RoboDJ needs checking on - you watch some CCTV with RoboDJ trying a jumpscare. Sparks has also seen them moving about at night and sets you to research the manufacturer. After some digging…",
+    "searchText": "Spectre thinks RoboDJ needs checking on - you watch some CCTV with RoboDJ trying a jumpscare. Sparks has also seen them moving about at night and sets you to research the manufacturer. After some digging, you learn they used Mayor Nazabod’s brain to make Robo DJ – and they want an alliance with Pocket – you convince the incumbent mayor to take the deal.",
     "year": 2023,
     "season": "Autumn",
     "seasonTitle": "Hallowed Peak",
@@ -556,6 +694,8 @@ const TIME_TRAILS=[
   {
     "id": "2023-autumn-5",
     "title": "Trick Or Treat",
+    "summary": "Perigate is running Terence the Talking Platypus’s campaign. Terence promises to leave Sparks alone, but the kindness is a trick intended to make a demon target Sparks. To save Sparks, you must insult…",
+    "searchText": "Perigate is running Terence the Talking Platypus’s campaign. Terence promises to leave Sparks alone, but the kindness is a trick intended to make a demon target Sparks. To save Sparks, you must insult them.",
     "year": 2023,
     "season": "Autumn",
     "seasonTitle": "Hallowed Peak",
@@ -564,6 +704,8 @@ const TIME_TRAILS=[
   {
     "id": "2023-autumn-6",
     "title": "The Devil's Dues",
+    "summary": "Cogwright doesn’t rate Spectre and needs a paranormal investigator – so you volunteer! They’re having issues with Aggrogoth – A demon you previously helped to gain a job at JONACO! You contact them and…",
+    "searchText": "Cogwright doesn’t rate Spectre and needs a paranormal investigator – so you volunteer! They’re having issues with Aggrogoth – A demon you previously helped to gain a job at JONACO! You contact them and they point to a video which looks like an ad from Spectre and Vox. It sounds like Spectre’s business is in trouble, and it’s Cogwright’s fault! You convince Cogwright that this demon is too powerful for freelance paranormal investigators, and that their only hope is to purchase Spectre’s S.A.F.E.G.U.A.R.D. plan.",
     "year": 2023,
     "season": "Autumn",
     "seasonTitle": "Hallowed Peak",
@@ -572,6 +714,8 @@ const TIME_TRAILS=[
   {
     "id": "2023-autumn-7",
     "title": "Cosmic Counterparts",
+    "summary": "Pius isn't feeling great - they seem nervous about the Infernal Echidna and ask you to help. After digging around you learn about Succulent Skies and their pilot brothers Brutus and Pinkerton. Eventually…",
+    "searchText": "Pius isn't feeling great - they seem nervous about the Infernal Echidna and ask you to help. After digging around you learn about Succulent Skies and their pilot brothers Brutus and Pinkerton. Eventually, you learn (with some diamant involvement) that Pius is an amalgam of the brothers- Pinkerton and Brutus = PIUS.",
     "year": 2023,
     "season": "Autumn",
     "seasonTitle": "Hallowed Peak",
@@ -580,6 +724,8 @@ const TIME_TRAILS=[
   {
     "id": "2023-autumn-8",
     "title": "Spirit Of The Season",
+    "summary": "Hogwood has a new film but no monster! It apparently came out of the screen and went on a rampage in the Old Town, leaving blue marks everywhere. On analysis, you discover the blue marks are from all the…",
+    "searchText": "Hogwood has a new film but no monster! It apparently came out of the screen and went on a rampage in the Old Town, leaving blue marks everywhere. On analysis, you discover the blue marks are from all the Jonajuice Hogwood has been drinking - and they are hallucinating! You warn Hogwood about the dangers of the tasty blue stuff...",
     "year": 2023,
     "season": "Autumn",
     "seasonTitle": "Hallowed Peak",
@@ -588,6 +734,8 @@ const TIME_TRAILS=[
   {
     "id": "2023-autumn-9",
     "title": "Mum's The Word",
+    "summary": "Halloway is missing their mum who seems to have gone somewhere. You do a bit of digging around town and find out that they have moved onto the afterlife and the note Halloway thought was a demanding IOU…",
+    "searchText": "Halloway is missing their mum who seems to have gone somewhere. You do a bit of digging around town and find out that they have moved onto the afterlife and the note Halloway thought was a demanding IOU was actually a loving last message - I Heart You!",
     "year": 2023,
     "season": "Autumn",
     "seasonTitle": "Hallowed Peak",
@@ -596,6 +744,8 @@ const TIME_TRAILS=[
   {
     "id": "2023-autumn-10",
     "title": "I Know What You Did Last Wintermas",
+    "summary": "Datchery has been getting threatening letters about what they did last Wintermas and asks for help. You analyse the handwriting with the helpful flowchart Datchery provides and end up at Winter’s lab…",
+    "searchText": "Datchery has been getting threatening letters about what they did last Wintermas and asks for help. You analyse the handwriting with the helpful flowchart Datchery provides and end up at Winter’s lab, where you discover Datchery is writing the notes themselves - they had a memory wipe due to causing the Great Rock Fall with an unfortunate rock throw and the lunar festival is messing with things. You either tell Datchery the truth, or lie and say Leadbelly is behind it all...",
     "year": 2023,
     "season": "Autumn",
     "seasonTitle": "Hallowed Peak",
@@ -604,6 +754,8 @@ const TIME_TRAILS=[
   {
     "id": "2023-autumn-11",
     "title": "Chaos Reigns",
+    "summary": "You see a message from Furbish…the election is a sham (clearly!) and he will only resurface when he is ready! You also discover that JONACO has sent Spectre a piece of diamant under the name of Miraco…",
+    "searchText": "You see a message from Furbish…the election is a sham (clearly!) and he will only resurface when he is ready! You also discover that JONACO has sent Spectre a piece of diamant under the name of Miraco (CLEVER!) which seems to hold a particularly twisted soul…",
     "year": 2023,
     "season": "Autumn",
     "seasonTitle": "Hallowed Peak",
@@ -612,6 +764,8 @@ const TIME_TRAILS=[
   {
     "id": "2023-winter-1",
     "title": "A Winter Wonderland",
+    "summary": "You join Dr Winter’s scheme to protect the town against Father Platmas and investigate stolen purple diamant. The clues lead to Spectre, who admits borrowing it without permission. White diamant appears…",
+    "searchText": "You join Dr Winter’s scheme to protect the town against Father Platmas and investigate stolen purple diamant. The clues lead to Spectre, who admits borrowing it without permission. White diamant appears to be the way to stop Father Platmas, so you find a sample and take it to Winter. You then discover Winter is using the crisis to fund a massive new lab rather than solve the problem. Winter destroys the white diamant sample.",
     "year": 2023,
     "season": "Winter",
     "seasonTitle": "Christmas at the Peak",
@@ -620,6 +774,8 @@ const TIME_TRAILS=[
   {
     "id": "2023-winter-2",
     "title": "Parent Company",
+    "summary": "Littlefield wants Jonas to adopt them. You offer to help and even approach Pius, but Littlefield cannot join the Church until they are emancipated from their parents. Perigate eventually reclassifies…",
+    "searchText": "Littlefield wants Jonas to adopt them. You offer to help and even approach Pius, but Littlefield cannot join the Church until they are emancipated from their parents. Perigate eventually reclassifies Littlefield as printer paper, allowing JONACO to adopt them.",
     "year": 2023,
     "season": "Winter",
     "seasonTitle": "Christmas at the Peak",
@@ -628,6 +784,8 @@ const TIME_TRAILS=[
   {
     "id": "2023-winter-3",
     "title": "Where Are You?",
+    "summary": "Hogwood has been chased out of the cinema. A team of teenagers and a dog sent to help is found dead, but the yeti involved only wants Hogwood to watch their film and give it a comedy award. Hogwood…",
+    "searchText": "Hogwood has been chased out of the cinema. A team of teenagers and a dog sent to help is found dead, but the yeti involved only wants Hogwood to watch their film and give it a comedy award. Hogwood, however, insists on making art.",
     "year": 2023,
     "season": "Winter",
     "seasonTitle": "Christmas at the Peak",
@@ -636,6 +794,8 @@ const TIME_TRAILS=[
   {
     "id": "2023-winter-4",
     "title": "Mayor Of The Universe",
+    "summary": "Pocket receives a puppet and believes it came from a future love interest. Hogwood denies sending it, while Pocket’s Jumble profile shows an interdimensional error. You discover the Council of Pockets…",
+    "searchText": "Pocket receives a puppet and believes it came from a future love interest. Hogwood denies sending it, while Pocket’s Jumble profile shows an interdimensional error. You discover the Council of Pockets, made up of counterparts from across the multiverse. The puppet wants to become mayor of the universe, has attacked RoboDJ and is now coming for Pocket. You warn Pocket about the danger and advise destroying the puppet with fire.",
     "year": 2023,
     "season": "Winter",
     "seasonTitle": "Christmas at the Peak",
@@ -644,6 +804,8 @@ const TIME_TRAILS=[
   {
     "id": "2023-winter-5",
     "title": "Merry Mayhem",
+    "summary": "Sparks asks for help trapping Terence, but someone has already triggered the trap at the squat. Terence and Hustlepus University seem involved, though Terence says the JIA is really after Sparks. Madame…",
+    "searchText": "Sparks asks for help trapping Terence, but someone has already triggered the trap at the squat. Terence and Hustlepus University seem involved, though Terence says the JIA is really after Sparks. Madame Mechanica has foretold that Sparks will play Jonas in the Jonativity. You learn Sparks needs to work out and teach the group a new exercise plan.",
     "year": 2023,
     "season": "Winter",
     "seasonTitle": "Christmas at the Peak",
@@ -652,6 +814,8 @@ const TIME_TRAILS=[
   {
     "id": "2023-winter-6",
     "title": "The Platman Clause",
+    "summary": "Datchery envies Father Platmas’s business model and is experiencing strange cravings. RoboDoc tells you about another Santa who died from an explosive bowel disorder. Datchery is turning into Platmas and…",
+    "searchText": "Datchery envies Father Platmas’s business model and is experiencing strange cravings. RoboDoc tells you about another Santa who died from an explosive bowel disorder. Datchery is turning into Platmas and could face the same fate. You advise destroying the wish receipt to stop the transformation.",
     "year": 2023,
     "season": "Winter",
     "seasonTitle": "Christmas at the Peak",
@@ -660,6 +824,8 @@ const TIME_TRAILS=[
   {
     "id": "2023-winter-7",
     "title": "The Parent Trap",
+    "summary": "Perigate’s parents are in town, disguised as staplers. You track them down and learn they are disappointed in their child and trying to set Perigate up with Dr Winter. Winter turns the parents into…",
+    "searchText": "Perigate’s parents are in town, disguised as staplers. You track them down and learn they are disappointed in their child and trying to set Perigate up with Dr Winter. Winter turns the parents into marbles, and you return them to Perigate.",
     "year": 2023,
     "season": "Winter",
     "seasonTitle": "Christmas at the Peak",
@@ -668,6 +834,8 @@ const TIME_TRAILS=[
   {
     "id": "2023-winter-8",
     "title": "The Gronch",
+    "summary": "Someone has trashed the Undertakers and covered it in green fur. You hear about the Gronch and its cereal, then discover JONACO’s involvement. A person named Elis is slowly transforming into the Gronch.…",
+    "searchText": "Someone has trashed the Undertakers and covered it in green fur. You hear about the Gronch and its cereal, then discover JONACO’s involvement. A person named Elis is slowly transforming into the Gronch. RoboDoc told Elis to hide in a coffin, so you let Halloway know about the hidden guest.",
     "year": 2023,
     "season": "Winter",
     "seasonTitle": "Christmas at the Peak",
@@ -676,6 +844,8 @@ const TIME_TRAILS=[
   {
     "id": "2023-winter-9",
     "title": "Parasocial Activity",
+    "summary": "A model of Spectre and Vox’s office appears, and Spectre worries that the model maker has returned for Vox. You join their fan club and find fiction by Bunk wishing Vox dead. Bunk has trapped Vox in a…",
+    "searchText": "A model of Spectre and Vox’s office appears, and Spectre worries that the model maker has returned for Vox. You join their fan club and find fiction by Bunk wishing Vox dead. Bunk has trapped Vox in a model in the Hall of Art. You alert Spectre that Bunk is in the mirrors so they can free Vox.",
     "year": 2023,
     "season": "Winter",
     "seasonTitle": "Christmas at the Peak",
@@ -684,6 +854,8 @@ const TIME_TRAILS=[
   {
     "id": "2023-winter-10",
     "title": "How The Questioner Stole Wintermas",
+    "summary": "A painting of Platman in the Hall of Art has been defaced. The Questioner is suspected, but Cogwright says they are being framed. Your investigation points to the Matchmaker: Cogwright’s mother, who wants…",
+    "searchText": "A painting of Platman in the Hall of Art has been defaced. The Questioner is suspected, but Cogwright says they are being framed. Your investigation points to the Matchmaker: Cogwright’s mother, who wants to bring Platman and the Questioner together.",
     "year": 2023,
     "season": "Winter",
     "seasonTitle": "Christmas at the Peak",
@@ -692,6 +864,8 @@ const TIME_TRAILS=[
   {
     "id": "2023-winter-11",
     "title": "Home For The Holidays",
+    "summary": "You intercept a Videomatic from Furbish to Deputy P, Perigate, saying that the terms are agreed and a reply is expected. Perigate is working for Terence and wants out. Terence appeals to Furbish and…",
+    "searchText": "You intercept a Videomatic from Furbish to Deputy P, Perigate, saying that the terms are agreed and a reply is expected. Perigate is working for Terence and wants out. Terence appeals to Furbish and threatens Phantom Peak with a special parcel. You try to intercept it, but Littlefield has already sent it on.",
     "year": 2023,
     "season": "Winter",
     "seasonTitle": "Christmas at the Peak",
@@ -700,6 +874,8 @@ const TIME_TRAILS=[
   {
     "id": "2024-spring-1",
     "title": "Chrono The Wonder Dog",
+    "summary": "Rexford has lost Chrono, Platman’s dog. Your search reveals that Chrono travelled back in time and was Rexford’s childhood pet all along.",
+    "searchText": "Rexford has lost Chrono, Platman’s dog. Your search reveals that Chrono travelled back in time and was Rexford’s childhood pet all along.",
     "year": 2024,
     "season": "Spring",
     "seasonTitle": "Festival of Innovation",
@@ -708,6 +884,8 @@ const TIME_TRAILS=[
   {
     "id": "2024-spring-2",
     "title": "Some Body To Love",
+    "summary": "Halloway asks you to identify their late mentor, Master Bones, so they can be laid to rest under their real name. An axiomatic watch leads you to Mason Briggs, Jonas’s mentor and a co-founder of JONACO.…",
+    "searchText": "Halloway asks you to identify their late mentor, Master Bones, so they can be laid to rest under their real name. An axiomatic watch leads you to Mason Briggs, Jonas’s mentor and a co-founder of JONACO. Jonas gave Briggs the watch as a gift.",
     "year": 2024,
     "season": "Spring",
     "seasonTitle": "Festival of Innovation",
@@ -716,6 +894,8 @@ const TIME_TRAILS=[
   {
     "id": "2024-spring-3",
     "title": "The Fear Factory",
+    "summary": "An advert for a Fear Finder targets Dr Winter. You investigate its maker, the Moderately Attractive Ghost Collective, and learn that Sparks built the machine using brain pills. The dreams caused by the…",
+    "searchText": "An advert for a Fear Finder targets Dr Winter. You investigate its maker, the Moderately Attractive Ghost Collective, and learn that Sparks built the machine using brain pills. The dreams caused by the pills are more sinister than expected. Further investigation points to Furbish, who wants to team up with Winter. Winter proposes splitting the town fifty-fifty.",
     "year": 2024,
     "season": "Spring",
     "seasonTitle": "Festival of Innovation",
@@ -724,6 +904,8 @@ const TIME_TRAILS=[
   {
     "id": "2024-spring-4",
     "title": "Scaly Underbelly",
+    "summary": "Datchery buys an illegal mystery box that appears to have been returned to its sender. The seller points you to Pius and RoboDoc, who direct you to a crate behind the Hall of Art. It holds a broken egg: a…",
+    "searchText": "Datchery buys an illegal mystery box that appears to have been returned to its sender. The seller points you to Pius and RoboDoc, who direct you to a crate behind the Hall of Art. It holds a broken egg: a Bureausaur, an accounting dinosaur, was placed inside by Platman after a misunderstanding. You tell Datchery so they can help the creature escape during the closing ceremony.",
     "year": 2024,
     "season": "Spring",
     "seasonTitle": "Festival of Innovation",
@@ -732,6 +914,8 @@ const TIME_TRAILS=[
   {
     "id": "2024-spring-5",
     "title": "The Phantom Of The Picture House",
+    "summary": "Hogwood has fallen for a masked person. You find their Jumble profile and try to get a ticket to the Masked Lovers Ball. Alvin Sheldrake, actually wants Hogwood’s help finishing a film, whose script is…",
+    "searchText": "Hogwood has fallen for a masked person. You find their Jumble profile and try to get a ticket to the Masked Lovers Ball. Alvin Sheldrake, actually wants Hogwood’s help finishing a film, whose script is hidden under the floorboards. You help Hogwood complete the film.",
     "year": 2024,
     "season": "Spring",
     "seasonTitle": "Festival of Innovation",
@@ -740,6 +924,8 @@ const TIME_TRAILS=[
   {
     "id": "2024-spring-6",
     "title": "The Very Best",
+    "summary": "Littlefield has lost their pet rock. A note on MonsterMon paper sends you to train for a battle, and Sparks gives you your first creature. You learn that Little Rock, Littlefield’s pet, killed Dash and…",
+    "searchText": "Littlefield has lost their pet rock. A note on MonsterMon paper sends you to train for a battle, and Sparks gives you your first creature. You learn that Little Rock, Littlefield’s pet, killed Dash and cannot be beaten by your current team. You trade with Spectre for a paranormal type and defeat Little Rock, but the rock dies. You find another rock and persuade Littlefield that their pet has returned.",
     "year": 2024,
     "season": "Spring",
     "seasonTitle": "Festival of Innovation",
@@ -748,6 +934,8 @@ const TIME_TRAILS=[
   {
     "id": "2024-spring-7",
     "title": "The Devil You Know",
+    "summary": "JonAssist labels you a tech nerd, so you enter an IT contest with KLACKY. Spectre assigns you to repair his Phrenograph for the Festival of Innovation. Other devices, including RoboDoc, are also…",
+    "searchText": "JonAssist labels you a tech nerd, so you enter an IT contest with KLACKY. Spectre assigns you to repair his Phrenograph for the Festival of Innovation. Other devices, including RoboDoc, are also malfunctioning because KLACKY has gone rogue. You try to reach Jim for help, only to learn that Jim is dead. Further clues reveal that KLACKY is a demon named Migas. You broker peace between Migas and Spectre, although it may cost Cogwright a chance at the festival’s grand prize.",
     "year": 2024,
     "season": "Spring",
     "seasonTitle": "Festival of Innovation",
@@ -756,6 +944,8 @@ const TIME_TRAILS=[
   {
     "id": "2024-spring-8",
     "title": "Sweet Disposition",
+    "summary": "The prince from Barrow on the Hill has been turned into a sugar cube, and Pocket asks for help. Hogwood shows you how the Glucuber works, along with a jar of other transformed friends. A wizard is behind…",
+    "searchText": "The prince from Barrow on the Hill has been turned into a sugar cube, and Pocket asks for help. Hogwood shows you how the Glucuber works, along with a jar of other transformed friends. A wizard is behind the attack. Dr Winter agrees to make a somewhat functional clone of the prince for Pocket.",
     "year": 2024,
     "season": "Spring",
     "seasonTitle": "Festival of Innovation",
@@ -764,6 +954,8 @@ const TIME_TRAILS=[
   {
     "id": "2024-spring-9",
     "title": "The Last Laugh",
+    "summary": "Perigate asks for help with a terrifying clown called That. Balloons lead you to the squat, where you learn Hogwood may be the next target. The Amazing Eunice was once beaten by a group of children led by…",
+    "searchText": "Perigate asks for help with a terrifying clown called That. Balloons lead you to the squat, where you learn Hogwood may be the next target. The Amazing Eunice was once beaten by a group of children led by young Perigate. You discover that Perigate has clownitis, a condition that causes frightening clown hallucinations, and that Hogwood and Datchery were among those children. A red nose is the cure. You tell Perigate that you destroyed the interdimensional spider.",
     "year": 2024,
     "season": "Spring",
     "seasonTitle": "Festival of Innovation",
@@ -772,6 +964,8 @@ const TIME_TRAILS=[
   {
     "id": "2024-spring-10",
     "title": "Nothing But The Truth",
+    "summary": "Pius’s invention, Prostlebot, is accused of murder. A Saloon article, a re-enactment and evidence from Perigate lead you to blood that turns out to be fake. A recording from the Church reveals that the…",
+    "searchText": "Pius’s invention, Prostlebot, is accused of murder. A Saloon article, a re-enactment and evidence from Perigate lead you to blood that turns out to be fake. A recording from the Church reveals that the Platypope framed Prostlebot as a marketing ploy. You tell Pius what you found.",
     "year": 2024,
     "season": "Spring",
     "seasonTitle": "Festival of Innovation",
@@ -780,6 +974,8 @@ const TIME_TRAILS=[
   {
     "id": "2024-spring-11",
     "title": "Straight To The Moon",
+    "summary": "Littlefield spots something flashing Morse code in the sky. A Videomatic clue reveals Operation Moonshot, a plan that could realign the balance of the universe. Pocket has heard that it involves two…",
+    "searchText": "Littlefield spots something flashing Morse code in the sky. A Videomatic clue reveals Operation Moonshot, a plan that could realign the balance of the universe. Pocket has heard that it involves two halves of something, one on Earth and one above. Pocket gives you a card in return for your silence.",
     "year": 2024,
     "season": "Spring",
     "seasonTitle": "Festival of Innovation",
@@ -788,6 +984,8 @@ const TIME_TRAILS=[
   {
     "id": "2024-summer-1",
     "title": "Time After Time",
+    "summary": "Hogwood has a problem - they keep remembering the end of the Festival of Innovation as 3 different outcomes! They asked for your help understanding why! You do your usual investigations and find that the…",
+    "searchText": "Hogwood has a problem - they keep remembering the end of the Festival of Innovation as 3 different outcomes! They asked for your help understanding why! You do your usual investigations and find that the Jonahedron is messing with the town and making everyone relive the same day over and over again - Hogwood can see it because of their stint stuck in the axiomatic clocks other dimension!",
     "year": 2024,
     "season": "Summer",
     "seasonTitle": "Starlit Summer",
@@ -796,6 +994,8 @@ const TIME_TRAILS=[
   {
     "id": "2024-summer-2",
     "title": "The Real Thing",
+    "summary": "Lovehart - from JONACO Marketing - has a problem...and it's JonaCola! Weird things are happening to those who drink it so you set off to try and get to the bottom of things. You discover the caramel…",
+    "searchText": "Lovehart - from JONACO Marketing - has a problem...and it's JonaCola! Weird things are happening to those who drink it so you set off to try and get to the bottom of things. You discover the caramel flavour in JonaCola is causing divorced dads to explode - something to do with it reacting with fat in the body. Perigate refuses to admit a problem (because that would make JONACO look bad) so instead tasks you to rebrand the drink for Lovehart.",
     "year": 2024,
     "season": "Summer",
     "seasonTitle": "Starlit Summer",
@@ -804,6 +1004,8 @@ const TIME_TRAILS=[
   {
     "id": "2024-summer-3",
     "title": "Whiskers In The Dark",
+    "summary": "Spectre asks you to represent him in a tax case, but you discover the summons is fake and its supposed issuer is dead. A group of demon raccoons led by Fritz has stolen the Phrenograph and taken a device…",
+    "searchText": "Spectre asks you to represent him in a tax case, but you discover the summons is fake and its supposed issuer is dead. A group of demon raccoons led by Fritz has stolen the Phrenograph and taken a device from RoboDoc that they intend to use as a bomb. You locate the bomb in the mirrors and help Spectre disarm it.",
     "year": 2024,
     "season": "Summer",
     "seasonTitle": "Starlit Summer",
@@ -812,6 +1014,8 @@ const TIME_TRAILS=[
   {
     "id": "2024-summer-4",
     "title": "Pocket Dial",
+    "summary": "Pocket has killed Chonky Chuck, Jonas’s horse, and now faces a dispute with Jacques the Jock. You try offering Jacques cheese, but it causes offence because of the Cheese Wars. Jacques demands Chonky…",
+    "searchText": "Pocket has killed Chonky Chuck, Jonas’s horse, and now faces a dispute with Jacques the Jock. You try offering Jacques cheese, but it causes offence because of the Cheese Wars. Jacques demands Chonky Chuck’s resurrection. Krazy Keith directs you to Littlefield, whose attempt produces a moth-horse that attacks Revenant Canyon. You advise Pocket to call the mayor to restore peace, leading to a dance at the festival’s close.",
     "year": 2024,
     "season": "Summer",
     "seasonTitle": "Starlit Summer",
@@ -820,6 +1024,8 @@ const TIME_TRAILS=[
   {
     "id": "2024-summer-5",
     "title": "Skytanic",
+    "summary": "Perigate’s parents send clown swimwear, although Perigate fears clowns and cannot swim. A Videomatic reveals that they have signed Perigate up for Skytanic to revisit past failures. You obtain a fake…",
+    "searchText": "Perigate’s parents send clown swimwear, although Perigate fears clowns and cannot swim. A Videomatic reveals that they have signed Perigate up for Skytanic to revisit past failures. You obtain a fake obituary from Halloway, but the parents are not fooled. Sparks explains how KLACKY can steer Skybergs into the Skytanic. You also learn that Perigate’s parents have left a gift and tell Perigate where to find it.",
     "year": 2024,
     "season": "Summer",
     "seasonTitle": "Starlit Summer",
@@ -828,6 +1034,8 @@ const TIME_TRAILS=[
   {
     "id": "2024-summer-6",
     "title": "Post Nuclear Family",
+    "summary": "Littlefield has started an unofficial Jonas Fan Group and you attempt to join. As you go, you learn Jonas's parent are in trouble so you watch a documentary on them and Jonas's childhood. To try and meet…",
+    "searchText": "Littlefield has started an unofficial Jonas Fan Group and you attempt to join. As you go, you learn Jonas's parent are in trouble so you watch a documentary on them and Jonas's childhood. To try and meet the parents you go to Perigate who runs the official club for help. You \"meet\" the parent at Mt Absmore and keep digging, finding a half finished musical about Jonas - Jonas didn't approve of reference to the parents! - who's writer was pulled into the axiomatic clock. Exploring the clock leads you to a video and you learn that Dr Winter has the \"Precious Cargo\"... Shrunken Parents of Jonas - and they were shrunken by order of Jonas! Jonas always thought their parents kept them back.",
     "year": 2024,
     "season": "Summer",
     "seasonTitle": "Starlit Summer",
@@ -836,6 +1044,8 @@ const TIME_TRAILS=[
   {
     "id": "2024-summer-7",
     "title": "Death and Taxes",
+    "summary": "Datchery is looking for pirates! They have a map and think their father may have buried some riches. You take the map and find an empty chest belonging to Ankh Solar - aka a Loan Shark! This one is an…",
+    "searchText": "Datchery is looking for pirates! They have a map and think their father may have buried some riches. You take the map and find an empty chest belonging to Ankh Solar - aka a Loan Shark! This one is an actual giant shark! You find out the way to save Datchery is to throw their father’s ashes into the canal to appease the Shark.",
     "year": 2024,
     "season": "Summer",
     "seasonTitle": "Starlit Summer",
@@ -844,6 +1054,8 @@ const TIME_TRAILS=[
   {
     "id": "2024-summer-8",
     "title": "Failure to Launch",
+    "summary": "Dr Winter has an advert looking for morons on the noticeboard. You present yourself and find they're upset about Dr Jorum getting the recent JASA vacancy and they want your help to get rid of them. You…",
+    "searchText": "Dr Winter has an advert looking for morons on the noticeboard. You present yourself and find they're upset about Dr Jorum getting the recent JASA vacancy and they want your help to get rid of them. You enter basic training which involves a special handshake and a task for Dr Jorum. As you go you learn about Apricot 12 and the fact Jorum caused that disaster! You can’t get them fired due to nepotism so you arrange via KLACKY to launch them into the sun and tell Winter what they need to do!",
     "year": 2024,
     "season": "Summer",
     "seasonTitle": "Starlit Summer",
@@ -852,6 +1064,8 @@ const TIME_TRAILS=[
   {
     "id": "2024-summer-9",
     "title": "Cosmic Conjurations",
+    "summary": "The Church of the Cosmic Platypus is in a fight against evil and Pius is asking for help invading MonsterMon! You find out about Team P - Pockets team - and take on Team T (Terence's team) but get…",
+    "searchText": "The Church of the Cosmic Platypus is in a fight against evil and Pius is asking for help invading MonsterMon! You find out about Team P - Pockets team - and take on Team T (Terence's team) but get battered. Terence taunts you that only his rival - Lovehart - has beaten them. You grab a Bureausaur card and beat Terence and learn the rest of the prophecy needs you to give Pius your Bureausaur card.",
     "year": 2024,
     "season": "Summer",
     "seasonTitle": "Starlit Summer",
@@ -860,6 +1074,8 @@ const TIME_TRAILS=[
   {
     "id": "2024-summer-10",
     "title": "Love Is Blind",
+    "summary": "Halloway thinks they're being pranked - someone in town is trying to make them think they're being haunted. You look into Spirit Sceptics and they point to Sparks, who believes in someone called Goldeneye…",
+    "searchText": "Halloway thinks they're being pranked - someone in town is trying to make them think they're being haunted. You look into Spirit Sceptics and they point to Sparks, who believes in someone called Goldeneye Barry. You find a broadcast where the Spirit Sceptics get actually haunted! And it killed Jimmy! You find out about Barclay - Halloway’s old camp mate - who did the deed, and try to meet them at Mt Absmore. Instead you find their love notes and realise they are in love with Halloway. You find some eyes from Littlefield and use them to contact Barclay.",
     "year": 2024,
     "season": "Summer",
     "seasonTitle": "Starlit Summer",
@@ -868,6 +1084,8 @@ const TIME_TRAILS=[
   {
     "id": "2024-summer-11",
     "title": "Ocean of Silence",
+    "summary": "Sparks leads you to a Videomatic from Dr Jorum, who has crash-landed on the moon. Jorum fears that something is following them. Rexford recognises the situation from an Adventures of Platman episode, so…",
+    "searchText": "Sparks leads you to a Videomatic from Dr Jorum, who has crash-landed on the moon. Jorum fears that something is following them. Rexford recognises the situation from an Adventures of Platman episode, so you ask Platman for help. This leads to Operation Moonshot, a plan that may realign the universe. Pocket knows it involves two halves of something, one below and one above, and gives you a card to keep quiet.",
     "year": 2024,
     "season": "Summer",
     "seasonTitle": "Starlit Summer",
@@ -876,6 +1094,8 @@ const TIME_TRAILS=[
   {
     "id": "2024-autumn-1",
     "title": "Failure Is Not An Option",
+    "summary": "Perigate wants to fail JASA induction to avoid going to space, but Pocket sees through your attempts. Copper suggests that joining the Resistance might anger JONACO and asks Perigate to destroy the Statue…",
+    "searchText": "Perigate wants to fail JASA induction to avoid going to space, but Pocket sees through your attempts. Copper suggests that joining the Resistance might anger JONACO and asks Perigate to destroy the Statue of Masculinity. You use an orbital strike, but Lovehart declares the result good for Jonas and promotes Perigate to Space Supervisor. You tell Perigate about the promotion and the trip to space.",
     "year": 2024,
     "season": "Autumn",
     "seasonTitle": "Hallowed Peak",
@@ -884,6 +1104,8 @@ const TIME_TRAILS=[
   {
     "id": "2024-autumn-2",
     "title": "Brometheus",
+    "summary": "Spectre asks you to collect money owed by the high-society figure Alfonse. You forge credentials with KLACKY, get an invitation from Datchery and find that Alfonse’s chest has exploded. An alien called…",
+    "searchText": "Spectre asks you to collect money owed by the high-society figure Alfonse. You forge credentials with KLACKY, get an invitation from Datchery and find that Alfonse’s chest has exploded. An alien called Xeno is in the vents and needs Spectre’s help recovering an egg. You collect it from the Jonapost and bring it to Spectre, who can take it into space and help Xeno’s species.",
     "year": 2024,
     "season": "Autumn",
     "seasonTitle": "Hallowed Peak",
@@ -892,6 +1114,8 @@ const TIME_TRAILS=[
   {
     "id": "2024-autumn-3",
     "title": "Look Who's Talking",
+    "summary": "Hogwood is looking for Stage Hands to help find their stolen doll Hopscotch and they suspect Grigonna (their mother!) You find the Pyramid of Disappointment and learn G wants to talk to Hogwood! You learn…",
+    "searchText": "Hogwood is looking for Stage Hands to help find their stolen doll Hopscotch and they suspect Grigonna (their mother!) You find the Pyramid of Disappointment and learn G wants to talk to Hogwood! You learn G has left some Art for Hogwood which leads you to the Paracryptic Mirrors where you find out Grigonna wants Hogwood to quit and take up dentistry. You also learn that Hopscotch left to perform a one doll show! You go to see it and see a grizzly site - they want to play a game! You start with Sparks who gives you a Monstermon Card to fight Hopscotch's! Finally, you go to Winter and play a game of dice but have to trade your new Monstermon with Winter for their help! Finally Hopscotch wants Hogwood to perform on a Game Show together before they return! You take part but Hogwood shuts it down before Hopscotch gets too homicidal!",
     "year": 2024,
     "season": "Autumn",
     "seasonTitle": "Hallowed Peak",
@@ -900,6 +1124,8 @@ const TIME_TRAILS=[
   {
     "id": "2024-autumn-4",
     "title": "Tricky Treats",
+    "summary": "Datchery has had teenagers stealing all their Billy Bonka chocolate looking for a Purple Ticket to meet Bonka themself! You win one and learn the teens are crones and have captured the Candyman - aka…",
+    "searchText": "Datchery has had teenagers stealing all their Billy Bonka chocolate looking for a Purple Ticket to meet Bonka themself! You win one and learn the teens are crones and have captured the Candyman - aka Bonka! They want to summon the REAL Candyman so you ask Halloway who has previous experience! You learn the Legend of the Candyman, and that their summoners are in Manes Lake. You call to beg them to stop and eventually find their remains at My Absmore and a note that leads to a call with the Candyman - they want a dental appointment! You go to RoboDoc for help - as a result the Candyman has left Datchery a gift! They turned the crones into sweets to keep Datchery safe.",
     "year": 2024,
     "season": "Autumn",
     "seasonTitle": "Hallowed Peak",
@@ -908,6 +1134,8 @@ const TIME_TRAILS=[
   {
     "id": "2024-autumn-5",
     "title": "Absnormal Abduction",
+    "summary": "Rexford is convinced they've been abducted by aliens! You find an artifact and learn someone thinks Hogwood might be an alien - they're were just acting - but you discover the artifact is JONACO property…",
+    "searchText": "Rexford is convinced they've been abducted by aliens! You find an artifact and learn someone thinks Hogwood might be an alien - they're were just acting - but you discover the artifact is JONACO property - they're pretending to be aliens!. You sign an NDA with Lovehart and learn JONACO is stealing Rexford and Platman's blood with Project Legion trying to make more Platmen! You stitch up another townsfolk to dress as Platman, therefore stopping Rexford from death by blood loss.",
     "year": 2024,
     "season": "Autumn",
     "seasonTitle": "Hallowed Peak",
@@ -916,6 +1144,8 @@ const TIME_TRAILS=[
   {
     "id": "2024-autumn-6",
     "title": "The Silence of the Toys",
+    "summary": "Littlefield has had some of their toys stolen! They suspect Egbert Simpsbury so you investigate and find a videomatic of King Bendy holding them hostage. You find the toys in the abandoned squat and learn…",
+    "searchText": "Littlefield has had some of their toys stolen! They suspect Egbert Simpsbury so you investigate and find a videomatic of King Bendy holding them hostage. You find the toys in the abandoned squat and learn King Bendy is leading toys to slaughter their 'gods'. Bendy is looking for the JONACO Knife to kill Littlefield - you need to convince Littlefield to kill Bendy before they kill first. You find King Bendy trying to get the knife and take them to Littlefield for them to end the saga.",
     "year": 2024,
     "season": "Autumn",
     "seasonTitle": "Hallowed Peak",
@@ -924,6 +1154,8 @@ const TIME_TRAILS=[
   {
     "id": "2024-autumn-7",
     "title": "The Shape of Goo",
+    "summary": "Dr Winter suspects an alien shape-shifter is loose in town. CCTV takes you to the Jonagraph, where Perigate reports a strange bell pattern. A message points to Graham Bark, whose attempt to become half…",
+    "searchText": "Dr Winter suspects an alien shape-shifter is loose in town. CCTV takes you to the Jonagraph, where Perigate reports a strange bell pattern. A message points to Graham Bark, whose attempt to become half human and half platypus went wrong. Graham drew the idea from The New Adventures of Jonas. Spectre and Vox help you make contact through the mirrors, but when you ask Winter for help, Winter decides to destroy Graham’s goo form instead.",
     "year": 2024,
     "season": "Autumn",
     "seasonTitle": "Hallowed Peak",
@@ -932,6 +1164,8 @@ const TIME_TRAILS=[
   {
     "id": "2024-autumn-8",
     "title": "Final Countdown",
+    "summary": "Pocket has activated a self-destruct sequence but suspects Terence. You learn that Terence has been captured for trying to blow up the moon and join Hustlepus University to speak to him. Terence points…",
+    "searchText": "Pocket has activated a self-destruct sequence but suspects Terence. You learn that Terence has been captured for trying to blow up the moon and join Hustlepus University to speak to him. Terence points you to a story about Pocket’s supposed curse. The clues lead to Furbish, who predicted the countdown and left a way to cancel it. You find a crown that helps Pocket pull a sword from a box and end the threat.",
     "year": 2024,
     "season": "Autumn",
     "seasonTitle": "Hallowed Peak",
@@ -940,6 +1174,8 @@ const TIME_TRAILS=[
   {
     "id": "2024-autumn-9",
     "title": "Viva La Resistance",
+    "summary": "Copper wants a new leader for the Resistance and first asks you to fire Sparks. Platman seems to have the right qualities, but a grave raises doubts. Rexford suggests Terence instead, provided you help…",
+    "searchText": "Copper wants a new leader for the Resistance and first asks you to fire Sparks. Platman seems to have the right qualities, but a grave raises doubts. Rexford suggests Terence instead, provided you help him escape JONACO’s five-star prison. After the breakout, Terence recommends a rebrand. You realise Copper is the best candidate and persuade them to lead.",
     "year": 2024,
     "season": "Autumn",
     "seasonTitle": "Hallowed Peak",
@@ -948,6 +1184,8 @@ const TIME_TRAILS=[
   {
     "id": "2024-autumn-10",
     "title": "The Good, The Bad and The Milky",
+    "summary": "Halloway is looking for Bread the Bounty Hunter - so you pose as them to get the gig. They've had their dynamite stolen! You start with the trail from the undertaker and find reference to Sheriff Rexford…",
+    "searchText": "Halloway is looking for Bread the Bounty Hunter - so you pose as them to get the gig. They've had their dynamite stolen! You start with the trail from the undertaker and find reference to Sheriff Rexford so you talk to Rexford - the Sheriff was their Uncle (AKA the Milkman) so you find them and call via Jonagraph. You're interrupted by the Banshee Bandit. You watch a film on the Bandit and learn about the Hold Em Steal - which Halloway’s Mother was involved in! Halloway’s mother shot the bandit - according to the bandit anyway! You need to beat them at poker to stop them so you ask Copper for help as the resident poker expert who gives you a rigged deck to help you beat the bandit!",
     "year": 2024,
     "season": "Autumn",
     "seasonTitle": "Hallowed Peak",
@@ -956,6 +1194,8 @@ const TIME_TRAILS=[
   {
     "id": "2024-autumn-11",
     "title": "The Great Undoing",
+    "summary": "People are collecting up gifts from the heavens so you talk to Pius about collecting meteors - a meteor speaks to Pius and gives a videomatic code. You watch and learn \"the axiomatic rift is ready\" and…",
+    "searchText": "People are collecting up gifts from the heavens so you talk to Pius about collecting meteors - a meteor speaks to Pius and gives a videomatic code. You watch and learn \"the axiomatic rift is ready\" and the JONACO mark 3 rocket is ready to go with captain Perigate to begin \"the great undoing\" - but it appears this videomatic is 2 years into the future - since the Mark 1 hasn't launched yet! You ask Perigate and they mention the Quantum Mailbox whispers to them so you speak to Littlefield and find a strange letter thanking Winter for their assistance with the Mk 3. When you show Winter the letter they mention they have a meeting about the contents...tomorrow. They thought it was an impossible task but this proves that it’s doable and they offer a gift for your silence.",
     "year": 2024,
     "season": "Autumn",
     "seasonTitle": "Hallowed Peak",
@@ -964,6 +1204,8 @@ const TIME_TRAILS=[
   {
     "id": "2024-winter-1",
     "title": "The Hum Bug",
+    "summary": "Sparks has a song stuck in their head: the Ear Worm is back. Bellamy points you to a DojaPlat music video, and Spectre helps you track down its performer. DojaPlat is Terence in a wig. He caught a Hum Bug…",
+    "searchText": "Sparks has a song stuck in their head: the Ear Worm is back. Bellamy points you to a DojaPlat music video, and Spectre helps you track down its performer. DojaPlat is Terence in a wig. He caught a Hum Bug from Pius, and you find its nest in a Jonabot Jr. game. You defeat it with the Ear Worm song “Platypus in the Snow.”.",
     "year": 2024,
     "season": "Winter",
     "seasonTitle": "Wintermas",
@@ -972,6 +1214,8 @@ const TIME_TRAILS=[
   {
     "id": "2024-winter-2",
     "title": "The Final Question",
+    "summary": "Platmas wants to give back this Wintermas so you find Rexford...their \"best friend\". They are looking for the Questioner so you apply to be their sidekick. You are given an ominous postcard and find a…",
+    "searchText": "Platmas wants to give back this Wintermas so you find Rexford...their \"best friend\". They are looking for the Questioner so you apply to be their sidekick. You are given an ominous postcard and find a trail of tasks set by the Questioner. You solve each in turn and end with a film in the Picture House which reveals Cogwright at the Questioner. You search their old office (the Jonagraph) with Perigate's help and find they have left behind a movie. You watch and find they've broken a Jonagraph - you follow the trail to find a note written to Cogwright Senior and learn that their father is \"HOW\" The Questioner exists. You find a piece of Art asking \"Who am I without You\" and a hidden Videomatic code - which reveals a letter. When decoded, you learn they've left something with Rexford - their tie. You let Rexford know their nemesis has left town!",
     "year": 2024,
     "season": "Winter",
     "seasonTitle": "Wintermas",
@@ -980,6 +1224,8 @@ const TIME_TRAILS=[
   {
     "id": "2024-winter-3",
     "title": "Live and Let Dad",
+    "summary": "Pocket is expecting their absent Dad for today's festive proceedings but they're in hiding (Dad's a Spy!). Pocket thinks if you attack their dad's nemesis they'll have time to see them. Turns out \"Dad\" is…",
+    "searchText": "Pocket is expecting their absent Dad for today's festive proceedings but they're in hiding (Dad's a Spy!). Pocket thinks if you attack their dad's nemesis they'll have time to see them. Turns out \"Dad\" is super spy Jasper Blond! In a TV show it appears they've had a bad break up with Terence - but Terence's tell all explains a different story. You ask Copper about Blondes whereabouts and learn they are in the resistance and caught breaking into a secret lab. You try to use KLACKY to rescue them but you learn they're not Pockets father - they can't be, they don't have the 'equipment'! You go to Jonapost to find their death cert and learn via RoboDoc the DNA is linked to Project Bubble Boy. It appears that Winter (PAPA) was leading the experiment and reveals Pocket has no father. Their mother, Donna, has pocket lint combined to make Pocket. You convince Hogwood to play Dad to avoid an explosive meltdown!",
     "year": 2024,
     "season": "Winter",
     "seasonTitle": "Wintermas",
@@ -988,6 +1234,8 @@ const TIME_TRAILS=[
   {
     "id": "2024-winter-4",
     "title": "Dial P for Puppet",
+    "summary": "Hogwood asks you to investigate the murder of Todrick the Toad. Todrick left everything to Lady Oinkerton, whose interrogation points to Datchery. Oinkerton is then killed too. Sherlock Bones helps you…",
+    "searchText": "Hogwood asks you to investigate the murder of Todrick the Toad. Todrick left everything to Lady Oinkerton, whose interrogation points to Datchery. Oinkerton is then killed too. Sherlock Bones helps you uncover the culprit: Mr Knuckles, an actor from Hogwood’s films. Jealous of the other puppets, Mr Knuckles plans to attack Hogwood next. You warn Hogwood and confront the killer.",
     "year": 2024,
     "season": "Winter",
     "seasonTitle": "Wintermas",
@@ -996,6 +1244,8 @@ const TIME_TRAILS=[
   {
     "id": "2024-winter-5",
     "title": "The Darkest Friday",
+    "summary": "Halloway is looking for a Black Friday Fighter so you offer your services - they're looking for a copy of the new Monstermon game! You find out about a competition to win a copy and join in. You win a…",
+    "searchText": "Halloway is looking for a Black Friday Fighter so you offer your services - they're looking for a copy of the new Monstermon game! You find out about a competition to win a copy and join in. You win a copy and head to Pocket to collect your copy but it appears Egbert Simpsbury has stolen it. You head to Simpsbury’s cave and find a Paracryptic Word! You head to the mirrors and learn about the Omegamon (an evil part demon, part pixelated monstermon!) - and learn Simpsbury is stuck in the JonaComms central screen. You find Simpsbury and learn you need Klackys help to capture the Omegamon. You succeed but it's not enough to purge them from the code and you trade some bone dust with Winter to transfer the Omegamon to a disk so they can properly be defeated!",
     "year": 2024,
     "season": "Winter",
     "seasonTitle": "Wintermas",
@@ -1004,6 +1254,8 @@ const TIME_TRAILS=[
   {
     "id": "2024-winter-6",
     "title": "Two and a Half Perigate’s",
+    "summary": "Littlefield asks you to deliver a letter to Perigate from their parents, who want to replace them. The new Perigate is a dog that has beaten the original at lacrosse and taken over their Jumble dating…",
+    "searchText": "Littlefield asks you to deliver a letter to Perigate from their parents, who want to replace them. The new Perigate is a dog that has beaten the original at lacrosse and taken over their Jumble dating profile. After you win a JONACO Rhythm Revolution challenge, the dog reveals that they are a double agent working against the parents. The dog sends Perigate a gift: a severed finger.",
     "year": 2024,
     "season": "Winter",
     "seasonTitle": "Wintermas",
@@ -1012,6 +1264,8 @@ const TIME_TRAILS=[
   {
     "id": "2024-winter-7",
     "title": "Quantum of Postage",
+    "summary": "Littlefield is looking for help with their Quantum Postbox - they sent Jonas a Wintermas Card! After they try percussive maintenance they receive an error code. You find a message from Terence and try to…",
+    "searchText": "Littlefield is looking for help with their Quantum Postbox - they sent Jonas a Wintermas Card! After they try percussive maintenance they receive an error code. You find a message from Terence and try to join the Quantum Mail Team to find out more. You learn from Sparks that it's not a safe job - and find Quantum Mailboy trapped between dimensions. Apparently Lovehart stole Littlefield’s letter - which you learn is on Mr Kim's command! You tune into a conference call with Mr Kim (Head of Marketing) who says that the letter might cause you...issues. You learn of Project Big Top and hack Kim's computer. You learn they want to take Jonas down and frame Copper and Littlefield with a Quantum Donut which will trap Jonas in another dimension! You speak to Copper who is holding it and convince them not to send it to Jonas, despite them having Jonas's address thanks to Littlefield.",
     "year": 2024,
     "season": "Winter",
     "seasonTitle": "Wintermas",
@@ -1020,6 +1274,8 @@ const TIME_TRAILS=[
   {
     "id": "2024-winter-8",
     "title": "A Ring To Roll Them All",
+    "summary": "Pius has set up an exhibit for Wintermas: The Ring - a special artefact for the Church. You go to view it but it's been stolen! You follow the trail to the squat where you find a game of Dungeons and…",
+    "searchText": "Pius has set up an exhibit for Wintermas: The Ring - a special artefact for the Church. You go to view it but it's been stolen! You follow the trail to the squat where you find a game of Dungeons and Dirigibles in progress. You decide to learn more so make yourself a character sheet and go to Sparks to play. They let you know their DM (Perigate) has the ring so you go to ask. They let you know one of their players in a mask has it but mention a tapestry in the Archive where you learn the ring bearer will suffer! You find out Pocket has been breathing fire - they stole the ring! You roll to release Pocket from the Ring Lord and find a Paracryptic Word! You learn the ring increases the wearers persuasion. It can be undone by casting the ring into the lake - so you persuade Pius to destroy it with lake water!",
     "year": 2024,
     "season": "Winter",
     "seasonTitle": "Wintermas",
@@ -1028,6 +1284,8 @@ const TIME_TRAILS=[
   {
     "id": "2024-winter-9",
     "title": "Inner Spectre",
+    "summary": "Spectre suspects that Jonatine protein powder is making him ill. RoboDoc sends a sample to Dr Winter, who detects a signal: raccoons have built a miniature submarine and entered Spectre’s body. Datchery…",
+    "searchText": "Spectre suspects that Jonatine protein powder is making him ill. RoboDoc sends a sample to Dr Winter, who detects a signal: raccoons have built a miniature submarine and entered Spectre’s body. Datchery spots one of them in town. With KLACKY’s help, you guide Walter the Raccoon out through Spectre’s mouth before the submarine returns to full size.",
     "year": 2024,
     "season": "Winter",
     "seasonTitle": "Wintermas",
@@ -1036,6 +1294,8 @@ const TIME_TRAILS=[
   {
     "id": "2024-winter-10",
     "title": "Oh Come All Ye Thirsty",
+    "summary": "You find an advert for JonaCola Max- they fixed the exploding problem but there's another issue with a beast. Turns out Lovehart fed some to their new mascot - Father Cola - and they turned into a weird…",
+    "searchText": "You find an advert for JonaCola Max- they fixed the exploding problem but there's another issue with a beast. Turns out Lovehart fed some to their new mascot - Father Cola - and they turned into a weird monster! Seems they have gone to Copper and are now on their way to Cooper's contraband merchant - a JonaCola dealer! You learn the meeting is happening in the garden but when you get there they've disappeared and you find a collar showing that the beast is property of JonaLabs. You ask Winter and find it's an experiment of theirs - you track them and find Rexford patched them up after Winter attacked them. You speak to Father Cola and they want you to fake their death! They just want their life back! You give Lovehart their old hat and convince them “the beast” is dead so that they will leave them alone once and for all.",
     "year": 2024,
     "season": "Winter",
     "seasonTitle": "Wintermas",
@@ -1044,6 +1304,8 @@ const TIME_TRAILS=[
   {
     "id": "2024-winter-11",
     "title": "There Was No Boat Ride",
+    "summary": "Hogwood is being gaslit - by Littlefield! Hogwood has been reminiscing about a boat ride (!) and Littlefield doesn't remember it. They give you a self obliteration form to take to Perigate who sends you…",
+    "searchText": "Hogwood is being gaslit - by Littlefield! Hogwood has been reminiscing about a boat ride (!) and Littlefield doesn't remember it. They give you a self obliteration form to take to Perigate who sends you to Rexford who also believes in the boat ride. You find talk of the \"Great Undoing\" and a test - it appears Dr Winter erased the boat ride successfully!",
     "year": 2024,
     "season": "Winter",
     "seasonTitle": "Wintermas",
@@ -1052,6 +1314,8 @@ const TIME_TRAILS=[
   {
     "id": "2025-spring-1",
     "title": "Winner Takes It All",
+    "summary": "Bigball is big in Phantom Peak and the Phantom Peak Platypuses need help! You talk to Rexford to become a Milk Boi and end up being recruited for the actual team! You start training and eventually decide…",
+    "searchText": "Bigball is big in Phantom Peak and the Phantom Peak Platypuses need help! You talk to Rexford to become a Milk Boi and end up being recruited for the actual team! You start training and eventually decide to learn by following the lessons of the best player - the Pyromaniac! You watch their last game and learn its Sparks; A career cut short by injury! You learn some tricks to help defeat their old coach (Big Red) and you learn their power comes from their red whistle and it appears that Pius has bought the whistle! You obtain the whistle and challenge Hogwood (Big Ted's champion) to a game of Bigball and win! You return the whistle to Rexford as a trophy of your achievement.",
     "year": 2025,
     "season": "Spring",
     "seasonTitle": "JONACON",
@@ -1060,6 +1324,8 @@ const TIME_TRAILS=[
   {
     "id": "2025-spring-2",
     "title": "Happily Never After",
+    "summary": "Datchery is looking for someone to help them end a relationship - someone has sent them a wedding invite for THEIR WEDDING today! You do some digging on their behalf and try to access their registry set…",
+    "searchText": "Datchery is looking for someone to help them end a relationship - someone has sent them a wedding invite for THEIR WEDDING today! You do some digging on their behalf and try to access their registry set up by Alfonz Stench (super rich suitor) but need a credit card first. You reach out to Mr Feast (top content creator) and have to take a test with Perigate to get yours. Once you have your credit card, you find the only item left on it is a wedding dress - made by Rexford. After designing your own dress Rexford shares that it's been delivered to the Autohatter - where you find the dead body of Alfonz. You find a paracryptic word and learn that the fiancé is the Red Widow - it kills after it marries. You need to find another bride or groom to save Datchery before 12 to save them! You convinced Pocket as the town’s most desperate, who just wants to wear their sparkly suit to write off for tax. You persuade Datchery to agree to a temporary wedding to Pocket and agree to make a fuss when asked if anyone has objections!",
     "year": 2025,
     "season": "Spring",
     "seasonTitle": "JONACON",
@@ -1068,6 +1334,8 @@ const TIME_TRAILS=[
   {
     "id": "2025-spring-3",
     "title": "Let Them Eat Cake",
+    "summary": "The Phantom Peak Cake Off is in full swing (It’s Peach Week!) and Hogwood is up for star baker - because everyone else is dead and being baked into cakes! You are tasked with being a judge - and look for…",
+    "searchText": "The Phantom Peak Cake Off is in full swing (It’s Peach Week!) and Hogwood is up for star baker - because everyone else is dead and being baked into cakes! You are tasked with being a judge - and look for the worst contestant who is suspected of being a murdering baker. Pius is the worst but they think Fudge Toffington has been up to no good - tampering with other cakes - turns out they are a murderer when not baking! You find a word in their latest bake and find a demon cake that can devour your soul! You learn about the cursed pie massacre and how Miramine Peaches have been recalled as a dangerous ingredient! (they're cursed, not cured!). Fortunately Spectre saved the town from the last Cursed Pie Massacre - the answer to the Cursed Peaches is SALT! You tell Hogwood to salt the cake and kill it!",
     "year": 2025,
     "season": "Spring",
     "seasonTitle": "JONACON",
@@ -1076,6 +1344,8 @@ const TIME_TRAILS=[
   {
     "id": "2025-spring-4",
     "title": "Operation Placeholder",
+    "summary": "A targeted television advert leads you to a fan club that Copper is using as cover for a Green Diamant heist. Pocket appears to have the stone, but Terence has it, then Sparks steals it. Sparks asks you…",
+    "searchText": "A targeted television advert leads you to a fan club that Copper is using as cover for a Green Diamant heist. Pocket appears to have the stone, but Terence has it, then Sparks steals it. Sparks asks you to deliver it to a Resistance contact, Datchery, who throws it in the lake to keep it from the JIA. Copper reveals that this stone was a fake and that the real Green Diamant is already safe.",
     "year": 2025,
     "season": "Spring",
     "seasonTitle": "JONACON",
@@ -1084,6 +1354,8 @@ const TIME_TRAILS=[
   {
     "id": "2025-spring-5",
     "title": "Feast, Play, Die",
+    "summary": "The JonAssist system has just received a help request from RoboDoc - people are dying by the truckload! You talk to Halloway about the influx of bodies and offer to help get rid of the bodies. Weirdly all…",
+    "searchText": "The JonAssist system has just received a help request from RoboDoc - people are dying by the truckload! You talk to Halloway about the influx of bodies and offer to help get rid of the bodies. Weirdly all the bodies are in green jumpsuits and have a card on them. You follow the clue to an advert for the Kraken Games and visit Sparks to play your first challenge. You succeed and learn the games are run by Mr Feast! You play another with KLACKY but are interrupted by Spectre. You speak to them and learn they think Mr Feast is a Demon. You try to narrow down what type, eventually learning it is a Leviathan. And you need an undertaker to get rid of them! You get Halloway to start the final game and beat Mr Feast, ending the mass murder of people in green jumpsuits.",
     "year": 2025,
     "season": "Spring",
     "seasonTitle": "JONACON",
@@ -1092,6 +1364,8 @@ const TIME_TRAILS=[
   {
     "id": "2025-spring-6",
     "title": "The Hero We Deserve",
+    "summary": "Someone is trying to kill Pocket - and Pocket thinks it's the JIA! You find out Lovehart leads the JIA recruitment so you visit to try and infiltrate the group. Lovehart lets you into the JONACO…",
+    "searchText": "Someone is trying to kill Pocket - and Pocket thinks it's the JIA! You find out Lovehart leads the JIA recruitment so you visit to try and infiltrate the group. Lovehart lets you into the JONACO brainwashing room and gives you smooth brains and Winter assigned your ID - Agent Brainless! You talk to your handler who thinks Dia-Man could make a good bodyguard for Pocket. You win a fan competition to call Dia-Man and found out they want to murder Pocket! You find out Rexford wants to keep Platman as towns resident hero so you ask if they can help. Since Dia-Man is powered by Green Diamant, White should neutralise them! You get some from Rexford and hand it to Pocket - with Platman due to protect them!",
     "year": 2025,
     "season": "Spring",
     "seasonTitle": "JONACON",
@@ -1100,6 +1374,8 @@ const TIME_TRAILS=[
   {
     "id": "2025-spring-7",
     "title": "Hat on a Hat",
+    "summary": "After playing a game at the Electric Gamehouse you learn about The Jonalympics! The first event: Cosplay Competition! Somehow Littlefield had got hold of Jonas's top hat but is worried someone else is…",
+    "searchText": "After playing a game at the Electric Gamehouse you learn about The Jonalympics! The first event: Cosplay Competition! Somehow Littlefield had got hold of Jonas's top hat but is worried someone else is trying to steal it - another contestant! You make your way around town, being tested judgement, originality, negotiation, agility and sensuality. (By writing a new jingle for JONACO, negotiating with a chimp called Jobo to commit space suicide and finally being tested by Winter) You learn about Terry Bunter - Jonas's biggest fan! It looks like Littlefield might have STOLEN Jonas's hat! You learn it was originally owned by George Blackwell who gifted it to Jonas before becoming their rival. It appears the hat is actually an old eldritch being that feeds on brains. You get some brains from Halloway (from JOBO!) to feed to Littlefield’s hat and keep them safe.",
     "year": 2025,
     "season": "Spring",
     "seasonTitle": "JONACON",
@@ -1108,6 +1384,8 @@ const TIME_TRAILS=[
   {
     "id": "2025-spring-8",
     "title": "Bad to the Bone",
+    "summary": "Lovehart wants Sherlock Bones evicted, but he is investigating Meowiarty and a stolen painting. Meowiarty dies after trying to warn Bones about an attacker. Clues from the autopsy and a Picture House film…",
+    "searchText": "Lovehart wants Sherlock Bones evicted, but he is investigating Meowiarty and a stolen painting. Meowiarty dies after trying to warn Bones about an attacker. Clues from the autopsy and a Picture House film lead you to the Jonapost, where the painting is hidden. You discover that Dogtor Watson plotted to kill Bones. You warn Lovehart and Bones, then watch Bones confront Watson at Reichebark Falls.",
     "year": 2025,
     "season": "Spring",
     "seasonTitle": "JONACON",
@@ -1116,6 +1394,8 @@ const TIME_TRAILS=[
   {
     "id": "2025-spring-9",
     "title": "Too Fast, Too Furrious",
+    "summary": "Something has egged Dr Winter’s lab - a hyper nuisance! You find a note written at 70mph with a Jonavision channel showing Turbo and Friends - Turbo the Hedgehog was the one who egged Winter’s lab and…",
+    "searchText": "Something has egged Dr Winter’s lab - a hyper nuisance! You find a note written at 70mph with a Jonavision channel showing Turbo and Friends - Turbo the Hedgehog was the one who egged Winter’s lab and appears to want to destroy Dr Winter for betraying them...you find a video of the speedy hedgehog who leaves you a way to reach them. You learn they've killed Terence but you can't see the scene because violence is wrong - unless it's treason - a lesson taught by Dr Winter Senior! You watch their video obituary and learn they were trying to manufacture the perfect video game mascot and they created Turbo and their team. However the experiment fails due to an existential crisis on Turbo’s part! You follow the trail and learn they're friends with Sparks – who you interrogate and learn that Turbo has a crush on Perigate and has been sending them quills! You check jumble and work out that perhaps Winter can make them a partner if you can convince them! Winter creates “Shade” and the rest is history!",
     "year": 2025,
     "season": "Spring",
     "seasonTitle": "JONACON",
@@ -1124,6 +1404,8 @@ const TIME_TRAILS=[
   {
     "id": "2025-spring-10",
     "title": "Unpopular",
+    "summary": "Perigate needs help with some bad PR! There's a popularity contest in town and there's a rank increase on offer. You discover someone is trying to make them look bad - \"Blame Perigate\"! Apparently their…",
+    "searchText": "Perigate needs help with some bad PR! There's a popularity contest in town and there's a rank increase on offer. You discover someone is trying to make them look bad - \"Blame Perigate\"! Apparently their latest crime happened at the Summer House - someone has been squashed by the house! You find a video from Linda the Likeable - A PR guru - who offers to help rebrand everything about them! You try but learn that the town think Perigate killed the Badger Prince! (Well, Pius believes so because Linda told them so). Turns out Linda has been plotting to bring Perigate down - for something they and Copper did to Linda's mother. Copper reveals Linda's press releases are actually spells but Copper can make counter-curses! You make a batch and save Perigate from Linda's scheme.",
     "year": 2025,
     "season": "Spring",
     "seasonTitle": "JONACON",
@@ -1132,6 +1414,8 @@ const TIME_TRAILS=[
   {
     "id": "2025-spring-11",
     "title": "Fiesta of Friendship",
+    "summary": "Spectre asks what Green Diamant is and where it came from. A town competition leads you to a Videomatic explaining that the substance can transform matter and, in sufficient quantities, the world itself.…",
+    "searchText": "Spectre asks what Green Diamant is and where it came from. A town competition leads you to a Videomatic explaining that the substance can transform matter and, in sufficient quantities, the world itself. Furbish warns that Jonas has the means to bring about the Great Undoing. You report back to Spectre, who may need a great deal of white diamant to counter the green.",
     "year": 2025,
     "season": "Spring",
     "seasonTitle": "JONACON",
@@ -1140,6 +1424,8 @@ const TIME_TRAILS=[
   {
     "id": "2025-summer-1",
     "title": "Double Act",
+    "summary": "Pius’s fundraising magic trick goes wrong when Terence vanishes into the void. You join the Magicians’ Guild, decode its instructions and learn that Kappa can help. Pius’s brother Brutus staged the…",
+    "searchText": "Pius’s fundraising magic trick goes wrong when Terence vanishes into the void. You join the Magicians’ Guild, decode its instructions and learn that Kappa can help. Pius’s brother Brutus staged the disappearance and has been promoting a fake Egg of Truth. After reporting Brutus to JONACO, you enter Terence’s name into KLACKY and retrieve him through the Quantum Mailbox. He is flattened to fit, but his immortality means he will recover.",
     "year": 2025,
     "season": "Summer",
     "seasonTitle": "Burning Blimp",
@@ -1148,6 +1434,8 @@ const TIME_TRAILS=[
   {
     "id": "2025-summer-2",
     "title": "Pocket Change",
+    "summary": "Despite increased popularity ratings, Pocket needs help! It appears they have been using a clone who is making them look good - and the real Pocket worries they are trying to take over! Their clone (Hot…",
+    "searchText": "Despite increased popularity ratings, Pocket needs help! It appears they have been using a clone who is making them look good - and the real Pocket worries they are trying to take over! Their clone (Hot Pocket) has a new girlfriend - Lady Oinkerton - so you speak to Datchery. Turns out Hot Pocket fired Datchery and dumped Oinkerton - and they're trying to replace them! You find a videomatic and learn Pocket’s clone has announced that all townsfolk must undergo “The Procedure,” and they specifically mentioned Dr. Winter. You tell Winter what they want them to undergo it and learn about the Hottie Procedure - it's not really a clone, it's a distilled version of their best bits! You are tasked to destroy Hot Pocket by Winter - The Hottie Procedure could likely kill Pocket! Or at least… our Pocket. You need to find a cure fast so you head to the archives and use KLACKY to research further. You see RoboDoc and eventually talk to Stickler who tells you about a videomatic where you learn the secret to keeping Pocket safe - they need to drink JonaCola during The Procedure to make their personality the dominant one. You tell Pocket and save them from Hot Pocket!",
     "year": 2025,
     "season": "Summer",
     "seasonTitle": "Burning Blimp",
@@ -1156,6 +1444,8 @@ const TIME_TRAILS=[
   {
     "id": "2025-summer-3",
     "title": "The Graveyard Groove",
+    "summary": "Halloway is looking for people to help hunt some hippies...they’re being harassed by the Silver Children! You learn more and join their walking tour – which leads you to a video. This leads to Pius who…",
+    "searchText": "Halloway is looking for people to help hunt some hippies...they’re being harassed by the Silver Children! You learn more and join their walking tour – which leads you to a video. This leads to Pius who talks about Elias Starchild. You find them...decapitated! There was a code left behind: a videomatic code. You watch and discover the real culprits are the Groovy Groovy gang. You follow info on their latest victim – a vampire called Edward Cage – and find a video from one of their survivors. You learn they shouted the word PHI – which you put into the paracryptic mirror and learn they are trying to unmask the unmaskable – tearing off faces! You tell Spectre the Groovy Gang have returned and get a scroll – The Scroll of Demonic Dismissal. You take the spell to Halloway to save them from Stephen and use the magic words: “I’d have gotten away with it if it wasn’t for you meddling kids!”.",
     "year": 2025,
     "season": "Summer",
     "seasonTitle": "Burning Blimp",
@@ -1164,6 +1454,8 @@ const TIME_TRAILS=[
   {
     "id": "2025-summer-4",
     "title": "Sparksquatch",
+    "summary": "Sparks is looking for cryptozoology experts - so you offer your help; They're looking for PeakFoot! Via analysis of their excrement you track them to an emergency tummy box so you go to RoboDoc and…",
+    "searchText": "Sparks is looking for cryptozoology experts - so you offer your help; They're looking for PeakFoot! Via analysis of their excrement you track them to an emergency tummy box so you go to RoboDoc and replicate their symptoms. This leads you to the Hall of Art where you see a PeakFoot Costume...with a label for Pocket! You ask them about being PeakFoot and find out Madame Mechanica is behind it all! There is a prophecy - so you work with KLACKY to bring Madame Mechanica back to town via RoboDoc and find out Rexford knows about it all! It appears Madame Mechanica can see all time and space and is concerned with Jonas and their plans. It appears that if you can get Sparks to take responsibility for killing PeakFoot it will cause the moth effect which will end JONACO! You persuade Sparks to do it!",
     "year": 2025,
     "season": "Summer",
     "seasonTitle": "Burning Blimp",
@@ -1172,6 +1464,8 @@ const TIME_TRAILS=[
   {
     "id": "2025-summer-5",
     "title": "Unbox Me, Coward",
+    "summary": "There’s a new hot toy in town - The Furbo! You go to Lovehart to get yours and find out there are none left! They've been recalled - some weird things have been happening that may be hauntings! Instead…",
+    "searchText": "There’s a new hot toy in town - The Furbo! You go to Lovehart to get yours and find out there are none left! They've been recalled - some weird things have been happening that may be hauntings! Instead you get given a Furbo Satisfaction Survey to check how the townfolk are finding theirs! As you go, you find out Egbert Simpsbury has also been having issues with theirs! During their show you learn about Rexford’s's fan club which you try to join by designing your own Furbo! When you do, you learn about Furbo Eggs and get given one. You find out Perigate might know more so ask and learn they're keeping them in Jonalabs storage for observation. However it appears Egbert has broken in! You rush over to catch them but find them dead by a weird snake Furbo! Watching Egbury's last message, you learn the Furbos came from a ship! You decipher the alien markings and find a message via KLACKY that the Furbos are making a pilgrimage to Mount Absmore to fulfil a prophecy. Turns out the Furbos aren’t attacking at all; they’re witnessing the birth of the Great One! Apparently Lovehart is destined to midwife the Great One so you go to watch the event.",
     "year": 2025,
     "season": "Summer",
     "seasonTitle": "Burning Blimp",
@@ -1180,6 +1474,8 @@ const TIME_TRAILS=[
   {
     "id": "2025-summer-6",
     "title": "Less Miserable",
+    "summary": "The Resistance has made a musical to drum up support...you go to watch but the film is interrupted by Copper who isn't impressed by the musical - instead they're proposing Copper Karaoke. They want you to…",
+    "searchText": "The Resistance has made a musical to drum up support...you go to watch but the film is interrupted by Copper who isn't impressed by the musical - instead they're proposing Copper Karaoke. They want you to recruit goons to put an end to the musical once and for all. You find the best goon for the job - Hitchkick Harry - and send them to end the musical but they end up being killed by the Lead - who now wants you to audition. You do so for Datchery and get a part as an understudy and go and learn about A.I Marine and attempt to learn their techniques but the reviews state something is funny with them...especially their name. Turns out it's an anagram for I AM A SIREN - and Platman has previous experience. Unfortunately it didn't go to plan last time so you research and learn they kill with their song. You listen to it and get interrupted by Spectre who has trapped the siren in an old vinyl record! You take the record to Copper to help the real resistance!",
     "year": 2025,
     "season": "Summer",
     "seasonTitle": "Burning Blimp",
@@ -1188,6 +1484,8 @@ const TIME_TRAILS=[
   {
     "id": "2025-summer-7",
     "title": "No Strings Attached",
+    "summary": "Hogwood’s new film about Todrick the Toad lacks a compelling secret, so you investigate Todrick’s past. Beardy Hamm may have been a lover, and Lady Oinkerton has tried to contact Todrick from beyond the…",
+    "searchText": "Hogwood’s new film about Todrick the Toad lacks a compelling secret, so you investigate Todrick’s past. Beardy Hamm may have been a lover, and Lady Oinkerton has tried to contact Todrick from beyond the grave. Clues about Project Toad show that Todrick is still alive and has been puppetising people. Mr Knuckles warns that Hogwood’s film may make Hogwood the next target. You warn Hogwood and calm Todrick with applause.",
     "year": 2025,
     "season": "Summer",
     "seasonTitle": "Burning Blimp",
@@ -1196,6 +1494,8 @@ const TIME_TRAILS=[
   {
     "id": "2025-summer-8",
     "title": "A Sweet Sacrifice",
+    "summary": "Littlefield is looking for animal lovers to join their group (PROTEC) to help fight for animal rights. They've got a note - Pigbert is in trouble! They've been trapped by JONACO but you arrive too late to…",
+    "searchText": "Littlefield is looking for animal lovers to join their group (PROTEC) to help fight for animal rights. They've got a note - Pigbert is in trouble! They've been trapped by JONACO but you arrive too late to free them - but learn they escaped into the Miramaze so you rush to find them before Randy from JONACO does - but it appears Pigbert got to Randy first and ate them! Spectre is investigating so you ask what they know and learn Pigbert is actually a demon! And they're planning a dark rite. You follow the rituals around town and find one at the grave of A.A.Miller, beloved children's horror story author. You watch their last tale about Boo Bear and learn the demons need the storybook to complete the ritual. Stickler had it but the demons beat you to it. You get a map to hell and watch a video to help (hosted by Terence as part of rehab programme at JONACO 5 star prison) - Littlefield needs to eat the honey to go to hell and we need to guide them through. You assist and they destroy Boo Bears honey pot!",
     "year": 2025,
     "season": "Summer",
     "seasonTitle": "Burning Blimp",
@@ -1204,6 +1504,8 @@ const TIME_TRAILS=[
   {
     "id": "2025-summer-9",
     "title": "Finger Lickin' Good",
+    "summary": "Giffard asks you to find and destroy a musical about their father, Furbish. Felicia Smith won a copy but has died, and the recording has passed through several hands. Clues from Sergeant Sausage lead you…",
+    "searchText": "Giffard asks you to find and destroy a musical about their father, Furbish. Felicia Smith won a copy but has died, and the recording has passed through several hands. Clues from Sergeant Sausage lead you back to Furbish. Copper has been hiding him since he faked his death in the blimp crash, and Furbish has turned himself into a puppet. You persuade Giffard to shelter him.",
     "year": 2025,
     "season": "Summer",
     "seasonTitle": "Burning Blimp",
@@ -1212,6 +1514,8 @@ const TIME_TRAILS=[
   {
     "id": "2025-summer-10",
     "title": "Wild Card",
+    "summary": "Perigate asks you to open a mysterious box. A book and film about their family lead you to their parents, who say the box was delivered by mistake. Their mail carrier is trapped in a web with a copy of…",
+    "searchText": "Perigate asks you to open a mysterious box. A book and film about their family lead you to their parents, who say the box was delivered by mistake. Their mail carrier is trapped in a web with a copy of Jonanji, a game that warps reality. After surviving the game’s challenges and following a clue from another victim, you learn that Phantom Peak will become the board unless the game ends. Datchery has the key to the box. You take it to Perigate and finish the game.",
     "year": 2025,
     "season": "Summer",
     "seasonTitle": "Burning Blimp",
@@ -1220,6 +1524,8 @@ const TIME_TRAILS=[
   {
     "id": "2025-summer-11",
     "title": "A Waste of Time",
+    "summary": "Dr Winter hires you to investigate a photograph of Winter and Jonas together, despite their never having met. Terence denies creating it, while KLACKY says the image is from ten years in the future. A…",
+    "searchText": "Dr Winter hires you to investigate a photograph of Winter and Jonas together, despite their never having met. Terence denies creating it, while KLACKY says the image is from ten years in the future. A message from future Winter and a code for Terence’s game lead to a film about JONACO’s planned Manifestor, which could tear time apart and destroy the town. Future Winter asks you to persuade present Winter to scrap the plans. You succeed by mentioning the Banana Split Incident.",
     "year": 2025,
     "season": "Summer",
     "seasonTitle": "Burning Blimp",
@@ -1228,6 +1534,8 @@ const TIME_TRAILS=[
   {
     "id": "2025-summer-12",
     "title": "Corrections",
+    "summary": "Furbish has returned as a puppet and suspects that Phantom Peak’s history is being altered. You ask Pius about a brother they cannot clearly remember, then investigate a missing person called Mr Kim.…",
+    "searchText": "Furbish has returned as a puppet and suspects that Phantom Peak’s history is being altered. You ask Pius about a brother they cannot clearly remember, then investigate a missing person called Mr Kim. Lovehart has forgotten Kim too. The Resistance removed Kim, and JONACO now plans to undo people as well as events. A target list includes Nethersole and Lady Oinkerton. Stickler has been ordered to wipe the memories of anyone who remembers the changes. You receive a card in return for your silence.",
     "year": 2025,
     "season": "Summer",
     "seasonTitle": "Burning Blimp",
@@ -1236,6 +1544,8 @@ const TIME_TRAILS=[
   {
     "id": "2025-autumn-1",
     "title": "Dude Where’s My Mummy",
+    "summary": "Halloway recruits graveyard guards to find King Temu, a mummy loose during the Lunar Festival. A tablet, a paracryptic clue and a Videomatic vlog reveal that the fugitive is not the feared warlord King…",
+    "searchText": "Halloway recruits graveyard guards to find King Temu, a mummy loose during the Lunar Festival. A tablet, a paracryptic clue and a Videomatic vlog reveal that the fugitive is not the feared warlord King Temu V but the warlord’s teenage nephew, King Temu IV. Murdered before experiencing childhood, the younger king wants to party and get a Game Station Mini. Pius has Temu’s fake ID, while Sparks has won the last console from Mr Feast. You trade the ID for the console and take it to Halloway, who can lure Temu back to their resting place.",
     "year": 2025,
     "season": "Autumn",
     "seasonTitle": "Hallowed Peak",
@@ -1244,6 +1554,8 @@ const TIME_TRAILS=[
   {
     "id": "2025-autumn-2",
     "title": "A Murder Most Fowl",
+    "summary": "Sherlock Bones is accused of murder, but Lovehart believes Meowiarty framed him. The investigation leads through Meowiarty’s hideout, Hogwood’s improv class and a strange fan-fiction contest whose story…",
+    "searchText": "Sherlock Bones is accused of murder, but Lovehart believes Meowiarty framed him. The investigation leads through Meowiarty’s hideout, Hogwood’s improv class and a strange fan-fiction contest whose story seems to predict your actions. Stickler supplies the banned Quill of Truth, a JONACO prototype that makes written events real. Its user is Edgar Allan Crow, the unseen narrator whose prose has killed Dogtor Watson and drawn Meowiarty into another murder. You confront Crow at the Undertakers and persuade Crow to surrender the Quill, allowing Sherlock Bones to write a happier ending.",
     "year": 2025,
     "season": "Autumn",
     "seasonTitle": "Hallowed Peak",
@@ -1252,6 +1564,8 @@ const TIME_TRAILS=[
   {
     "id": "2025-autumn-3",
     "title": "The Great Blimp Robbery",
+    "summary": "JONACO is hunting the blimp thieves Blimpy and McScrimbles. Copper admits they are Blimpy and recruits you to steal the Jonas family jewels. You secure Sky Flex Supreme blueprints from Perigate, but…",
+    "searchText": "JONACO is hunting the blimp thieves Blimpy and McScrimbles. Copper admits they are Blimpy and recruits you to steal the Jonas family jewels. You secure Sky Flex Supreme blueprints from Perigate, but McScrimbles is caught with the jewel and taken to a containment cell. The supposed bandit turns out to be Terence. Following the prison plumbing leads you to Pius, who has recovered the jewel. Terence asks you to use it as a ring and propose to Copper on his behalf. Copper says yes.",
     "year": 2025,
     "season": "Autumn",
     "seasonTitle": "Hallowed Peak",
@@ -1260,6 +1574,8 @@ const TIME_TRAILS=[
   {
     "id": "2025-autumn-4",
     "title": "Call of the Deep",
+    "summary": "Spectre asks you to investigate black goo and find Vox, who vanished after sending a painting and a sample from Sir Franklin Figment’s collection. Clues in the Hall of Art and Diamines lead to Vox’s video…",
+    "searchText": "Spectre asks you to investigate black goo and find Vox, who vanished after sending a painting and a sample from Sir Franklin Figment’s collection. Clues in the Hall of Art and Diamines lead to Vox’s video message: a liquid Figment has trapped Vox and others inside JONACO’s hidden Hall of Fun. Mr Feast’s ride video points you toward the entrance. After submitting a ride idea to Pocket, you gain access through KLACKY and use a Jonabot at the Gamehouse to open a portal. Spectre then pulls the cube back through the painting to stop the Hall of Fun invading town.",
     "year": 2025,
     "season": "Autumn",
     "seasonTitle": "Hallowed Peak",
@@ -1268,6 +1584,8 @@ const TIME_TRAILS=[
   {
     "id": "2025-autumn-5",
     "title": "Domestic Sin",
+    "summary": "Stickler’s Cool Squad has lost a package, so you infiltrate Raccoon City and join a special mission with Walter the Raccoon. Sparks sends you after a strike force trapped in a frightening house. The…",
+    "searchText": "Stickler’s Cool Squad has lost a package, so you infiltrate Raccoon City and join a special mission with Walter the Raccoon. Sparks sends you after a strike force trapped in a frightening house. The missing parcel contains a specimen of the P Virus, and Littlefield is also in danger. You rescue them, take the virus symptoms to RoboDoc, and follow the doctor’s advice to make a remedy at the Art and Forgery Centre. Delivering the antidote to Stickler protects the rest of Phantom Peak.",
     "year": 2025,
     "season": "Autumn",
     "seasonTitle": "Hallowed Peak",
@@ -1276,6 +1594,8 @@ const TIME_TRAILS=[
   {
     "id": "2025-autumn-6",
     "title": "Ghouls Night Out",
+    "summary": "Perigate wants to get ready for a blind date, but vandalised coffins and a dead Saloon worker demand attention. Copper recalls rowdy patrons who won a caravan, and the trail reveals a group of classic…",
+    "searchText": "Perigate wants to get ready for a blind date, but vandalised coffins and a dead Saloon worker demand attention. Copper recalls rowdy patrons who won a caravan, and the trail reveals a group of classic monsters celebrating Frankenstein’s stag night. A secret karaoke bar, KLACKY footage and a Jonagraph call help you trace the missing groom to prison. Frankie asks you to contact their bride to arrange bail. You return to Perigate with the information needed to close the complaint, although they decide against their date with the Fishman.",
     "year": 2025,
     "season": "Autumn",
     "seasonTitle": "Hallowed Peak",
@@ -1284,6 +1604,8 @@ const TIME_TRAILS=[
   {
     "id": "2025-autumn-7",
     "title": "A Knight’s Honour",
+    "summary": "Sir Merrylegs keeps threatening Platman, so you infiltrate Merrylegs’s circle by completing three tasks for Sparks. Merrylegs sends you to investigate Pius, giving you time to find a weakness: a troubled…",
+    "searchText": "Sir Merrylegs keeps threatening Platman, so you infiltrate Merrylegs’s circle by completing three tasks for Sparks. Merrylegs sends you to investigate Pius, giving you time to find a weakness: a troubled marriage and another cryptocurrency investment. You move Merrylegs’s cash into crypto and discover the theft of Killjoy the Songblade. An interrogation reveals the oath of XI, and a paracryptic clue establishes that Merrylegs cannot attack another knight. You obtain the Knights’ Oath and persuade Rexford to have Platman swear it, keeping Platman safe from Merrylegs for now.",
     "year": 2025,
     "season": "Autumn",
     "seasonTitle": "Hallowed Peak",
@@ -1292,6 +1614,8 @@ const TIME_TRAILS=[
   {
     "id": "2025-autumn-8",
     "title": "The Axiomatic Zone",
+    "summary": "Hogwood’s partner Beardy Hamm misses their anniversary date, and an old television theme leads you to The Axiomatic Zone. Producer Alex Zane reveals that several actors have vanished into the show. At the…",
+    "searchText": "Hogwood’s partner Beardy Hamm misses their anniversary date, and an old television theme leads you to The Axiomatic Zone. Producer Alex Zane reveals that several actors have vanished into the show. At the Gamehouse you discover that human lives are trapped inside it, and the programme’s host is now coming for Hogwood. KLACKY cannot close the Axiomatic door because you are caught in a cycle. Dr Winter explains the project’s origin and the protection needed to cross safely: a paper bag Hamm gave Hogwood. You pass on the clue and help close the door.",
     "year": 2025,
     "season": "Autumn",
     "seasonTitle": "Hallowed Peak",
@@ -1300,6 +1624,8 @@ const TIME_TRAILS=[
   {
     "id": "2025-autumn-9",
     "title": "A Fault in Our Star",
+    "summary": "Dr Winter wants Marketing Bot destroyed for being too affectionate. You qualify as an orbital-strike engineer through Giffard and fire at the Summerhouse, but the laser itself has fallen for Winter. It…",
+    "searchText": "Dr Winter wants Marketing Bot destroyed for being too affectionate. You qualify as an orbital-strike engineer through Giffard and fire at the Summerhouse, but the laser itself has fallen for Winter. It arranges a fantasy date on Mount Absmore. KLACKY suggests overloading its love circuits by making Marketing Bot jealous. Rexford supplies the hottest technology in town, a toaster, and you persuade Winter to whisper sweet nothings to it. The laser’s circuits overload and the town is saved.",
     "year": 2025,
     "season": "Autumn",
     "seasonTitle": "Hallowed Peak",
@@ -1308,6 +1634,8 @@ const TIME_TRAILS=[
   {
     "id": "2025-autumn-10",
     "title": "Ghost with the Most",
+    "summary": "Pocket’s celebration is interrupted when RoboDJ develops a tune that never drops the bass. A ghostly exorcist seems necessary to remove Mayor Nazabod from the machine, but investigating Beetlemilk…",
+    "searchText": "Pocket’s celebration is interrupted when RoboDJ develops a tune that never drops the bass. A ghostly exorcist seems necessary to remove Mayor Nazabod from the machine, but investigating Beetlemilk releases the spirit into town. Beetlemilk gave Littlefield a worm, stole a film and trapped a tourist inside a Gamehouse game. RoboDJ and Nazabod save you from the ghost. With Spectre’s help, you learn that Pocket can delete Beetlemilk from RoboDJ, ending the emergency and protecting the mayorship.",
     "year": 2025,
     "season": "Autumn",
     "seasonTitle": "Hallowed Peak",
@@ -1316,6 +1644,8 @@ const TIME_TRAILS=[
   {
     "id": "2025-autumn-11",
     "title": "Flight of the Furbish",
+    "summary": "The JIA sends you to find Furbish, while Giffard asks you to erase a compromising tape of their father. You delete the digital recording through KLACKY, but Pius still has a physical copy. The JIA already…",
+    "searchText": "The JIA sends you to find Furbish, while Giffard asks you to erase a compromising tape of their father. You delete the digital recording through KLACKY, but Pius still has a physical copy. The JIA already knows Furbish is a puppet and back in town, so you must get him away. A blimp ticket is refused and a submarine proves no better. Mr Feast’s space dating show offers the safest route: a rocket to the moon. You bring its application to Giffard so Furbish can escape.",
     "year": 2025,
     "season": "Autumn",
     "seasonTitle": "Hallowed Peak",
@@ -1324,6 +1654,8 @@ const TIME_TRAILS=[
   {
     "id": "2025-autumn-12",
     "title": "The Coin Lands Sideways",
+    "summary": "Littlefield is worried about missing correspondence concerning a coin that lands sideways. Perigate removed the posters, but a fragment of a Church of the Cosmic Platypus video survives. Pius explains the…",
+    "searchText": "Littlefield is worried about missing correspondence concerning a coin that lands sideways. Perigate removed the posters, but a fragment of a Church of the Cosmic Platypus video survives. Pius explains the Cosmic Flip, leading you to a historian and then to Furbish, who has been stealing Jonapost mail. Furbish remembers the boat ride and believes the town’s changing memories reflect several dimensions at once. Someone is choosing which version the townsfolk remember, while tourists remain unaffected. Furbish suspects Jonas benefits from the changes.",
     "year": 2025,
     "season": "Autumn",
     "seasonTitle": "Hallowed Peak",
@@ -1332,6 +1664,8 @@ const TIME_TRAILS=[
   {
     "id": "2025-winter-1",
     "title": "The Bright Place",
+    "summary": "Edgar Allan Crow recruits agents to protect their films from mysterious rewrites. JONACO’s frightened censor grants you access to an uncut version, where a narrator changes the story as it unfolds and…",
+    "searchText": "Edgar Allan Crow recruits agents to protect their films from mysterious rewrites. JONACO’s frightened censor grants you access to an uncut version, where a narrator changes the story as it unfolds and leaves pages to follow. The voice belongs to Crow’s brother Squawk, trapped in The Bright Place. A clue leads to Containment Cell 3, where the portal can be opened. Sherlock Bones knows how to use KLACKY to rewrite events and rescue Squawk. You send Squawk to the Undertakers and see the brothers reunited.",
     "year": 2025,
     "season": "Winter",
     "seasonTitle": "Wintermas",
@@ -1340,6 +1674,8 @@ const TIME_TRAILS=[
   {
     "id": "2025-winter-2",
     "title": "Meet The Perigates",
+    "summary": "Perigate needs an actor to play their father at dinner with the Fishman. Spectre declines, but suggests Beardy Hamm. Surveillance in the Jonagraph reveals that Perigate’s real parents plan something…",
+    "searchText": "Perigate needs an actor to play their father at dinner with the Fishman. Spectre declines, but suggests Beardy Hamm. Surveillance in the Jonagraph reveals that Perigate’s real parents plan something sinister for the Fishman. You locate the Fishman’s containment cell and discover Platman is unavailable to help. Platbot provides another route: turn the Fishman into an actual fish and carry them out through Giffard’s office. Perigate welcomes their partner home and plans a fishbowl.",
     "year": 2025,
     "season": "Winter",
     "seasonTitle": "Wintermas",
@@ -1348,6 +1684,8 @@ const TIME_TRAILS=[
   {
     "id": "2025-winter-3",
     "title": "A Very Merry Wintermas",
+    "summary": "Copper and Terence have married, but Terence vanishes while Sir Merrylegs pursues him. A severed foot and a Videomatic challenge lead you to a Gamehouse contest that you cannot win alone. Pius, the purple…",
+    "searchText": "Copper and Terence have married, but Terence vanishes while Sir Merrylegs pursues him. A severed foot and a Videomatic challenge lead you to a Gamehouse contest that you cannot win alone. Pius, the purple mage, helps you qualify as a magician. Stage magic lets you beat Merrylegs’s game and save Terence. The attack was a plea for company: Merrylegs asks to spend Wintermas with the newlyweds and leaves Copper a gift. You pass on the request and save the celebration.",
     "year": 2025,
     "season": "Winter",
     "seasonTitle": "Wintermas",
@@ -1356,6 +1694,8 @@ const TIME_TRAILS=[
   {
     "id": "2025-winter-4",
     "title": "Book, Line and Sinker",
+    "summary": "Sparks asks you to find the Lost Bois: Wendizla, Big Iggy and Jared from I.T. Clues at the Auto Hatter and waterfall point to Captain Book, whose crew you try to infiltrate through Perigate. But Tinkley…",
+    "searchText": "Sparks asks you to find the Lost Bois: Wendizla, Big Iggy and Jared from I.T. Clues at the Auto Hatter and waterfall point to Captain Book, whose crew you try to infiltrate through Perigate. But Tinkley Well has killed the captain. The captain’s restless ghost reveals that the fairy is responsible for the friends’ disappearance. Hogwood once belonged to the Lost Bois and offers advice, but you arrive too late to save them. To spare Sparks the truth, you say their friends have gone to Never Ever Land.",
     "year": 2025,
     "season": "Winter",
     "seasonTitle": "Wintermas",
@@ -1364,6 +1704,8 @@ const TIME_TRAILS=[
   {
     "id": "2025-winter-5",
     "title": "You Didn't Account For This",
+    "summary": "The JIA needs someone in the chair to help Stickler open a briefcase sent by their old rival, the Calculator. You guide agents Finn Diesel and Sensuality Davis through the Calculator’s lair, but they are…",
+    "searchText": "The JIA needs someone in the chair to help Stickler open a briefcase sent by their old rival, the Calculator. You guide agents Finn Diesel and Sensuality Davis through the Calculator’s lair, but they are captured. Hogwood equips you to impersonate the villain, and an office documentary points you to Sparks. A monologue reveals that Stickler and the Calculator attended university together. Their yearbook supplies the briefcase combination. Inside is an invitation to a reunion, and you persuade Stickler to attend.",
     "year": 2025,
     "season": "Winter",
     "seasonTitle": "Wintermas",
@@ -1372,6 +1714,8 @@ const TIME_TRAILS=[
   {
     "id": "2025-winter-6",
     "title": "The Priest And The Prisoner",
+    "summary": "An elf delivery takes you to Pius, who wants their brother Brutus released from JONACO’s five-star prison. Giffard signs the form, but the release date is sixteen months away. Terence and Copper help…",
+    "searchText": "An elf delivery takes you to Pius, who wants their brother Brutus released from JONACO’s five-star prison. Giffard signs the form, but the release date is sixteen months away. Terence and Copper help arrange a breakout instead. Once free, Brutus reveals a plan to humiliate Pius using an orbital puppetisation laser. Lovehart supplies the access codes. You puppetise Brutus and send them to the confessional booths for a reunion with Pius.",
     "year": 2025,
     "season": "Winter",
     "seasonTitle": "Wintermas",
@@ -1380,6 +1724,8 @@ const TIME_TRAILS=[
   {
     "id": "2025-winter-7",
     "title": "Coffee Is For Closers",
+    "summary": "Lovehart is grieving Marketing Bot when JONACO announces a merger of Sales and Marketing. To win control for Marketing, you enter a sales contest and pitch Leg Day Ducks. Stickler tests your skill at…",
+    "searchText": "Lovehart is grieving Marketing Bot when JONACO announces a merger of Sales and Marketing. To win control for Marketing, you enter a sales contest and pitch Leg Day Ducks. Stickler tests your skill at spinning a story, while Egbert Simpsbury advises you on the final challenge. Salesbot wins anyway. You write new instructions for the dangerous robot, and Lovehart uploads them, reducing its intelligence below theirs. Lovehart becomes head of both departments.",
     "year": 2025,
     "season": "Winter",
     "seasonTitle": "Wintermas",
@@ -1388,6 +1734,8 @@ const TIME_TRAILS=[
   {
     "id": "2025-winter-8",
     "title": "A Developing Situation",
+    "summary": "After the Lunar Festival, Pocket fears Jonas will have them Undone unless their approval rating rises above seventy percent. You deliver a fruit basket to Datchery, seek an end to the platypus strike and…",
+    "searchText": "After the Lunar Festival, Pocket fears Jonas will have them Undone unless their approval rating rises above seventy percent. You deliver a fruit basket to Datchery, seek an end to the platypus strike and design a new attraction with Rexford. The deeper problem is that Pocket is undoing themself. A Jonas story suggests their escape lies in arresting Furbish. With Giffard’s help you bring Furbish back from Mr Feast’s space dating show, guide the rocket to Pocket’s office and let the mayor make the arrest.",
     "year": 2025,
     "season": "Winter",
     "seasonTitle": "Wintermas",
@@ -1396,6 +1744,8 @@ const TIME_TRAILS=[
   {
     "id": "2025-winter-9",
     "title": "The Man With The Bowler Hat",
+    "summary": "Someone in a bowler hat is stealing the control devices from Dr Winter’s new Telebears. An obituary and a play by Hogwood identify Dr Horus, a JONACO scientist lost in a teleportation experiment. Horus…",
+    "searchText": "Someone in a bowler hat is stealing the control devices from Dr Winter’s new Telebears. An obituary and a play by Hogwood identify Dr Horus, a JONACO scientist lost in a teleportation experiment. Horus contacts you through the Miramaze and asks for help returning to reality. You track down a Diamant Control Device and take it to Winter so they can save the missing doctor.",
     "year": 2025,
     "season": "Winter",
     "seasonTitle": "Wintermas",
@@ -1404,6 +1754,8 @@ const TIME_TRAILS=[
   {
     "id": "2025-winter-10",
     "title": "Off The Rails",
+    "summary": "The Atlas Railroad Company plans a line that would demolish Datchery’s General Store. A protest fails, so you take a conductor job through Rexford and submit a suggestion to save the shop. CEO Myne Bland…",
+    "searchText": "The Atlas Railroad Company plans a line that would demolish Datchery’s General Store. A protest fails, so you take a conductor job through Rexford and submit a suggestion to save the shop. CEO Myne Bland refuses. Even a staged train crash cannot stop the project. RoboDoc suggests an object from Bland’s childhood might change Bland’s heart. Datchery supplies one of the toy trains their family made. The gift does stop the railway plan, but causes Myne to explode.",
     "year": 2025,
     "season": "Winter",
     "seasonTitle": "Wintermas",
@@ -1412,6 +1764,8 @@ const TIME_TRAILS=[
   {
     "id": "2025-winter-11",
     "title": "Death Of A Mailman",
+    "summary": "As a new postal worker, you discover letters changing during delivery. One meant for Rexford leads to a video of the perfection-obsessed Mr Blizzard. Friendly the Postie, a mascot contest and Dr Winter…",
+    "searchText": "As a new postal worker, you discover letters changing during delivery. One meant for Rexford leads to a video of the perfection-obsessed Mr Blizzard. Friendly the Postie, a mascot contest and Dr Winter point to a decades-old JONACO project led by Winter’s grandfather. Spectre explains that Blizzard’s soul needs a new puppet to escape the cycle. You create an empty puppet, giving the spirit a place to go and saving the post office.",
     "year": 2025,
     "season": "Winter",
     "seasonTitle": "Wintermas",
@@ -1420,6 +1774,8 @@ const TIME_TRAILS=[
   {
     "id": "2025-winter-12",
     "title": "The End Is Just The Beginning",
+    "summary": "Furbish fears an imminent apocalypse called the Great Undoing. The JONACO Metaphysics Department restricts its information to Rank 8, so you try and fail to earn that rank through Perigate. Sherlock Bones…",
+    "searchText": "Furbish fears an imminent apocalypse called the Great Undoing. The JONACO Metaphysics Department restricts its information to Rank 8, so you try and fail to earn that rank through Perigate. Sherlock Bones points you toward a hidden Rank 8: Stickler. Stickler reveals two conditions for the Undoing to happen: Pocket must be mayor and Cogwright must be in town. A message from Jonas confirms that, after years of preparation, the plan is about to begin.",
     "year": 2025,
     "season": "Winter",
     "seasonTitle": "Wintermas",
@@ -1428,6 +1784,8 @@ const TIME_TRAILS=[
   {
     "id": "2026-finale-1",
     "title": "Homeward Bound",
+    "summary": "Giffard is about to lose their job for sheltering Furbish and asks you to help finish a bucket list. You beat a game score, get Giffard’s song on RoboDJ and try to impress Datchery with a poem. The final…",
+    "searchText": "Giffard is about to lose their job for sheltering Furbish and asks you to help finish a bucket list. You beat a game score, get Giffard’s song on RoboDJ and try to impress Datchery with a poem. The final wish is to free Furbish. Spectre has made a truce with the raccoons and helps you plan an escape through the old pipes. You forge a passport and distract Pocket with Giffard’s mixtape. Furbish agrees to flee only because he wants to protect Giffard. The lawyer is safe, but the rest of the town still faces the Undoing.",
     "year": 2026,
     "season": "Finale",
     "seasonTitle": "The Great Undoing",
@@ -1436,6 +1794,8 @@ const TIME_TRAILS=[
   {
     "id": "2026-finale-2",
     "title": "Back To The Furbish",
+    "summary": "At a gloating session after Pocket captures Furbish, the former mayor warns that the Undoing will destroy everything unless its result can be redirected. Madame Mechanica and Pius guide you toward the…",
+    "searchText": "At a gloating session after Pocket captures Furbish, the former mayor warns that the Undoing will destroy everything unless its result can be redirected. Madame Mechanica and Pius guide you toward the Axiomatic Core, but JIA interference cuts Mechanica off. Her last clue is Copper. A postal mix-up sent Copper a goose statue and delivered the Core to Hogwood instead. You trade the statue for the Core and learn it must be attuned to one person. Pocket seems the least dangerous choice to anchor the new timeline, even if success is far from certain.",
     "year": 2026,
     "season": "Finale",
     "seasonTitle": "The Great Undoing",
@@ -1444,6 +1804,8 @@ const TIME_TRAILS=[
   {
     "id": "2026-finale-3",
     "title": "Access Denied",
+    "summary": "Dr Winter’s bunker keycard has stopped working. Terence directs you to Perigate for a replacement, but the new cards have the wrong markings and errors. A search for Project Endless Summer reveals that…",
+    "searchText": "Dr Winter’s bunker keycard has stopped working. Terence directs you to Perigate for a replacement, but the new cards have the wrong markings and errors. A search for Project Endless Summer reveals that Winter and Littlefield have been barred from the bunker programme because Jonas considers Winter too powerful to survive the Undoing. Winter changes the access card so Littlefield can enter Jonas’s private bunker instead. You deliver it to Littlefield, giving them a chance to ride out the disaster alongside Jonas.",
     "year": 2026,
     "season": "Finale",
     "seasonTitle": "The Great Undoing",
@@ -1452,6 +1814,8 @@ const TIME_TRAILS=[
   {
     "id": "2026-finale-4",
     "title": "My Dinner With Jonas",
+    "summary": "Cogwright returns to town with gaps in their memory. Stickler’s memory gun has been stolen, and a rock with eyes points you to Littlefield, who has been using it on themself. An archive device reveals…",
+    "searchText": "Cogwright returns to town with gaps in their memory. Stickler’s memory gun has been stolen, and a rock with eyes points you to Littlefield, who has been using it on themself. An archive device reveals that Jonas erased Cogwright’s memory of a dinner where Cogwright and Winter agreed a town-changing machine was not ready. Winter supplies the phrase that unlocks the missing memory: There Never Was A Boat Ride. Cogwright now understands what the machine in town will do. They cannot stop it, but may be able to alter the Undoing enough to preserve something of Phantom Peak.",
     "year": 2026,
     "season": "Finale",
     "seasonTitle": "The Great Undoing",
@@ -1460,6 +1824,8 @@ const TIME_TRAILS=[
   {
     "id": "2026-finale-5",
     "title": "Over and Over",
+    "summary": "Spectre refuses to accept the plan to centre the Undoing on Pocket: Jonas will keep trying. Vox believes memories stored in yellow diamant could survive, but only someone with Axiomorphic Brainwaves can…",
+    "searchText": "Spectre refuses to accept the plan to centre the Undoing on Pocket: Jonas will keep trying. Vox believes memories stored in yellow diamant could survive, but only someone with Axiomorphic Brainwaves can carry them. RoboDoc identifies Hogwood, who has been inside the Axiomatic Clock. You help Hogwood turn yellow diamant green by combining it with your memories. You promise to find them after the town is remade, then take the crystal to Spectre for safekeeping until Phantom Peak returns.",
     "year": 2026,
     "season": "Finale",
     "seasonTitle": "The Great Undoing",

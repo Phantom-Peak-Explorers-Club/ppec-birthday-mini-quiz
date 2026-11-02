@@ -17,6 +17,8 @@ const seasonKeys = [...new Set(dated.map(trail => `${trail.year}:${trail.season}
 const timeline = dated.map(trail => ({
   id: trail.id,
   title: trail.title,
+  summary: trail.summary,
+  searchText: trail.searchText,
   year: trail.year,
   season: trail.season,
   seasonTitle: trail.seasonTitle,

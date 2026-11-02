@@ -155,12 +155,18 @@ const GAME_THEMES={
   vowels:{accent:'#ae80ff',dark:'#35165e',light:'#f0e4ff',shareBg:'#592993'},
   trails:{accent:'#ff9b40',dark:'#573012',light:'#ffead0',shareBg:'#9c4810'},
   platy:{accent:'#7bd86e',dark:'#1b4c22',light:'#e5ffda',shareBg:'#246f35'},
-  blanks:{accent:'#5bafff',dark:'#153e75',light:'#e1f1ff',shareBg:'#1765ac'},
+  blanks:{accent:'#b9ecff',dark:'#255576',light:'#f3fcff',shareBg:'#75b4d0',shareLift:.12},
   lore:{accent:'#ff6eb5',dark:'#5d174a',light:'#ffe2f2',shareBg:'#9c266c'},
-  timeline:{accent:'#37caff',dark:'#0c365d',light:'#e2faff',shareBg:'#126b9d'}
+  timeline:{accent:'#6f8ff3',dark:'#0a1e46',light:'#e7eeff',shareBg:'#1a3a82'}
 };
 function shuffle(items){const out=[...items];for(let i=out.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[out[i],out[j]]=[out[j],out[i]]}return out}
 function timelineRelation(anchor,candidate){return candidate.rank<anchor.rank?'Before':candidate.rank>anchor.rank?'After':'Same Season'}
+function timelineRecap(trail){
+  const details=document.createElement('details');details.className='timeline-details';
+  const label=document.createElement('summary');label.textContent='Read full trail description';
+  const text=document.createElement('p');text.textContent=trail.searchText;
+  details.append(label,text);return details;
+}
 function timelineQuestions(){
   const remaining=shuffle(TIME_TRAILS);
   let anchor=remaining.splice(remaining.findIndex(trail=>trail.rank>=5&&trail.rank<=10),1)[0];
@@ -519,14 +525,16 @@ function render(){
     const anchorLabel=document.createElement('small');anchorLabel.textContent='BASE TRAIL';
     const anchorTitle=document.createElement('strong');anchorTitle.textContent=q.anchor.title;
     const anchorDate=document.createElement('span');anchorDate.className='timeline-date';anchorDate.textContent=`${q.anchor.season} ${q.anchor.year} · ${q.anchor.seasonTitle}`;
-    anchor.append(anchorLabel,anchorTitle,anchorDate);
+    const anchorSummary=document.createElement('p');anchorSummary.className='timeline-summary';anchorSummary.textContent=q.anchor.summary;
+    anchor.append(anchorLabel,anchorTitle,anchorDate,anchorSummary,timelineRecap(q.anchor));
     const crystal=document.createElement('span');crystal.className='timeline-crystal';crystal.setAttribute('aria-hidden','true');crystal.textContent='◆';
     const candidate=document.createElement('div');candidate.className='timeline-trail timeline-candidate';
     const candidateLabel=document.createElement('small');candidateLabel.textContent='THIS TRAIL';
     const candidateTitle=document.createElement('strong');candidateTitle.textContent=q.candidate.title;
+    const candidateSummary=document.createElement('p');candidateSummary.className='timeline-summary';candidateSummary.textContent=q.candidate.summary;
     const question=document.createElement('p');question.className='timeline-prompt';
     question.textContent=`Does this trail come before, after or during the same season as ${q.anchor.title}?`;
-    candidate.append(candidateLabel,candidateTitle,question);
+    candidate.append(candidateLabel,candidateTitle,candidateSummary,timelineRecap(q.candidate),question);
     stage.append(anchor,crystal,candidate);$('clue').append(stage);
   }else $('clue').append(game==='anagrams'?letterRow(q.scramble):letterRow(q.clue));
   $('trail-choices').replaceChildren();$('trail-choices').hidden=game!=='trails';
@@ -683,6 +691,11 @@ async function drawShareCard(){
   }else{
     c.fillStyle=theme.shareBg;c.fillRect(0,0,1080,1080);
     c.strokeStyle=theme.accent;c.lineWidth=15;c.strokeRect(24,24,1032,1032);
+  }
+  if(theme.shareLift){
+    c.globalCompositeOperation='screen';c.globalAlpha=theme.shareLift;
+    c.fillStyle='#fff';c.fillRect(0,0,1080,1080);
+    c.globalCompositeOperation='source-over';c.globalAlpha=1;
   }
   if(avatarReady)c.drawImage(avatar,788,35,235,235);
   c.textAlign='left';

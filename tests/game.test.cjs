@@ -739,8 +739,12 @@ test('Blue diamant timeline chains trails and treats a season as one point in ti
   assert.equal(app.get('answer-form').hidden, true);
   assert.equal(app.get('clue').children[0].children[0].children[0].textContent, 'BASE TRAIL');
   assert.match(app.get('clue').children[0].children[0].children[2].textContent, /\d{4}/);
+  assert.equal(app.get('clue').children[0].children[0].children[3].textContent, questions[0].anchor.summary);
+  assert.equal(app.get('clue').children[0].children[0].children[4].children[1].textContent, questions[0].anchor.searchText);
   assert.equal(app.get('clue').children[0].children[2].children[0].textContent, 'THIS TRAIL');
-  assert.equal(app.get('clue').children[0].children[2].children[2].textContent,
+  assert.equal(app.get('clue').children[0].children[2].children[2].textContent, questions[0].candidate.summary);
+  assert.equal(app.get('clue').children[0].children[2].children[3].children[1].textContent, questions[0].candidate.searchText);
+  assert.equal(app.get('clue').children[0].children[2].children[4].textContent,
     `Does this trail come before, after or during the same season as ${questions[0].anchor.title}?`);
   for (let i = 0; i < questions.length; i++) {
     const q = questions[i];

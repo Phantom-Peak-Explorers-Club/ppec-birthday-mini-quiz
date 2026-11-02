@@ -9,8 +9,8 @@ The eight PNGs in `docs/assets/game-logos/` show each game's action at a glance.
 | Vowel of Silence | Consonants with vowels dropping into gaps | Violet `#ae80ff` |
 | Trail and Error | Choice cards pointing to a trail | Orange `#ff9b40` |
 | Save-A-Platy | Platypus and trail wordplay | Green `#7bd86e` |
-| Blankety Peak | Missing word tiles | Blue `#5bafff` |
+| Blankety Peak | Missing word tiles | Ice blue `#b9ecff` |
 | Lost in the Lore | Open story book and choices | Pink `#ff6eb5` |
-| Fun With Blue Diamant | Rough blue diamant over a clock with before/after arrows | Cyan blue `#37caff` |
+| Fun With Blue Diamant | Rough blue diamant over a clock with before/after arrows | Deep blue `#6f8ff3` |
 
 The colours continue through each game terminal, result preview, and downloaded share card. The PPEC Quiz install icon uses Jonabot Jr holding a large gold question mark, with the art master at `design-previews/app-logo-v3.png` and install sizes at `docs/assets/app-icon-v3-*.png`.

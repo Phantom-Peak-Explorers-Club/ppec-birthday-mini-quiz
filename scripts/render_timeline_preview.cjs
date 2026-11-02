@@ -7,11 +7,14 @@ const root = path.resolve(__dirname, '..');
 const docs = path.join(root, 'docs');
 const htmlPath = path.join(docs, '.timeline-preview.html');
 const mobile = process.argv.includes('--mobile');
-const output = path.join(root, 'design-previews', mobile ? 'fun-with-blue-diamant-mobile-preview.png' : 'fun-with-blue-diamant-game-preview.png');
+const game = process.argv.find(arg => arg.startsWith('--game='))?.slice(7) || 'timeline';
+if (!['timeline', 'blanks'].includes(game)) throw new Error(`Unsupported preview game: ${game}`);
+const name = game === 'timeline' ? 'fun-with-blue-diamant' : 'blankety-peak';
+const output = path.join(root, 'design-previews', `${name}-${mobile ? 'mobile' : 'game'}-preview.png`);
 const chrome = 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe';
 const profile = fs.mkdtempSync(path.join(os.tmpdir(), 'ppec-timeline-preview-'));
 const html = fs.readFileSync(path.join(docs, 'index.html'), 'utf8').replace('</body>',
-  `<script>window.addEventListener('load',()=>start('timeline','quiz'))</script></body>`);
+  `<script>window.addEventListener('load',()=>start('${game}','quiz'))</script></body>`);
 
 try {
   fs.writeFileSync(htmlPath, html);
